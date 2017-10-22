@@ -18,9 +18,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="200dp"
             android:orientation="horizontal"
-            android:id="@+id/linearLayout1">
+            android:id="@+id/linearLayout1"
+            android:weightSum="1"
+            android:layout_marginBottom="10dp">
 
             <ImageView
                 android:layout_width="100dp"
@@ -29,14 +31,15 @@
                 android:id="@+id/platinum1"
                 />
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
             android:id="@+id/linearLayout2"
             android:layout_toRightOf="@+id/platinum1"
             android:paddingLeft="10dp"
             android:paddingTop="0dp"
             android:orientation="vertical"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:layout_weight="0.98">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,14 +50,7 @@
                 android:textColor="@android:color/holo_red_light"
                 android:layout_marginBottom="15dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                android:id="@+id/tvDescription"
-                />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +63,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="5dp"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="25dp"
                     android:id="@+id/tvNewPrice"
                     />
 
@@ -90,26 +86,28 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="15dp"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/linearLayout5">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
                     android:text="Number of requests:"
                     android:paddingBottom="10dp"
                     android:textStyle="bold"
                     android:textSize="15dp"
+                    android:textColor="@android:color/black"
                     android:id="@+id/tvNumOfRequests"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="2"
-                    android:textSize="30dp"
+                    android:textSize="40dp"
                     android:id="@+id/tvNum"
-                    android:gravity="center"
+                    android:gravity="right"
+                    android:paddingLeft="25dp"
                     android:textColor="@android:color/black"/>
 
             </LinearLayout>
@@ -120,10 +118,9 @@
                 android:text="Accept"
                 android:id="@+id/btAccept"
                 android:gravity="center"
-                android:layout_gravity="left"
+                android:layout_gravity="right"
                 android:textSize="15dp"
-                android:backgroundTint="@color/back"
-                android:background="@drawable/button1"
+                android:background="@drawable/button_rounded_blue_gradient"
 
                 />
             <Button
@@ -132,11 +129,10 @@
                 android:text="Reject"
                 android:id="@+id/btReject"
                 android:gravity="center"
-                android:layout_gravity="left"
+                android:layout_gravity="right"
                 android:textSize="15dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="@android:color/holo_green_dark"
-                android:background="@drawable/button1"
+                android:background="@drawable/button_rounded_red_gradient"
 
                 />
         </LinearLayout>

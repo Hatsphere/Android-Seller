@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.yashladha.android_seller.DisplayFrag"
+    tools:context="com.example.yashladha.android_seller.fragments.DisplayFrag"
     android:paddingBottom="10dp"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
@@ -11,16 +11,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:orientation="horizontal"
         android:clickable="true"
         android:id="@+id/linearLayout1">
 
         <ImageView
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/platinum1"
-            android:id="@+id/platinum1"
+            android:id="@+id/ivProduct"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
@@ -45,15 +45,15 @@
                     android:id="@+id/tvProductName"
                     android:textColor="@android:color/holo_red_light"
                     android:layout_marginBottom="15dp"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_marginRight="25dp"/>
 
-                <Button
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/remove"
-                    android:background="@drawable/button"
-                    android:backgroundTint="@color/back"
-                    android:src="@drawable/logo"/>
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/delete"
+                    android:background="@drawable/circle"
+                    android:scaleType="fitXY"
+                    android:id="@+id/ibProduct"/>
 
             </LinearLayout>
             <TextView
