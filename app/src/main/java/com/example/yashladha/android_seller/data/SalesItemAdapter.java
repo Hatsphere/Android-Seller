@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,16 +15,16 @@ import com.example.yashladha.android_seller.R;
 import java.util.ArrayList;
 
 /**
- * Created by dell pc on 22-10-2017.
+ * Created by dell pc on 23-10-2017.
  */
 
-public class OrderAdapter extends ArrayAdapter<Order>{
+public class SalesItemAdapter extends ArrayAdapter<SalesItem> {
 
     private int mColorResourceId;
 
-    public OrderAdapter(Activity context, ArrayList<Order> orders, int colorResourceId)
+    public SalesItemAdapter(Activity context, ArrayList<SalesItem> salesItems, int colorResourceId)
     {
-        super(context,0,orders);
+        super(context,0,salesItems);
         mColorResourceId = colorResourceId;
     }
 
@@ -36,35 +35,32 @@ public class OrderAdapter extends ArrayAdapter<Order>{
         if(listItemView==null)
         {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.orders_list,parent,false);
+                    R.layout.product_display_list,parent,false);
         }
-        Order currentOrder = getItem(position);
+        SalesItem currentSalesItem = getItem(position);
 
         TextView mProductName = (TextView)listItemView.findViewById(R.id.tvProductName);
-        mProductName.setText(currentOrder.getmProductName());
+        mProductName.setText(currentSalesItem.getmProductName());
 
-        TextView mProductPrice = (TextView)listItemView.findViewById(R.id.tvPrice);
-        mProductPrice.setText(currentOrder.getmProductPrice());
+        TextView mProductCode = (TextView)listItemView.findViewById(R.id.tvProductCode);
+        mProductCode.setText(currentSalesItem.getmProductCode());
 
-        TextView mTypeOfRequest = (TextView)listItemView.findViewById(R.id.tvTypeOfRequest);
-        mTypeOfRequest.setText(currentOrder.getmTypeOfRequest());
-
-        TextView mNumOfRequest = (TextView)listItemView.findViewById(R.id.tvNumOfRequests);
-        mNumOfRequest.setText(currentOrder.getmNumOfRequest());
-
-        Button mAccept = (Button) listItemView.findViewById(R.id.btAccept);
-        mAccept.setText(currentOrder.getmAccept());
-
-        Button mReject = (Button) listItemView.findViewById(R.id.btReject);
-        mReject.setText(currentOrder.getmReject());
+        TextView mNumItemsSold = (TextView)listItemView.findViewById(R.id.tvNumItemsSold);
+        mNumItemsSold.setText(currentSalesItem.getmNumItemsSold());
 
         TextView mNum = (TextView)listItemView.findViewById(R.id.tvNum);
-        mNum.setText(currentOrder.getmNum());
+        mNum.setText(currentSalesItem.getmNum());
+
+        TextView mTotalAmount = (TextView)listItemView.findViewById(R.id.tvTotalAmount);
+        mTotalAmount.setText(currentSalesItem.getmTotalAmount());
+
+        TextView mAmount = (TextView)listItemView.findViewById(R.id.tvAmount);
+        mAmount.setText(currentSalesItem.getmAmount());
 
         ImageView mProductImageResource = (ImageView)listItemView.findViewById(R.id.ivProduct);
-        if(currentOrder.hasImage1())
+        if(currentSalesItem.hasImage1())
         {
-            mProductImageResource.setImageResource(currentOrder.getmProductImageResourceId());
+            mProductImageResource.setImageResource(currentSalesItem.getmProductImageResourceId());
             mProductImageResource.setVisibility(View.VISIBLE);
         }
         else{
