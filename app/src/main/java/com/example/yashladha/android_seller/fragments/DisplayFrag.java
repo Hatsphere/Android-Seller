@@ -3,7 +3,11 @@ package com.example.yashladha.android_seller.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -27,9 +31,12 @@ public class DisplayFrag extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.product_display_list, container, false);
-        ListView listView = (ListView)rootView.findViewById(R.id.)
+        ListView listView = (ListView)rootView.findViewById(R.id.tvListView);
+
+
 
         return rootView;
     }
+
 
 }

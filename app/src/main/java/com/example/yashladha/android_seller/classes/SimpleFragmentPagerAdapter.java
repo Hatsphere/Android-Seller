@@ -36,17 +36,19 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        if (position == 0) {
+        /*if (position == 0) {
             return "Products";
         } else if(position == 1){
             return "Sales Analysis";
         } else{
             return "Orders";
         }
+        */
+        return null;
     }
 }
