@@ -9,7 +9,7 @@
     android:paddingRight="16dp"
     android:orientation="vertical"
     android:id="@+id/relativeLayout"
-    tools:context="com.example.yashladha.android_seller.TrialActivity">
+    tools:context="com.example.yashladha.android_seller.SplashActivity">
 
     <ImageView
         android:layout_width="100dp"
