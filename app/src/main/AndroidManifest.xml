@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,20 +20,20 @@
         <activity
             android:name=".LoginActivity"
             android:label="HatSphere"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".SplashActivity" >
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".SplashActivity" />
         </activity>
         <activity
             android:name=".RegistrationActivity"
             android:label="HatSphere"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".SplashActivity" >
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".SplashActivity" />
         </activity>
         <activity
             android:name=".HomePageActivity"

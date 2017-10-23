@@ -82,8 +82,8 @@ public class RegistrationActivity extends AppCompatActivity {
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (validateUserName() && validatePassword()) {
+                boolean ans = validatePassword() && validateUserName();
+                if (ans) {
 
 
                     JSONObject obj = new JSONObject();
@@ -116,7 +116,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     etPassword.setText("");
                     etName.setText("");
                     etEmail.setText("");
-
+                    if (ans == true) {
+                        
+                    }
 
                 }
             }
