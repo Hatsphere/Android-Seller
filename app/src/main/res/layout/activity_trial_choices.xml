@@ -22,26 +22,29 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/platinum1"
-            android:id="@+id/platinum1"
+            android:id="@+id/platinum"
             />
         <LinearLayout
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
             android:orientation="vertical"
+            android:id="@+id/linearLayout2"
             android:paddingRight="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PLATINUM"
                 android:textStyle="bold"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:id="@+id/tvPlatinum"
                 android:textColor="@android:color/holo_green_dark"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tvMaxPtImages"
                 android:text="Maximum number of images : 5"
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
@@ -51,7 +54,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="40-50 words for description "
-                android:layout_marginBottom="10dp"
+                android:id="@+id/tvPtDescription"
+                android:layout_marginBottom="5dp"
                 android:textStyle="bold"
                 />
 
@@ -59,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home Page Priority : HIGHEST"
+                android:id="@+id/tvPtPriority"
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 />
@@ -71,6 +76,7 @@
            android:gravity="center"
            android:layout_gravity="center"
            android:textSize="15dp"
+           android:id="@+id/btPtProceed"
            android:background="@drawable/button_rounded_blue_gradient"
            />
 
@@ -80,34 +86,37 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout3"
         android:layout_below="@+id/linearLayout1">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:src="@drawable/gold2"
-            android:id="@+id/gold2"
+            android:id="@+id/gold"
             />
         <LinearLayout
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
             android:orientation="vertical"
+            android:id="@+id/linearLayout4"
             android:paddingRight="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GOLD"
+                android:id="@+id/tvGold"
                 android:textStyle="bold"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@android:color/holo_green_dark"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Maximum number of images : 3"
+                android:id="@+id/tvMaxGdImages"
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 />
@@ -116,7 +125,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20-30 words for description "
-                android:layout_marginBottom="10dp"
+                android:id="@+id/tvGdDescription"
+                android:layout_marginBottom="5dp"
                 android:textStyle="bold"
                 />
 
@@ -124,6 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home Page Priority : AVERAGE"
+                android:id="@+id/tvGdPriority"
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 />
@@ -133,6 +144,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:text="Proceed"
+            android:id="@+id/btGdProceed"
             android:gravity="center"
             android:layout_gravity="center"
             android:textSize="15dp"
@@ -144,35 +156,38 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout3"
-        android:layout_below="@+id/linearLayout2">
+        android:id="@+id/linearLayout5"
+        android:layout_below="@+id/linearLayout3">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/silver2"
-            android:id="@+id/silver2"
+            android:id="@+id/silver"
             />
         <LinearLayout
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:paddingLeft="10dp"
+            android:id="@+id/linearLayout6"
             android:orientation="vertical"
             android:paddingRight="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SILVER"
+                android:id="@+id/tvSilver"
                 android:textStyle="bold"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@android:color/holo_green_dark"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Maximum number of images : 3"
-                android:layout_marginBottom="10dp"
+                android:id="@+id/tvMaxSvImages"
+                android:layout_marginBottom="5dp"
                 android:textStyle="bold"
                 />
 
@@ -180,6 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10-15 words for description "
+                android:id="@+id/tvSvDescription"
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 />
@@ -188,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home Page Priority : LOWEST"
+                android:id="@+id/tvSvPriority"
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 />
@@ -197,6 +214,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:text="Proceed"
+            android:id="@+id/btSvProceed"
             android:gravity="center"
             android:layout_gravity="center"
             android:textSize="15dp"
