@@ -82,12 +82,9 @@ public class RegistrationActivity extends AppCompatActivity {
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-                boolean ans = validatePassword() && validateUserName();
-=======
+
 
                 boolean ans = validateUserName()&&validatePassword();
->>>>>>> eaddd5f4b88c55c06ea33ef608a75ed94c60bdf9
                 if (ans) {
 
 
@@ -121,13 +118,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     etPassword.setText("");
                     etName.setText("");
                     etEmail.setText("");
-<<<<<<< HEAD
-                    if (ans == true) {
-=======
 
                     if(ans == true){
->>>>>>> eaddd5f4b88c55c06ea33ef608a75ed94c60bdf9
-                        
+
                     }
 
                 }

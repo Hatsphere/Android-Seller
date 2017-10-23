@@ -21,12 +21,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="HatSphere"
-<<<<<<< HEAD
-            android:parentActivityName=".SplashActivity">
-=======
-            android:parentActivityName=".MainActivity">
->>>>>>> eaddd5f4b88c55c06ea33ef608a75ed94c60bdf9
+            android:label="HatSphere">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -35,12 +30,9 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:label="HatSphere"
-<<<<<<< HEAD
+            android:label="HatSphere">
             android:parentActivityName=".SplashActivity">
-=======
             android:parentActivityName=".MainActivity">
->>>>>>> eaddd5f4b88c55c06ea33ef608a75ed94c60bdf9
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -87,11 +79,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePageActivity" />
         </activity>
-<<<<<<< HEAD
+
         <activity android:name=".Registration_2"></activity>
-=======
+
         <activity android:name=".RegisterActivity_2"></activity>
->>>>>>> eaddd5f4b88c55c06ea33ef608a75ed94c60bdf9
     </application>
 
 </manifest>
