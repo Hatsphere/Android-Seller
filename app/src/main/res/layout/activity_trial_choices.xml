@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.yashladha.android_seller.TrialChoicesActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/platinum1"
+            android:id="@+id/platinum1"
+            />
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:orientation="vertical"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PLATINUM"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_marginBottom="15dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max. 5 images "
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="40-50 words for description "
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Page Priority : HIGHEST"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+       <Button
+           android:layout_width="80dp"
+           android:layout_height="wrap_content"
+           android:text="Proceed"
+           android:gravity="center"
+           android:layout_gravity="center"
+           android:textSize="15dp"
+           android:textColor="@android:color/black"
+           android:background="@drawable/button_rounded_corners_gradiant"
+
+           />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout1">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/gold2"
+            android:id="@+id/gold2"
+            />
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:orientation="vertical"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GOLD"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_marginBottom="15dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max. 3 images "
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20-30 words for description "
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Page Priority : AVERAGE"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Proceed"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:backgroundTint="@color/back"
+            android:background="@drawable/button1"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout2">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/silver2"
+            android:id="@+id/silver2"
+            />
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:orientation="vertical"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SILVER"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_marginBottom="15dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max. 2 images "
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10-15 words for description "
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Page Priority : LOWEST"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Proceed"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:backgroundTint="@color/back"
+            android:background="@drawable/button1"
+
+            />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
