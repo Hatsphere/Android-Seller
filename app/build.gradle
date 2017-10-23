@@ -43,5 +43,8 @@ repositories {
 }
 
 dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
 }

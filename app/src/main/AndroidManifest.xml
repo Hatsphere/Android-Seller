@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.yashladha.android_seller">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,11 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LoginActivity"
             android:label="HatSphere"
-            android:parentActivityName=".SplashActivity" >
+            android:parentActivityName=".SplashActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -29,7 +32,8 @@
         <activity
             android:name=".RegistrationActivity"
             android:label="HatSphere"
-            android:parentActivityName=".SplashActivity" >
+            android:parentActivityName=".SplashActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -38,45 +42,44 @@
         <activity
             android:name=".HomePageActivity"
             android:label="HatSphere"
-            android:parentActivityName=".LoginActivity" >
+            android:parentActivityName=".LoginActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
         </activity>
-
         <activity
             android:name=".DisplayActivity"
             android:label="HatSphere"
-            android:parentActivityName=".HomePageActivity" >
+            android:parentActivityName=".HomePageActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePageActivity" />
         </activity>
-
         <activity
             android:name=".OrdersActivity"
             android:label="HatSphere"
-            android:parentActivityName=".HomePageActivity" >
+            android:parentActivityName=".HomePageActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePageActivity" />
         </activity>
-
         <activity
             android:name=".SalesActivity"
             android:label="HatSphere"
-            android:parentActivityName=".HomePageActivity" >
+            android:parentActivityName=".HomePageActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePageActivity" />
         </activity>
-
-
+        <activity android:name=".Registration_2"></activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 </manifest>
