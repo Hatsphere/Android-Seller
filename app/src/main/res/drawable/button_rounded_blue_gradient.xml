@@ -9,7 +9,7 @@
                 android:endColor="@color/blueEnd"
                 android:centerColor="@color/blueCenter"
                 android:angle="0"
-                android:gradientRadius="100"
+                android:gradientRadius="50"
                 />
             <!--apply a border around button-->
             <!-- make the button corners rounded-->

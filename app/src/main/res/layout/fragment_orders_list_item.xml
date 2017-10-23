@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yashladha.android_seller.OrdersFrag">
+    tools:context="com.example.yashladha.android_seller.fragments.OrdersFrag">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,28 +13,28 @@
         android:paddingLeft="5dp"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:orientation="vertical"
-        tools:context="com.example.dellpc.loginpage.TrialChoices">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:orientation="horizontal"
             android:id="@+id/linearLayout1"
             android:weightSum="1"
-            android:layout_marginBottom="10dp">
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/platinum1"
-                android:id="@+id/platinum1"
+                android:id="@+id/ivProduct"
                 />
         <LinearLayout
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:id="@+id/linearLayout2"
-            android:layout_toRightOf="@+id/platinum1"
+            android:layout_toRightOf="@+id/ivProduct"
             android:paddingLeft="10dp"
             android:paddingTop="0dp"
             android:orientation="vertical"
@@ -45,9 +45,9 @@
                 android:layout_height="wrap_content"
                 android:text="Product Name"
                 android:textStyle="bold"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:id="@+id/tvProductName"
-                android:textColor="@android:color/holo_red_light"
+                android:textColor="@android:color/holo_green_dark"
                 android:layout_marginBottom="15dp"/>
 
 
@@ -59,12 +59,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Price"
-                    android:layout_marginBottom="10dp"
+                    android:text="Price"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginRight="5dp"
                     android:textStyle="bold"
-                    android:textSize="25dp"
-                    android:id="@+id/tvNewPrice"
+                    android:textSize="20dp"
+                    android:id="@+id/tvPrice"
                     />
 
             </LinearLayout>
@@ -72,8 +72,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Purchase/Exhange/Refund"
-                android:textSize="20dp"
+                android:text="Purchase/Exchange/Refund"
+                android:textSize="15dp"
                 android:id="@+id/tvTypeOfRequest"
                 />
         </LinearLayout>
@@ -88,16 +88,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:orientation="horizontal"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:id="@+id/linearLayout5">
 
                 <TextView
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:text="Number of requests:"
+                    android:text="Number of requests"
                     android:paddingBottom="10dp"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:textSize="13dp"
+                    android:gravity="center"
                     android:textColor="@android:color/black"
                     android:id="@+id/tvNumOfRequests"/>
                 <TextView
@@ -114,23 +115,23 @@
 
             <Button
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:text="Accept"
                 android:id="@+id/btAccept"
                 android:gravity="center"
-                android:layout_gravity="right"
-                android:textSize="15dp"
+                android:layout_gravity="center"
+                android:textSize="10dp"
                 android:background="@drawable/button_rounded_blue_gradient"
 
                 />
             <Button
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:text="Reject"
                 android:id="@+id/btReject"
                 android:gravity="center"
-                android:layout_gravity="right"
-                android:textSize="15dp"
+                android:layout_gravity="center"
+                android:textSize="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_rounded_red_gradient"
 
