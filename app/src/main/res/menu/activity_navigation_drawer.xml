@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:title="Categories">
+        <menu>
+            <item
+                android:id="@+id/itHomeDecor"
+                android:icon="@drawable/ic_icon_home_decor"
+                android:title="Home Decor" />
+            <item
+                android:id="@+id/itHomeFurniture"
+                android:icon="@drawable/ic_icon_home_furniture"
+                android:title="Home Furniture" />
+            <item
+                android:id="@+id/itHomeFurnishing"
+                android:icon="@drawable/ic_icon_home_furnishing"
+                android:title="Home Furnishing" />
+            <item
+                android:id="@+id/itGardenPatio"
+                android:icon="@drawable/ic_icon_garden_and_patio"
+                android:title="Garden and Patio" />
+
+            <item
+                android:id="@+id/itBathLinen"
+                android:icon="@drawable/ic_icon_bath_linen"
+                android:title="Bath Linen and Accessories" />
+
+            <item
+                android:id="@+id/itKitchen"
+                android:icon="@drawable/ic_icon_kitchen_and_dining"
+                android:title="Kitchen and Dining" />
+
+        </menu>
+    </item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/itMyAccount"
+            android:icon="@drawable/ic_icon_my_account"
+            android:title="My Account" />
+        <item
+            android:id="@+id/itFaq"
+            android:icon="@drawable/ic_icon_faq"
+            android:title="FAQs" />
+        <item
+            android:id="@+id/itHelp"
+            android:icon="@drawable/ic_icon_help"
+            android:title="Help" />
+        <item
+            android:id="@+id/itAboutUs"
+            android:icon="@drawable/ic_icon_about_us"
+            android:title="About Us" />
+        <item
+            android:id="@+id/itLogOut"
+            android:icon="@drawable/ic_icon_logout"
+            android:title="Log Out" />
+    </group>
+
+</menu>
