@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageButton ibPassword;
     boolean password2 = false;
     public static final String UID = "UID";
-    String UID_i ="";
+    String UID_i = "";
     String email = "";
     String password = "";
 
@@ -109,6 +109,12 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                                 if (response.get("response").toString() == "200") {
                                     UID_i = response.get("uid").toString();
+                                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString(UID, UID_i);
+                                    editor.commit();
+
+
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -124,10 +130,6 @@ public class LoginActivity extends AppCompatActivity {
                     rq.add(jsonObjectRequest);
                     etPassword.setText("");
                     etName.setText("");
-                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(UID, UID_i);
-                    editor.commit();
                 }
             }
 
