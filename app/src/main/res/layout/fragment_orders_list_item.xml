@@ -88,14 +88,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:orientation="horizontal"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/linearLayout5">
 
                 <TextView
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:text="Number of requests"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="5dp"
                     android:textStyle="bold"
                     android:textSize="13dp"
                     android:gravity="center"
@@ -107,8 +107,8 @@
                     android:text="2"
                     android:textSize="40dp"
                     android:id="@+id/tvNum"
-                    android:gravity="right"
-                    android:paddingLeft="25dp"
+                    android:gravity="center"
+                    android:paddingLeft="15dp"
                     android:textColor="@android:color/black"/>
 
             </LinearLayout>

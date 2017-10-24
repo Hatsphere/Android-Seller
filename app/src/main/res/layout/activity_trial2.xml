@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.yashladha.android_seller.TrialActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You are about to sell like you
+            never did before"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/logo"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:id="@+id/tvYou"
+        android:textColor="@android:color/holo_red_dark"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+    <Button
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:text="Get Started"
+        android:id="@+id/btGetStarted"
+        android:layout_gravity="center"
+        android:background="@drawable/button"
+        android:backgroundTint="@android:color/holo_blue_bright"
+        tools:layout_editor_absoluteY="406dp"
+        tools:layout_editor_absoluteX="148dp" />
+
+<LinearLayout
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:id="@+id/linearLayout2"
+android:orientation="vertical"
+android:layout_below="@id/linearLayout1"
+    tools:layout_editor_absoluteY="0dp"
+    tools:layout_editor_absoluteX="8dp">
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textSize="25dp"
+    android:gravity="center"
+    android:text="Our app also supports a
+ TRIAL version"
+    android:paddingLeft="0dp"
+    android:id="@+id/tvTrial"
+    android:textStyle="bold"
+    tools:layout_editor_absoluteY="173dp"
+    tools:layout_editor_absoluteX="49dp" />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Wanna Check It Out?
+ Get In Here"
+    tools:layout_editor_absoluteY="273dp"
+    tools:layout_editor_absoluteX="128dp" />
+    </LinearLayout>
+</RelativeLayout>

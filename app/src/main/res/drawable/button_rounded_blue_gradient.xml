@@ -16,5 +16,20 @@
             <corners android:radius="25dp"/>
         </shape>
     </item>
+
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners
+                    android:radius="5dip" />
+                <gradient
+                    android:startColor="@color/redStart"
+                    android:centerColor="@color/redCenter"
+                    android:endColor="@color/redEnd"
+                    android:angle="270"
+                    />
+            </shape>
+        </clip>
+    </item>
 </selector>
 
