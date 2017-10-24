@@ -43,7 +43,7 @@
                     android:textStyle="bold"
                     android:textSize="25dp"
                     android:id="@+id/tvProductName"
-                    android:textColor="@android:color/holo_red_light"
+                    android:textColor="@android:color/holo_green_dark"
                     android:layout_marginBottom="15dp"
                     android:layout_marginRight="25dp"/>
 
