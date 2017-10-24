@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Registration_2 extends AppCompatActivity {
+public class RegisterActivity_2 extends AppCompatActivity {
     Button btProcees;
     EditText etAddress, etContact;
     EditText etName;
@@ -26,7 +26,7 @@ public class Registration_2 extends AppCompatActivity {
         btProcees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Registration_2.this, TrialChoicesActivity.class);
+                Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
                 i.putExtra("address", address);
                 i.putExtra("contact", contact);
                 i.putExtra("name", name);

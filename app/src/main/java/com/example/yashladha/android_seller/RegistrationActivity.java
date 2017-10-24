@@ -124,7 +124,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     etEmail.setText("");
 
                     if (ans == true) {
-                        Intent i = new Intent(RegistrationActivity.this, Registration_2.class);
+                        Intent i = new Intent(RegistrationActivity.this, RegisterActivity_2.class);
                         startActivity(i);
                         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();

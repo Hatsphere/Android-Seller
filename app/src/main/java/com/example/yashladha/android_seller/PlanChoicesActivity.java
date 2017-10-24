@@ -18,7 +18,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TrialChoicesActivity extends AppCompatActivity {
+public class PlanChoicesActivity extends AppCompatActivity {
 
     Button btPlatinuum, btSilver, btGold;
     private RequestQueue rq;
@@ -26,11 +26,11 @@ public class TrialChoicesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trial_choices);
+        setContentView(R.layout.activity_plan_choices);
         btPlatinuum = (Button) findViewById(R.id.btPlatinum);
         btSilver = (Button) findViewById(R.id.btSilver);
         btGold = (Button) findViewById(R.id.btGold);
-        rq = Volley.newRequestQueue(TrialChoicesActivity.this);
+        rq = Volley.newRequestQueue(PlanChoicesActivity.this);
         final String address = getIntent().getStringExtra("address");
         final String contact = getIntent().getStringExtra("contact");
         final String name = getIntent().getStringExtra("name");
@@ -55,7 +55,7 @@ public class TrialChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Toast.makeText(TrialChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -64,7 +64,7 @@ public class TrialChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("error", error.toString());
-                        Toast.makeText(TrialChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -91,7 +91,7 @@ public class TrialChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Toast.makeText(TrialChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -100,7 +100,7 @@ public class TrialChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("error", error.toString());
-                        Toast.makeText(TrialChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -127,7 +127,7 @@ public class TrialChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Toast.makeText(TrialChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -136,7 +136,7 @@ public class TrialChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("error", error.toString());
-                        Toast.makeText(TrialChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
