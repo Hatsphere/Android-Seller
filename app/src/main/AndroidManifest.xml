@@ -81,6 +81,7 @@
         </activity>
 
         <activity android:name=".Registration_2"></activity>
+        <activity android:name=".TrialChoicesActivity"></activity>
 
     </application>
 

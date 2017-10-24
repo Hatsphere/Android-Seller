@@ -1,6 +1,8 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -44,6 +46,7 @@ public class RegistrationActivity extends AppCompatActivity {
     ImageButton ibPassword;
     boolean password2 = false;
     String name = "";
+    String UID_i = "";
     String password = "";
     private RequestQueue rq;
     String email = "";
@@ -83,7 +86,7 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                boolean ans = validateUserName()&&validatePassword();
+                boolean ans = validateUserName() && validatePassword();
                 if (ans) {
 
 
@@ -101,6 +104,9 @@ public class RegistrationActivity extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
                             try {
                                 Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                                if (response.get("response").toString() == "200") {
+                                    UID_i = response.get("uid").toString();
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -117,7 +123,12 @@ public class RegistrationActivity extends AppCompatActivity {
                     etPassword.setText("");
                     etEmail.setText("");
 
-                    if(ans == true){
+                    if (ans == true) {
+                        Intent i = new Intent(RegistrationActivity.this, Registration_2.class);
+                        startActivity(i);
+                        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("UID", UID_i);
 
                     }
 

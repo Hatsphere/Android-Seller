@@ -12,12 +12,14 @@ import android.widget.EditText;
 public class Registration_2 extends AppCompatActivity {
     Button btProcees;
     EditText etAddress, etContact;
-    String address = "", contact = "";
+    EditText etName;
+    String address = "", contact = "", name = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_2);
+        etName = (EditText) findViewById(R.id.etName);
         btProcees = (Button) findViewById(R.id.btProceed);
         etAddress = (EditText) findViewById(R.id.etAddress);
         etContact = (EditText) findViewById(R.id.etContact);
@@ -25,9 +27,29 @@ public class Registration_2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Registration_2.this, TrialChoicesActivity.class);
+                i.putExtra("address", address);
+                i.putExtra("contact", contact);
+                i.putExtra("name", name);
                 startActivity(i);
             }
         });
+        etName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                name = etName.getText().toString();
+            }
+        });
+
         etAddress.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
