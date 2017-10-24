@@ -44,6 +44,78 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 try {
                     obj.put("name", name);
                     obj.put("planChosen", 2);
+                    obj.put("address", address);
+                    obj.put("contactNo", contact);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                        Request.Method.POST, "http://10.0.2.2:3000/user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("error", error.toString());
+                        Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                rq.add(jsonObjectRequest);
+
+            }
+        });
+        btSilver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONObject obj = new JSONObject();
+
+                try {
+                    obj.put("name", name);
+                    obj.put("planChosen", 0);
+                    obj.put("address", address);
+                    obj.put("contactNo", contact);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                        Request.Method.POST, "http://10.0.2.2:3000/user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("error", error.toString());
+                        Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                rq.add(jsonObjectRequest);
+
+            }
+        });
+        btGold.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONObject obj = new JSONObject();
+
+                try {
+                    obj.put("name", name);
+                    obj.put("planChosen", 1);
                     obj.put("address",address);
                     obj.put("contactNo",contact);
 
@@ -69,18 +141,6 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 });
 
                 rq.add(jsonObjectRequest);
-
-            }
-        });
-        btSilver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        btGold.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
             }
         });
