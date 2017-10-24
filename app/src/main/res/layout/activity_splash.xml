@@ -9,79 +9,40 @@
     android:paddingRight="16dp"
     android:orientation="vertical"
     android:id="@+id/relativeLayout"
+    android:background="@drawable/splash_background"
     tools:context="com.example.yashladha.android_seller.SplashActivity">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/logo"
         android:src="@drawable/logo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="120dp"/>
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginBottom="30dp"/>
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/linearLayout1"
-        android:layout_marginBottom="35dp"
-        android:layout_below="@+id/logo">
+        android:text="Welcome To The
+HatSphere Universe!!!"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:id="@+id/tvYou"
+        android:textColor="@android:color/holo_purple"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="You are about to sell like you
-            never did before"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/logo"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/tvYou"
-            android:textColor="@android:color/holo_red_dark"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Get Started"
-            android:id="@+id/btGetStarted"
-            android:layout_gravity="center"
-            android:background="@drawable/button"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="@android:color/holo_blue_bright"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:orientation="vertical"
-        android:layout_below="@id/linearLayout1">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:gravity="center"
-            android:text="Our app also supports a
- TRIAL version"
-            android:paddingLeft="0dp"
-            android:id="@+id/tvTrial"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wanna Check It Out?
- Get In Here"
-            android:gravity="center"
-            android:id="@+id/tvWanna"
-            android:textColor="@android:color/holo_blue_dark"
-            android:clickable="true"/>
-    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tvYou"
+        android:layout_marginLeft="70dp"/>
 
 </RelativeLayout>
