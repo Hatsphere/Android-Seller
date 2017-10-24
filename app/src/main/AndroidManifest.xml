@@ -82,7 +82,6 @@
 
         <activity android:name=".Registration_2"></activity>
 
-        <activity android:name=".RegisterActivity_2"></activity>
     </application>
 
 </manifest>
