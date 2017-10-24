@@ -81,7 +81,7 @@
         </activity>
         <activity
             android:name=".navigation.NavigationActivity"
-            android:label="@string/title_activity_navigation"
+            android:label="HatSphere"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
