@@ -83,7 +83,9 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (validateUserName() && validatePassword()) {
+
+                boolean ans = validateUserName()&&validatePassword();
+                if (ans) {
 
 
                     JSONObject obj = new JSONObject();
@@ -117,6 +119,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     etName.setText("");
                     etEmail.setText("");
 
+                    if(ans == true){
+
+                    }
 
                 }
             }
