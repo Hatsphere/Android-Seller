@@ -10,28 +10,46 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class RegisterActivity_2 extends AppCompatActivity {
-
+    Button btProcees;
     EditText etAddress, etContact;
-    Button btProceed;
-    String address = "";
-    String contact = "";
+    EditText etName;
+    String address = "", contact = "", name = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_2);
-        etAddress = findViewById(R.id.etAddress);
-        etContact = findViewById(R.id.etContact);
-        btProceed = (Button)findViewById(R.id.btProceed);
+        setContentView(R.layout.activity_registration_2);
+        etName = (EditText) findViewById(R.id.etName);
+        btProcees = (Button) findViewById(R.id.btProceed);
+        etAddress = (EditText) findViewById(R.id.etAddress);
+        etContact = (EditText) findViewById(R.id.etContact);
+        btProcees.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
+                i.putExtra("address", address);
+                i.putExtra("contact", contact);
+                i.putExtra("name", name);
+                startActivity(i);
+            }
+        });
+        etName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        btProceed.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
-                    }
-                }
-        );
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                name = etName.getText().toString();
+            }
+        });
+
         etAddress.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -45,9 +63,7 @@ public class RegisterActivity_2 extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                address = etAddress.getText().toString().trim();
-                //need to add the backend (nothing regarding that on the server files
-
+                address = etAddress.getText().toString();
             }
         });
         etContact.addTextChangedListener(new TextWatcher() {
@@ -63,11 +79,8 @@ public class RegisterActivity_2 extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                contact = etContact.getText().toString().trim();
-                //need to add the backend (nothing regarding that on the server files
-
+                contact = etContact.getText().toString();
             }
         });
     }
-
 }

@@ -91,7 +91,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Toast.makeText(TrialChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -100,7 +100,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("error", error.toString());
-                        Toast.makeText(TrialChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -127,7 +127,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Toast.makeText(TrialChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -136,7 +136,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("error", error.toString());
-                        Toast.makeText(TrialChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
