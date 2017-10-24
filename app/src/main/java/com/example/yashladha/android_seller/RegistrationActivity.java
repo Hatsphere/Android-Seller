@@ -39,7 +39,7 @@ import java.net.URL;
 public class RegistrationActivity extends AppCompatActivity {
     public static final String TITLE = "Register";
     TextView tvName, tvPassword, tvLogin;
-    EditText etName, etPassword, etEmail;
+    EditText etPassword, etEmail;
     Button btLogin, btFacebook, btGoogle;
     ImageButton ibPassword;
     boolean password2 = false;
@@ -69,7 +69,6 @@ public class RegistrationActivity extends AppCompatActivity {
         tvName = (TextView) findViewById(R.id.tvName);
         tvPassword = (TextView) findViewById(R.id.tvPassword);
         tvLogin = (TextView) findViewById(R.id.tvLogin);
-        etName = (EditText) findViewById(R.id.etName);
         etPassword = (EditText) findViewById(R.id.etPassword);
         etEmail = (EditText) findViewById(R.id.etEmail);
         btLogin = (Button) findViewById(R.id.btLogin);
@@ -116,7 +115,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     rq.add(jsonObjectRequest);
                     etPassword.setText("");
-                    etName.setText("");
                     etEmail.setText("");
 
                     if(ans == true){
@@ -136,24 +134,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 else
                     etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 password2 = !password2;
-
-            }
-        });
-        etName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                name = etName.getText().toString().trim();
-
 
             }
         });
