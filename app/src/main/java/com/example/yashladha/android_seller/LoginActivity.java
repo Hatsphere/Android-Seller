@@ -1,6 +1,8 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -48,10 +50,13 @@ public class LoginActivity extends AppCompatActivity {
     public static final String TITLE = "Login";
     TextView tvName, tvPassword, tvRegiter, tvForgotPassword;
     EditText etName, etPassword;
+    public static final String MyPREFERENCES = "MyPrefs";
     Button btLogin, btFacebook, btGoogle;
     private RequestQueue rq;
     ImageButton ibPassword;
     boolean password2 = false;
+    public static final String UID = "UID";
+    String UID_i = "";
     String email = "";
     String password = "";
 
@@ -88,36 +93,45 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (validateUserName() && validatePassword()) {
 
-                        JSONObject obj = new JSONObject();
+                    JSONObject obj = new JSONObject();
 
-                        try {
-                            obj.put("email", email);
-                            obj.put("password", password);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                                Request.Method.POST, "http://10.0.2.2:3000/user/login/", obj, new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                try {
-                                    Toast.makeText(LoginActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.e("error", error.toString());
-                            }
-                        });
-
-                        rq.add(jsonObjectRequest);
-                        etPassword.setText("");
-                        etName.setText("");
+                    try {
+                        obj.put("email", email);
+                        obj.put("password", password);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                            Request.Method.POST, "http://10.0.2.2:3000/user/login/", obj, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Toast.makeText(LoginActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                                if (response.get("response").toString() == "200") {
+                                    UID_i = response.get("uid").toString();
+                                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString(UID, UID_i);
+                                    editor.commit();
+
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("error", error.toString());
+                        }
+                    });
+
+                    rq.add(jsonObjectRequest);
+                    etPassword.setText("");
+                    etName.setText("");
                 }
+            }
 
         });
 

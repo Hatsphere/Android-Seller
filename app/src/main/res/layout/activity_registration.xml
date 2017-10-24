@@ -9,28 +9,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvName"
-        android:text="User Name"
-        android:textSize="10dp"
-        android:textColor="#887f7f"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:padding="5dp"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etName"
-        android:padding="10dp"
-        android:hint="Pick Your Username"
-        android:textColorHint="#887f7f"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        style="@style/Widget.AppCompat.EditText"
-        android:background="@drawable/button_border"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/tvEmail"
         android:text="Email or Phone"
         android:textSize="10dp"

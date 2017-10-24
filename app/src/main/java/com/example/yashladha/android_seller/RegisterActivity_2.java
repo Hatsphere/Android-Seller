@@ -22,7 +22,7 @@ public class RegisterActivity_2 extends AppCompatActivity {
         setContentView(R.layout.activity_register_2);
         etAddress = findViewById(R.id.etAddress);
         etContact = findViewById(R.id.etContact);
-        btProceed = findViewById(R.id.btProcced);
+        btProceed = (Button)findViewById(R.id.btProceed);
 
         btProceed.setOnClickListener(
                 new View.OnClickListener() {
