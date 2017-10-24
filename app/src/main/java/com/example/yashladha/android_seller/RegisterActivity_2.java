@@ -28,7 +28,7 @@ public class RegisterActivity_2 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(RegisterActivity_2.this, TrialChoicesActivity.class);
+                        Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
                     }
                 }
         );

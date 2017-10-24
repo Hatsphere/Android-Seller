@@ -5,13 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class TrialChoicesActivity extends AppCompatActivity {
+public class PlanChoicesActivity extends AppCompatActivity {
 
     Button btPlatinuum, btSilver, btGold;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trial_choices);
+        setContentView(R.layout.activity_plan_choices);
         btPlatinuum = (Button) findViewById(R.id.btPlatinum);
         btSilver = (Button) findViewById(R.id.btSilver);
         btGold = (Button) findViewById(R.id.btGold);

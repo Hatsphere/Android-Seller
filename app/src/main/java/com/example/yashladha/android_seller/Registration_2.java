@@ -24,7 +24,7 @@ public class Registration_2 extends AppCompatActivity {
         btProcees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Registration_2.this, TrialChoicesActivity.class);
+                Intent i = new Intent(Registration_2.this, PlanChoicesActivity.class);
                 startActivity(i);
             }
         });
