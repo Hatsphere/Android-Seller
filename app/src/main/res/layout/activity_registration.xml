@@ -17,17 +17,30 @@
         android:layout_marginTop="20dp"
         android:padding="5dp"
         />
-    <EditText
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etEmail"
-        android:padding="10dp"
+        android:padding="5dp"
+        android:layout_weight="0.9"
         android:hint="Email or Phone Number"
         android:textColorHint="#887f7f"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         style="@style/Widget.AppCompat.EditText"
         android:background="@drawable/button_border"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:id="@+id/btCheckEmail"
+            android:text="Check Email"/>
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:textColor="#fff"
+        android:enabled="false"
         android:text="Register"
         android:layout_gravity="center"
         android:background="@drawable/button_rounded_corners_gradiant"
