@@ -36,6 +36,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
         final String name = getIntent().getStringExtra("name");
         SharedPreferences myPrefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         final String uid = myPrefs.getString("UID", "-1");
+       // Toast.makeText(PlanChoicesActivity.this, uid, Toast.LENGTH_LONG).show();
         btPlatinuum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
