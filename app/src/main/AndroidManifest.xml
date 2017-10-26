@@ -86,7 +86,8 @@
             android:label="HatSphere"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TrialActivity" />
-        <activity android:name=".PlanPaymentActivity"></activity>
+        <activity android:name=".PlanPaymentActivity" />
+        <activity android:name=".PlanChosenActivity"></activity>
     </application>
 
 </manifest>

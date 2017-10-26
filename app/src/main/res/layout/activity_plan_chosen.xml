@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    tools:context="com.example.yashladha.android_seller.PlanChosenActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:id="@+id/linearLayout1">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="72dp"
+            android:src="@drawable/icon_congrats"
+            android:id="@+id/ivCongrats"
+            android:layout_gravity="center"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="Congratulations !!!"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/holo_green_dark"
+            android:id="@+id/tvCongrats"
+            android:textSize="25dp"
+            android:layout_gravity="center"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/linearLayout2"
+            android:layout_below="@+id/tvCongrats"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMembership"
+                android:text="     You are now subscribed to the
+                                       membership."
+                tools:layout_editor_absoluteY="182dp"
+                android:textSize="15dp"
+                tools:layout_editor_absoluteX="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type Of Plan"
+                android:id="@+id/tvTypeOfPlan"
+                android:textSize="20dp"
+                android:textColor="@color/back"
+                tools:layout_editor_absoluteY="176dp"
+                tools:layout_editor_absoluteX="235dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="The subscription expires on"
+            android:id="@+id/tvExpiry"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:id="@+id/tvExpiryDate"
+            android:textSize="20dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Get Started"
+            android:id="@+id/btGetStarted"
+            android:background="@drawable/button_rounded_corners_gradiant"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
