@@ -8,80 +8,93 @@
     tools:context="com.example.yashladha.android_seller.RegisterActivity_2">
 
     <TextView
+        android:id="@+id/tvNam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvNam"
-        android:text="Name"
-        android:textSize="15dp"
-        android:textColor="#887f7f"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:padding="5dp"
-        />
+        android:text="Name"
+        android:textColor="#887f7f"
+        android:textSize="15dp" />
+
     <EditText
+        android:id="@+id/etName"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etName"
-        android:padding="10dp"
-        android:hint="Enter your Name"
-        android:textColorHint="#887f7f"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        style="@style/Widget.AppCompat.EditText"
-        android:background="@drawable/button_border"/>
+        android:background="@drawable/button_border"
+        android:hint="Enter your Name"
+        android:padding="10dp"
+        android:textColorHint="#887f7f" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
         android:text="Address"
-        android:textSize="15dp"
         android:textColor="#887f7f"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:padding="5dp"
-        />
+        android:textSize="15dp" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/etAddress"
-        android:padding="10dp"
-        android:hint="Enter your address"
-        android:textColorHint="#887f7f"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         style="@style/Widget.AppCompat.EditText"
-        android:background="@drawable/button_border"/>
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/button_border"
+        android:hint="Enter your address"
+        android:padding="10dp"
+        android:textColorHint="#887f7f" />
+
+    <TextView
         android:id="@+id/tvEmail"
-        android:text="Contact Details"
-        android:textSize="15dp"
-        android:textColor="#887f7f"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:padding="5dp"
-        />
+        android:text="Contact Details"
+        android:textColor="#887f7f"
+        android:textSize="15dp" />
+
     <EditText
+        android:id="@+id/etContact"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etContact"
-        android:padding="10dp"
-        android:hint="Enter your phone number"
-        android:textColorHint="#887f7f"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        style="@style/Widget.AppCompat.EditText"
-        android:background="@drawable/button_border"/>
+        android:background="@drawable/button_border"
+        android:hint="Enter your phone number"
+        android:padding="10dp"
+        android:textColorHint="#887f7f" />
+
+    <CheckBox
+        android:id="@+id/cbTrial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:layout_marginLeft="20dp"
+        android:padding="10dp"
+        android:text="Do you want to try trial services" />
+
+
     <Button
+        android:id="@+id/btProceed"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:id="@+id/btProceed"
-        android:text="Proceed"
-        android:layout_margin="50dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/button_rounded_corners_gradiant"
         android:padding="10dp"
-        android:background="@drawable/button_rounded_corners_gradiant"/>
+        android:text="Proceed" />
 
 </LinearLayout>
