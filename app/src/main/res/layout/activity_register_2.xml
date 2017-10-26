@@ -85,8 +85,10 @@
         android:layout_marginLeft="20dp"
         android:padding="10dp"
         android:text="Do you want to try trial services" />
+        style="@style/Widget.AppCompat.EditText"
+        android:background="@drawable/button_border"/>
 
-
+    
     <Button
         android:id="@+id/btProceed"
         android:layout_width="fill_parent"
