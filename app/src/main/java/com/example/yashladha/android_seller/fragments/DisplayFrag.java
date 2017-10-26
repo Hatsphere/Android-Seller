@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.yashladha.android_seller.R;
 
@@ -32,9 +33,6 @@ public class DisplayFrag extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.product_display_list, container, false);
         ListView listView = (ListView)rootView.findViewById(R.id.tvListView);
-
-
-
         return rootView;
     }
 
