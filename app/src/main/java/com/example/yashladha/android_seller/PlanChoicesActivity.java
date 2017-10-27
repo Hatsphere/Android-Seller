@@ -22,6 +22,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
 
     Button btPlatinuum, btSilver, btGold;
     private RequestQueue rq;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +35,14 @@ public class PlanChoicesActivity extends AppCompatActivity {
         final String address = getIntent().getStringExtra("address");
         final String contact = getIntent().getStringExtra("contact");
         final String name = getIntent().getStringExtra("name");
-        SharedPreferences myPrefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        final String uid = myPrefs.getString("UID", "-1");
-       // Toast.makeText(PlanChoicesActivity.this, uid, Toast.LENGTH_LONG).show();
+        SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
+        uid = myPrefs.getString("UID", "");
+
+        Toast.makeText(PlanChoicesActivity.this, uid, Toast.LENGTH_LONG).show();
         btPlatinuum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 JSONObject obj = new JSONObject();
-
                 try {
                     obj.put("name", name);
                     obj.put("planChosen", 2);
@@ -117,14 +118,14 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 try {
                     obj.put("name", name);
                     obj.put("planChosen", 1);
-                    obj.put("address",address);
-                    obj.put("contactNo",contact);
+                    obj.put("address", address);
+                    obj.put("contactNo", contact);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                        Request.Method.POST, "http://10.0.2.2:3000/user/profile/"+uid, obj, new Response.Listener<JSONObject>() {
+                        Request.Method.POST, "http://10.0.2.2:3000/user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {

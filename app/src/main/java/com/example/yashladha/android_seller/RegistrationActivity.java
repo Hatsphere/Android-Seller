@@ -140,7 +140,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                 Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                                 if (response.get("response").toString().equals("200")) {
                                     UID_i = response.get("uid").toString();
-                                    Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -159,14 +158,15 @@ public class RegistrationActivity extends AppCompatActivity {
                     etEmail.setText("");
 
                     if (ans == true) {
+                        SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
+                        editor.putString("UID", UID_i);
+                        editor.putString("aaya", "agya");
+                        editor.commit();
+                        editor.apply();
+                        btLogin.setEnabled(false);
+                        Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(RegistrationActivity.this, RegisterActivity_2.class);
                         startActivity(i);
-                        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("UID", UID_i);
-                        Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
-
-
                     }
 
                 }
