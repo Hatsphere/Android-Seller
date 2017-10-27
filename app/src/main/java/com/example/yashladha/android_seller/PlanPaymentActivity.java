@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class PlanPaymentActivity extends AppCompatActivity {
 
-    TextView tvAmountPaid,tvAmt,tvSelect;
+    TextView tvAmountPaid,tvAmt,tvSelectPay;
     View vTotal,vOption;
     Button btDebit,btCredit,btNet;
 
@@ -18,7 +18,7 @@ public class PlanPaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_plan_payment);
         tvAmountPaid= (TextView)findViewById(R.id.tvAmountPaid);
         tvAmt= (TextView)findViewById(R.id.tvAmt);
-        tvSelect= (TextView)findViewById(R.id.tvSelect);
+        tvSelectPay= (TextView)findViewById(R.id.tvSelectPay);
 
         vTotal = (View)findViewById(R.id.vTotal);
         vOption = (View)findViewById(R.id.vOption);

@@ -3,7 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:paddingRight="10dp"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
             android:layout_height="match_parent"
             android:text="Total amount to be paid :"
             android:textSize="12dp"
+            android:textStyle="bold"
             android:id="@+id/tvAmountPaid"/>
 
         <TextView
@@ -24,7 +26,6 @@
             android:text="₹400"
             android:textSize="12dp"
             android:textStyle="bold"
-
             android:layout_marginLeft="100dp"
             android:id="@+id/tvAmt"/>
     </LinearLayout>
@@ -35,14 +36,29 @@
         android:id="@+id/vTotal"
         android:background="@android:color/darker_gray" />
 
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="Select an option to pay"
-        android:textSize="15dp"
-        android:textColor="@android:color/black"
-        android:paddingTop="5dp"
-        android:id="@+id/tvSelect"/>
+        android:layout_height="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:paddingTop="5dp"
+            android:text="Select the start date for the subscription"
+            android:textColor="@android:color/black"
+            android:id="@+id/tvSelectDate"/>
+
+        <Button
+            android:id="@+id/btPickDate"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.07"
+            android:onClick="showDatePickerDialog"
+            android:text="Pick a date"
+            />
+
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"
@@ -50,6 +66,16 @@
         android:id="@+id/vOption"
         android:background="@android:color/darker_gray"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Select an option to pay"
+        android:textSize="15dp"
+        android:textColor="@android:color/black"
+        android:paddingTop="5dp"
+        android:id="@+id/tvSelectPay"/>
+
 
     <Button
         android:layout_width="match_parent"
@@ -83,6 +109,7 @@
         android:text="Net Banking                                                                   > "
         android:gravity="left"
         android:background="@drawable/button_rounded_corners_gradiant"/>
+
 
 
 </LinearLayout>

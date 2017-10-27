@@ -87,7 +87,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TrialActivity" />
         <activity android:name=".PlanPaymentActivity" />
-        <activity android:name=".PlanChosenActivity"></activity>
+        <activity android:name=".PlanChosenActivity" />
+        <activity android:name=".navigation.MyAccountActivity"></activity>
     </application>
 
 </manifest>
