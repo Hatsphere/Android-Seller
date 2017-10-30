@@ -1,5 +1,6 @@
 package com.example.yashladha.android_seller.navigation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -75,7 +76,8 @@ public class NavigationActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.itHomeDecor) {
-            // Handle the camera action
+            Intent intent = new Intent();
+
         } else if (id == R.id.itHomeFurniture) {
 
         } else if (id == R.id.itHomeFurnishing) {
