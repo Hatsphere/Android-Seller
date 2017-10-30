@@ -78,8 +78,10 @@ public class TrialActivity extends AppCompatActivity {
                     });
 
                     rq.add(jsonObjectRequest);
-                    Intent i = new Intent(TrialActivity.this, NavigationActivity.class);
+                    Intent i = new Intent(TrialActivity.this, PlanChosenActivity.class);
+                    i.putExtra("planChosen" , "Trial");
                     startActivity(i);
+
                 } else {
                     Intent i = new Intent(TrialActivity.this, PlanChoicesActivity.class);
                     i.putExtra("address", address);
