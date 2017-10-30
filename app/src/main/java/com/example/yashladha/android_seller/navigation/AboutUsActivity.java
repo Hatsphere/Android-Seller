@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.yashladha.android_seller.R;
 
-public class MyAccountActivity extends AppCompatActivity {
+public class AboutUsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_my_account);
+        setContentView(R.layout.nav_about_us);
     }
 }
