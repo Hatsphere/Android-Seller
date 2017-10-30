@@ -40,7 +40,8 @@
             android:layout_marginTop="10dp"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="Terms and Conditions"
+            android:id="@+id/tvTrialMem"
+            android:text="Trial Membership"
             />
 
         <TextView
@@ -48,15 +49,34 @@
             android:layout_height="wrap_content"
             android:textSize="13dp"
             android:paddingLeft="3dp"
-            android:id="@+id/tvTerms"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/tvMemDescriptiom"
             android:text="We provide the sellers with a trial offer for a limited period, which is subject to a set of terms except as otherwise stated. Hatsphere will notify the members at the end of the free trial period.
         At the end of the chosen plan, customer will have the option of make a purchase of a appropriate plan and continue enjoying their benefits."/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:id="@+id/tvTermsCond"
+            android:text="Terms and Condtions"
+            android:layout_marginBottom="3dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bulleted_list"
+            android:id="@+id/tvTermsList"/>
 
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/rbYes"
             android:text="Yes,I accept the terms and conditions and want to try out the trial offer"/>
 
@@ -64,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rbNo"
+            android:layout_marginTop="5dp"
             android:text="No, I would like to subscribe to a plan directly."/>
 
         <Button
