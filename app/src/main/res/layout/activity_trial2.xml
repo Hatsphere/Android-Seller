@@ -33,37 +33,26 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-<<<<<<< HEAD
-            android:text="Terms and Conditions"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-=======
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:id="@+id/tvTrialMem"
-            android:text="Trial Membership"
-            />
->>>>>>> 8bed3d4552b3d3925ed614e8f62ed064d18fd06e
 
         <TextView
             android:id="@+id/tvTerms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="3dp"
-<<<<<<< HEAD
-=======
+            android:text="Terms and Conditions"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:layout_marginBottom="5dp"
             android:id="@+id/tvMemDescriptiom"
->>>>>>> 8bed3d4552b3d3925ed614e8f62ed064d18fd06e
             android:text="We provide the sellers with a trial offer for a limited period, which is subject to a set of terms except as otherwise stated. Hatsphere will notify the members at the end of the free trial period.
         At the end of the chosen plan, customer will have the option of make a purchase of a appropriate plan and continue enjoying their benefits."
             android:textSize="13dp" />
 
-<<<<<<< HEAD
         <RadioGroup
             android:id="@+id/rgGroup"
             android:layout_width="wrap_content"
@@ -82,40 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="No, I would like to subscribe to a plan directly." />
         </RadioGroup>
-=======
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:id="@+id/tvTermsCond"
-            android:text="Terms and Condtions"
-            android:layout_marginBottom="3dp"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/bulleted_list"
-            android:id="@+id/tvTermsList"/>
-
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:id="@+id/rbYes"
-            android:text="Yes,I accept the terms and conditions and want to try out the trial offer"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rbNo"
-            android:layout_marginTop="5dp"
-            android:text="No, I would like to subscribe to a plan directly."/>
->>>>>>> 8bed3d4552b3d3925ed614e8f62ed064d18fd06e
 
         <Button
             android:id="@+id/btProceed"
@@ -127,5 +83,4 @@
             android:gravity="center"
             android:text="Proceed" />
     </LinearLayout>
-
 </RelativeLayout>
