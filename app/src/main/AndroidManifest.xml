@@ -88,7 +88,11 @@
         <activity android:name=".TrialActivity" />
         <activity android:name=".PlanPaymentActivity" />
         <activity android:name=".PlanChosenActivity" />
-        <activity android:name=".navigation.MyAccountActivity"></activity>
+        <activity android:name=".navigation.MyAccountActivity"
+            android:label="My Account"/>
+        <activity android:name=".navigation.HelpActivity" />
+        <activity android:name=".navigation.FAQsActivity" />
+        <activity android:name=".navigation.AboutUsActivity"></activity>
     </application>
 
 </manifest>
