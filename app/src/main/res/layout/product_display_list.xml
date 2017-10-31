@@ -24,13 +24,24 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvListView"
+            android:id="@+id/display"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="1dp"
             />
+
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/add"
+        android:id="@+id/fbAdd"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@color/redCenter"
+        />
 
 </RelativeLayout>

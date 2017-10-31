@@ -12,12 +12,12 @@ public class MyAccountExpandableListDataPump {
     public static HashMap<String, List<String>> getData() {
         HashMap<String, List<String>> expandableListDetail = new HashMap<String, List<String>>();
 
-        List<String> cricket = new ArrayList<String>();
-        cricket.add("India");
-        cricket.add("Pakistan");
-        cricket.add("Australia");
-        cricket.add("England");
-        cricket.add("South Africa");
+        List<String> myAddress = new ArrayList<String>();
+        myAddress.add("India");
+        myAddress.add("Pakistan");
+        myAddress.add("Australia");
+        myAddress.add("England");
+        myAddress.add("South Africa");
 
         List<String> football = new ArrayList<String>();
         football.add("Brazil");
@@ -33,7 +33,7 @@ public class MyAccountExpandableListDataPump {
         basketball.add("France");
         basketball.add("Russia");
 
-        expandableListDetail.put("CRICKET TEAMS", cricket);
+        expandableListDetail.put("CRICKET TEAMS", myAddress);
         expandableListDetail.put("FOOTBALL TEAMS", football);
         expandableListDetail.put("BASKETBALL TEAMS", basketball);
         return expandableListDetail;
