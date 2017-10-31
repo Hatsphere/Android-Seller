@@ -72,7 +72,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 });
 
                 rq.add(jsonObjectRequest);
-                Intent i = new Intent(PlanChoicesActivity.this, PlanChosenActivity.class);
+                Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 i.putExtra("planChosen" , "Platinum");
                 startActivity(i);
 
@@ -111,7 +111,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 });
 
                 rq.add(jsonObjectRequest);
-                Intent i = new Intent(PlanChoicesActivity.this, PlanChosenActivity.class);
+                Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 i.putExtra("planChosen" , "Silver");
                 startActivity(i);
 
@@ -151,7 +151,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 });
 
                 rq.add(jsonObjectRequest);
-                Intent i = new Intent(PlanChoicesActivity.this, PlanChosenActivity.class);
+                Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 i.putExtra("planChosen" , "Gold");
                 startActivity(i);
 
