@@ -160,7 +160,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     if (ans == true) {
                         SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                         editor.putString("UID", UID_i);
-                        editor.putString("aaya", "agya");
                         editor.commit();
                         editor.apply();
                         btLogin.setEnabled(false);
