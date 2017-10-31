@@ -95,14 +95,6 @@
             android:id="@+id/tvMyAddress"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:gravity="center"
-            android:text="Gandhinagar, Gujarat - 226024"
-            android:id="@+id/tvAdd"/>
-
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
