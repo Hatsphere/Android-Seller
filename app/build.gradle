@@ -11,6 +11,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        renderscriptTargetApi 8
+                renderscriptSupportModeEnabled true
     }
     buildTypes {
         release {
@@ -64,5 +66,9 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'
 }
 dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
 }
+

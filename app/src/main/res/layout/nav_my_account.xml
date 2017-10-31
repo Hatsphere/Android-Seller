@@ -85,44 +85,13 @@
             android:background="@android:color/darker_gray"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="23dp"
-            android:text="My Address"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"
-            android:id="@+id/tvMyAddress"/>
-
-
-        <View
+        <ExpandableListView
+            android:id="@+id/expandableListView"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:id="@+id/vAddress"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/darker_gray"
-            />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="23dp"
-            android:text="Change Password"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:id="@+id/tvChangePassword"/>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:id="@+id/vPassword"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/darker_gray"
-            />
-
+            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp" />
 
         <TextView
             android:layout_width="wrap_content"

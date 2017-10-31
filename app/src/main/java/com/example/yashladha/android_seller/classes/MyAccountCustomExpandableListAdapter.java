@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.yashladha.android_seller.R;
@@ -50,7 +51,7 @@ public class MyAccountCustomExpandableListAdapter extends BaseExpandableListAdap
             convertView = layoutInflater.inflate(R.layout.nav_my_account_list_item, null);
         }
 
-        TextView expandedListTextView = (TextView) convertView
+        EditText expandedListTextView = (EditText) convertView
                 .findViewById(R.id.expandedListItem);
         expandedListTextView.setText(expandedListText);
         return convertView;
