@@ -1,5 +1,6 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,13 +22,14 @@ public class PlanChosenActivity extends AppCompatActivity {
         tvTypeOfPlan= (TextView)findViewById(R.id.tvTypeOfPlan);
         tvExpiry= (TextView)findViewById(R.id.tvExpiry);
         tvExpiryDate= (TextView)findViewById(R.id.tvExpiryDate);
-
         btGetStarted = (Button)findViewById(R.id.btGetStarted);
-
+        String type = getIntent().getStringExtra("planChosen");
+        tvTypeOfPlan.setText(type);
         btGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(PlanChosenActivity.this, HomePageActivity.class);
+                startActivity(i);
             }
         });
 

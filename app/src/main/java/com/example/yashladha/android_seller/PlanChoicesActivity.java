@@ -1,5 +1,6 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -71,6 +72,9 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 });
 
                 rq.add(jsonObjectRequest);
+                Intent i = new Intent(PlanChoicesActivity.this, PlanChosenActivity.class);
+                i.putExtra("planChosen" , "Platinum");
+                startActivity(i);
 
             }
         });
@@ -107,6 +111,10 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 });
 
                 rq.add(jsonObjectRequest);
+                Intent i = new Intent(PlanChoicesActivity.this, PlanChosenActivity.class);
+                i.putExtra("planChosen" , "Silver");
+                startActivity(i);
+
 
             }
         });
@@ -143,6 +151,10 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 });
 
                 rq.add(jsonObjectRequest);
+                Intent i = new Intent(PlanChoicesActivity.this, PlanChosenActivity.class);
+                i.putExtra("planChosen" , "Gold");
+                startActivity(i);
+
 
             }
         });
