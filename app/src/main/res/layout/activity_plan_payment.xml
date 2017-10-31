@@ -110,6 +110,4 @@
         android:gravity="left"
         android:background="@drawable/button_rounded_corners_gradiant"/>
 
-
-
 </LinearLayout>
