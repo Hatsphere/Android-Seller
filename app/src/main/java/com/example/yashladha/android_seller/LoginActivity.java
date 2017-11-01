@@ -130,6 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                     rq.add(jsonObjectRequest);
                     etPassword.setText("");
                     etName.setText("");
+
                 }
             }
 
