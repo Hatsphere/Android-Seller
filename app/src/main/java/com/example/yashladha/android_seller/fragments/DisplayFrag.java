@@ -1,6 +1,7 @@
 package com.example.yashladha.android_seller.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.example.yashladha.android_seller.AddProductsActivity;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.data.Order;
 import com.example.yashladha.android_seller.data.OrderAdapter;
@@ -59,19 +61,12 @@ public class DisplayFrag extends Fragment {
         ListView listView = (ListView)rootview.findViewById(R.id.display);
         listView.setAdapter(productAdapter);
 
-        ImageButton remove = (ImageButton)rootview.findViewById(R.id.ibProduct);
-        remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         FloatingActionButton floatingActionButton = (FloatingActionButton)rootview.findViewById(R.id.fbAdd);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent =new Intent(getActivity(), AddProductsActivity.class);
             }
         });
         return rootview;
