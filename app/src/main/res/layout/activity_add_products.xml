@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    tools:context="com.example.yashladha.android_seller.AddProductsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout1">
+
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:id="@+id/ivAdd"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/add"
+            android:layout_marginLeft="30dp"
+            android:textSize="20dp"
+            android:clickable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAddPhoto"
+            android:text="Add a photo"
+            android:layout_marginLeft="15dp"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:text="Product Name"
+            android:textColor="@android:color/black"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/etProductName"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_border"
+            android:hint="Enter the Product Name"
+            android:padding="10dp"
+            android:textColorHint="#887f7f" />
+
+        <TextView
+            android:id="@+id/tvProDes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:text="Product Description"
+            android:textColor="@android:color/black"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/etProDes"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_border"
+            android:hint="Write a small description of the product"
+            android:padding="10dp"
+            android:textColorHint="#887f7f" />
+
+        <TextView
+            android:id="@+id/tvNewPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:text="New Price"
+            android:textColor="@android:color/black"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/etNewPrice"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_border"
+            android:hint="Enter the new price"
+            android:padding="10dp"
+            android:textColorHint="#887f7f" />
+
+        <TextView
+            android:id="@+id/tvOriginalPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="Original Price"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/etOriginalPrice"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_border"
+            android:hint="Enter your original price"
+            android:padding="10dp"
+            android:textColorHint="#887f7f" />
+
+        <TextView
+            android:id="@+id/tvDiscount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="Discount"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/etDiscount"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_border"
+            android:hint="Enter the discount"
+            android:padding="10dp"
+            android:textColorHint="#887f7f" />
+
+        <TextView
+            android:id="@+id/tvExchange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="Exchange Possibility"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/etExchange"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_border"
+            android:hint="Enter Yes or No"
+            android:padding="10dp"
+            android:textColorHint="#887f7f" />
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Done"
+            android:id="@+id/btDone"
+            android:background="@drawable/button_rounded_corners_gradiant"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
