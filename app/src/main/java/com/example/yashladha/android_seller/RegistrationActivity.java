@@ -215,7 +215,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                email = etEmail.getText().toString();
+                email = etEmail.getText().toString().trim();
             }
         });
         btFacebook.setOnClickListener(new View.OnClickListener() {

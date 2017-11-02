@@ -27,7 +27,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="42dp"
+            android:layout_height="wrap_content"
             android:text="Congratulations !!!"
             android:layout_marginTop="10dp"
             android:textColor="@android:color/holo_green_dark"
@@ -38,7 +38,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:id="@+id/linearLayout2"
             android:layout_below="@+id/tvCongrats"
             android:orientation="horizontal">
@@ -48,21 +48,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvMembership"
-                android:text="     You are now subscribed to the
-                                       membership."
-                tools:layout_editor_absoluteY="182dp"
+                android:text="     You are now subscribed to the "
                 android:textSize="15dp"
-                tools:layout_editor_absoluteX="24dp" />
+                 />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Type Of Plan"
                 android:id="@+id/tvTypeOfPlan"
-                android:textSize="20dp"
+                android:textSize="15dp"
+                android:editable = "true"
                 android:textColor="@color/back"
-                tools:layout_editor_absoluteY="176dp"
-                tools:layout_editor_absoluteX="235dp" />
+                 />
 
         </LinearLayout>
 

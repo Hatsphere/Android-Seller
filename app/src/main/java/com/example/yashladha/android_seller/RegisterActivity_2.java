@@ -71,7 +71,7 @@ public class RegisterActivity_2 extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                name = etName.getText().toString();
+                name = etName.getText().toString().trim();
             }
         });
 
@@ -88,7 +88,7 @@ public class RegisterActivity_2 extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                address = etAddress.getText().toString();
+                address = etAddress.getText().toString().trim();
             }
         });
         etContact.addTextChangedListener(new TextWatcher() {
@@ -104,7 +104,7 @@ public class RegisterActivity_2 extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                contact = etContact.getText().toString();
+                contact = etContact.getText().toString().trim();
             }
         });
     }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlanChosenActivity extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class PlanChosenActivity extends AppCompatActivity {
         tvExpiryDate= (TextView)findViewById(R.id.tvExpiryDate);
         btGetStarted = (Button)findViewById(R.id.btGetStarted);
         String type = getIntent().getStringExtra("planChosen");
+        type = type + " Plan.";
         tvTypeOfPlan.setText(type);
         btGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override

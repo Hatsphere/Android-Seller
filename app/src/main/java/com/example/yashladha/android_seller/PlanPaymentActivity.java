@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlanPaymentActivity extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public class PlanPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(PlanPaymentActivity.this, PlanChosenActivity.class);
+                i.putExtra("planChosen", type);
                 startActivity(i);
             }
         });
@@ -41,6 +43,7 @@ public class PlanPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(PlanPaymentActivity.this, PlanChosenActivity.class);
+                i.putExtra("planChosen", type);
                 startActivity(i);
 
             }
