@@ -11,4 +11,22 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="purchase_request">Purchase</string>
+    <string name="exchange_request">Exchange</string>
+    <string name="refund_request">Refund</string>
+    <string name="num_request">Number of requests</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="bulleted_list">
+        <li>•	We reserve the right to accept or refuse membership in our discretion.</li>\n
+        <li>•	We may send email and other communications related to HatSphere and your plan membership. (regardless of any setting or preferences related to your account).</li>\n
+        <li>•	The customers are not permitted to purchase products for the purpose of resale, rental, or to ship to their customers or potential customers using your plan benefits</li>
+        <li>•	From time to time, Hatsphere may choose in its sole discretion to add or remove any benefits from any of our provided plan.</li>\n
+        <li>•	We reserve the right to accept or refuse membership in our discretion.</li>\n
+
+    </string>
+
 </resources>

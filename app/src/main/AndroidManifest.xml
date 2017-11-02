@@ -8,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="HatSphere"
+        android:label="HatSphere Seller Hub"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="HatSphere"
+            android:label="Log In"
             android:parentActivityName=".SplashActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:label="HatSphere">
+            android:label="Register">
             android:parentActivityName=".SplashActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -41,7 +41,7 @@
         </activity>
         <activity
             android:name=".HomePageActivity"
-            android:label="HatSphere"
+            android:label="Home"
             android:parentActivityName=".LoginActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -51,7 +51,7 @@
         </activity>
         <activity
             android:name=".DisplayActivity"
-            android:label="HatSphere"
+            android:label=" Products"
             android:parentActivityName=".HomePageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -61,7 +61,7 @@
         </activity>
         <activity
             android:name=".OrdersActivity"
-            android:label="HatSphere"
+            android:label="Orders"
             android:parentActivityName=".HomePageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -71,7 +71,7 @@
         </activity>
         <activity
             android:name=".SalesActivity"
-            android:label="HatSphere"
+            android:label="Sales"
             android:parentActivityName=".HomePageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -79,17 +79,34 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePageActivity" />
         </activity>
-
-        <activity android:name=".RegisterActivity_2" ></activity>
-
-        <activity android:name=".PlanChoicesActivity"></activity>
-
-
+        <activity android:name=".RegisterActivity_2" />
+        <activity android:name=".PlanChoicesActivity" />
         <activity
             android:name=".navigation.NavigationActivity"
             android:label="HatSphere"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TrialActivity"></activity>
+        <activity android:name=".TrialActivity" />
+        <activity android:name=".PlanPaymentActivity" />
+        <activity android:name=".PlanChosenActivity" />
+        <activity
+            android:name=".navigation.MyAccountActivity"
+            android:label="My Account" />
+        <activity android:name=".navigation.HelpActivity" />
+        <activity android:name=".navigation.FAQsActivity" />
+        <activity android:name=".navigation.AboutUsActivity" />
+        <activity android:name=".AddProductsActivity"></activity>
+        <service
+            android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

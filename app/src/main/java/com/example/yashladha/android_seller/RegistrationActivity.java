@@ -42,7 +42,8 @@ public class RegistrationActivity extends AppCompatActivity {
     public static final String TITLE = "Register";
     TextView tvName, tvPassword, tvLogin;
     EditText etPassword, etEmail;
-    Button btLogin, btFacebook, btGoogle;
+    boolean ans2 = false;
+    Button btLogin, btFacebook, btGoogle, btCheckEmail;
     ImageButton ibPassword;
     boolean password2 = false;
     String name = "";
@@ -76,22 +77,55 @@ public class RegistrationActivity extends AppCompatActivity {
         etEmail = (EditText) findViewById(R.id.etEmail);
         btLogin = (Button) findViewById(R.id.btLogin);
         btFacebook = (Button) findViewById(R.id.btFacebook);
+        btCheckEmail = (Button) findViewById(R.id.btCheckEmail);
         rq = Volley.newRequestQueue(RegistrationActivity.this);
 
         btGoogle = (Button) findViewById(R.id.btGoogle);
         ibPassword = (ImageButton) findViewById(R.id.ibPassword);
         btRegister = btLogin;
+        ans2 = false;
+        btCheckEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONObject obj2 = new JSONObject();
+                try {
+                    obj2.put("email", email);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                JsonObjectRequest jsonObjectRequest2 = new JsonObjectRequest(
+                        Request.Method.POST, "http://10.0.2.2:3000/user/check/email/", obj2, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            if (response.get("code").toString().equals("201")) {
+                                Toast.makeText(RegistrationActivity.this, "Email already used in registration", Toast.LENGTH_LONG).show();
+                            } else {
+                                ans2 = true;
+                                Toast.makeText(RegistrationActivity.this, "Email not used in registration", Toast.LENGTH_LONG).show();
+                                btRegister.setEnabled(true);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("error", error.toString());
+                        Toast.makeText(RegistrationActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                rq.add(jsonObjectRequest2);
+
+            }
+        });
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                boolean ans = validateUserName() && validatePassword();
+                boolean ans = validateUserName() && validatePassword() && ans2;
                 if (ans) {
-
-
                     JSONObject obj = new JSONObject();
-
                     try {
                         obj.put("email", email);
                         obj.put("password", password);
@@ -104,7 +138,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
                             try {
                                 Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
-                                if (response.get("response").toString() == "200") {
+                                if (response.get("response").toString().equals("200")) {
                                     UID_i = response.get("uid").toString();
                                 }
                             } catch (JSONException e) {
@@ -124,12 +158,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     etEmail.setText("");
 
                     if (ans == true) {
+                        SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
+                        editor.putString("UID", UID_i);
+                        editor.commit();
+                        editor.apply();
+                        btLogin.setEnabled(false);
+                        Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(RegistrationActivity.this, RegisterActivity_2.class);
                         startActivity(i);
-                        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("UID", UID_i);
-
                     }
 
                 }
@@ -179,7 +215,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                email = etEmail.getText().toString();
+                email = etEmail.getText().toString().trim();
             }
         });
         btFacebook.setOnClickListener(new View.OnClickListener() {

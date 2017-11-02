@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    tools:context="com.example.yashladha.android_seller.navigation.MyAccountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="40dp"
+        >
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/ivMyPic"
+            android:paddingTop="10dp"
+            android:src="@drawable/logo"
+            android:layout_marginLeft="150dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:text="My Name"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:id="@+id/tvMyName"
+            android:paddingLeft="140dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout2"
+            >
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingLeft="70dp"
+                android:id="@+id/linearLayout3"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:text="9000000000"
+                    android:id="@+id/tvContact"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:text="201551098@iiitvadodara.ac.in"
+                    android:id="@+id/tvEmail"/>
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_edit"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:id="@+id/ivEdit"
+                android:layout_marginLeft="20dp"
+                android:clickable="true"/>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/vOption"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            />
+
+        <ExpandableListView
+            android:id="@+id/expandableListView"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:text="De-activate account"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:clickable="true"
+            android:layout_marginTop="15dp"
+            android:id="@+id/tvDeactivate"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/vDeactivate"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:text="Log Out"
+            android:clickable="true"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/tvLogOut"/>
+
+
+        </LinearLayout>
+
+</RelativeLayout>
