@@ -48,16 +48,17 @@ import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TITLE = "Login";
-    TextView tvName, tvPassword, tvRegiter, tvForgotPassword;
+    TextView tvName, tvPassword, tvRegister, tvForgotPassword, tvNumChar, tvCharLeft;
     EditText etName, etPassword;
     public static final String MyPREFERENCES = "MyPrefs";
-    Button btLogin, btFacebook, btGoogle;
+    Button btLogin, btFacebook, btGoogle, btProceed;
     private RequestQueue rq;
     ImageButton ibPassword;
     boolean password2 = false;
     public static final String UID = "UID";
     String UID_i = "";
     String email = "";
+    Boolean login = false;
     String password = "";
 
     public LoginActivity() {
@@ -79,15 +80,50 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         tvName = (TextView) findViewById(R.id.tvName);
         tvPassword = (TextView) findViewById(R.id.tvPassword);
-        tvRegiter = (TextView) findViewById(R.id.tvRegister);
+        tvRegister = (TextView) findViewById(R.id.tvRegister);
+        tvNumChar = (TextView) findViewById(R.id.tvNumChar);
+        tvCharLeft = (TextView) findViewById(R.id.tvCharLeft);
         tvForgotPassword = (TextView) findViewById(R.id.tvForgotPassword);
         etName = (EditText) findViewById(R.id.etName);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btLogin = (Button) findViewById(R.id.btLogin);
+        btProceed = (Button) findViewById(R.id.btProceed);
         btFacebook = (Button) findViewById(R.id.btFacebook);
         btGoogle = (Button) findViewById(R.id.btGoogle);
         rq = Volley.newRequestQueue(LoginActivity.this);
         ibPassword = (ImageButton) findViewById(R.id.ibPassword);
+
+        etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    if(etName.getText().toString().trim().length()<5){
+                        etName.setError("Minimum length should be 5 characters");
+                    }
+                    else {
+                        etName.setError(null);
+                    }
+                }
+            }
+        });
+
+
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    if(etPassword.getText().toString().trim().length()<8){
+                        etPassword.setError("Minimum length should be 8 characters");
+                    }
+                    else {
+                        etPassword.setError(null);
+                    }
+                }
+            }
+        });
+
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,8 +149,10 @@ public class LoginActivity extends AppCompatActivity {
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString(UID, UID_i);
                                     editor.commit();
-
-
+                                    Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
+                                            Toast.LENGTH_LONG).show();
+                                    btProceed.setClickable(true);
+                                    btProceed.setEnabled(true);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -130,10 +168,20 @@ public class LoginActivity extends AppCompatActivity {
                     rq.add(jsonObjectRequest);
                     etPassword.setText("");
                     etName.setText("");
+
                 }
             }
 
         });
+btProceed.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
+        startActivity(i);
+
+
+    }
+});
 
 
         ibPassword.setOnClickListener(new View.OnClickListener()
@@ -214,7 +262,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        tvRegiter.setOnClickListener(new View.OnClickListener()
+        tvRegister.setOnClickListener(new View.OnClickListener()
 
         {
             @Override

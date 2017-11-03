@@ -12,10 +12,10 @@
     android:id="@+id/tvName"
     android:text="Email"
     android:textSize="15dp"
-    android:textColor="#887f7f"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="20dp"
     android:padding="5dp"
+    android:textColor="@android:color/black"
     />
 <EditText
     android:layout_width="match_parent"
@@ -28,15 +28,17 @@
     android:layout_marginRight="10dp"
     style="@style/Widget.AppCompat.EditText"
     android:background="@drawable/button_border"/>
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvPassword"
         android:text="Password"
         android:textSize="15dp"
-        android:textColor="#887f7f"
+        android:textColor="@android:color/black"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:padding="5dp"
         />
 <LinearLayout
@@ -51,6 +53,7 @@
         android:padding="10dp"
         android:layout_marginLeft="10dp"
         android:hint="Password"
+        android:maxLength="13"
         android:inputType="textPassword"
         android:textColorHint="#887f7f"
         android:layout_weight="1"
@@ -66,9 +69,22 @@
         android:id ="@+id/btLogin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:textColor="#fff"
-        android:text="Login"
+        android:text="Check Credentials"
+        android:layout_gravity="center"
+        android:background="@drawable/button_rounded_red_gradient"
+        android:padding="15dp"
+        />
+    <Button
+        android:id ="@+id/btProceed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="#fff"
+        android:clickable="false"
+        android:enabled="false"
+        android:text="Proceed"
         android:layout_gravity="center"
         android:background="@drawable/button_rounded_corners_gradiant"
         android:padding="15dp"
@@ -118,13 +134,12 @@
             android:textAllCaps="false"
             android:backgroundTint="#2867a5"
             android:background="@drawable/button_rounded_corners_gradiant"
-            android:padding="20dp"
             android:id="@+id/btFacebook"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="right"
             android:layout_weight="0.5"
             android:textAllCaps="false"
             android:text="Google+"
@@ -132,7 +147,7 @@
             android:layout_margin="20dp"
             android:backgroundTint="#a52137"
             android:background="@drawable/button_rounded_corners_gradiant"
-            android:padding="20dp"
+            android:padding="15dp"
             android:id="@+id/btGoogle"/>
     </LinearLayout>
 </LinearLayout>

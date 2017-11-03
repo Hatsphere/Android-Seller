@@ -52,11 +52,6 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         TextView mProductNewPrice = (TextView)listItemView.findViewById(R.id.tvNewPrice);
         mProductName.setText(currentProduct.getmProductNewPrice());
 
-        TextView mProductOriginalPrice = (TextView)listItemView.findViewById(R.id.tvOriginalPrice);
-        mProductName.setText(currentProduct.getmProductOriginalPrice());
-
-        TextView mProductDiscount = (TextView)listItemView.findViewById(R.id.tvDiscount);
-        mProductName.setText(currentProduct.getmProductDiscount());
 
         TextView mExchange = (TextView)listItemView.findViewById(R.id.tvExchange);
         mProductName.setText(currentProduct.getmExchange());
@@ -79,6 +74,13 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         {
             mProductRemoveImageResource.setImageResource(currentProduct.getmProductRemoveImageResourceId());
             mProductRemoveImageResource.setVisibility(View.VISIBLE);
+
+            mProductRemoveImageResource.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
         else{
             mProductRemoveImageResource.setVisibility(View.GONE);

@@ -11,6 +11,7 @@
     <color name="back5">#eedfcc</color>
     <color name="back6">#98f5ff</color>
     <color name="back7">#caff70</color>
+    <color name="back8">#808080</color>
 
     <color name="blueStart">#B0E0E6</color>
     <color name="blueCenter">#87CEFA</color>
@@ -19,4 +20,6 @@
     <color name="redStart">#FF6347</color>
     <color name="redCenter">#FF0000</color>
     <color name="redEnd">#8B0000</color>
+
+    <color name="home_page_fragments">#98f5ff</color>
 </resources>
