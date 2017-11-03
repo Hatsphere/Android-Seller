@@ -2,9 +2,13 @@ package com.example.yashladha.android_seller;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -13,20 +17,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddProductsActivity extends AppCompatActivity {
 
     ImageView ivAdd;
-    TextView tvAddPhoto, tvProductName, tvProDes,  tvOriginalPrice, tvDiscount, tvCategory;
+    TextView tvAddPhoto, tvProductName, tvProDes, tvOriginalPrice, tvDiscount, tvCategory;
     EditText etProductName, etProDes, etOriginalPrice, etDiscount, etCategory;
     Button btDone;
+    LinearLayout sv1;
     ToggleButton tbOnSale;
     String productName, proDes, originalPrice, discount, category;
-    boolean sale;
+    boolean sale, image;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +63,7 @@ public class AddProductsActivity extends AppCompatActivity {
         etOriginalPrice = (EditText) findViewById(R.id.etOriginalPrice);
         etDiscount = (EditText) findViewById(R.id.etDiscount);
         etCategory = (EditText) findViewById(R.id.etCategory);
-
+        sv1 = (LinearLayout) findViewById(R.id.sv1);
         tbOnSale = (ToggleButton) findViewById(R.id.tbOnSale);
 
 
@@ -67,6 +83,7 @@ public class AddProductsActivity extends AppCompatActivity {
                 productName = etProductName.getText().toString();
             }
         });
+
         etProDes.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -134,10 +151,9 @@ public class AddProductsActivity extends AppCompatActivity {
         tbOnSale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tbOnSale.getText().toString()=="Yes"){
+                if (tbOnSale.getText().toString() == "Yes") {
                     sale = true;
-                }
-                else{
+                } else {
                     sale = false;
                 }
             }
@@ -145,11 +161,16 @@ public class AddProductsActivity extends AppCompatActivity {
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, 0);
+
             }
         });
-
+        tvAddPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(photoCaptureIntent, 0);
+            }
+        });
         btDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,20 +180,56 @@ public class AddProductsActivity extends AppCompatActivity {
         });
     }
 
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0 && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-            ImageView imageView = (ImageView) findViewById(R.id.ivAdd);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+
+            String partFilename = currentDateFormat();
+            storeCameraPhotoInSDCard(bitmap, partFilename);
+
+            // display the image from SD Card to ImageView Control
+            String storeFilename = "photo_" + partFilename + ".jpg";
+            Bitmap mBitmap = getImageFileFromSDCard(storeFilename);
+
+            image = true;
+            ImageView image = new ImageView(AddProductsActivity.this);
+            Drawable d = new BitmapDrawable(getResources(), mBitmap);
+            image.setBackground(d);
+            sv1.addView(image);
         }
+    }
+
+
+    private String currentDateFormat() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH_mm_ss");
+        String currentTimeStamp = dateFormat.format(new Date());
+        return currentTimeStamp;
+    }
+
+    private void storeCameraPhotoInSDCard(Bitmap bitmap, String currentDate) {
+        File outputFile = new File(Environment.getExternalStorageDirectory(), "photo_" + currentDate + ".jpg");
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Bitmap getImageFileFromSDCard(String filename) {
+        Bitmap bitmap = null;
+        File imageFile = new File(Environment.getExternalStorageDirectory() + filename);
+        try {
+            FileInputStream fis = new FileInputStream(imageFile);
+            bitmap = BitmapFactory.decodeStream(fis);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
     }
 }
