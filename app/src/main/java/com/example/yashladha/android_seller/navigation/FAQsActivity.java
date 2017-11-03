@@ -13,8 +13,6 @@ public class FAQsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_faqs);
-        tvQues = (TextView)findViewById(R.id.tvQues);
-        tvAns = (TextView)findViewById(R.id.tvAns);
-    }
+        setContentView(R.layout.nav_faq_list_item);
+      }
 }

@@ -29,7 +29,6 @@
         android:layout_height="wrap_content"
         android:text="You  just to simply register on our app and provide the required details to start selling on our platform."
         android:id="@+id/tvAns4"
-        android:layout_marginLeft=""
         android:textSize="18dp"
         android:layout_marginBottom="20dp"
         />
