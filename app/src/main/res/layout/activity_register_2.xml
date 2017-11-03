@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:padding="5dp"
         android:text="Name"
-        android:textColor="#887f7f"
+        android:textColor="@android:color/black"
         android:textSize="15dp" />
 
     <EditText
@@ -27,18 +27,38 @@
         android:layout_marginRight="10dp"
         android:background="@drawable/button_border"
         android:hint="Enter your Name"
+        android:digits="@string/alphabets"
         android:padding="10dp"
         android:textColorHint="#887f7f" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNumChar"
+            android:text="50 "
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCharLeft"
+            android:text=" characters left"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:padding="5dp"
+        android:textColor="@android:color/black"
         android:text="Address"
-        android:textColor="#887f7f"
         android:textSize="15dp" />
 
     <EditText
@@ -58,10 +78,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:padding="5dp"
+        android:textColor="@android:color/black"
         android:text="Contact Details"
-        android:textColor="#887f7f"
         android:textSize="15dp" />
 
     <EditText
@@ -75,6 +95,8 @@
         android:background="@drawable/button_border"
         android:hint="Enter your phone number"
         android:padding="10dp"
+        android:digits="0123456789"
+        android:maxLength="13"
         android:textColorHint="#887f7f" />
 
     <CheckBox

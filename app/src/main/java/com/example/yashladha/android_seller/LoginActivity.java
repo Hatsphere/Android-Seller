@@ -48,7 +48,7 @@ import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TITLE = "Login";
-    TextView tvName, tvPassword, tvRegiter, tvForgotPassword;
+    TextView tvName, tvPassword, tvRegister, tvForgotPassword, tvNumChar, tvCharLeft;
     EditText etName, etPassword;
     public static final String MyPREFERENCES = "MyPrefs";
     Button btLogin, btFacebook, btGoogle, btProceed;
@@ -80,7 +80,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         tvName = (TextView) findViewById(R.id.tvName);
         tvPassword = (TextView) findViewById(R.id.tvPassword);
-        tvRegiter = (TextView) findViewById(R.id.tvRegister);
+        tvRegister = (TextView) findViewById(R.id.tvRegister);
+        tvNumChar = (TextView) findViewById(R.id.tvNumChar);
+        tvCharLeft = (TextView) findViewById(R.id.tvCharLeft);
         tvForgotPassword = (TextView) findViewById(R.id.tvForgotPassword);
         etName = (EditText) findViewById(R.id.etName);
         etPassword = (EditText) findViewById(R.id.etPassword);
@@ -90,6 +92,49 @@ public class LoginActivity extends AppCompatActivity {
         btGoogle = (Button) findViewById(R.id.btGoogle);
         rq = Volley.newRequestQueue(LoginActivity.this);
         ibPassword = (ImageButton) findViewById(R.id.ibPassword);
+
+        etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    if(etName.getText().toString().trim().length()<5){
+                        etName.setError("Minimum length should be 5 characters");
+                    }
+                    else {
+                        etName.setError(null);
+                    }
+                }
+            }
+        });
+
+        final TextWatcher mTextEditorWatcher = new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //This sets a textview to the current length
+                tvNumChar.setText(String.valueOf(s.length()));
+            }
+
+            public void afterTextChanged(Editable s) {
+            }
+        };
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    if(etPassword.getText().toString().trim().length()<8){
+                        etPassword.setError("Minimum length should be 8 characters");
+                    }
+                    else {
+                        etPassword.setError(null);
+                    }
+                }
+            }
+        });
+
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -227,7 +272,7 @@ btProceed.setOnClickListener(new View.OnClickListener() {
 
             }
         });
-        tvRegiter.setOnClickListener(new View.OnClickListener()
+        tvRegister.setOnClickListener(new View.OnClickListener()
 
         {
             @Override
