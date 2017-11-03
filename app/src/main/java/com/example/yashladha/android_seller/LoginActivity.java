@@ -108,18 +108,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        final TextWatcher mTextEditorWatcher = new TextWatcher() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //This sets a textview to the current length
-                tvNumChar.setText(String.valueOf(s.length()));
-            }
-
-            public void afterTextChanged(Editable s) {
-            }
-        };
         etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
