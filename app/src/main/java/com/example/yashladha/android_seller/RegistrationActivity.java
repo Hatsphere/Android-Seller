@@ -84,6 +84,22 @@ public class RegistrationActivity extends AppCompatActivity {
         ibPassword = (ImageButton) findViewById(R.id.ibPassword);
         btRegister = btLogin;
         ans2 = false;
+
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    if(etPassword.getText().toString().trim().length()<8){
+                        etPassword.setError("Minimum length should be 8 characters");
+                    }
+                    else {
+                        etPassword.setError(null);
+                    }
+                }
+            }
+        });
+
         btCheckEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
