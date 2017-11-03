@@ -152,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
                                             Toast.LENGTH_LONG).show();
                                     btProceed.setClickable(true);
+                                    btProceed.setEnabled(true);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
