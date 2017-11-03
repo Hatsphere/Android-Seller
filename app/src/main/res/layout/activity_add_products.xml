@@ -10,25 +10,36 @@
     tools:context="com.example.yashladha.android_seller.AddProductsActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/sv1">
 
+        <ScrollView
 
-        <ImageView
-            android:id="@+id/ivAdd"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
-            android:clickable="true"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:src="@drawable/add"
-            android:textSize="20dp" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivAdd"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/add"
+                    android:textSize="20dp" />
+            </LinearLayout>
+        </ScrollView>
 
         <TextView
             android:id="@+id/tvAddPhoto"
@@ -57,9 +68,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
+            android:digits="@string/alphabets"
             android:hint="Enter the Product Name"
             android:maxLength="100"
-            android:digits="@string/alphabets"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 
@@ -119,13 +130,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Do you want your product on Sale"
-                android:textSize="15dp"/>
+                android:textSize="15dp" />
+
             <ToggleButton
                 android:id="@+id/tbOnSale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="On Sale" />
+                android:text="On Sale"
+                android:textOff="No"
+                android:textOn="Yes" />
         </LinearLayout>
 
         <TextView
