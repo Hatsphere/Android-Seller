@@ -84,6 +84,8 @@ public class RegistrationActivity extends AppCompatActivity {
         ibPassword = (ImageButton) findViewById(R.id.ibPassword);
         btRegister = btLogin;
         ans2 = false;
+
+
         btCheckEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,6 +220,37 @@ public class RegistrationActivity extends AppCompatActivity {
                 email = etEmail.getText().toString().trim();
             }
         });
+        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    if(etEmail.getText().toString().trim().length()<5){
+                        etEmail.setError("Minimum length should be 5 characters");
+                    }
+                    else {
+                        etEmail.setError(null);
+                    }
+                }
+            }
+        });
+
+
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    if(etPassword.getText().toString().trim().length()<8){
+                        etPassword.setError("Minimum length should be 8 characters");
+                    }
+                    else {
+                        etPassword.setError(null);
+                    }
+                }
+            }
+        });
+
         btFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

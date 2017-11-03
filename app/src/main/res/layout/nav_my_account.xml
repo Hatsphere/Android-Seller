@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/linearLayout1"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         >
         <ImageView
             android:layout_width="60dp"
@@ -25,14 +25,14 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:text="My Name"
             android:textStyle="bold"
             android:textSize="20dp"
             android:id="@+id/tvMyName"
             android:paddingLeft="140dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             />
 
         <LinearLayout
