@@ -74,6 +74,13 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         {
             mProductRemoveImageResource.setImageResource(currentProduct.getmProductRemoveImageResourceId());
             mProductRemoveImageResource.setVisibility(View.VISIBLE);
+
+            mProductRemoveImageResource.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
         else{
             mProductRemoveImageResource.setVisibility(View.GONE);

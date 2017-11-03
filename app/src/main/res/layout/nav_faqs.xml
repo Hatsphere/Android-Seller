@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/faq"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:id="@+id/ivFaq"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:text="You  just to simply register on our app and provide the required details to start selling on our platform."
         android:id="@+id/tvAns4"
+        android:layout_marginLeft="10dp"
         android:textSize="18dp"
         android:layout_marginBottom="20dp"
         />
@@ -36,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="I am unable to upload images "
-        android:id="@+id/tvQue1s"
+        android:id="@+id/tvQues1"
         android:textStyle="bold"
         android:textSize="18dp"
         />

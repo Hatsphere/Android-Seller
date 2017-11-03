@@ -10,9 +10,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity_2 extends AppCompatActivity {
+    TextView tvName, tvPassword, tvRegister, tvForgotPassword, tvNumChar, tvCharLeft;
     Button btProcees;
     EditText etAddress, etContact;
     EditText etName;
@@ -24,11 +26,42 @@ public class RegisterActivity_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_2);
+        tvNumChar = (TextView) findViewById(R.id.tvNumChar);
+        tvCharLeft = (TextView) findViewById(R.id.tvCharLeft);
         etName = (EditText) findViewById(R.id.etName);
         btProcees = (Button) findViewById(R.id.btProceed);
         etAddress = (EditText) findViewById(R.id.etAddress);
         etContact = (EditText) findViewById(R.id.etContact);
         cbTrial = (CheckBox) findViewById(R.id.cbTrial);
+
+        etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b)
+                {
+                    if(etName.getText().toString().trim().length()<5){
+                        etName.setError("Minimum length should be 5 characters");
+                    }
+                    else {
+                        etName.setError(null);
+                    }
+                }
+            }
+        });
+
+        final TextWatcher mTextEditorWatcher = new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //This sets a textview to the current length
+                tvNumChar.setText(String.valueOf(s.length()));
+            }
+
+            public void afterTextChanged(Editable s) {
+            }
+        };
+
         btProcees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
