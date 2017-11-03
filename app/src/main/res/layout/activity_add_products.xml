@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -87,30 +87,6 @@
             android:textColorHint="#887f7f" />
 
         <TextView
-            android:id="@+id/tvNewPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:text="New Price"
-            android:textColor="@android:color/black"
-            android:textSize="15dp" />
-
-        <EditText
-            android:id="@+id/etNewPrice"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_border"
-            android:hint="Enter the new price"
-            android:padding="10dp"
-            android:textColorHint="#887f7f" />
-
-        <TextView
             android:id="@+id/tvOriginalPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -132,6 +108,25 @@
             android:hint="Enter your original price"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Do you want your product on Sale"
+                android:textSize="15dp"/>
+            <ToggleButton
+                android:id="@+id/tbOnSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="On Sale" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvDiscount"
@@ -157,18 +152,18 @@
             android:textColorHint="#887f7f" />
 
         <TextView
-            android:id="@+id/tvExchange"
+            android:id="@+id/tvCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:padding="5dp"
-            android:text="Exchange Possibility"
+            android:text="Category"
             android:textColor="@android:color/black"
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/etExchange"
+            android:id="@+id/etCategory"
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,7 +171,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
-            android:hint="Enter Yes or No"
+            android:hint="Category of the product"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 
@@ -192,4 +187,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</ScrollView>
