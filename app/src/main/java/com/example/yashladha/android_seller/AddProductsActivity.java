@@ -1,6 +1,7 @@
 package com.example.yashladha.android_seller;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -42,15 +43,16 @@ public class AddProductsActivity extends AppCompatActivity {
     ToggleButton tbOnSale;
     String productName, proDes, originalPrice, discount, category;
     boolean sale, image;
-
+    SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
+    String plan = myPrefs.getString("Plan", "");
+    int noOfImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_products);
-
+        noOfImages = 0;
         ivAdd = (ImageView) findViewById(R.id.ivAdd);
-
         tvAddPhoto = (TextView) findViewById(R.id.tvAddPhoto);
         tvProductName = (TextView) findViewById(R.id.tvProductName);
         tvProDes = (TextView) findViewById(R.id.tvProDes);
@@ -191,12 +193,13 @@ public class AddProductsActivity extends AppCompatActivity {
             // display the image from SD Card to ImageView Control
             String storeFilename = "photo_" + partFilename + ".jpg";
             Bitmap mBitmap = getImageFileFromSDCard(storeFilename);
-
-            image = true;
-            ImageView image = new ImageView(AddProductsActivity.this);
-            Drawable d = new BitmapDrawable(getResources(), mBitmap);
-            image.setBackground(d);
-            sv1.addView(image);
+            if (noOfImages <= 2 && plan == "0" || noOfImages <= 3 && plan == "1" || noOfImages <= 5 && plan == "2") {
+                image = true;
+                ImageView image = new ImageView(AddProductsActivity.this);
+                Drawable d = new BitmapDrawable(getResources(), mBitmap);
+                image.setBackground(d);
+                sv1.addView(image);
+            }
         }
     }
 
