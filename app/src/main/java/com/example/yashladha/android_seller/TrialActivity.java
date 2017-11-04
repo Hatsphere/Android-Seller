@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
 
 public class TrialActivity extends AppCompatActivity {
 
-    RadioGroup rgChoise;
+    CheckBox cbYes;
     RadioButton rb;
     private RequestQueue rq;
     Button btSubmit;
@@ -35,7 +36,7 @@ public class TrialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trial2);
-        rgChoise = (RadioGroup) findViewById(R.id.rgGroup);
+        cbYes = (CheckBox) findViewById(R.id.cbYes);
         btSubmit = (Button) findViewById(R.id.btProceed);
         rq = Volley.newRequestQueue(TrialActivity.this);
         final String address = getIntent().getStringExtra("address");
@@ -79,7 +80,7 @@ public class TrialActivity extends AppCompatActivity {
 
                     rq.add(jsonObjectRequest);
                     Intent i = new Intent(TrialActivity.this, PlanChosenActivity.class);
-                    i.putExtra("planChosen" , "Trial");
+                    i.putExtra("planChosen", "Trial");
                     startActivity(i);
 
                 } else {
@@ -91,15 +92,16 @@ public class TrialActivity extends AppCompatActivity {
                 }
             }
         });
-        rgChoise.setOnClickListener(new View.OnClickListener() {
+        cbYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selectedId = rgChoise.getCheckedRadioButtonId();
-                rb = (RadioButton) findViewById(selectedId);
-                if (rb.getId() == R.id.rbNo) {
-                } else {
+                if (cbYes.isChecked()) {
                     choise = true;
+
+                } else {
+                    choise = false;
                 }
+
             }
         });
 
