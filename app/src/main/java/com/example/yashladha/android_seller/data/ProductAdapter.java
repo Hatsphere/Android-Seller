@@ -39,7 +39,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         if(listItemView==null)
         {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.product_display_list,parent,false);
+                    R.layout.fragment_display_list_item,parent,false);
         }
         Product currentProduct = getItem(position);
 

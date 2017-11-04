@@ -36,6 +36,7 @@
             android:layout_marginLeft="15dp"
             android:scaleType="fitXY"
             android:id="@+id/ivHow"/>
+
     </LinearLayout>
 
 
