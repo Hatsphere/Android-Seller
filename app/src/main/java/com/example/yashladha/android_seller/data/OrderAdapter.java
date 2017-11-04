@@ -40,7 +40,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
         if(listItemView==null)
         {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.orders_list,parent,false);
+                    R.layout.fragment_orders_list_item,parent,false);
         }
         Order currentOrder = getItem(position);
 

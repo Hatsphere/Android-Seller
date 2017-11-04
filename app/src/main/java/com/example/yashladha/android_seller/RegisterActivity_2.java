@@ -62,7 +62,7 @@ public class RegisterActivity_2 extends AppCompatActivity {
             }
         };
 
-        btProcees.setOnClickListener(new View.OnClickListener() {
+      btProcees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (trial == false && !address.equals("") && !contact.equals("") && !name.equals("")) {
