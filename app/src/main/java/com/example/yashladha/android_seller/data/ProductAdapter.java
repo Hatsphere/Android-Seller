@@ -60,6 +60,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         mYesNo.setText(currentProduct.getmYesNo());
 
         ImageView mProductImageResource = (ImageView)listItemView.findViewById(R.id.ivProduct);
+
         if(currentProduct.hasImage1())
         {
             mProductImageResource.setImageResource(currentProduct.getmProductImageResourceId());

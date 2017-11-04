@@ -11,6 +11,20 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="mon_jan">January</string>
+    <string name="mon_feb">February</string>
+    <string name="mon_mar">March</string>
+    <string name="mon_apr">April</string>
+    <string name="mon_may">May</string>
+    <string name="mon_jun">June</string>
+    <string name="mon_jul">July</string>
+    <string name="mon_aug">August</string>
+    <string name="mon_sep">September</string>
+    <string name="mon_oct">October</string>
+    <string name="mon_nov">November</string>
+    <string name="mon_dec">December</string>
+
+
     <string name="purchase_request">Purchase</string>
     <string name="exchange_request">Exchange</string>
     <string name="refund_request">Refund</string>
