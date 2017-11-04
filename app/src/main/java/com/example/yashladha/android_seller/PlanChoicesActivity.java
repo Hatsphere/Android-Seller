@@ -75,7 +75,6 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                 editor.putString("Plan", "2");
-                editor.commit();
                 editor.apply();
                 i.putExtra("planChosen" , "Platinum");
                 startActivity(i);
@@ -118,7 +117,6 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                 editor.putString("Plan", "0");
-                editor.commit();
                 editor.apply();
                 i.putExtra("planChosen" , "Silver");
                 startActivity(i);
@@ -162,7 +160,6 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                 editor.putString("Plan", "1");
-                editor.commit();
                 editor.apply();
                 i.putExtra("planChosen" , "Gold");
                 startActivity(i);

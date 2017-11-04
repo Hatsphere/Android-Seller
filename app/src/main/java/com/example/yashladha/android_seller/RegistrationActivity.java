@@ -1,6 +1,5 @@
 package com.example.yashladha.android_seller;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,15 +26,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -127,7 +117,7 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean ans = validateUserName() && validatePassword() && ans2;
                 if (ans) {
-                    JSONObject obj = new JSONObject();
+                    final JSONObject obj = new JSONObject();
                     try {
                         obj.put("email", email);
                         obj.put("password", password);
@@ -141,7 +131,31 @@ public class RegistrationActivity extends AppCompatActivity {
                             try {
                                 Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                                 if (response.get("response").toString().equals("200")) {
-                                    UID_i = response.get("uid").toString();
+                                    obj.put("uid", response.get("uid"));
+                                    JsonObjectRequest dataPushRequest = new JsonObjectRequest(
+                                            Request.Method.POST,
+                                            "http://10.0.2.2:3000/user/push/seller",
+                                            obj,
+                                            new Response.Listener<JSONObject>() {
+                                                @Override
+                                                public void onResponse(JSONObject response) {
+                                                    try {
+                                                        if (response.get("response").toString().equals("200")) {
+                                                            Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            },
+                                            new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+                                                    Log.e("onErrorResponse", error.getMessage());
+                                                }
+                                            }
+                                    );
+                                    rq.add(dataPushRequest);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -223,12 +237,10 @@ public class RegistrationActivity extends AppCompatActivity {
         etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    if(etEmail.getText().toString().trim().length()<5){
+                if (b) {
+                    if (etEmail.getText().toString().trim().length() < 5) {
                         etEmail.setError("Minimum length should be 5 characters");
-                    }
-                    else {
+                    } else {
                         etEmail.setError(null);
                     }
                 }
@@ -239,12 +251,10 @@ public class RegistrationActivity extends AppCompatActivity {
         etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    if(etPassword.getText().toString().trim().length()<8){
+                if (b) {
+                    if (etPassword.getText().toString().trim().length() < 8) {
                         etPassword.setError("Minimum length should be 8 characters");
-                    }
-                    else {
+                    } else {
                         etPassword.setError(null);
                     }
                 }
