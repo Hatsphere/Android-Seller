@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yashladha.android_seller.navigation.NavigationActivity;
+
 public class PlanChosenActivity extends AppCompatActivity {
 
     TextView tvCongrats,tvMembership,tvTypeOfPlan,tvExpiry,tvExpiryDate;
@@ -30,7 +32,7 @@ public class PlanChosenActivity extends AppCompatActivity {
         btGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(PlanChosenActivity.this, HomePageActivity.class);
+                Intent i = new Intent(PlanChosenActivity.this, NavigationActivity.class);
                 startActivity(i);
             }
         });

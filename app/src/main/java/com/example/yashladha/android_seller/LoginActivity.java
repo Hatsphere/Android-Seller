@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.yashladha.android_seller.navigation.NavigationActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -171,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
         btProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
+                Intent i = new Intent(LoginActivity.this, NavigationActivity.class);
                 startActivity(i);
                 etPassword.setText("");
                 etName.setText("");
