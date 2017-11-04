@@ -33,16 +33,14 @@ public class RegisterActivity_2 extends AppCompatActivity {
         etAddress = (EditText) findViewById(R.id.etAddress);
         etContact = (EditText) findViewById(R.id.etContact);
         cbTrial = (CheckBox) findViewById(R.id.cbTrial);
-
+        trial = false;
         etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    if(etName.getText().toString().trim().length()<5){
+                if (b) {
+                    if (etName.getText().toString().trim().length() < 5) {
                         etName.setError("Minimum length should be 5 characters");
-                    }
-                    else {
+                    } else {
                         etName.setError(null);
                     }
                 }
@@ -65,18 +63,24 @@ public class RegisterActivity_2 extends AppCompatActivity {
         btProcees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (trial == false && !address.equals("") && !contact.equals("") && !name.equals("")) {
-                    Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
-                    i.putExtra("address", address);
-                    i.putExtra("contact", contact);
-                    i.putExtra("name", name);
-                    startActivity(i);
-                } else if (trial == true && !address.equals("") && !contact.equals("") && !name.equals("")) {
-                    Intent i = new Intent(RegisterActivity_2.this, TrialActivity.class);
-                    i.putExtra("address", address);
-                    i.putExtra("contact", contact);
-                    i.putExtra("name", name);
-                    startActivity(i);
+
+                if (!etAddress.getText().toString().equals("") && !etContact.getText().toString().equals("") && !etName.getText().toString().equals("")) {
+                    if (trial == false && !address.equals("") && !contact.equals("") && !name.equals("")) {
+                        Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
+                        i.putExtra("address", address);
+                        i.putExtra("contact", contact);
+                        i.putExtra("name", name);
+                        startActivity(i);
+                    } else if (trial == true && !address.equals("") && !contact.equals("") && !name.equals("")) {
+                        Intent i = new Intent(RegisterActivity_2.this, TrialActivity.class);
+                        i.putExtra("address", address);
+                        i.putExtra("contact", contact);
+                        i.putExtra("name", name);
+                        startActivity(i);
+                    } else {
+                        Toast.makeText(RegisterActivity_2.this, "Some fields are missing", Toast.LENGTH_LONG).show();
+
+                    }
                 } else {
                     Toast.makeText(RegisterActivity_2.this, "Some fields are missing", Toast.LENGTH_LONG).show();
 

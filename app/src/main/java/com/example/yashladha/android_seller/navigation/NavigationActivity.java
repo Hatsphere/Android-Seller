@@ -1,5 +1,7 @@
+
 package com.example.yashladha.android_seller.navigation;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,10 +16,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ActionBarDrawerToggle drawerToggle;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +33,22 @@ public class NavigationActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        drawerToggle = new ActionBarDrawerToggle((Activity) this, mDrawerLayout, R.drawable.ic_drawer,  0)
+        {
+            public void onDrawerClosed(View view)
+            {
+                getActionBar().setTitle("Home");
+            }
+
+            public void onDrawerOpened(View drawerView)
+            {
+                getActionBar().setTitle("HatSphere");
+            }
+        };
+        mDrawerLayout.setDrawerListener(drawerToggle);
+        drawerToggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -58,7 +75,7 @@ public class NavigationActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // as you specify a parent activixty in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -89,19 +106,30 @@ public class NavigationActivity extends AppCompatActivity
         } else if (id == R.id.itKitchen) {
 
         } else if (id == R.id.itMyAccount) {
-
+            Intent i = new Intent(NavigationActivity.this, MyAccountActivity.class);
+            startActivity(i);
         }else if (id == R.id.itFaq) {
 
+            Intent i = new Intent(NavigationActivity.this, FAQsActivity.class);
+            startActivity(i);
         }else if (id == R.id.itHelp) {
 
+            Intent i = new Intent(NavigationActivity.this, HelpActivity.class);
+            startActivity(i);
         }else if (id == R.id.itAboutUs) {
 
+            Intent i = new Intent(NavigationActivity.this, AboutUsActivity.class);
+            startActivity(i);
         }else if (id == R.id.itLogOut) {
 
+            Intent i = new Intent(NavigationActivity.this, LoginActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
