@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 
 public class NavigationActivity extends AppCompatActivity
@@ -105,15 +106,24 @@ public class NavigationActivity extends AppCompatActivity
         } else if (id == R.id.itKitchen) {
 
         } else if (id == R.id.itMyAccount) {
-
+            Intent i = new Intent(NavigationActivity.this, MyAccountActivity.class);
+            startActivity(i);
         }else if (id == R.id.itFaq) {
 
+            Intent i = new Intent(NavigationActivity.this, FAQsActivity.class);
+            startActivity(i);
         }else if (id == R.id.itHelp) {
 
+            Intent i = new Intent(NavigationActivity.this, HelpActivity.class);
+            startActivity(i);
         }else if (id == R.id.itAboutUs) {
 
+            Intent i = new Intent(NavigationActivity.this, AboutUsActivity.class);
+            startActivity(i);
         }else if (id == R.id.itLogOut) {
 
+            Intent i = new Intent(NavigationActivity.this, LoginActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.yashladha.android_seller.navigation.NavigationActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -58,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String UID = "UID";
     String UID_i = "";
     String email = "";
-    Boolean login = false;
+    Boolean login, right = false;
     String password = "";
 
     public LoginActivity() {
@@ -92,16 +93,13 @@ public class LoginActivity extends AppCompatActivity {
         btGoogle = (Button) findViewById(R.id.btGoogle);
         rq = Volley.newRequestQueue(LoginActivity.this);
         ibPassword = (ImageButton) findViewById(R.id.ibPassword);
-
         etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    if(etName.getText().toString().trim().length()<5){
+                if (b) {
+                    if (etName.getText().toString().trim().length() < 5) {
                         etName.setError("Minimum length should be 5 characters");
-                    }
-                    else {
+                    } else {
                         etName.setError(null);
                     }
                 }
@@ -112,12 +110,10 @@ public class LoginActivity extends AppCompatActivity {
         etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    if(etPassword.getText().toString().trim().length()<8){
+                if (b) {
+                    if (etPassword.getText().toString().trim().length() < 8) {
                         etPassword.setError("Minimum length should be 8 characters");
-                    }
-                    else {
+                    } else {
                         etPassword.setError(null);
                     }
                 }
@@ -145,14 +141,15 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                                 if (response.get("response").toString() == "200") {
                                     UID_i = response.get("uid").toString();
+                                    right = true;
+                                    btProceed.setEnabled(true);
                                     SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString(UID, UID_i);
                                     editor.commit();
                                     Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
                                             Toast.LENGTH_LONG).show();
-                                    btProceed.setClickable(true);
-                                    btProceed.setEnabled(true);
+
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -166,22 +163,23 @@ public class LoginActivity extends AppCompatActivity {
                     });
 
                     rq.add(jsonObjectRequest);
-                    etPassword.setText("");
-                    etName.setText("");
 
                 }
+
             }
 
         });
-btProceed.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
-        startActivity(i);
+        btProceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, NavigationActivity.class);
+                startActivity(i);
+                etPassword.setText("");
+                etName.setText("");
 
 
-    }
-});
+            }
+        });
 
 
         ibPassword.setOnClickListener(new View.OnClickListener()

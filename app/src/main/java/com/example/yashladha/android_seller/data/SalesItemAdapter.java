@@ -34,6 +34,7 @@ public class SalesItemAdapter extends ArrayAdapter<SalesItem> {
         if(listItemView==null)
         {
             listItemView = LayoutInflater.from(getContext()).inflate(
+
                     R.layout.sales_item_details,parent,false);
         }
         SalesItem currentSalesItem = getItem(position);

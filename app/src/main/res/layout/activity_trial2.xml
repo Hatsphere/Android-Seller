@@ -53,24 +53,16 @@
         At the end of the chosen plan, customer will have the option of make a purchase of a appropriate plan and continue enjoying their benefits."
             android:textSize="13dp" />
 
-        <RadioGroup
-            android:id="@+id/rgGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/rbYes"
+
+            <CheckBox
+                android:id="@+id/cbYes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:text="Yes,I accept the terms and conditions and want to try out the trial offer" />
 
-            <RadioButton
-                android:id="@+id/rbNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No, I would like to subscribe to a plan directly." />
-        </RadioGroup>
+
 
 
         <Button
