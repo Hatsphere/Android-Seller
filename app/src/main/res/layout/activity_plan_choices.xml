@@ -22,7 +22,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/Platinum"
+            android:src="@drawable/platinum"
             android:scaleType="fitXY"
             android:id="@+id/platinum"
             />
@@ -97,7 +97,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:src="@drawable/GOLD"
+            android:src="@drawable/gold"
             android:scaleType="fitXY"
             android:id="@+id/gold"
             />
@@ -172,7 +172,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/Silver"
+            android:src="@drawable/silver"
             android:scaleType="fitXY"
             android:id="@+id/silver"
             />
