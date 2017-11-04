@@ -47,17 +47,17 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         mProductName.setText(currentProduct.getmProductName());
 
         TextView mProductDescription = (TextView)listItemView.findViewById(R.id.tvDescription);
-        mProductName.setText(currentProduct.getmProductDescription());
+        mProductDescription.setText(currentProduct.getmProductDescription());
 
         TextView mProductNewPrice = (TextView)listItemView.findViewById(R.id.tvNewPrice);
-        mProductName.setText(currentProduct.getmProductNewPrice());
+        mProductNewPrice.setText(currentProduct.getmProductNewPrice());
 
 
         TextView mExchange = (TextView)listItemView.findViewById(R.id.tvExchange);
-        mProductName.setText(currentProduct.getmExchange());
+        mExchange.setText(currentProduct.getmExchange());
 
         TextView mYesNo = (TextView)listItemView.findViewById(R.id.tvYesNo);
-        mProductName.setText(currentProduct.getmYesNo());
+        mYesNo.setText(currentProduct.getmYesNo());
 
         ImageView mProductImageResource = (ImageView)listItemView.findViewById(R.id.ivProduct);
         if(currentProduct.hasImage1())
