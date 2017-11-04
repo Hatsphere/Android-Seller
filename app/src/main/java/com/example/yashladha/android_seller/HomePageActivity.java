@@ -1,16 +1,24 @@
 package com.example.yashladha.android_seller;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
 
-public class HomePageActivity extends AppCompatActivity {
+public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private int[] icons = {
             R.drawable.display_icon,
@@ -21,13 +29,16 @@ public class HomePageActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
 
+    private ActionBarDrawerToggle drawerToggle;
+    private DrawerLayout mDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_navigation);
 
-        viewPager = (ViewPager)findViewById(R.id.viewpager1);
-        SimpleFragmentPagerAdapter simpleFragmentPagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(),this);
+        viewPager = (ViewPager) findViewById(R.id.viewpager1);
+        SimpleFragmentPagerAdapter simpleFragmentPagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(simpleFragmentPagerAdapter);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs1);
@@ -36,30 +47,101 @@ public class HomePageActivity extends AppCompatActivity {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setIcon(icons[i]);
         }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        drawerToggle = new ActionBarDrawerToggle((Activity) this, mDrawerLayout, R.drawable.ic_drawer,  0)
+        {
+            public void onDrawerClosed(View view)
+            {
+                getActionBar().setTitle("Home");
+            }
+
+            public void onDrawerOpened(View drawerView)
+            {
+                getActionBar().setTitle("HatSphere");
+            }
+        };
+        mDrawerLayout.setDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu options from the res/menu/menu_editor.xml file.
-        // This adds menu items to the app bar.
-        getMenuInflater().inflate(R.menu.menu_home_page, menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.navigation, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // User clicked on a menu option in the app bar overflow menu
-        switch (item.getItemId()) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activixty in AndroidManifest.xml.
+        int id = item.getItemId();
 
-            case R.id.more:
-                return true;
-            // Respond to a click on the "Up" arrow button in the app bar
-            case android.R.id.home:
-                // Navigate back to parent activity (CatalogActivity)
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.itHomeDecor) {
+            Intent intent = new Intent();
+
+        } else if (id == R.id.itHomeFurniture) {
+
+        } else if (id == R.id.itHomeFurnishing) {
+
+        } else if (id == R.id.itGardenPatio) {
+
+        } else if (id == R.id.itBathLinen) {
+
+        } else if (id == R.id.itKitchen) {
+
+        } else if (id == R.id.itMyAccount) {
+
+        }else if (id == R.id.itFaq) {
+
+        }else if (id == R.id.itHelp) {
+
+        }else if (id == R.id.itAboutUs) {
+
+        }else if (id == R.id.itLogOut) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
 
 }

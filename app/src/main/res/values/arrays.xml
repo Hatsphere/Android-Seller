@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_month_options">
+        <item>@string/mon_jan</item>
+        <item>@string/mon_feb</item>
+        <item>@string/mon_mar</item>
+        <item>@string/mon_apr</item>
+        <item>@string/mon_may</item>
+        <item>@string/mon_jun</item>
+        <item>@string/mon_jul</item>
+        <item>@string/mon_aug</item>
+        <item>@string/mon_sep</item>
+        <item>@string/mon_oct</item>
+        <item>@string/mon_nov</item>
+        <item>@string/mon_dec</item>
+    </string-array>
+</resources>
