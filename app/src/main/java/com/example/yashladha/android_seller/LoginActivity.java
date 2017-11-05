@@ -172,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
         btProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, NavigationActivity.class);
+                Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
                 startActivity(i);
                 etPassword.setText("");
                 etName.setText("");

@@ -57,7 +57,7 @@ public class DisplayFrag extends Fragment {
 
 
         ProductAdapter productAdapter = new ProductAdapter(getActivity(),products,R.color.home_page_fragments);
-        ListView listView = (ListView)rootview.findViewById(R.id.display);
+        ListView listView = (ListView)rootview.findViewById(R.id.lvDisplayList);
         listView.setAdapter(productAdapter);
 
 
