@@ -69,7 +69,7 @@ public class SalesFrag extends Fragment {
                 "3","Total Amount :","₹1485",R.drawable.products_basket));
 
         SalesItemAdapter salesItemAdapter = new SalesItemAdapter(getActivity(),salesItems,R.color.home_page_fragments);
-        ListView listView = (ListView)rootview.findViewById(R.id.display);
+        ListView listView = (ListView)rootview.findViewById(R.id.listView2);
         listView.setAdapter(salesItemAdapter);
         return rootview;
 

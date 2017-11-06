@@ -60,7 +60,6 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
             {
                 getActionBar().setTitle("Home");
             }
-
             public void onDrawerOpened(View drawerView)
             {
                 getActionBar().setTitle("HatSphere");
