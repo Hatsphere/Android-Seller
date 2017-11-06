@@ -1,6 +1,5 @@
 package com.example.yashladha.android_seller.fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,7 +22,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,11 +67,10 @@ public class SalesFrag extends Fragment {
                 "3","Total Amount :","₹1485",R.drawable.products_basket));
 
         SalesItemAdapter salesItemAdapter = new SalesItemAdapter(getActivity(),salesItems,R.color.home_page_fragments);
-        ListView listView = (ListView)rootview.findViewById(R.id.display);
+        ListView listView = (ListView)rootview.findViewById(R.id.lvSalesList);
         listView.setAdapter(salesItemAdapter);
         return rootview;
 
     }
-
 
 }
