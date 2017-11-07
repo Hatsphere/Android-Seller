@@ -2,6 +2,7 @@ package com.example.yashladha.android_seller;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+//import android.widget.Toolbar;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
 import com.example.yashladha.android_seller.navigation.AboutUsActivity;
@@ -53,9 +55,12 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setIcon(icons[i]);
         }
-//
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
+        //Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        //toolbar.setNavigationIcon(R.drawable.ic_drawer);
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -66,7 +71,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         navigationView.setNavigationItemSelectedListener(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(false);
     }
 
     private void setupDrawer() {
@@ -76,7 +81,8 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("HatSphere");
+                //getSupportActionBar().setTitle("HatSphere");
+
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
@@ -87,6 +93,13 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_drawer);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+/*        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        */
 
         mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
@@ -124,7 +137,8 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         if (id == R.id.action_settings || mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
+        else if(id == R.drawable.ic_drawer){
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -167,7 +181,6 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
             Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
             startActivity(i);
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
