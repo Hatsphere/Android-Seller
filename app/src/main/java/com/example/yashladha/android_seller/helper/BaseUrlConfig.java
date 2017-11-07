@@ -5,7 +5,7 @@ package com.example.yashladha.android_seller.helper;
  */
 
 public class BaseUrlConfig {
-    private static final String BaseURL = "http://localhost:3000/";
+    private static final String BaseURL = "http://10.0.2.2:3000/";
 
     public static String getBaseURL() {
         return BaseURL;
