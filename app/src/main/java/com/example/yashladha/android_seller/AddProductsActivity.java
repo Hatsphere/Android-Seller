@@ -61,7 +61,6 @@ public class AddProductsActivity extends AppCompatActivity {
         tvOriginalPrice = (TextView) findViewById(R.id.tvOriginalPrice);
         tvDiscount = (TextView) findViewById(R.id.tvDiscount);
         tvCategory = (TextView) findViewById(R.id.tvCategory);
-
         etProductName = (EditText) findViewById(R.id.etProductName);
         etProDes = (EditText) findViewById(R.id.etProDes);
         etOriginalPrice = (EditText) findViewById(R.id.etOriginalPrice);

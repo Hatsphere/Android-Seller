@@ -3,12 +3,20 @@ package com.example.yashladha.android_seller;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,16 +24,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
-import android.util.Patterns;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-
-import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -121,18 +119,26 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Toast.makeText(LoginActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
-                                if (response.get("response").toString() == "200") {
+                                Toast.makeText(LoginActivity.this, response.get("flag").toString(), Toast.LENGTH_SHORT).show();
+
+                                if (response.get("flag").toString().equals("true")) {
                                     UID_i = response.get("uid").toString();
                                     right = true;
+
+                                    Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
+                                            Toast.LENGTH_LONG).show();
                                     btProceed.setEnabled(true);
                                     SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString(UID, UID_i);
                                     editor.commit();
+                                    editor.apply();
                                     Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
                                             Toast.LENGTH_LONG).show();
-
+                                    btProceed.setClickable(true);
+                                    btProceed.setEnabled(true);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, response.get("error authenticating user").toString(), Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -155,12 +161,11 @@ public class LoginActivity extends AppCompatActivity {
         btProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
                 startActivity(i);
                 etPassword.setText("");
                 etName.setText("");
-
-
             }
         });
 

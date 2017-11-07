@@ -39,6 +39,8 @@ public class PlanChoicesActivity extends AppCompatActivity {
         SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         uid = myPrefs.getString("UID", "");
 
+        Log.d(getClass().getSimpleName(), uid);
+
         Toast.makeText(PlanChoicesActivity.this, uid, Toast.LENGTH_LONG).show();
         btPlatinuum.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +78,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                 editor.putString("Plan", "2");
                 editor.apply();
-                i.putExtra("planChosen" , "Platinum");
+                i.putExtra("planChosen", "Platinum");
                 startActivity(i);
 
             }
@@ -118,7 +120,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                 editor.putString("Plan", "0");
                 editor.apply();
-                i.putExtra("planChosen" , "Silver");
+                i.putExtra("planChosen", "Silver");
                 startActivity(i);
 
 
@@ -160,8 +162,9 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                 editor.putString("Plan", "1");
+                editor.commit();
                 editor.apply();
-                i.putExtra("planChosen" , "Gold");
+                i.putExtra("planChosen", "Gold");
                 startActivity(i);
 
 

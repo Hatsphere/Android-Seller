@@ -63,24 +63,18 @@ public class RegisterActivity_2 extends AppCompatActivity {
         btProcees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (!etAddress.getText().toString().equals("") && !etContact.getText().toString().equals("") && !etName.getText().toString().equals("")) {
-                    if (trial == false && !address.equals("") && !contact.equals("") && !name.equals("")) {
-                        Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
-                        i.putExtra("address", address);
-                        i.putExtra("contact", contact);
-                        i.putExtra("name", name);
-                        startActivity(i);
-                    } else if (trial == true && !address.equals("") && !contact.equals("") && !name.equals("")) {
-                        Intent i = new Intent(RegisterActivity_2.this, TrialActivity.class);
-                        i.putExtra("address", address);
-                        i.putExtra("contact", contact);
-                        i.putExtra("name", name);
-                        startActivity(i);
-                    } else {
-                        Toast.makeText(RegisterActivity_2.this, "Some fields are missing", Toast.LENGTH_LONG).show();
-
-                    }
+                if (!trial && !address.equals("") && !contact.equals("") && !name.equals("")) {
+                    Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
+                    i.putExtra("address", address);
+                    i.putExtra("contact", contact);
+                    i.putExtra("name", name);
+                    startActivity(i);
+                } else if (trial && !address.equals("") && !contact.equals("") && !name.equals("")) {
+                    Intent i = new Intent(RegisterActivity_2.this, TrialActivity.class);
+                    i.putExtra("address", address);
+                    i.putExtra("contact", contact);
+                    i.putExtra("name", name);
+                    startActivity(i);
                 } else {
                     Toast.makeText(RegisterActivity_2.this, "Some fields are missing", Toast.LENGTH_LONG).show();
 
