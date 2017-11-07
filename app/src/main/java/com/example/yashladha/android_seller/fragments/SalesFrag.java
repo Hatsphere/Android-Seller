@@ -67,10 +67,8 @@ public class SalesFrag extends Fragment {
                 "3","Total Amount :","₹1485",R.drawable.products_basket));
 
         SalesItemAdapter salesItemAdapter = new SalesItemAdapter(getActivity(),salesItems,R.color.home_page_fragments);
-        //TODO: Listview2 unable to find please resolve this error
-//        ListView listView = (ListView)rootview.findViewById(R.id.listView2);
-//
-//        listView.setAdapter(salesItemAdapter);
+        ListView listView = (ListView)rootview.findViewById(R.id.lvSalesList);
+        listView.setAdapter(salesItemAdapter);
         return rootview;
 
     }
