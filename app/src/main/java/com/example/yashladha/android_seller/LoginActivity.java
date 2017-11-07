@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
                                             Toast.LENGTH_LONG).show();
-                                    btProceed.setEnabled(true);
+                                    //btProceed.setEnabled(true);
                                     SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString(UID, UID_i);
@@ -135,8 +135,8 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.apply();
                                     Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
                                             Toast.LENGTH_LONG).show();
-                                    btProceed.setClickable(true);
-                                    btProceed.setEnabled(true);
+                                    //btProceed.setClickable(true);
+                                    //btProceed.setEnabled(true);
                                 } else {
                                     Toast.makeText(LoginActivity.this, response.get("error authenticating user").toString(), Toast.LENGTH_SHORT).show();
                                 }
