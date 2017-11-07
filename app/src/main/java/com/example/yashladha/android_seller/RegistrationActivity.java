@@ -1,5 +1,6 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.yashladha.android_seller.helper.EmailHelper;
+import com.example.yashladha.android_seller.helper.HelperDef;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -90,6 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            Log.d("email check", response.toString());
                             if (response.get("code").toString().equals("201")) {
                                 Toast.makeText(RegistrationActivity.this, "Email already used in registration", Toast.LENGTH_LONG).show();
                             } else {
@@ -115,6 +119,7 @@ public class RegistrationActivity extends AppCompatActivity {
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String tempEmail = email;
                 boolean ans = validateUserName() && validatePassword() && ans2;
                 if (ans) {
                     final JSONObject obj = new JSONObject();
@@ -129,8 +134,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
                                 if (response.get("response").toString().equals("200")) {
+                                    UID_i = response.getString("uid");
                                     obj.put("uid", response.get("uid"));
                                     JsonObjectRequest dataPushRequest = new JsonObjectRequest(
                                             Request.Method.POST,
@@ -142,6 +147,10 @@ public class RegistrationActivity extends AppCompatActivity {
                                                     try {
                                                         if (response.get("response").toString().equals("200")) {
                                                             Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                                                            SavePreference();
+                                                            btLogin.setEnabled(false);
+                                                            Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
+                                                            startIntent();
                                                         }
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
@@ -156,6 +165,22 @@ public class RegistrationActivity extends AppCompatActivity {
                                             }
                                     );
                                     rq.add(dataPushRequest);
+                                } else {
+                                    Log.d("500 res", "Response catches " + tempEmail);
+                                    HelperDef.getUID(tempEmail, RegistrationActivity.this, new EmailHelper() {
+                                        @Override
+                                        public void getUID(JSONObject res, Context context) {
+                                            try {
+                                                Log.d("Response", res.toString());
+                                                UID_i = res.getString("uid");
+                                                Log.d("UID", UID_i);
+                                                SavePreference();
+                                                startIntent();
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -172,17 +197,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     rq.add(jsonObjectRequest);
                     etPassword.setText("");
                     etEmail.setText("");
-
-                    if (ans == true) {
-                        SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
-                        editor.putString("UID", UID_i);
-                        editor.commit();
-                        editor.apply();
-                        btLogin.setEnabled(false);
-                        Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(RegistrationActivity.this, RegisterActivity_2.class);
-                        startActivity(i);
-                    }
 
                 }
             }
@@ -281,6 +295,18 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void startIntent() {
+        Intent i = new Intent(RegistrationActivity.this, RegisterActivity_2.class);
+        startActivity(i);
+    }
+
+    private void SavePreference() {
+        SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
+        editor.putString("UID", UID_i);
+        editor.commit();
+        editor.apply();
     }
 
     private boolean validatePassword() {

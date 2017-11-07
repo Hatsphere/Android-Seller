@@ -65,13 +65,13 @@ public class RegisterActivity_2 extends AppCompatActivity {
         btProcees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (trial == false && !address.equals("") && !contact.equals("") && !name.equals("")) {
+                if (!trial && !address.equals("") && !contact.equals("") && !name.equals("")) {
                     Intent i = new Intent(RegisterActivity_2.this, PlanChoicesActivity.class);
                     i.putExtra("address", address);
                     i.putExtra("contact", contact);
                     i.putExtra("name", name);
                     startActivity(i);
-                } else if (trial == true && !address.equals("") && !contact.equals("") && !name.equals("")) {
+                } else if (trial && !address.equals("") && !contact.equals("") && !name.equals("")) {
                     Intent i = new Intent(RegisterActivity_2.this, TrialActivity.class);
                     i.putExtra("address", address);
                     i.putExtra("contact", contact);
