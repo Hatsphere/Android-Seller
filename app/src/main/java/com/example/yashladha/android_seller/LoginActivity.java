@@ -138,17 +138,24 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Toast.makeText(LoginActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
-                                if (response.get("response").toString() == "200") {
+                                Toast.makeText(LoginActivity.this, response.get("flag").toString(), Toast.LENGTH_SHORT).show();
+
+                                if (response.get("flag").toString().equals("true")) {
                                     UID_i = response.get("uid").toString();
                                     right = true;
+
+                                    Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
+                                            Toast.LENGTH_LONG).show();
                                     btProceed.setEnabled(true);
                                     SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString(UID, UID_i);
                                     editor.commit();
-                                    Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
-                                            Toast.LENGTH_LONG).show();
+
+
+                                }
+                                else{
+                                    Toast.makeText(LoginActivity.this, response.get("error authenticating user").toString(), Toast.LENGTH_SHORT).show();
 
                                 }
                             } catch (JSONException e) {
@@ -172,12 +179,11 @@ public class LoginActivity extends AppCompatActivity {
         btProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
                 startActivity(i);
                 etPassword.setText("");
                 etName.setText("");
-
-
             }
         });
 

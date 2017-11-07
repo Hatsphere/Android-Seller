@@ -63,6 +63,21 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+
+        drawerToggle = new ActionBarDrawerToggle((Activity) this, mDrawerLayout, R.drawable.ic_drawer,  0)
+        {
+            public void onDrawerClosed(View view)
+            {
+                getActionBar().setTitle("Home");
+            }
+            public void onDrawerOpened(View drawerView)
+            {
+                getActionBar().setTitle("HatSphere");
+            }
+        };
+        mDrawerLayout.setDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+
         setupDrawer();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

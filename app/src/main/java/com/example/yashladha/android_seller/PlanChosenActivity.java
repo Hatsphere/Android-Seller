@@ -32,7 +32,7 @@ public class PlanChosenActivity extends AppCompatActivity {
         btGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(PlanChosenActivity.this, NavigationActivity.class);
+                Intent i = new Intent(PlanChosenActivity.this, HomePageActivity.class);
                 startActivity(i);
             }
         });
