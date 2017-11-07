@@ -21,7 +21,6 @@ import java.util.ArrayList;
  */
 public class OrdersFrag extends Fragment {
 
-
     public OrdersFrag() {
         // Required empty public constructor
     }
@@ -52,10 +51,10 @@ public class OrdersFrag extends Fragment {
 
 
         OrderAdapter orderAdapter = new OrderAdapter(getActivity(),orders,R.color.home_page_fragments);
-        ListView listView = (ListView)rootview.findViewById(R.id.order);
+        ListView listView = (ListView)rootview.findViewById(R.id.lvOrderList);
         listView.setAdapter(orderAdapter);
 
-        Button accept = (Button)rootview.findViewById(R.id.btAccept);
+        /*Button accept = (Button)rootview.findViewById(R.id.btAccept);
         Button reject = (Button)rootview.findViewById(R.id.btReject);
 
         accept.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +70,7 @@ public class OrdersFrag extends Fragment {
 
             }
         });
-
+        */
         return rootview;
     }
 

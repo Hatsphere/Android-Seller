@@ -32,7 +32,6 @@ public class DisplayFrag extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,20 +57,10 @@ public class DisplayFrag extends Fragment {
 
 
         ProductAdapter productAdapter = new ProductAdapter(getActivity(),products,R.color.home_page_fragments);
-        ListView listView = (ListView)rootview.findViewById(R.id.display);
+        ListView listView = (ListView)rootview.findViewById(R.id.lvDisplayList);
         listView.setAdapter(productAdapter);
 
-
-        FloatingActionButton floatingActionButton = (FloatingActionButton)rootview.findViewById(R.id.fbAdd);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(getActivity(), AddProductsActivity.class);
-            }
-        });
         return rootview;
     }
-
-
 
 }

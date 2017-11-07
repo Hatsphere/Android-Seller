@@ -6,14 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PlanPaymentActivity extends AppCompatActivity {
 
-    TextView tvAmountPaid,tvAmt,tvSelectPay;
+    TextView tvAmountPaid,tvAmt,tvSelectPay,tvCalendar;
     View vTotal,vOption;
-    Button btDebit,btCredit,btNet;
+    Button btDebit,btCredit,btNet,btPickDate;
     String type;
+    SimpleDateFormat formatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +30,13 @@ public class PlanPaymentActivity extends AppCompatActivity {
         type = getIntent().getStringExtra("planChosen");
         vTotal = (View)findViewById(R.id.vTotal);
         vOption = (View)findViewById(R.id.vOption);
+        tvCalendar = (TextView)findViewById(R.id.tvCalendar);
+
 
         btDebit = (Button)findViewById(R.id.btDebit);
         btCredit = (Button)findViewById(R.id.btCredit);
         btNet = (Button)findViewById(R.id.btNet);
+        btPickDate = (Button)findViewById(R.id.btPickDate);
 
         btDebit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +64,32 @@ public class PlanPaymentActivity extends AppCompatActivity {
                 i.putExtra("planChosen", type);
                 startActivity(i);
 
+            }
+        });
+
+        btPickDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get Current Date
+
+                CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment();
+                cdp.show(PlanPaymentActivity.this.getSupportFragmentManager(), "Material Calendar");
+                cdp.setOnDateSetListener(new CalendarDatePickerDialogFragment.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(CalendarDatePickerDialogFragment dialog, int year, int monthOfYear, int dayOfMonth) {
+                        try {
+                            formatter = new SimpleDateFormat("dd/MM/yyyy");
+                            String dateInString = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                            Date date = formatter.parse(dateInString);
+
+                            tvCalendar.setText(formatter.format(date).toString());
+
+
+                        } catch (Exception ex) {
+
+                        }
+                    }
+                });
             }
         });
     }

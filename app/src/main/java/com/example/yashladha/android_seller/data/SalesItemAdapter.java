@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,7 +34,8 @@ public class SalesItemAdapter extends ArrayAdapter<SalesItem> {
         if(listItemView==null)
         {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.product_display_list,parent,false);
+
+                    R.layout.sales_item_details,parent,false);
         }
         SalesItem currentSalesItem = getItem(position);
 

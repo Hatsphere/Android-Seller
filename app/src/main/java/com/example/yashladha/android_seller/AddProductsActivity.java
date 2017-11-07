@@ -1,5 +1,6 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -25,6 +26,7 @@ import android.widget.ToggleButton;
 
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -198,6 +200,7 @@ public class AddProductsActivity extends AppCompatActivity {
                 Drawable d = new BitmapDrawable(getResources(), mBitmap);
                 image.setBackground(d);
                 sv1.addView(image);
+                getImageUri(this, mBitmap);
             }
         }
     }
@@ -233,5 +236,11 @@ public class AddProductsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return bitmap;
+    }
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 }

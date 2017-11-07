@@ -3,48 +3,30 @@ package com.example.yashladha.android_seller;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.Volley;
-
-import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import android.support.annotation.NonNull;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.ProtocolException;
-import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TITLE = "Login";
@@ -58,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String UID = "UID";
     String UID_i = "";
     String email = "";
-    Boolean login = false;
+    Boolean login, right = false;
     String password = "";
 
     public LoginActivity() {
@@ -92,16 +74,13 @@ public class LoginActivity extends AppCompatActivity {
         btGoogle = (Button) findViewById(R.id.btGoogle);
         rq = Volley.newRequestQueue(LoginActivity.this);
         ibPassword = (ImageButton) findViewById(R.id.ibPassword);
-
         etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    if(etName.getText().toString().trim().length()<5){
+                if (b) {
+                    if (etName.getText().toString().trim().length() < 5) {
                         etName.setError("Minimum length should be 5 characters");
-                    }
-                    else {
+                    } else {
                         etName.setError(null);
                     }
                 }
@@ -112,12 +91,10 @@ public class LoginActivity extends AppCompatActivity {
         etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    if(etPassword.getText().toString().trim().length()<8){
+                if (b) {
+                    if (etPassword.getText().toString().trim().length() < 8) {
                         etPassword.setError("Minimum length should be 8 characters");
-                    }
-                    else {
+                    } else {
                         etPassword.setError(null);
                     }
                 }
@@ -142,9 +119,15 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Toast.makeText(LoginActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
-                                if (response.get("response").toString() == "200") {
+                                Toast.makeText(LoginActivity.this, response.get("flag").toString(), Toast.LENGTH_SHORT).show();
+
+                                if (response.get("flag").toString().equals("true")) {
                                     UID_i = response.get("uid").toString();
+                                    right = true;
+
+                                    Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
+                                            Toast.LENGTH_LONG).show();
+                                    btProceed.setEnabled(true);
                                     SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString(UID, UID_i);
@@ -154,6 +137,8 @@ public class LoginActivity extends AppCompatActivity {
                                             Toast.LENGTH_LONG).show();
                                     btProceed.setClickable(true);
                                     btProceed.setEnabled(true);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, response.get("error authenticating user").toString(), Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -167,22 +152,22 @@ public class LoginActivity extends AppCompatActivity {
                     });
 
                     rq.add(jsonObjectRequest);
-                    etPassword.setText("");
-                    etName.setText("");
 
                 }
+
             }
 
         });
-btProceed.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
-        startActivity(i);
+        btProceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-
-    }
-});
+                Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
+                startActivity(i);
+                etPassword.setText("");
+                etName.setText("");
+            }
+        });
 
 
         ibPassword.setOnClickListener(new View.OnClickListener()

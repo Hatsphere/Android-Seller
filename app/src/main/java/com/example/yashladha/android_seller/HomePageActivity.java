@@ -1,16 +1,26 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
+import com.example.yashladha.android_seller.navigation.AboutUsActivity;
+import com.example.yashladha.android_seller.navigation.FAQsActivity;
+import com.example.yashladha.android_seller.navigation.HelpActivity;
+import com.example.yashladha.android_seller.navigation.MyAccountActivity;
 
-public class HomePageActivity extends AppCompatActivity {
+public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private int[] icons = {
             R.drawable.display_icon,
@@ -20,14 +30,20 @@ public class HomePageActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+    private String mActivityTitle;
+
+    private ActionBarDrawerToggle mDrawerToggle;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_navigation);
 
-        viewPager = (ViewPager)findViewById(R.id.viewpager1);
-        SimpleFragmentPagerAdapter simpleFragmentPagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(),this);
+        mActivityTitle = getTitle().toString();
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager1);
+        SimpleFragmentPagerAdapter simpleFragmentPagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(simpleFragmentPagerAdapter);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs1);
@@ -36,30 +52,132 @@ public class HomePageActivity extends AppCompatActivity {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setIcon(icons[i]);
         }
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.setVerticalScrollBarEnabled(true);
+        setupDrawer();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        //TODO: Setup action bar it is crashing now
+    }
+
+    private void setupDrawer() {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle("HatSphere");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getSupportActionBar().setTitle(mActivityTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu options from the res/menu/menu_editor.xml file.
-        // This adds menu items to the app bar.
-        getMenuInflater().inflate(R.menu.menu_home_page, menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.navigation, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // User clicked on a menu option in the app bar overflow menu
-        switch (item.getItemId()) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activixty in AndroidManifest.xml.
+        int id = item.getItemId();
 
-            case R.id.more:
-                return true;
-            // Respond to a click on the "Up" arrow button in the app bar
-            case android.R.id.home:
-                // Navigate back to parent activity (CatalogActivity)
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.itHomeDecor) {
+            Intent intent = new Intent();
+
+        } else if (id == R.id.itHomeFurniture) {
+
+        } else if (id == R.id.itHomeFurnishing) {
+
+        } else if (id == R.id.itGardenPatio) {
+
+        } else if (id == R.id.itBathLinen) {
+
+        } else if (id == R.id.itKitchen) {
+
+        } else if (id == R.id.itMyAccount) {
+            Intent i = new Intent(HomePageActivity.this, MyAccountActivity.class);
+            startActivity(i);
+        }else if (id == R.id.itFaq) {
+
+            Intent i = new Intent(HomePageActivity.this, FAQsActivity.class);
+            startActivity(i);
+        }else if (id == R.id.itHelp) {
+
+            Intent i = new Intent(HomePageActivity.this, HelpActivity.class);
+            startActivity(i);
+        }else if (id == R.id.itAboutUs) {
+
+            Intent i = new Intent(HomePageActivity.this, AboutUsActivity.class);
+            startActivity(i);
+        }else if (id == R.id.itLogOut) {
+
+            Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
+            startActivity(i);
+        }
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
 }

@@ -30,7 +30,7 @@ public class MyAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_my_account);
+        setContentView(R.layout.frag_nav_my_account);
 
         ivMyPic = (ImageView)findViewById(R.id.ivMyPic);
         ivEdit = (ImageView)findViewById(R.id.ivEdit);

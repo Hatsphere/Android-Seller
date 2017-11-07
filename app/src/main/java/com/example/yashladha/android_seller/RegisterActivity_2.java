@@ -33,16 +33,14 @@ public class RegisterActivity_2 extends AppCompatActivity {
         etAddress = (EditText) findViewById(R.id.etAddress);
         etContact = (EditText) findViewById(R.id.etContact);
         cbTrial = (CheckBox) findViewById(R.id.cbTrial);
-
+        trial = false;
         etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b)
-                {
-                    if(etName.getText().toString().trim().length()<5){
+                if (b) {
+                    if (etName.getText().toString().trim().length() < 5) {
                         etName.setError("Minimum length should be 5 characters");
-                    }
-                    else {
+                    } else {
                         etName.setError(null);
                     }
                 }

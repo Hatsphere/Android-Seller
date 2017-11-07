@@ -82,7 +82,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textColor="#fff"
-        android:clickable="false"
         android:enabled="false"
         android:text="Proceed"
         android:layout_gravity="center"
