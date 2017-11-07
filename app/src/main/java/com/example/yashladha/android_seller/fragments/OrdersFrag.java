@@ -54,7 +54,7 @@ public class OrdersFrag extends Fragment {
         ListView listView = (ListView)rootview.findViewById(R.id.lvOrderList);
         listView.setAdapter(orderAdapter);
 
-        Button accept = (Button)rootview.findViewById(R.id.btAccept);
+        /*Button accept = (Button)rootview.findViewById(R.id.btAccept);
         Button reject = (Button)rootview.findViewById(R.id.btReject);
 
         accept.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +70,7 @@ public class OrdersFrag extends Fragment {
 
             }
         });
-
+        */
         return rootview;
     }
 

@@ -8,47 +8,23 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        tools:context="com.example.yashladha.android_seller.HomePageActivity"
-        android:id="@+id/container1">
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs1"
-            style="@style/CategoryTab"
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/tabs1">
-
-        </android.support.v4.view.ViewPager>
-
-    </RelativeLayout>
-
-
     <include
         layout="@layout/app_bar_navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <include layout="@layout/content_navigation" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:scrollbars="vertical"
+        android:overScrollMode="always"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_navigation"
         app:menu="@menu/activity_navigation_drawer" />
+
 
 </android.support.v4.widget.DrawerLayout>

@@ -1,18 +1,15 @@
 package com.example.yashladha.android_seller;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +19,6 @@ import com.example.yashladha.android_seller.navigation.AboutUsActivity;
 import com.example.yashladha.android_seller.navigation.FAQsActivity;
 import com.example.yashladha.android_seller.navigation.HelpActivity;
 import com.example.yashladha.android_seller.navigation.MyAccountActivity;
-import com.example.yashladha.android_seller.navigation.NavigationActivity;
 
 public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -57,12 +53,12 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
             tabLayout.getTabAt(i).setIcon(icons[i]);
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
+        mDrawerLayout.setVerticalScrollBarEnabled(true);
         setupDrawer();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
