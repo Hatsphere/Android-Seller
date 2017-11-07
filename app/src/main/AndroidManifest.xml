@@ -84,10 +84,6 @@
         <activity android:name=".RegisterActivity_2" />
         <activity android:name=".PlanChoicesActivity"
             android:label="Choose A Plan"/>
-        <activity
-            android:name=".navigation.NavigationActivity"
-            android:label="HatSphere"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TrialActivity" />
         <activity android:name=".PlanPaymentActivity"
             android:label="Payment"/>
