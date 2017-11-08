@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,9 +23,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -48,13 +59,15 @@ public class AddProductsActivity extends AppCompatActivity {
     SharedPreferences myPrefs;
     int noOfImages;
     String plan;
+    private RequestQueue rq;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_products);
         noOfImages = 0;
-        btDone = (Button)findViewById(R.id.btDone);
+        btDone = (Button) findViewById(R.id.btDone);
         ivAdd = (ImageView) findViewById(R.id.ivAdd);
         tvAddPhoto = (TextView) findViewById(R.id.tvAddPhoto);
         tvProductName = (TextView) findViewById(R.id.tvProductName);
@@ -69,6 +82,7 @@ public class AddProductsActivity extends AppCompatActivity {
         etCategory = (EditText) findViewById(R.id.etCategory);
         sv1 = (LinearLayout) findViewById(R.id.sv1);
         tbOnSale = (ToggleButton) findViewById(R.id.tbOnSale);
+        rq = Volley.newRequestQueue(AddProductsActivity.this);
 
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         plan = myPrefs.getString("Plan", "");
@@ -179,8 +193,47 @@ public class AddProductsActivity extends AppCompatActivity {
         btDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
-                startActivity(intent);
+                JSONObject obj = new JSONObject();
+                if (!productName.equals("") && !originalPrice.equals("") && !discount.equals("") && !proDes.equals("") && !category.equals("")) {
+                    try {
+
+                        obj.put("pName", productName);
+                        obj.put("pPrice", Integer.toString(Integer.parseInt(originalPrice) - Integer.parseInt(discount)));
+                        obj.put("pDescription", proDes);
+                        obj.put("pClass", category);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                            Request.Method.POST, "http://10.0.2.2:3000/user/login/", obj, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Toast.makeText(AddProductsActivity.this, response.get("flag").toString(), Toast.LENGTH_SHORT).show();
+
+                                if (response.get("response").toString().equals("200")) {
+
+                                    Toast.makeText(AddProductsActivity.this, "Your Product has been added",
+                                            Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(AddProductsActivity.this, response.get("Something is wrond").toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("error", error.toString());
+                        }
+                    });
+
+                    rq.add(jsonObjectRequest);
+
+                }
             }
         });
     }
@@ -239,6 +292,7 @@ public class AddProductsActivity extends AppCompatActivity {
         }
         return bitmap;
     }
+
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
