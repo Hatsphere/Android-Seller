@@ -1,3 +1,4 @@
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,9 @@
     android:paddingRight="10dp"
     android:paddingTop="10dp"
     tools:context="com.example.yashladha.android_seller.fragments.SalesFrag">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
@@ -85,9 +88,10 @@
         <ListView
             android:id="@+id/lvSalesList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            android:layout_height="wrap_content"
-            android:id="@+id/lvSalesList">
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true">
+
         </ListView>
     </LinearLayout>
+</ScrollView>
 </FrameLayout>
