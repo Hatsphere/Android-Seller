@@ -1,5 +1,8 @@
 package com.example.yashladha.android_seller.navigation;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yashladha.android_seller.HomePageActivity;
+import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.classes.MyAccountCustomExpandableListAdapter;
 import com.example.yashladha.android_seller.classes.MyAccountExpandableListDataPump;
@@ -41,6 +46,23 @@ public class MyAccountActivity extends AppCompatActivity {
         tvDeactivate = (TextView)findViewById(R.id.tvDeactivate);
         tvLogOut = (TextView)findViewById(R.id.tvLogOut);
 
+        tvLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                Intent i = new Intent(MyAccountActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
+        tvDeactivate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
         expandableListDetail = MyAccountExpandableListDataPump.getData();

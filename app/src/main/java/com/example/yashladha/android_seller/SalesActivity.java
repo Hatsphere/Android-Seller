@@ -1,11 +1,17 @@
 package com.example.yashladha.android_seller;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,36 +24,39 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class SalesActivity extends AppCompatActivity {
 
-    private Spinner mGenderSpinner;
-    private String mGender;
-    PieChart pieChart ;
-    ArrayList<Entry> entries ;
-    ArrayList<String> PieEntryLabels ;
-    PieDataSet pieDataSet ;
-    PieData pieData ;
-    TextView tvMonth,tvMostBought,tvMostProductName,tvAnalysis;
+    PieChart pieChart;
+    ArrayList<Entry> entries;
+    ArrayList<String> PieEntryLabels;
+    PieDataSet pieDataSet;
+    PieData pieData;
+    FloatingActionButton btDate;
+    TextView tvDate, tvMostBought, tvMostProductName, tvAnalysis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales);
         setTitle("Sales");
-        getSupportFragmentManager().beginTransaction().replace(R.id.container1,new SalesFrag()).commit();
-
-        mGenderSpinner = (Spinner) findViewById(R.id.spinner_month);
-
-        tvMostBought = (TextView)findViewById(R.id.tvMostBought);
-        tvMonth = (TextView)findViewById(R.id.tvMonth);
-        tvMostProductName = (TextView)findViewById(R.id.tvMostProductName);
-        tvAnalysis = (TextView)findViewById(R.id.tvAnalysis);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container1, new SalesFrag()).commit();
 
 
+        tvMostBought = (TextView) findViewById(R.id.tvMostBought);
+        tvDate = (TextView) findViewById(R.id.tvDate);
+        btDate = (FloatingActionButton) findViewById(R.id.btDate);
+        tvMostProductName = (TextView) findViewById(R.id.tvMostProductName);
+        tvAnalysis = (TextView) findViewById(R.id.tvAnalysis);
         pieChart = (PieChart) findViewById(R.id.piechart);
-        entries = new ArrayList<>();
-        PieEntryLabels = new ArrayList<String>();
+        btDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                createDialogWithoutDateField();
+            }
+        });
         AddValuesToPIEENTRY();
 
         AddValuesToPieEntryLabels();
@@ -68,53 +77,12 @@ public class SalesActivity extends AppCompatActivity {
                 R.array.array_month_options, android.R.layout.simple_spinner_item);
 
         // Specify dropdown layout style - simple list view with 1 item per line
-        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);}
 
         // Apply the adapter to the spinner
-        mGenderSpinner.setAdapter(genderSpinnerAdapter);
-
-        // Set the integer mSelected to the constant values
-        mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String selection = (String)adapterView.getItemAtPosition(i);
-                if(!TextUtils.isEmpty(selection)){
-                    if (selection.equals(getString(R.string.mon_jan))) {
-                        mGender = "January";
-                    }else if (selection.equals(getString(R.string.mon_feb))) {
-                        mGender = "February";
-                    }else if (selection.equals(getString(R.string.mon_mar))) {
-                        mGender = "March";
-                    }else if (selection.equals(getString(R.string.mon_apr))) {
-                        mGender = "April";
-                    }else if (selection.equals(getString(R.string.mon_may))) {
-                        mGender = "May";
-                    }else if (selection.equals(getString(R.string.mon_jun))) {
-                        mGender = "June";
-                    }else if (selection.equals(getString(R.string.mon_jul))) {
-                        mGender = "July";
-                    }else if (selection.equals(getString(R.string.mon_aug))) {
-                        mGender = "August";
-                    }else if (selection.equals(getString(R.string.mon_sep))) {
-                        mGender = "September";
-                    }else if (selection.equals(getString(R.string.mon_oct))) {
-                        mGender = "October";
-                    }else if (selection.equals(getString(R.string.mon_nov))) {
-                        mGender = "November";
-                    }else if (selection.equals(getString(R.string.mon_dec))) {
-                        mGender = "December";
-                    }
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                mGender = "January";
-            }
-        });
-    }
 
 
-    public void AddValuesToPIEENTRY(){
+    public void AddValuesToPIEENTRY() {
 
         entries.add(new BarEntry(2f, 0));
         entries.add(new BarEntry(4f, 1));
@@ -125,7 +93,7 @@ public class SalesActivity extends AppCompatActivity {
 
     }
 
-    public void AddValuesToPieEntryLabels(){
+    public void AddValuesToPieEntryLabels() {
 
         PieEntryLabels.add("January");
         PieEntryLabels.add("February");
@@ -134,5 +102,29 @@ public class SalesActivity extends AppCompatActivity {
         PieEntryLabels.add("May");
         PieEntryLabels.add("June");
 
+    }
+    private DatePickerDialog createDialogWithoutDateField() {
+        DatePickerDialog dpd = new DatePickerDialog(this, null, 2014, 1, 24);
+        try {
+            java.lang.reflect.Field[] datePickerDialogFields = dpd.getClass().getDeclaredFields();
+            for (java.lang.reflect.Field datePickerDialogField : datePickerDialogFields) {
+                if (datePickerDialogField.getName().equals("mDatePicker")) {
+                    datePickerDialogField.setAccessible(true);
+                    DatePicker datePicker = (DatePicker) datePickerDialogField.get(dpd);
+                    java.lang.reflect.Field[] datePickerFields = datePickerDialogField.getType().getDeclaredFields();
+                    for (java.lang.reflect.Field datePickerField : datePickerFields) {
+                        Log.i("test", datePickerField.getName());
+                        if ("mDaySpinner".equals(datePickerField.getName())) {
+                            datePickerField.setAccessible(true);
+                            Object dayPicker = datePickerField.get(datePicker);
+                            ((View) dayPicker).setVisibility(View.GONE);
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex) {
+        }
+        return dpd;
     }
 }

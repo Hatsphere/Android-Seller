@@ -73,7 +73,8 @@
         android:textColor="#fff"
         android:text="Check Credentials"
         android:layout_gravity="center"
-        android:background="@drawable/button_rounded_red_gradient"
+        android:backgroundTint="#cc3939"
+        android:background="@drawable/button_rounded_corners_gradiant"
         android:padding="15dp"
         />
     <Button
