@@ -13,6 +13,7 @@
         android:layout_weight="0.8"
         android:src="@drawable/aboutus"
 
+
         />
     <TextView
         android:layout_width="match_parent"

@@ -83,6 +83,7 @@
         android:layout_margin="10dp"
         android:textColor="#fff"
         android:text="Proceed"
+        android:enabled="false"
         android:layout_gravity="center"
         android:background="@drawable/button_rounded_corners_gradiant"
         android:padding="15dp"

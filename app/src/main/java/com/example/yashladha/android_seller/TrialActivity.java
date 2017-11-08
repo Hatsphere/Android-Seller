@@ -51,7 +51,7 @@ public class TrialActivity extends AppCompatActivity {
                     JSONObject obj = new JSONObject();
                     try {
                         obj.put("name", name);
-                        obj.put("planChosen", -1);
+                        obj.put("planChosen", "-1");
                         obj.put("address", address);
                         obj.put("contactNo", contact);
 

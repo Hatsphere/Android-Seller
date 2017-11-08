@@ -45,15 +45,16 @@ public class AddProductsActivity extends AppCompatActivity {
     ToggleButton tbOnSale;
     String productName, proDes, originalPrice, discount, category;
     boolean sale, image;
-    SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
-    String plan = myPrefs.getString("Plan", "");
+    SharedPreferences myPrefs;
     int noOfImages;
+    String plan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_products);
         noOfImages = 0;
+        btDone = (Button)findViewById(R.id.btDone);
         ivAdd = (ImageView) findViewById(R.id.ivAdd);
         tvAddPhoto = (TextView) findViewById(R.id.tvAddPhoto);
         tvProductName = (TextView) findViewById(R.id.tvProductName);
@@ -69,7 +70,8 @@ public class AddProductsActivity extends AppCompatActivity {
         sv1 = (LinearLayout) findViewById(R.id.sv1);
         tbOnSale = (ToggleButton) findViewById(R.id.tbOnSale);
 
-
+        myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
+        plan = myPrefs.getString("Plan", "");
         etProductName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -177,7 +179,7 @@ public class AddProductsActivity extends AppCompatActivity {
         btDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddProductsActivity.this, DisplayFrag.class);
+                Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
