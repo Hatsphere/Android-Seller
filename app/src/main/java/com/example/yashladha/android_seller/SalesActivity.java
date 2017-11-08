@@ -21,8 +21,8 @@ import java.util.ArrayList;
 
 public class SalesActivity extends AppCompatActivity {
 
-    private Spinner mGenderSpinner;
-    private String mGender;
+    private Spinner mMonthSpinner;
+    String mMonth = getString(R.string.mon_jan);
     PieChart pieChart ;
     ArrayList<Entry> entries ;
     ArrayList<String> PieEntryLabels ;
@@ -37,7 +37,7 @@ public class SalesActivity extends AppCompatActivity {
         setTitle("Sales");
         getSupportFragmentManager().beginTransaction().replace(R.id.container1,new SalesFrag()).commit();
 
-        mGenderSpinner = (Spinner) findViewById(R.id.spinner_month);
+        mMonthSpinner = (Spinner) findViewById(R.id.spinner_month);
 
         tvMostBought = (TextView)findViewById(R.id.tvMostBought);
         tvMonth = (TextView)findViewById(R.id.tvMonth);
@@ -64,51 +64,51 @@ public class SalesActivity extends AppCompatActivity {
     private void setupSpinner() {
         // Create adapter for spinner. The list options are from the String array it will use
         // the spinner will use the default layout
-        ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter monthSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.array_month_options, android.R.layout.simple_spinner_item);
 
         // Specify dropdown layout style - simple list view with 1 item per line
-        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        monthSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
         // Apply the adapter to the spinner
-        mGenderSpinner.setAdapter(genderSpinnerAdapter);
+        mMonthSpinner.setAdapter(monthSpinnerAdapter);
 
         // Set the integer mSelected to the constant values
-        mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mMonthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selection = (String)adapterView.getItemAtPosition(i);
                 if(!TextUtils.isEmpty(selection)){
                     if (selection.equals(getString(R.string.mon_jan))) {
-                        mGender = "January";
+                        mMonth = "January";
                     }else if (selection.equals(getString(R.string.mon_feb))) {
-                        mGender = "February";
+                        mMonth = "February";
                     }else if (selection.equals(getString(R.string.mon_mar))) {
-                        mGender = "March";
+                        mMonth = "March";
                     }else if (selection.equals(getString(R.string.mon_apr))) {
-                        mGender = "April";
+                        mMonth = "April";
                     }else if (selection.equals(getString(R.string.mon_may))) {
-                        mGender = "May";
+                        mMonth = "May";
                     }else if (selection.equals(getString(R.string.mon_jun))) {
-                        mGender = "June";
+                        mMonth = "June";
                     }else if (selection.equals(getString(R.string.mon_jul))) {
-                        mGender = "July";
+                        mMonth = "July";
                     }else if (selection.equals(getString(R.string.mon_aug))) {
-                        mGender = "August";
+                        mMonth = "August";
                     }else if (selection.equals(getString(R.string.mon_sep))) {
-                        mGender = "September";
+                        mMonth = "September";
                     }else if (selection.equals(getString(R.string.mon_oct))) {
-                        mGender = "October";
+                        mMonth = "October";
                     }else if (selection.equals(getString(R.string.mon_nov))) {
-                        mGender = "November";
+                        mMonth = "November";
                     }else if (selection.equals(getString(R.string.mon_dec))) {
-                        mGender = "December";
+                        mMonth = "December";
                     }
                 }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                mGender = "January";
+                mMonth = "January";
             }
         });
     }
