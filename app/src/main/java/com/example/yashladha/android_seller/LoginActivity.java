@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String TITLE = "Login";
     TextView tvName, tvPassword, tvRegister, tvForgotPassword, tvNumChar, tvCharLeft;
     EditText etName, etPassword;
-    public static final String MyPREFERENCES = "MyPrefs";
+    public static final String MyPREFERENCES = "myprfs";
     Button btLogin, btFacebook, btGoogle, btProceed;
     private RequestQueue rq;
     ImageButton ibPassword;
