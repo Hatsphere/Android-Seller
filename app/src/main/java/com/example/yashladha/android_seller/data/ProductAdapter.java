@@ -2,6 +2,7 @@ package com.example.yashladha.android_seller.data;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -53,6 +54,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         mProductNewPrice.setText(currentProduct.getmProductNewPrice());
 
         TextView mProductOriginalPrice = (TextView)listItemView.findViewById(R.id.tvOriginalPrice);
+        mProductOriginalPrice.setPaintFlags(mProductOriginalPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         mProductOriginalPrice.setText(currentProduct.getmProductOriginalPrice());
 
         TextView mProductDiscount = (TextView)listItemView.findViewById(R.id.tvDiscount);

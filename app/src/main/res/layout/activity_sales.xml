@@ -33,17 +33,19 @@
                 android:layout_marginRight="40dp"/>
 
             <Spinner
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:spinnerMode="dropdown"
                 android:id="@+id/spinner_month">
+
             </Spinner>
+
         </LinearLayout>
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/piechart"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="150dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

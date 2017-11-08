@@ -24,7 +24,7 @@ public class DisplayActivity extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(DisplayActivity.this, AddProductsActivity.class);
+                Intent intent =new Intent(getApplicationContext(), AddProductsActivity.class);
             }
         });
 

@@ -40,7 +40,7 @@ public class DisplayFrag extends Fragment {
 
         final ArrayList<Product> products = new ArrayList<Product>();
 
-        products.add(new Product("Basket","","₹495","₹550","10%","Exchange",
+        products.add(new Product("Basket","Rating - 3.8/5","₹495","₹550","10%","Exchange",
                 "Yes",R.drawable.products_basket,R.drawable.remove));
         products.add(new Product("Box","","₹136","₹170","20%","Exchange",
                 "Yes",R.drawable.products_box,R.drawable.remove));
