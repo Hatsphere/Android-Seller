@@ -31,7 +31,7 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:id="@+id/tvMyName"
-            android:paddingLeft="140dp"
+            android:paddingLeft="143dp"
             android:layout_marginBottom="5dp"
             />
 
@@ -71,7 +71,7 @@
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
                 android:id="@+id/ivEdit"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:clickable="true"/>
 
         </LinearLayout>
@@ -120,7 +120,7 @@
             android:clickable="true"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/tvLogOut"/>
 
 

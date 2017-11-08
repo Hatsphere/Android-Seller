@@ -38,6 +38,8 @@
                 android:layout_height="30dp"
                 android:layout_weight="1.0"
                 android:spinnerMode="dropdown"
+                android:entries="@array/array_month_options"
+                android:prompt="@string/mon_jan"
                 android:id="@+id/spinner_month"/>
 
 
