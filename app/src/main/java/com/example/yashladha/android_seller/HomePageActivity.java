@@ -1,9 +1,12 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -23,7 +26,7 @@ import com.example.yashladha.android_seller.navigation.FAQsActivity;
 import com.example.yashladha.android_seller.navigation.HelpActivity;
 import com.example.yashladha.android_seller.navigation.MyAccountActivity;
 
-public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private int[] icons = {
             R.drawable.display_icon,
@@ -34,6 +37,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
     TabLayout tabLayout;
     ViewPager viewPager;
     private String mActivityTitle;
+    FloatingActionButton fabAdd;
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -51,7 +55,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
         tabLayout = (TabLayout) findViewById(R.id.tabs1);
         tabLayout.setupWithViewPager(viewPager);
-
+        fabAdd = (FloatingActionButton) findViewById(R.id.fabAddProduct);
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setIcon(icons[i]);
         }
@@ -72,6 +76,13 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomePageActivity.this, AddProductsActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void setupDrawer() {
@@ -136,8 +147,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings || mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
-        }
-        else if(id == R.drawable.ic_drawer){
+        } else if (id == R.drawable.ic_drawer) {
         }
         return super.onOptionsItemSelected(item);
     }
@@ -164,20 +174,24 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         } else if (id == R.id.itMyAccount) {
             Intent i = new Intent(HomePageActivity.this, MyAccountActivity.class);
             startActivity(i);
-        }else if (id == R.id.itFaq) {
+        } else if (id == R.id.itFaq) {
 
             Intent i = new Intent(HomePageActivity.this, FAQsActivity.class);
             startActivity(i);
-        }else if (id == R.id.itHelp) {
+        } else if (id == R.id.itHelp) {
 
             Intent i = new Intent(HomePageActivity.this, HelpActivity.class);
             startActivity(i);
-        }else if (id == R.id.itAboutUs) {
+        } else if (id == R.id.itAboutUs) {
 
             Intent i = new Intent(HomePageActivity.this, AboutUsActivity.class);
             startActivity(i);
-        }else if (id == R.id.itLogOut) {
+        } else if (id == R.id.itLogOut) {
 
+            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.commit();
             Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
             startActivity(i);
         }

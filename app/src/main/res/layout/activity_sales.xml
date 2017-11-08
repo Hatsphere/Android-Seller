@@ -1,43 +1,45 @@
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     tools:context="com.example.yashladha.android_seller.fragments.SalesFrag">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayout2"
-            android:layout_marginBottom="15dp">
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/tvMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginRight="40dp"
                 android:text="Select a month"
-                android:id="@+id/tvMonth"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginRight="40dp"/>
+                android:textStyle="bold" />
 
             <Spinner
+                android:id="@+id/spinner_month"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:spinnerMode="dropdown"
-                android:id="@+id/spinner_month">
-            </Spinner>
+                android:spinnerMode="dropdown"></Spinner>
         </LinearLayout>
 
         <com.github.mikephil.charting.charts.PieChart
@@ -46,46 +48,50 @@
             android:layout_height="200dp" />
 
         <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="10dp"
-            android:id="@+id/linearLayout3"
-            android:layout_marginBottom="15dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Most Bought Product:"
-                android:id="@+id/tvMostBought"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:layout_marginBottom="2dp"/>
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvMostBought"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Name of the product"
+                android:layout_marginBottom="2dp"
+                android:text="Most Bought Product:"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/tvMostProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="40dp"
+                android:text="Name of the product"
                 android:textColor="@android:color/holo_green_dark"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginRight="40dp"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tvAnalysis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="Analysis of the products :"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:id="@+id/tvAnalysis"
-            android:layout_marginBottom="5dp"/>
+            android:textStyle="bold" />
+
         <ListView
+            android:id="@+id/lvSalesList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lvSalesList">
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true">
 
         </ListView>
     </LinearLayout>
+</ScrollView>
 </FrameLayout>
