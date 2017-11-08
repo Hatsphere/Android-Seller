@@ -18,7 +18,8 @@
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="120dp"
+            android:scaleType="fitXY"
+            android:layout_height="100dp"
             android:src="@drawable/platinum1"
             android:id="@+id/ivProduct"
             />
@@ -39,21 +40,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Product Code"
-                    android:textStyle="bold"
+                    android:text="Product Name"
+                    android:id="@+id/tvProductName"
                     android:textSize="15dp"
-                    android:id="@+id/tvProductCode"
                     android:layout_marginBottom="5dp"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textStyle="bold"
                     />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Product Name"
-                android:id="@+id/tvProductName"
-                android:textSize="15dp"
-                android:textColor="@android:color/holo_green_dark"
+                android:text="Order ID - OD0321845679"
                 android:textStyle="bold"
+                android:id="@+id/tvProductCode"
+                android:textSize="10dp"
                 />
             </LinearLayout>
 
@@ -69,7 +70,7 @@
                     android:id="@+id/tvNumItemsSold"
                     android:layout_marginRight="2dp"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:textSize="13dp"
                     />
 
                 <TextView
@@ -99,7 +100,7 @@
                     android:layout_marginBottom="3dp"
                     android:layout_marginRight="5dp"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:textSize="13dp"
                     />
 
                 <TextView
