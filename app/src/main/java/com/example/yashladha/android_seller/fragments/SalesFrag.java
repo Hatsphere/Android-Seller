@@ -1,6 +1,5 @@
 package com.example.yashladha.android_seller.fragments;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,7 +22,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,24 +54,23 @@ public class SalesFrag extends Fragment {
         final ArrayList<SalesItem> salesItems = new ArrayList<SalesItem>();
 
         salesItems.add(new SalesItem("Baskets","0321323135","Number of items sold",
-                "3","Total Amount :","₹1485",R.drawable.products_basket));
-        salesItems.add(new SalesItem("Duck","0321323135","Number of items sold",
-                "2","Total Amount :","₹1485",R.drawable.products_basket));
-        salesItems.add(new SalesItem("Baskets","0321323135","Number of items sold",
-                "3","Total Amount :","₹1485",R.drawable.products_basket));
-        salesItems.add(new SalesItem("Baskets","0321323135","Number of items sold",
-                "3","Total Amount :","₹1485",R.drawable.products_basket));
-        salesItems.add(new SalesItem("Baskets","0321323135","Number of items sold",
-                "3","Total Amount :","₹1485",R.drawable.products_basket));
-        salesItems.add(new SalesItem("Baskets","0321323135","Number of items sold",
-                "3","Total Amount :","₹1485",R.drawable.products_basket));
+                "4","Total Amount :","₹1980",R.drawable.products_basket));
+        salesItems.add(new SalesItem("Duck","0145769825","Number of items sold",
+                "2","Total Amount :","₹700",R.drawable.orders_duck));
+        salesItems.add(new SalesItem("Vase","0321321452","Number of items sold",
+                "5","Total Amount :","₹3400",R.drawable.products_vase));
+        salesItems.add(new SalesItem("Storage Can","0321351489","Number of items sold",
+                "3","Total Amount :","₹1947",R.drawable.products_storage_can));
+        salesItems.add(new SalesItem("Handbags","0134621785","Number of items sold",
+                "4","Total Amount :","₹5200",R.drawable.order_handbags));
+        salesItems.add(new SalesItem("Chair","0321328456","Number of items sold",
+                "6","Total Amount :","₹9000",R.drawable.products_chair));
 
         SalesItemAdapter salesItemAdapter = new SalesItemAdapter(getActivity(),salesItems,R.color.home_page_fragments);
-        ListView listView = (ListView)rootview.findViewById(R.id.listView2);
+        ListView listView = (ListView)rootview.findViewById(R.id.lvSalesList);
         listView.setAdapter(salesItemAdapter);
         return rootview;
 
     }
-
 
 }

@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
     android:paddingTop="10dp"
     tools:context="com.example.yashladha.android_seller.fragments.DisplayFrag">
 
@@ -14,17 +14,19 @@
         android:layout_width="match_parent"
         android:layout_height="126dp"
         android:clickable="true"
+        android:weightSum="1"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/ivProduct"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/platinum1" />
+            android:layout_height="match_parent"
+            android:src="@drawable/platinum1"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
+            android:layout_width="270dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingLeft="10dp"
@@ -32,17 +34,17 @@
             android:paddingTop="10dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="100">
 
                 <TextView
                     android:id="@+id/tvProductName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="25dp"
                     android:text="Product Name"
+                    android:layout_weight="70"
                     android:textColor="@android:color/holo_green_dark"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -53,46 +55,52 @@
                     android:src="@drawable/delete"
                     android:background="@drawable/circle"
                     android:scaleType="fitXY"
-                    android:layout_marginLeft="55dp"/>
+                    android:layout_gravity="right"
+                    />
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tvDescription"
+                android:id="@+id/tvRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Description"
+                android:layout_marginBottom="3dp"
+                android:text="Rating"
                 android:textStyle="bold" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="5dp"
-            android:id="@+id/linearLayout3">
+            android:layout_marginBottom="2dp"
+            android:id="@+id/linearLayout3"
+            android:weightSum="100">
 
             <TextView
                 android:id="@+id/tvNewPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="New Price"
                 android:layout_marginRight="5dp"
                 android:textStyle="bold"
                 android:textSize="18dp"
+                android:layout_weight="30"
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Original Price"
                 android:id="@+id/tvOriginalPrice"
                 android:layout_marginRight="5dp"
+                android:layout_weight="35"
                 />
             <TextView
                     android:id="@+id/tvDiscount"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Disccount" />
+                    android:text="Disccount"
+                    android:layout_weight="35" />
 
             </LinearLayout>
 
@@ -100,13 +108,15 @@
                 android:id="@+id/tvExchange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exchange possibility : " />
+                android:text="Exchange possibility : "
+                android:textSize="12dp"/>
 
             <TextView
                 android:id="@+id/tvYesNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes/No" />
+                android:text="Yes/No"
+                android:textSize="12dp"/>
 
         </LinearLayout>
 

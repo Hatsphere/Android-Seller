@@ -42,9 +42,7 @@
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/piechart"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-
-            />
+            android:layout_height="200dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -88,8 +86,8 @@
             android:id="@+id/lvSalesList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:id="@+id/lvSalesList">
         </ListView>
     </LinearLayout>
-
 </FrameLayout>

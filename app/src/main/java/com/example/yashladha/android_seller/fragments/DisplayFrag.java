@@ -40,37 +40,27 @@ public class DisplayFrag extends Fragment {
 
         final ArrayList<Product> products = new ArrayList<Product>();
 
-        products.add(new Product("Basket","","₹495","₹550","10%","Exchange",
+        products.add(new Product("Basket","Rating - 4.2/5","₹495","₹550","10%","Exchange",
                 "Yes",R.drawable.products_basket,R.drawable.remove));
-        products.add(new Product("Box","","₹136","₹170","20%","Exchange",
+        products.add(new Product("Box","Rating - 3.8/5","₹136","₹170","20%","Exchange",
                 "Yes",R.drawable.products_box,R.drawable.remove));
-        products.add(new Product("Bulldozer","","₹255","₹300","15%","Exchange",
+        products.add(new Product("Bulldozer","Rating - 3.5/5","₹255","₹300","15%","Exchange",
                 "No",R.drawable.products_bulldozer,R.drawable.remove));
-        products.add(new Product("Chair","","₹1500","₹2000","25%","Exchange",
+        products.add(new Product("Chair","Rating - 4/5","₹1500","₹2000","25%","Exchange",
                 "Yes",R.drawable.products_chair,R.drawable.remove));
-        products.add(new Product("Hat","","₹475","₹500","5%","Exchange",
+        products.add(new Product("Hat","Rating - 3.9/5","₹475","₹500","5%","Exchange",
                 "No",R.drawable.products_hat,R.drawable.remove));
-        products.add(new Product("Storage Can","","₹648","₹720","10%","Exchange",
+        products.add(new Product("Storage Can","Rating - 4.1/5","₹649","₹720","10%","Exchange",
                 "Yes",R.drawable.products_storage_can,R.drawable.remove));
-        products.add(new Product("Vase","","₹680","₹800","15%","Exchange",
+        products.add(new Product("Vase","Rating - 4.4/5","₹680","₹800","15%","Exchange",
                 "Yes",R.drawable.products_vase,R.drawable.remove));
 
 
-        ProductAdapter productAdapter = new ProductAdapter(getActivity(),products,R.color.home_page_fragments);
-        ListView listView = (ListView)rootview.findViewById(R.id.display);
+        ProductAdapter productAdapter = new ProductAdapter(getActivity(),products,R.color.back5);
+        ListView listView = (ListView)rootview.findViewById(R.id.lvDisplayList);
         listView.setAdapter(productAdapter);
 
-
-        FloatingActionButton floatingActionButton = (FloatingActionButton)rootview.findViewById(R.id.fbAdd);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(getActivity(), AddProductsActivity.class);
-            }
-        });
         return rootview;
     }
-
-
 
 }

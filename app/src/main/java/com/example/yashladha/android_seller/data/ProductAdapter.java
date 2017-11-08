@@ -2,6 +2,7 @@ package com.example.yashladha.android_seller.data;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -46,12 +47,18 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         TextView mProductName = (TextView)listItemView.findViewById(R.id.tvProductName);
         mProductName.setText(currentProduct.getmProductName());
 
-        TextView mProductDescription = (TextView)listItemView.findViewById(R.id.tvDescription);
-        mProductDescription.setText(currentProduct.getmProductDescription());
+        TextView mProductRating= (TextView)listItemView.findViewById(R.id.tvRating);
+        mProductRating.setText(currentProduct.getmProductRating());
 
         TextView mProductNewPrice = (TextView)listItemView.findViewById(R.id.tvNewPrice);
         mProductNewPrice.setText(currentProduct.getmProductNewPrice());
 
+        TextView mProductOriginalPrice = (TextView)listItemView.findViewById(R.id.tvOriginalPrice);
+        mProductOriginalPrice.setPaintFlags(mProductOriginalPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        mProductOriginalPrice.setText(currentProduct.getmProductOriginalPrice());
+
+        TextView mProductDiscount = (TextView)listItemView.findViewById(R.id.tvDiscount);
+        mProductDiscount.setText(currentProduct.getmProductDiscount());
 
         TextView mExchange = (TextView)listItemView.findViewById(R.id.tvExchange);
         mExchange.setText(currentProduct.getmExchange());
