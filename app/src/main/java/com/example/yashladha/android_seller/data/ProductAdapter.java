@@ -47,8 +47,8 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         TextView mProductName = (TextView)listItemView.findViewById(R.id.tvProductName);
         mProductName.setText(currentProduct.getmProductName());
 
-        TextView mProductDescription = (TextView)listItemView.findViewById(R.id.tvDescription);
-        mProductDescription.setText(currentProduct.getmProductDescription());
+        TextView mProductRating= (TextView)listItemView.findViewById(R.id.tvRating);
+        mProductRating.setText(currentProduct.getmProductRating());
 
         TextView mProductNewPrice = (TextView)listItemView.findViewById(R.id.tvNewPrice);
         mProductNewPrice.setText(currentProduct.getmProductNewPrice());

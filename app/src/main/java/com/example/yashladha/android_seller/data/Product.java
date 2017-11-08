@@ -7,7 +7,7 @@ package com.example.yashladha.android_seller.data;
 public class Product {
 
     private String mProductName;
-    private String mProductDescription;
+    private String mProductRating;
     private String mProductNewPrice;
     private String mProductOriginalPrice;
     private String mProductDiscount;
@@ -17,13 +17,13 @@ public class Product {
     private int mProductRemoveImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    public Product(String mProductName, String mProductDescription, String mProductNewPrice,
+    public Product(String mProductName, String mProductRating, String mProductNewPrice,
                    String mProductOriginalPrice, String mProductDiscount, String mExchange,
                    String mYesNo, int mProductImageResourceId, int mProductRemoveImageResourceId)
     {
 
         this.mProductName = mProductName;
-        this.mProductDescription = mProductDescription;
+        this.mProductRating = mProductRating;
         this.mProductNewPrice = mProductNewPrice;
         this.mProductOriginalPrice = mProductOriginalPrice;
         this.mProductDiscount = mProductDiscount;
@@ -37,9 +37,7 @@ public class Product {
         return mProductName;
     }
 
-    public String getmProductDescription() {
-        return mProductDescription;
-    }
+    public String getmProductRating() {return mProductRating;}
 
     public String getmProductNewPrice() {
         return mProductNewPrice;
