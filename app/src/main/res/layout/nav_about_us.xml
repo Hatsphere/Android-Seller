@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
     >
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/tvAbout"
-        android:layout_weight="0.8"
-        android:src="@drawable/aboutus"
-
-
-        />
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.6"
-        android:padding="20dp"
-        android:textSize="18dp"
-        android:text="HatSphere is a online selling app for artists and craftsman.The purpose of our app is to save the dying traditional arts of India.
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/ivAbout"
+            android:src="@drawable/aboutus"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textSize="18dp"
+            android:id="@+id/tvAboutUs"
+            android:text="HatSphere is a online selling app for artists and craftsman.The purpose of our app is to save the dying traditional arts of India.
+
     The local artists and craftsman are hugely looted by the mediators and due to this they avoid to get on a larger scale and increase their business.
+
     So if the problem of the middleman annihilates, then it might open doors for artist and craftsman to showcase their talent in the form of art and craft and in turn get benifits they should get.
+
     We will try to tackle with this problem of middleman and give them a platform to engage with a greater audience and generate better revenue.
 
-"/>
+"           />
+    </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>

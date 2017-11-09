@@ -21,7 +21,7 @@
             android:id="@+id/ivMyPic"
             android:paddingTop="10dp"
             android:src="@drawable/logo"
-            android:layout_marginLeft="150dp"/>
+            android:layout_marginLeft="148dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:id="@+id/tvMyName"
-            android:paddingLeft="143dp"
+            android:paddingLeft="141dp"
             android:layout_marginBottom="5dp"
             />
 

@@ -170,6 +170,8 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         } else if (id == R.id.itBathLinen) {
 
         } else if (id == R.id.itKitchen) {
+            Intent intent = new Intent(HomePageActivity.this,DisplayActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.itMyAccount) {
             Intent i = new Intent(HomePageActivity.this, MyAccountActivity.class);

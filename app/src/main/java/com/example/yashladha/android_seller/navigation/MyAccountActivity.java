@@ -1,5 +1,6 @@
 package com.example.yashladha.android_seller.navigation;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,13 @@ public class MyAccountActivity extends AppCompatActivity {
         tvDeactivate = (TextView)findViewById(R.id.tvDeactivate);
         tvLogOut = (TextView)findViewById(R.id.tvLogOut);
 
+        ivEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyAccountActivity.this,MyAccountEditActivity.class);
+                startActivity(intent);
+            }
+        });
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
         expandableListDetail = MyAccountExpandableListDataPump.getData();
