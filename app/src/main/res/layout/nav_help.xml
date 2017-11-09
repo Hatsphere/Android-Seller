@@ -5,6 +5,7 @@
     android:paddingLeft="10dp"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
+    android:background="@android:color/white"
     >
 
 <LinearLayout
@@ -12,6 +13,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingLeft="10dp"
+    android:background="@android:color/white"
     android:paddingRight="10dp">
 
     <TextView
@@ -33,7 +35,7 @@
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:paddingBottom="5dp"
-        android:id="@+id/tvintro"
+        android:id="@+id/tvIntro"
 
         />
     <TextView
@@ -46,7 +48,7 @@ After installing the App, you will be able to:
 •	Add any new available item
 •	Can reach the customers in a wide range."
         android:paddingBottom="5dp"
-        android:id="@+id/tvintrocontent"
+        android:id="@+id/tvIntroContent"
         />
 
     <TextView
@@ -59,6 +61,7 @@ After installing the App, you will be able to:
         android:paddingBottom="5dp"
         android:id="@+id/tvLogin"
         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,8 +69,9 @@ After installing the App, you will be able to:
 •	Create an account by signing up to our app and start enjoying our services
 •	If you are already a user, simply login to the app using your login credentials and continue the services provided."
         android:paddingBottom="5dp"
-        android:id="@+id/tvlogincontent"
+        android:id="@+id/tvLoginContent"
         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,7 +80,7 @@ After installing the App, you will be able to:
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:paddingBottom="5dp"
-        android:id="@+id/tvchoice"
+        android:id="@+id/tvChoice"
         />
     <TextView
         android:layout_width="match_parent"
@@ -88,7 +92,7 @@ After installing the App, you will be able to:
  Details regarding these plans can be seen while choosing among the one.
 "
         android:paddingBottom="5dp"
-        android:id="@id/tvchoice"
+        android:id="@+id/tvChoiceContent"
         />
 
     <TextView
@@ -99,7 +103,7 @@ After installing the App, you will be able to:
         android:textColor="@android:color/black"
         android:textStyle="bold"
         android:paddingBottom="5dp"
-        android:id="@+id/heading"
+        android:id="@+id/tvTrial"
         />
 
     <TextView
@@ -115,7 +119,7 @@ HOMEPAGE
 3.	ORDERS: Here you can check the orders that have to be processed and delivered, also you decide whether to accept an order or not.
 "
         android:paddingBottom="5dp"
-        android:id="@+id/tvtrial"
+        android:id="@+id/tvTrialContent"
         />
 
 </LinearLayout>

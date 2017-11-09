@@ -2,7 +2,6 @@ package com.example.yashladha.android_seller;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -11,16 +10,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 //import android.widget.Toolbar;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
-import com.example.yashladha.android_seller.navigation.AboutUsActivity;
+import com.example.yashladha.android_seller.navigation.AboutUsFragment;
 import com.example.yashladha.android_seller.navigation.FAQsActivity;
-import com.example.yashladha.android_seller.navigation.HelpActivity;
+import com.example.yashladha.android_seller.navigation.HelpFragment;
 import com.example.yashladha.android_seller.navigation.MyAccountActivity;
 
 public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -169,13 +167,11 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
             Intent i = new Intent(HomePageActivity.this, FAQsActivity.class);
             startActivity(i);
         }else if (id == R.id.itHelp) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new HelpFragment()).commit();
 
-            Intent i = new Intent(HomePageActivity.this, HelpActivity.class);
-            startActivity(i);
         }else if (id == R.id.itAboutUs) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new AboutUsFragment()).commit();
 
-            Intent i = new Intent(HomePageActivity.this, AboutUsActivity.class);
-            startActivity(i);
         }else if (id == R.id.itLogOut) {
 
             Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
