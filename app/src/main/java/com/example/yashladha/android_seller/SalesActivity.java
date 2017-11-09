@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
 import com.example.yashladha.android_seller.fragments.SalesFrag;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarEntry;
@@ -23,8 +24,10 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class SalesActivity extends AppCompatActivity {
 
@@ -35,6 +38,7 @@ public class SalesActivity extends AppCompatActivity {
     PieData pieData;
     FloatingActionButton btDate;
     TextView tvDate, tvMostBought, tvMostProductName, tvAnalysis;
+    SimpleDateFormat formatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,24 @@ public class SalesActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                createDialogWithoutDateField();
+                CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment();
+                cdp.show(SalesActivity.this.getSupportFragmentManager(), "Material Calendar");
+                cdp.setOnDateSetListener(new CalendarDatePickerDialogFragment.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(CalendarDatePickerDialogFragment dialog, int year, int monthOfYear, int dayOfMonth) {
+                        try {
+                            formatter = new SimpleDateFormat("dd/MM/yyyy");
+                            String dateInString = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                            Date date = formatter.parse(dateInString);
+
+                            tvDate.setText(formatter.format(date).toString());
+
+
+                        } catch (Exception ex) {
+
+                        }
+                    }
+                });
             }
         });
         AddValuesToPIEENTRY();
@@ -103,28 +124,5 @@ public class SalesActivity extends AppCompatActivity {
         PieEntryLabels.add("June");
 
     }
-    private DatePickerDialog createDialogWithoutDateField() {
-        DatePickerDialog dpd = new DatePickerDialog(this, null, 2014, 1, 24);
-        try {
-            java.lang.reflect.Field[] datePickerDialogFields = dpd.getClass().getDeclaredFields();
-            for (java.lang.reflect.Field datePickerDialogField : datePickerDialogFields) {
-                if (datePickerDialogField.getName().equals("mDatePicker")) {
-                    datePickerDialogField.setAccessible(true);
-                    DatePicker datePicker = (DatePicker) datePickerDialogField.get(dpd);
-                    java.lang.reflect.Field[] datePickerFields = datePickerDialogField.getType().getDeclaredFields();
-                    for (java.lang.reflect.Field datePickerField : datePickerFields) {
-                        Log.i("test", datePickerField.getName());
-                        if ("mDaySpinner".equals(datePickerField.getName())) {
-                            datePickerField.setAccessible(true);
-                            Object dayPicker = datePickerField.get(datePicker);
-                            ((View) dayPicker).setVisibility(View.GONE);
-                        }
-                    }
-                }
-            }
-        }
-        catch (Exception ex) {
-        }
-        return dpd;
-    }
+
 }

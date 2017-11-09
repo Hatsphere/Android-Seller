@@ -1,6 +1,8 @@
 package com.example.yashladha.android_seller;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -8,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -32,6 +35,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.load.model.UriLoader;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
 
 import org.json.JSONException;
@@ -43,7 +47,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AddProductsActivity extends AppCompatActivity {
@@ -54,13 +60,14 @@ public class AddProductsActivity extends AppCompatActivity {
     Button btDone;
     LinearLayout sv1;
     ToggleButton tbOnSale;
-    String productName, proDes, originalPrice, discount, category;
+    String productName = "", proDes = "", originalPrice = "", discount = "", category = "";
     boolean sale, image;
     SharedPreferences myPrefs;
     int noOfImages;
     String plan;
     private RequestQueue rq;
-
+    private static final String IMAGE_DIRECTORY = "/hatsphere";
+    private int GALLERY = 1, CAMERA = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,8 +193,8 @@ public class AddProductsActivity extends AppCompatActivity {
         tvAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(photoCaptureIntent, 0);
+                showPictureDialog();
+
             }
         });
         btDone.setOnClickListener(new View.OnClickListener() {
@@ -238,7 +245,7 @@ public class AddProductsActivity extends AppCompatActivity {
         });
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0 && resultCode == RESULT_OK) {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
@@ -249,14 +256,18 @@ public class AddProductsActivity extends AppCompatActivity {
             // display the image from SD Card to ImageView Control
             String storeFilename = "photo_" + partFilename + ".jpg";
             Bitmap mBitmap = getImageFileFromSDCard(storeFilename);
-            if (noOfImages <= 2 && plan == "0" || noOfImages <= 3 && plan == "1" || noOfImages <= 5 && plan == "2") {
+            //if (noOfImages <= 2 && plan == "0" || noOfImages <= 3 && plan == "1" || noOfImages <= 5 && plan == "2") {
                 image = true;
                 ImageView image = new ImageView(AddProductsActivity.this);
                 Drawable d = new BitmapDrawable(getResources(), mBitmap);
                 image.setBackground(d);
                 sv1.addView(image);
-                getImageUri(this, mBitmap);
-            }
+                try {
+                    getImageUri(this, mBitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            //}
         }
     }
 
@@ -293,10 +304,113 @@ public class AddProductsActivity extends AppCompatActivity {
         return bitmap;
     }
 
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
+    public Uri getImageUri(Context inContext, Bitmap inImage) throws FileNotFoundException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        //Log.v("HTTPGet", "testurl.toString == " + Uri.parse().toString());
         return Uri.parse(path);
+    }
+*/
+    //
+
+    private void showPictureDialog() {
+        AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
+        pictureDialog.setTitle("Select Action");
+        String[] pictureDialogItems = {
+                "Select photo from gallery",
+                "Capture photo from camera"};
+        pictureDialog.setItems(pictureDialogItems,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                choosePhotoFromGallary();
+                                break;
+                            case 1:
+                                takePhotoFromCamera();
+                                break;
+                        }
+                    }
+                });
+        pictureDialog.show();
+    }
+
+    public void choosePhotoFromGallary() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        startActivityForResult(galleryIntent, GALLERY);
+    }
+
+    private void takePhotoFromCamera() {
+        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, CAMERA);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == this.RESULT_CANCELED) {
+            return;
+        }
+        if (requestCode == GALLERY) {
+            if (data != null) {
+                Uri contentURI = data.getData();
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
+                    String path = saveImage(bitmap);
+                    Toast.makeText(AddProductsActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+                    image = true;
+                    ImageView image = new ImageView(AddProductsActivity.this);
+                    image.setImageBitmap(bitmap);
+                    sv1.addView(image);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(AddProductsActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        } else if (requestCode == CAMERA) {
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            image = true;
+            ImageView image = new ImageView(AddProductsActivity.this);
+            image.setImageBitmap(thumbnail);
+            sv1.addView(image);
+            saveImage(thumbnail);
+            Toast.makeText(AddProductsActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public String saveImage(Bitmap myBitmap) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+        File wallpaperDirectory = new File(
+                Environment.getExternalStorageDirectory() + IMAGE_DIRECTORY);
+        // have the object build the directory structure, if needed.
+        if (!wallpaperDirectory.exists()) {
+            wallpaperDirectory.mkdirs();
+        }
+
+        try {
+            File f = new File(wallpaperDirectory, Calendar.getInstance()
+                    .getTimeInMillis() + ".jpg");
+            f.createNewFile();
+            FileOutputStream fo = new FileOutputStream(f);
+            fo.write(bytes.toByteArray());
+            MediaScannerConnection.scanFile(this,
+                    new String[]{f.getPath()},
+                    new String[]{"image/jpeg"}, null);
+            fo.close();
+            Log.d("TAG", "File Saved::--->" + f.getAbsolutePath());
+            
+            return f.getAbsolutePath();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        return "";
     }
 }
