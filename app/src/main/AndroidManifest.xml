@@ -93,13 +93,13 @@
             android:name=".PlanChosenActivity"
             android:label="HatSphere" />
         <activity
-            android:name=".navigation.MyAccountActivity"
+            android:name=".navigation.MyAccountFragment"
             android:label="My Account" />
         <activity
             android:name=".navigation.HelpActivity"
             android:label="Help" />
         <activity
-            android:name=".navigation.FAQsActivity"
+            android:name=".navigation.FAQsFragment"
             android:label="FAQs" />
         <activity
             android:name=".navigation.AboutUsActivity"

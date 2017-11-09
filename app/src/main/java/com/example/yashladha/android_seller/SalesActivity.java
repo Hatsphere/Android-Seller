@@ -116,7 +116,7 @@ public class SalesActivity extends AppCompatActivity {
 
     public void AddValuesToPIEENTRY(){
 
-        entries.add(new BarEntry(2f, 0));
+        entries.add(new BarEntry(2f,0));
         entries.add(new BarEntry(4f, 1));
         entries.add(new BarEntry(6f, 2));
         entries.add(new BarEntry(8f, 3));

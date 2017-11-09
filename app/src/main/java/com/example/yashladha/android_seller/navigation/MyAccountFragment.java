@@ -1,9 +1,13 @@
 package com.example.yashladha.android_seller.navigation;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -18,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MyAccountActivity extends AppCompatActivity {
+public class MyAccountFragment extends Fragment {
 
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
@@ -27,39 +31,38 @@ public class MyAccountActivity extends AppCompatActivity {
     TextView tvMyName,tvContact,tvEmail,tvDeactivate,tvLogOut;
     ImageView ivMyPic,ivEdit;
 
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.frag_nav_my_account);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.frag_nav_my_account, container, false);
 
-        ivMyPic = (ImageView)findViewById(R.id.ivMyPic);
-        ivEdit = (ImageView)findViewById(R.id.ivEdit);
+        ivMyPic = (ImageView)rootView.findViewById(R.id.ivMyPic);
+        ivEdit = (ImageView)rootView.findViewById(R.id.ivEdit);
 
-        tvMyName = (TextView)findViewById(R.id.tvMyName);
-        tvContact = (TextView)findViewById(R.id.tvContact);
-        tvEmail = (TextView)findViewById(R.id.tvEmail);
-        tvDeactivate = (TextView)findViewById(R.id.tvDeactivate);
-        tvLogOut = (TextView)findViewById(R.id.tvLogOut);
+        tvMyName = (TextView)rootView.findViewById(R.id.tvMyName);
+        tvContact = (TextView)rootView.findViewById(R.id.tvContact);
+        tvEmail = (TextView)rootView.findViewById(R.id.tvEmail);
+        tvDeactivate = (TextView)rootView.findViewById(R.id.tvDeactivate);
+        tvLogOut = (TextView)rootView.findViewById(R.id.tvLogOut);
 
         ivEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MyAccountActivity.this,MyAccountEditActivity.class);
+                Intent intent = new Intent(getActivity(),MyAccountEditActivity.class);
                 startActivity(intent);
             }
         });
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        expandableListView = (ExpandableListView) rootView.findViewById(R.id.expandableListView);
         expandableListDetail = MyAccountExpandableListDataPump.getData();
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new MyAccountCustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+        expandableListAdapter = new MyAccountCustomExpandableListAdapter(getActivity(), expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(getActivity(),
                         expandableListTitle.get(groupPosition) + " List Expanded.",
                         Toast.LENGTH_SHORT).show();
             }
@@ -69,7 +72,7 @@ public class MyAccountActivity extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(getActivity(),
                         expandableListTitle.get(groupPosition) + " List Collapsed.",
                         Toast.LENGTH_SHORT).show();
 
@@ -81,7 +84,7 @@ public class MyAccountActivity extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
                 Toast.makeText(
-                        getApplicationContext(),
+                        getActivity(),
                         expandableListTitle.get(groupPosition)
                                 + " -> "
                                 + expandableListDetail.get(
@@ -91,9 +94,15 @@ public class MyAccountActivity extends AppCompatActivity {
                 return false;
             }
         });
+        return rootView;
     }
 
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("My Account");
+    }
 
 }
 

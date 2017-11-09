@@ -20,11 +20,11 @@ public class DisplayActivity extends AppCompatActivity {
 
         SearchView searchView = (SearchView)findViewById(R.id.svProducts);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton)findViewById(R.id.fbAdd);
+        FloatingActionButton floatingActionButton = (FloatingActionButton)findViewById(R.id.fabAddProduct);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(getApplicationContext(), AddProductsActivity.class);
+                Intent intent =new Intent(DisplayActivity.this, AddProductsActivity.class);
             }
         });
 

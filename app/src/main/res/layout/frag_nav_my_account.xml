@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    tools:context="com.example.yashladha.android_seller.navigation.MyAccountActivity">
+    android:background="@android:color/white"
+    tools:context="com.example.yashladha.android_seller.navigation.MyAccountFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

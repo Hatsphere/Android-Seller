@@ -41,14 +41,13 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        /*if (position == 0) {
+        if (position == 0) {
             return "Products";
         } else if(position == 1){
-            return "Sales Analysis";
+            return "Sales";
         } else{
             return "Orders";
         }
-        */
-        return null;
+
     }
 }
