@@ -1,10 +1,15 @@
 package com.example.yashladha.android_seller;
 
+import android.*;
+import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,9 +17,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -36,6 +43,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.load.model.UriLoader;
+import com.example.yashladha.android_seller.classes.ConvertUriToFilePath;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
 
 import org.json.JSONException;
@@ -47,10 +55,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class AddProductsActivity extends AppCompatActivity {
 
@@ -59,14 +69,18 @@ public class AddProductsActivity extends AppCompatActivity {
     EditText etProductName, etProDes, etOriginalPrice, etDiscount, etCategory;
     Button btDone;
     LinearLayout sv1;
+    File wallpaperDirectory;
     ToggleButton tbOnSale;
     String productName = "", proDes = "", originalPrice = "", discount = "", category = "";
     boolean sale, image;
     SharedPreferences myPrefs;
     int noOfImages;
+    Uri uriContent;
     String plan;
     private RequestQueue rq;
-    private static final String IMAGE_DIRECTORY = "/hatsphere";
+    static SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
+    static Date now = new Date();
+    private static final String IMAGE_DIRECTORY = "/hatsphere" + formatter.format(now);
     private int GALLERY = 1, CAMERA = 2;
 
     @Override
@@ -377,11 +391,10 @@ public class AddProductsActivity extends AppCompatActivity {
         } else if (requestCode == CAMERA) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             image = true;
+            saveImage(thumbnail);
             ImageView image = new ImageView(AddProductsActivity.this);
             image.setImageBitmap(thumbnail);
             sv1.addView(image);
-            saveImage(thumbnail);
-            Toast.makeText(AddProductsActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -396,21 +409,48 @@ public class AddProductsActivity extends AppCompatActivity {
         }
 
         try {
-            File f = new File(wallpaperDirectory, Calendar.getInstance()
-                    .getTimeInMillis() + ".jpg");
-            f.createNewFile();
-            FileOutputStream fo = new FileOutputStream(f);
-            fo.write(bytes.toByteArray());
-            MediaScannerConnection.scanFile(this,
-                    new String[]{f.getPath()},
-                    new String[]{"image/jpeg"}, null);
-            fo.close();
-            Log.d("TAG", "File Saved::--->" + f.getAbsolutePath());
-            
-            return f.getAbsolutePath();
+            isStoragePermissionGranted();
+            wallpaperDirectory.createNewFile();
+            Log.d("TAG", "File Saved::--->" + wallpaperDirectory.getAbsolutePath());
+            //Log.d("TAG", image.toString());
+
+            return wallpaperDirectory.getAbsolutePath();
         } catch (IOException e1) {
             e1.printStackTrace();
         }
         return "";
+    }
+
+    public boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("Tag", "Permission is granted");
+                return true;
+            } else {
+
+                Log.v("Tag", "Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("Tag", "Permission is granted");
+            return true;
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Log.v("Tag", "Permission: " + permissions[0] + "was " + grantResults[0]);
+            //resume tasks needing this permission
+        }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 }
