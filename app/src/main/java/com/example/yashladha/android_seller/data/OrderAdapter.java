@@ -111,7 +111,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
             mProductImageResource.setVisibility(View.GONE);
         }
 
-        View textContainer = listItemView.findViewById(R.id.linearLayout2);
+        View textContainer = listItemView.findViewById(R.id.linearLayout1);
         int color = ContextCompat.getColor(getContext(),mColorResourceId);
         textContainer.setBackgroundColor(color);
 
