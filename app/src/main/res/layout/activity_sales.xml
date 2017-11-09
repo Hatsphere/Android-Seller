@@ -1,4 +1,3 @@
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,9 +7,9 @@
     android:paddingRight="10dp"
     android:paddingTop="10dp"
     tools:context="com.example.yashladha.android_seller.fragments.SalesFrag">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
+
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
@@ -18,34 +17,41 @@
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
-
         <LinearLayout
-            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvMonth"
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btDate"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="40dp"
-                android:text="Select a month"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_rounded_corners_gradiant"
+                android:backgroundTint="#ba1b1b"
+                android:clickable="true"
+                android:padding="15dp"
+                android:text="Pick a Date"
+                android:src="@drawable/add"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
 
-            <Spinner
-                android:id="@+id/spinner_month"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:spinnerMode="dropdown"></Spinner>
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pick A Date"
+                android:layout_gravity="center"/>
+
+
         </LinearLayout>
+
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/piechart"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -54,6 +60,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
+
 
             <TextView
                 android:id="@+id/tvMostBought"
@@ -76,6 +83,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+
         <TextView
             android:id="@+id/tvAnalysis"
             android:layout_width="wrap_content"
@@ -88,10 +96,10 @@
         <ListView
             android:id="@+id/lvSalesList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:nestedScrollingEnabled="true">
 
         </ListView>
     </LinearLayout>
-</ScrollView>
+
 </FrameLayout>

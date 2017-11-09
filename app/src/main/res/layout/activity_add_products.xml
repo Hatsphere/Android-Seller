@@ -11,20 +11,23 @@
 
     <LinearLayout
 
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:id="@+id/sv1">
+        android:orientation="vertical">
 
         <ScrollView
 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <LinearLayout
+                android:id="@+id/sv1"
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <ImageView
@@ -33,11 +36,7 @@
                     android:layout_height="60dp"
                     android:layout_marginLeft="30dp"
                     android:clickable="true"
-                    android:gravity="center"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:src="@drawable/add"
-                    android:textSize="20dp" />
+                    />
             </LinearLayout>
         </ScrollView>
 
@@ -197,8 +196,5 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/button_rounded_corners_gradiant"
             android:text="Done" />
-
-
     </LinearLayout>
-
 </ScrollView>
