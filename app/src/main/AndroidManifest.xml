@@ -7,6 +7,16 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -14,6 +24,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -92,15 +103,10 @@
         <activity
             android:name=".PlanChosenActivity"
             android:label="HatSphere" />
-        <activity
-            android:name=".navigation.MyAccountFragment"
-            android:label="My Account" />
+
         <activity
             android:name=".navigation.HelpActivity"
             android:label="Help" />
-        <activity
-            android:name=".navigation.FAQsFragment"
-            android:label="FAQs" />
         <activity
             android:name=".navigation.AboutUsActivity"
             android:label="About Us" />
@@ -108,8 +114,11 @@
             android:name=".AddProductsActivity"
             android:label="Add A Product" />
 
-        <service android:name=".MyFirebaseMessagingService">
-            <intent-filter>
+
+        <service
+            android:name=".MyFirebaseMessagingService">
+
+=            <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>

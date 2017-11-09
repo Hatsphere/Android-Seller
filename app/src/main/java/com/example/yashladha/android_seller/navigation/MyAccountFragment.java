@@ -1,8 +1,14 @@
 package com.example.yashladha.android_seller.navigation;
 
 import android.content.Intent;
+import android.view.View;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yashladha.android_seller.HomePageActivity;
+import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.classes.MyAccountCustomExpandableListAdapter;
 import com.example.yashladha.android_seller.classes.MyAccountExpandableListDataPump;
@@ -34,7 +42,7 @@ public class MyAccountFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.frag_nav_my_account, container, false);
+         View rootView = inflater.inflate(R.layout.frag_nav_my_account, container, false);
 
         ivMyPic = (ImageView)rootView.findViewById(R.id.ivMyPic);
         ivEdit = (ImageView)rootView.findViewById(R.id.ivEdit);
@@ -50,6 +58,24 @@ public class MyAccountFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),MyAccountEditActivity.class);
                 startActivity(intent);
+            }
+        });
+
+      tvLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                Intent i = new Intent(getActivity(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
+        tvDeactivate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
 

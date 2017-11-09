@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,22 +7,23 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp"
     tools:context="com.example.yashladha.android_seller.fragments.SalesFrag">
-  <LinearLayout
+
+
+    <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
-
         <LinearLayout
-            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginBottom="10dp"
             android:paddingRight="5dp"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1.0"
@@ -32,7 +34,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <Spinner
+           <Spinner
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1.0"
@@ -41,8 +43,8 @@
                 android:prompt="@string/mon_jan"
                 android:id="@+id/spinner_month"/>
 
-
         </LinearLayout>
+
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/piechart"
@@ -56,6 +58,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
+
 
             <TextView
                 android:id="@+id/tvMostBought"
@@ -78,6 +81,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+
         <TextView
             android:id="@+id/tvAnalysis"
             android:layout_width="wrap_content"
@@ -91,8 +95,8 @@
             android:id="@+id/lvSalesList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:nestedScrollingEnabled="true">
+            />
 
-        </ListView>
     </LinearLayout>
+
 </RelativeLayout>
