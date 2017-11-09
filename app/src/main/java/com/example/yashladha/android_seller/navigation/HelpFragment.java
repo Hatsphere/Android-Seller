@@ -17,7 +17,7 @@ import org.w3c.dom.Text;
 
 public class HelpFragment extends android.support.v4.app.Fragment {
 
-    TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9;
+    TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9,tv10,tv11;
 
     @Override
     public Lifecycle getLifecycle() {
@@ -37,6 +37,8 @@ public class HelpFragment extends android.support.v4.app.Fragment {
         tv7 = (TextView) rootView.findViewById(R.id.tvChoiceContent);
         tv8 = (TextView) rootView.findViewById(R.id.tvTrial);
         tv9 = (TextView) rootView.findViewById(R.id.tvTrialContent);
+        tv10 = (TextView) rootView.findViewById(R.id.tvHomepage);
+        tv11 = (TextView) rootView.findViewById(R.id.tvHomepageContent);
         return rootView;
     }
 
