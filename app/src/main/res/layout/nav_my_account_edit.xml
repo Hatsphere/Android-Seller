@@ -11,56 +11,51 @@
 
     <LinearLayout
 
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/sv1">
 
-        <ScrollView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <LinearLayout
-                android:id="@+id/sv1"
+         <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/ivAdd"
+                    android:id="@+id/ivEditPic"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginLeft="30dp"
                     android:clickable="true"
-                    />
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/add"
+                    android:textSize="20dp" />
             </LinearLayout>
-        </ScrollView>
 
         <TextView
-            android:id="@+id/tvAddPhoto"
+            android:id="@+id/tvEditPic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="Add a photo"
+            android:text="Edit your pic"
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/tvProductName"
+            android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:padding="5dp"
-            android:text="Product Name"
+            android:text="Name"
             android:textColor="@android:color/black"
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/etProductName"
+            android:id="@+id/etUsername"
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,123 +63,54 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
             android:digits="@string/alphabets"
-            android:hint="Enter the Product Name"
+            android:hint="Edit your name"
             android:maxLength="100"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 
         <TextView
-            android:id="@+id/tvProDes"
+            android:id="@+id/tvContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:padding="5dp"
-            android:text="Product Description"
+            android:text="Contact Number"
             android:textColor="@android:color/black"
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/etProDes"
+            android:id="@+id/etContact"
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
-            android:hint="Write a small description of the product"
+            android:hint="Edit your contact details"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 
         <TextView
-            android:id="@+id/tvOriginalPrice"
+            android:id="@+id/tvEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:padding="5dp"
-            android:text="Original Price"
+            android:text="Email Address"
             android:textColor="@android:color/black"
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/etOriginalPrice"
+            android:id="@+id/etEmail"
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
-            android:hint="Enter your original price"
-            android:padding="10dp"
-            android:textColorHint="#887f7f" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Do you want your product on Sale"
-                android:textSize="15dp" />
-
-            <ToggleButton
-                android:id="@+id/tbOnSale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="On Sale"
-                android:textOff="No"
-                android:textOn="Yes" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvDiscount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:text="Discount"
-            android:textColor="@android:color/black"
-            android:textSize="15dp" />
-
-        <EditText
-            android:id="@+id/etDiscount"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_border"
-            android:hint="Enter the discount"
-            android:padding="10dp"
-            android:textColorHint="#887f7f" />
-
-        <TextView
-            android:id="@+id/tvCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:text="Category"
-            android:textColor="@android:color/black"
-            android:textSize="15dp" />
-
-        <EditText
-            android:id="@+id/etCategory"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_border"
-            android:hint="Category of the product"
+            android:hint="Edit you email address"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 
@@ -196,5 +122,8 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/button_rounded_corners_gradiant"
             android:text="Done" />
+
+
     </LinearLayout>
+
 </ScrollView>

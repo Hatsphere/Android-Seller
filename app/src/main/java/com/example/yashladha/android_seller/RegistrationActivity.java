@@ -121,83 +121,86 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String tempEmail = email;
                 boolean ans = validateUserName() && validatePassword() && ans2;
-                if (ans) {
-                    final JSONObject obj = new JSONObject();
-                    try {
-                        obj.put("email", email);
-                        obj.put("password", password);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                            Request.Method.POST, "http://10.0.2.2:3000/user/signUp/", obj, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                if (response.get("response").toString().equals("200")) {
-                                    UID_i = response.getString("uid");
-                                    obj.put("uid", response.get("uid"));
-                                    JsonObjectRequest dataPushRequest = new JsonObjectRequest(
-                                            Request.Method.POST,
-                                            "http://10.0.2.2:3000/user/push/seller",
-                                            obj,
-                                            new Response.Listener<JSONObject>() {
-                                                @Override
-                                                public void onResponse(JSONObject response) {
-                                                    try {
-                                                        if (response.get("response").toString().equals("200")) {
-                                                            Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
-                                                            SavePreference();
-                                                            btLogin.setEnabled(false);
-                                                            Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
-                                                            startIntent();
+                if (password.length() < 6) {
+                    etPassword.setError("Password length should be greater then 6 characters");
+                } else {
+                    if (ans) {
+                        final JSONObject obj = new JSONObject();
+                        try {
+                            obj.put("email", email);
+                            obj.put("password", password);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                                Request.Method.POST, "http://10.0.2.2:3000/user/signUp/", obj, new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    if (response.get("response").toString().equals("200")) {
+                                        UID_i = response.getString("uid");
+                                        obj.put("uid", response.get("uid"));
+                                        JsonObjectRequest dataPushRequest = new JsonObjectRequest(
+                                                Request.Method.POST,
+                                                "http://10.0.2.2:3000/user/push/seller",
+                                                obj,
+                                                new Response.Listener<JSONObject>() {
+                                                    @Override
+                                                    public void onResponse(JSONObject response) {
+                                                        try {
+                                                            if (response.get("response").toString().equals("200")) {
+                                                                Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                                                                SavePreference();
+                                                                btLogin.setEnabled(false);
+                                                                Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
+                                                                startIntent();
+                                                            }
+                                                        } catch (JSONException e) {
+                                                            e.printStackTrace();
                                                         }
-                                                    } catch (JSONException e) {
-                                                        e.printStackTrace();
+                                                    }
+                                                },
+                                                new Response.ErrorListener() {
+                                                    @Override
+                                                    public void onErrorResponse(VolleyError error) {
+                                                        Log.e("onErrorResponse", error.getMessage());
                                                     }
                                                 }
-                                            },
-                                            new Response.ErrorListener() {
-                                                @Override
-                                                public void onErrorResponse(VolleyError error) {
-                                                    Log.e("onErrorResponse", error.getMessage());
+                                        );
+                                        rq.add(dataPushRequest);
+                                    } else {
+                                        Log.d("500 res", "Response catches " + tempEmail);
+                                        HelperDef.getUID(tempEmail, RegistrationActivity.this, new EmailHelper() {
+                                            @Override
+                                            public void getUID(JSONObject res, Context context) {
+                                                try {
+                                                    Log.d("Response", res.toString());
+                                                    UID_i = res.getString("uid");
+                                                    Log.d("UID", UID_i);
+                                                    SavePreference();
+                                                    startIntent();
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
                                                 }
                                             }
-                                    );
-                                    rq.add(dataPushRequest);
-                                } else {
-                                    Log.d("500 res", "Response catches " + tempEmail);
-                                    HelperDef.getUID(tempEmail, RegistrationActivity.this, new EmailHelper() {
-                                        @Override
-                                        public void getUID(JSONObject res, Context context) {
-                                            try {
-                                                Log.d("Response", res.toString());
-                                                UID_i = res.getString("uid");
-                                                Log.d("UID", UID_i);
-                                                SavePreference();
-                                                startIntent();
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    });
+                                        });
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("error", error.toString());
-                            Toast.makeText(RegistrationActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("error", error.toString());
+                                Toast.makeText(RegistrationActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
-                    rq.add(jsonObjectRequest);
-                    etPassword.setText("");
-                    etEmail.setText("");
-
+                        rq.add(jsonObjectRequest);
+                        etPassword.setText("");
+                        etEmail.setText("");
+                    }
                 }
             }
         });

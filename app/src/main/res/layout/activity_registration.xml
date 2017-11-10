@@ -40,9 +40,12 @@
             android:layout_marginLeft="5dp"
             android:id="@+id/btCheckEmail"
             android:paddingLeft="3dp"
+            android:textColor="#fff"
+            android:textAllCaps="false"
             android:paddingRight="5dp"
-            android:background="@color/back"
-            android:text="Check Email"/>
+            android:backgroundTint="#2867a5"
+            android:background="@drawable/button_rounded_corners_gradiant"
+            android:text="Check"/>
     </LinearLayout>
 
     <TextView
@@ -86,15 +89,19 @@
 
     <Button
         android:id ="@+id/btLogin"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
         android:layout_margin="20dp"
         android:textColor="#fff"
         android:enabled="false"
         android:text="Register"
         android:layout_gravity="center"
+        android:backgroundTint="#0e8922"
         android:background="@drawable/button_rounded_corners_gradiant"
-        android:padding="15dp"
+
         />
     <TextView
         android:layout_width="wrap_content"

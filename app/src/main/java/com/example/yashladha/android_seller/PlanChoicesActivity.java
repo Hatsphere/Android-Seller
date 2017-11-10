@@ -48,7 +48,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 JSONObject obj = new JSONObject();
                 try {
                     obj.put("name", name);
-                    obj.put("planChosen", 2);
+                    obj.put("planChosen", "2");
                     obj.put("address", address);
                     obj.put("contactNo", contact);
 
@@ -90,7 +90,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
 
                 try {
                     obj.put("name", name);
-                    obj.put("planChosen", 0);
+                    obj.put("planChosen", "0");
                     obj.put("address", address);
                     obj.put("contactNo", contact);
 
@@ -133,7 +133,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
 
                 try {
                     obj.put("name", name);
-                    obj.put("planChosen", 1);
+                    obj.put("planChosen", "1");
                     obj.put("address", address);
                     obj.put("contactNo", contact);
 

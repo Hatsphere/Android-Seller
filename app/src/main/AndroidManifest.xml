@@ -7,6 +7,16 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -14,6 +24,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -82,38 +93,33 @@
                 android:value=".HomePageActivity" />
         </activity>
         <activity android:name=".RegisterActivity_2" />
-        <activity android:name=".PlanChoicesActivity"
-            android:label="Choose A Plan"/>
-        <activity android:name=".TrialActivity" />
-        <activity android:name=".PlanPaymentActivity"
-            android:label="Payment"/>
-        <activity android:name=".PlanChosenActivity"
-            android:label="HatSphere"/>
         <activity
-            android:name=".navigation.MyAccountActivity"
-            android:label="My Account" />
-
-        <activity android:name=".navigation.HelpFragment"
-            android:label="Help"/>
-        <activity android:name=".navigation.FAQsActivity"
-            android:label="FAQs"/>
-        <activity android:name=".navigation.AboutUsFragment"
-            android:label="About Us"/>
+            android:name=".PlanChoicesActivity"
+            android:label="Choose A Plan" />
+        <activity android:name=".TrialActivity" />
         <activity android:name=".AddProductsActivity"
             android:label="Add A Product"></activity>
 
+            android:name=".PlanPaymentActivity"
+            android:label="Payment" />
+        <activity
+            android:name=".PlanChosenActivity"
+            android:label="HatSphere" />
+
         <service
             android:name=".MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+
+=            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".MyFirebaseInstanceIDService">
+        <service android:name=".MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".navigation.MyAccountEditActivity"></activity>
     </application>
 
 </manifest>
