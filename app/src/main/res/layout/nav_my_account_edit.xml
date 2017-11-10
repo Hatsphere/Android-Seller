@@ -7,39 +7,34 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="10dp"
-    tools:context="com.example.yashladha.android_seller.AddProductsActivity">
+    tools:context="com.example.yashladha.android_seller.navigation.MyAccountEditActivity">
 
     <LinearLayout
 
+        android:id="@+id/sv1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:id="@+id/sv1">
+        android:orientation="vertical">
 
-         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/ivEditPic"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="30dp"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:src="@drawable/add"
-                    android:textSize="20dp" />
-            </LinearLayout>
+        <ImageView
+            android:id="@+id/ivEditPic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/add" />
 
         <TextView
             android:id="@+id/tvEditPic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_horizontal"
             android:text="Edit your pic"
             android:textSize="18dp" />
 
