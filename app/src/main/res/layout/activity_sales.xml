@@ -28,14 +28,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/button_rounded_corners_gradiant"
                 android:backgroundTint="#ba1b1b"
                 android:clickable="true"
+                android:focusable="true"
                 android:padding="15dp"
-                android:text="Pick a Date"
-                android:src="@drawable/add"
-                android:textAllCaps="false"
-                android:textColor="#fff" />
+                android:src="@drawable/add" />
 
             <TextView
                 android:id="@+id/tvDate"
