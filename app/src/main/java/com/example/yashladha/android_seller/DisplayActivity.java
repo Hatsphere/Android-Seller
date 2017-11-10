@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
@@ -20,13 +21,6 @@ public class DisplayActivity extends AppCompatActivity {
 
         SearchView searchView = (SearchView)findViewById(R.id.svProducts);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton)findViewById(R.id.fabAddProduct);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(DisplayActivity.this, AddProductsActivity.class);
-            }
-        });
 
     }
 

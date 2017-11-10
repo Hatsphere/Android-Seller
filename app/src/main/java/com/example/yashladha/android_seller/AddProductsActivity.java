@@ -1,10 +1,8 @@
 package com.example.yashladha.android_seller;
 
-import android.*;
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Notification;
-import android.content.ContentResolver;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,14 +10,11 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +26,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -42,44 +36,46 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.load.model.UriLoader;
-import com.example.yashladha.android_seller.classes.ConvertUriToFilePath;
-import com.example.yashladha.android_seller.fragments.DisplayFrag;
+import com.example.yashladha.android_seller.classes.FileUriHelper;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.builder.Builders;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class AddProductsActivity extends AppCompatActivity {
 
-    ImageView ivAdd;
-    TextView tvAddPhoto, tvProductName, tvProDes, tvOriginalPrice, tvDiscount, tvCategory;
-    EditText etProductName, etProDes, etOriginalPrice, etDiscount, etCategory;
-    Button btDone;
-    LinearLayout sv1;
-    File wallpaperDirectory;
-    ToggleButton tbOnSale;
-    String productName = "", proDes = "", originalPrice = "", discount = "", category = "";
-    boolean sale, image;
-    SharedPreferences myPrefs;
-    int noOfImages;
-    Uri uriContent;
-    String plan;
+    private ImageView ivAdd;
+    private TextView tvAddPhoto, tvProductName, tvProDes, tvOriginalPrice, tvDiscount, tvCategory;
+    private EditText etProductName, etProDes, etOriginalPrice, etDiscount, etCategory;
+    private Button btDone;
+    private LinearLayout sv1;
+    private File wallpaperDirectory;
+    private ToggleButton tbOnSale;
+    private String productName = "", proDes = "", originalPrice = "", discount = "", category = "";
+    private boolean sale, image;
+    private SharedPreferences myPrefs;
+    private int noOfImages;
+    private Uri uriContent;
+    private String plan;
+    private String UID;
     private RequestQueue rq;
-    static SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
-    static Date now = new Date();
+    private Context context;
+    private ArrayList<String> dataUri;
+    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
+    private static Date now = new Date();
     private static final String IMAGE_DIRECTORY = "/hatsphere" + formatter.format(now);
     private int GALLERY = 1, CAMERA = 2;
 
@@ -88,24 +84,27 @@ public class AddProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_products);
         noOfImages = 0;
-        btDone = (Button) findViewById(R.id.btDone);
-        ivAdd = (ImageView) findViewById(R.id.ivAdd);
-        tvAddPhoto = (TextView) findViewById(R.id.tvAddPhoto);
-        tvProductName = (TextView) findViewById(R.id.tvProductName);
-        tvProDes = (TextView) findViewById(R.id.tvProDes);
-        tvOriginalPrice = (TextView) findViewById(R.id.tvOriginalPrice);
-        tvDiscount = (TextView) findViewById(R.id.tvDiscount);
-        tvCategory = (TextView) findViewById(R.id.tvCategory);
-        etProductName = (EditText) findViewById(R.id.etProductName);
-        etProDes = (EditText) findViewById(R.id.etProDes);
-        etOriginalPrice = (EditText) findViewById(R.id.etOriginalPrice);
-        etDiscount = (EditText) findViewById(R.id.etDiscount);
-        etCategory = (EditText) findViewById(R.id.etCategory);
-        sv1 = (LinearLayout) findViewById(R.id.sv1);
-        tbOnSale = (ToggleButton) findViewById(R.id.tbOnSale);
+        dataUri = new ArrayList<>();
+        context = this.getBaseContext();
+        btDone = findViewById(R.id.btDone);
+        ivAdd = findViewById(R.id.ivAdd);
+        tvAddPhoto = findViewById(R.id.tvAddPhoto);
+        tvProductName = findViewById(R.id.tvProductName);
+        tvProDes = findViewById(R.id.tvProDes);
+        tvOriginalPrice = findViewById(R.id.tvOriginalPrice);
+        tvDiscount = findViewById(R.id.tvDiscount);
+        tvCategory = findViewById(R.id.tvCategory);
+        etProductName = findViewById(R.id.etProductName);
+        etProDes = findViewById(R.id.etProDes);
+        etOriginalPrice = findViewById(R.id.etOriginalPrice);
+        etDiscount = findViewById(R.id.etDiscount);
+        etCategory = findViewById(R.id.etCategory);
+        sv1 = findViewById(R.id.sv1);
+        tbOnSale = findViewById(R.id.tbOnSale);
         rq = Volley.newRequestQueue(AddProductsActivity.this);
 
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
+        UID = myPrefs.getString("UID", "");
         plan = myPrefs.getString("Plan", "");
         etProductName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -191,11 +190,7 @@ public class AddProductsActivity extends AppCompatActivity {
         tbOnSale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (tbOnSale.getText().toString() == "Yes") {
-                    sale = true;
-                } else {
-                    sale = false;
-                }
+                sale = Objects.equals(tbOnSale.getText().toString(), "Yes");
             }
         });
         ivAdd.setOnClickListener(new View.OnClickListener() {
@@ -217,40 +212,54 @@ public class AddProductsActivity extends AppCompatActivity {
                 JSONObject obj = new JSONObject();
                 if (!productName.equals("") && !originalPrice.equals("") && !discount.equals("") && !proDes.equals("") && !category.equals("")) {
                     try {
-
                         obj.put("pName", productName);
                         obj.put("pPrice", Integer.toString(Integer.parseInt(originalPrice) - Integer.parseInt(discount)));
                         obj.put("pDescription", proDes);
                         obj.put("pClass", category);
+                        obj.put("pSale", sale);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                            Request.Method.POST, "http://10.0.2.2:3000/user/login/", obj, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                Toast.makeText(AddProductsActivity.this, response.get("flag").toString(), Toast.LENGTH_SHORT).show();
-
-                                if (response.get("response").toString().equals("200")) {
-
-                                    Toast.makeText(AddProductsActivity.this, "Your Product has been added",
-                                            Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(AddProductsActivity.this, response.get("Something is wrond").toString(), Toast.LENGTH_SHORT).show();
+                            Request.Method.POST,
+                            "http://10.0.2.2:3000/product/send/" + UID,
+                            obj,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try {
+                                        if (response.get("response").toString().equals("200")) {
+                                            Toast.makeText(AddProductsActivity.this, "Your Product has been added",
+                                                    Toast.LENGTH_LONG).show();
+                                            Builders.Any.B builder =  Ion.with(context)
+                                                    .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID);
+                                            for (String item : dataUri) {
+                                                builder.setMultipartFile(UID, new File(item));
+                                            }
+                                            builder.setBodyParameter("pName", productName);
+                                            builder.asJsonObject()
+                                                    .setCallback(new FutureCallback<JsonObject>() {
+                                                        @Override
+                                                        public void onCompleted(Exception e, JsonObject result) {
+                                                            Log.d("onCompleted: ", result.toString());
+                                                        }
+                                                    });
+                                            Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(AddProductsActivity.this, response.get("Something is wrong").toString(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("error", error.toString());
-                        }
-                    });
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.e("error", error.toString());
+                                }
+                            });
 
                     rq.add(jsonObjectRequest);
 
@@ -258,75 +267,6 @@ public class AddProductsActivity extends AppCompatActivity {
             }
         });
     }
-
-    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0 && resultCode == RESULT_OK) {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-
-            String partFilename = currentDateFormat();
-            storeCameraPhotoInSDCard(bitmap, partFilename);
-
-            // display the image from SD Card to ImageView Control
-            String storeFilename = "photo_" + partFilename + ".jpg";
-            Bitmap mBitmap = getImageFileFromSDCard(storeFilename);
-            //if (noOfImages <= 2 && plan == "0" || noOfImages <= 3 && plan == "1" || noOfImages <= 5 && plan == "2") {
-                image = true;
-                ImageView image = new ImageView(AddProductsActivity.this);
-                Drawable d = new BitmapDrawable(getResources(), mBitmap);
-                image.setBackground(d);
-                sv1.addView(image);
-                try {
-                    getImageUri(this, mBitmap);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            //}
-        }
-    }
-
-
-    private String currentDateFormat() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH_mm_ss");
-        String currentTimeStamp = dateFormat.format(new Date());
-        return currentTimeStamp;
-    }
-
-    private void storeCameraPhotoInSDCard(Bitmap bitmap, String currentDate) {
-        File outputFile = new File(Environment.getExternalStorageDirectory(), "photo_" + currentDate + ".jpg");
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private Bitmap getImageFileFromSDCard(String filename) {
-        Bitmap bitmap = null;
-        File imageFile = new File(Environment.getExternalStorageDirectory() + filename);
-        try {
-            FileInputStream fis = new FileInputStream(imageFile);
-            bitmap = BitmapFactory.decodeStream(fis);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return bitmap;
-    }
-
-    public Uri getImageUri(Context inContext, Bitmap inImage) throws FileNotFoundException {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        //Log.v("HTTPGet", "testurl.toString == " + Uri.parse().toString());
-        return Uri.parse(path);
-    }
-*/
-    //
 
     private void showPictureDialog() {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
@@ -340,7 +280,7 @@ public class AddProductsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                choosePhotoFromGallary();
+                                choosePhotoFromGallery();
                                 break;
                             case 1:
                                 takePhotoFromCamera();
@@ -351,11 +291,12 @@ public class AddProductsActivity extends AppCompatActivity {
         pictureDialog.show();
     }
 
-    public void choosePhotoFromGallary() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-        startActivityForResult(galleryIntent, GALLERY);
+    public void choosePhotoFromGallery() {
+        Intent galleryIntent = new Intent();
+        galleryIntent.setType("image/*");
+        galleryIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(galleryIntent, "Select product images"), GALLERY);
     }
 
     private void takePhotoFromCamera() {
@@ -367,24 +308,36 @@ public class AddProductsActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_CANCELED) {
+        if (resultCode == RESULT_CANCELED) {
             return;
         }
         if (requestCode == GALLERY) {
             if (data != null) {
-                Uri contentURI = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                    String path = saveImage(bitmap);
-                    Toast.makeText(AddProductsActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
-                    image = true;
-                    ImageView image = new ImageView(AddProductsActivity.this);
-                    image.setImageBitmap(bitmap);
-                    sv1.addView(image);
+                if (data.getClipData() != null) {
+                    ClipData contentURI = data.getClipData();
+                    Log.d("URI", contentURI.toString());
+                    int items = contentURI.getItemCount();
+                    for (int i = 0; i < items; ++i) {
+                        Uri itemUri = contentURI.getItemAt(i).getUri();
+                        Log.d("ItemPath", getFileUri(itemUri));
+                        dataUri.add(getFileUri(itemUri));
+                    }
+                } else if (data.getData() != null) {
+                    Uri contentUri = data.getData();
+                    try {
+                        dataUri.add(getFileUri(contentUri));
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentUri);
+                        String path = saveImage(bitmap);
+                        Toast.makeText(AddProductsActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+                        image = true;
+                        ImageView image = new ImageView(AddProductsActivity.this);
+                        image.setImageBitmap(bitmap);
+                        sv1.addView(image);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(AddProductsActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(AddProductsActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -398,6 +351,11 @@ public class AddProductsActivity extends AppCompatActivity {
         }
     }
 
+    private String getFileUri(Uri itemUri) {
+        String fileUri = FileUriHelper.Companion.getFileUri(itemUri, context);
+        return fileUri;
+    }
+
     public String saveImage(Bitmap myBitmap) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
@@ -409,12 +367,12 @@ public class AddProductsActivity extends AppCompatActivity {
         }
 
         try {
-            isStoragePermissionGranted();
-            wallpaperDirectory.createNewFile();
-            Log.d("TAG", "File Saved::--->" + wallpaperDirectory.getAbsolutePath());
-            //Log.d("TAG", image.toString());
-
-            return wallpaperDirectory.getAbsolutePath();
+            if (isStoragePermissionGranted()) {
+                if (wallpaperDirectory.createNewFile()) {
+                    Log.d("TAG", "File Saved::--->" + wallpaperDirectory.getAbsolutePath());
+                    return wallpaperDirectory.getAbsolutePath();
+                }
+            }
         } catch (IOException e1) {
             e1.printStackTrace();
         }

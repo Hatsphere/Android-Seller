@@ -44,10 +44,11 @@ public class LoginActivity extends AppCompatActivity {
     String password = "";
 
     public LoginActivity() {
-        // Required empty public constructor
+                // Required empty public constructor
     }
 
     public static LoginActivity newInstance() {
+
         return new LoginActivity();
     }
 
@@ -60,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         tvName = (TextView) findViewById(R.id.tvName);
         tvPassword = (TextView) findViewById(R.id.tvPassword);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
