@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 //import android.widget.Toolbar;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
@@ -37,7 +40,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
     TabLayout tabLayout;
     ViewPager viewPager;
     private String mActivityTitle;
-    //FloatingActionButton fabAdd;
+    private Menu menu;
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -54,6 +57,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         viewPager.setAdapter(simpleFragmentPagerAdapter);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs1);
+
         tabLayout.setupWithViewPager(viewPager);
         //fabAdd = (FloatingActionButton) findViewById(R.id.fabAddProduct);
         /*for (int i = 0; i < tabLayout.getTabCount(); i++) {
@@ -76,13 +80,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
-        /*fabAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HomePageActivity.this, AddProductsActivity.class);
-                startActivity(i);
-            }
-        });*/
+
     }
 
     private void setupDrawer() {
@@ -117,6 +115,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -133,7 +132,11 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        this.menu = menu;
         getMenuInflater().inflate(R.menu.navigation, menu);
+        /*hideOption(R.id.action_settings);
+        hideOption(R.id.more);
+        */
         return true;
     }
 
@@ -147,8 +150,10 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings || mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
-        } else if (id == R.drawable.ic_drawer) {
         }
+        /*else if (id == R.id.more) {
+            return true;
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
@@ -206,4 +211,5 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
 }

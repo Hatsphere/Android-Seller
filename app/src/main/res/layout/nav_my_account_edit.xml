@@ -110,7 +110,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
-            android:hint="Edit you email address"
+            android:hint="Edit your email address"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 

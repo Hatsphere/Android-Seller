@@ -41,7 +41,6 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
     compile 'com.code-troopers.betterpickers:library:2.5.3'
 
-
 }
 repositories {
     maven {
