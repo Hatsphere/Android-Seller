@@ -6,6 +6,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -40,8 +41,13 @@ public class SomeDialog extends DialogFragment {
                         // do something
                         MyAccountFragment m = new MyAccountFragment();
                         //m.logOut();
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.commit();
                         Intent i = new Intent(getContext(), LoginActivity.class);
                         getContext().startActivity(i);
+                        getActivity().finish();
                     }
                 })
                 .create();

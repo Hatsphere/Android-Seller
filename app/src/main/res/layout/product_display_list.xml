@@ -1,51 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.yashladha.android_seller.DisplayActivity"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    tools:context="com.example.yashladha.android_seller.DisplayActivity">
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:padding="25dp"
-        android:id="@+id/fabAddProduct"
-        android:src="@drawable/add"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="10dp"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
 
         <SearchView
+            android:id="@+id/svProducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/svProducts"
-            android:showDividers="middle"
-            android:queryHint="Search for the products">
-        </SearchView>
+            android:queryHint="Search for the products"
+            android:showDividers="middle"></SearchView>
 
         <ListView
+            android:id="@+id/lvDisplayList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/lvDisplayList"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            />
+            android:dividerHeight="1dp" />
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

@@ -8,6 +8,10 @@
             android:icon="@drawable/ic_icon_my_account"
             android:title="My Account" />
         <item
+            android:id="@+id/itAddProduct"
+            android:icon="@drawable/add"
+            android:title="Add Product" />
+        <item
             android:id="@+id/itFaq"
             android:icon="@drawable/ic_icon_faq"
             android:title="FAQs" />
