@@ -61,10 +61,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.commit();
+
         tvName = (TextView) findViewById(R.id.tvName);
         tvPassword = (TextView) findViewById(R.id.tvPassword);
         tvRegister = (TextView) findViewById(R.id.tvRegister);

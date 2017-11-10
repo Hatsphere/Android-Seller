@@ -210,6 +210,9 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
         } else if (id == R.id.itFaq) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FAQsFragment()).commit();
+        } else if (id == R.id.itAddProduct) {
+            Intent i = new Intent(HomePageActivity.this, AddProductsActivity.class);
+            startActivity(i);
         } else if (id == R.id.itLogOut) {
 
             new AlertDialog.Builder(this)
@@ -259,5 +262,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         editor.commit();
         Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
         startActivity(i);
+        finish();
+
     }
 }
