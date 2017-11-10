@@ -31,12 +31,13 @@ import java.util.Date;
 
 public class SalesActivity extends AppCompatActivity {
 
+    private Spinner mMonthSpinner;
+    String mMonth = getString(R.string.mon_jan);
     PieChart pieChart;
     ArrayList<Entry> entries;
     ArrayList<String> PieEntryLabels;
     PieDataSet pieDataSet;
     PieData pieData;
-    FloatingActionButton btDate;
     TextView tvDate, tvMostBought, tvMostProductName, tvAnalysis;
     SimpleDateFormat formatter;
 
@@ -47,37 +48,13 @@ public class SalesActivity extends AppCompatActivity {
         setTitle("Sales");
         getSupportFragmentManager().beginTransaction().replace(R.id.container1, new SalesFrag()).commit();
 
+        mMonthSpinner = (Spinner) findViewById(R.id.spinner_month);
 
         tvMostBought = (TextView) findViewById(R.id.tvMostBought);
-        tvDate = (TextView) findViewById(R.id.tvDate);
-        btDate = (FloatingActionButton) findViewById(R.id.btDate);
         tvMostProductName = (TextView) findViewById(R.id.tvMostProductName);
         tvAnalysis = (TextView) findViewById(R.id.tvAnalysis);
         pieChart = (PieChart) findViewById(R.id.piechart);
-        btDate.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment();
-                cdp.show(SalesActivity.this.getSupportFragmentManager(), "Material Calendar");
-                cdp.setOnDateSetListener(new CalendarDatePickerDialogFragment.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(CalendarDatePickerDialogFragment dialog, int year, int monthOfYear, int dayOfMonth) {
-                        try {
-                            formatter = new SimpleDateFormat("dd/MM/yyyy");
-                            String dateInString = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                            Date date = formatter.parse(dateInString);
-
-                            tvDate.setText(formatter.format(date).toString());
-
-
-                        } catch (Exception ex) {
-
-                        }
-                    }
-                });
-            }
-        });
         AddValuesToPIEENTRY();
 
         AddValuesToPieEntryLabels();
@@ -94,18 +71,55 @@ public class SalesActivity extends AppCompatActivity {
     private void setupSpinner() {
         // Create adapter for spinner. The list options are from the String array it will use
         // the spinner will use the default layout
-        ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter monthSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.array_month_options, android.R.layout.simple_spinner_item);
 
         // Specify dropdown layout style - simple list view with 1 item per line
-        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);}
-
-        // Apply the adapter to the spinner
-
+        monthSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        mMonthSpinner.setAdapter(monthSpinnerAdapter);
+        // Set the integer mSelected to the constant values
+        mMonthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selection = (String)adapterView.getItemAtPosition(i);
+                if(!TextUtils.isEmpty(selection)){
+                    if (selection.equals(getString(R.string.mon_jan))) {
+                        mMonth = "January";
+                    }else if (selection.equals(getString(R.string.mon_feb))) {
+                        mMonth = "February";
+                    }else if (selection.equals(getString(R.string.mon_mar))) {
+                        mMonth = "March";
+                    }else if (selection.equals(getString(R.string.mon_apr))) {
+                        mMonth = "April";
+                    }else if (selection.equals(getString(R.string.mon_may))) {
+                        mMonth = "May";
+                    }else if (selection.equals(getString(R.string.mon_jun))) {
+                        mMonth = "June";
+                    }else if (selection.equals(getString(R.string.mon_jul))) {
+                        mMonth = "July";
+                    }else if (selection.equals(getString(R.string.mon_aug))) {
+                        mMonth = "August";
+                    }else if (selection.equals(getString(R.string.mon_sep))) {
+                        mMonth = "September";
+                    }else if (selection.equals(getString(R.string.mon_oct))) {
+                        mMonth = "October";
+                    }else if (selection.equals(getString(R.string.mon_nov))) {
+                        mMonth = "November";
+                    }else if (selection.equals(getString(R.string.mon_dec))) {
+                        mMonth = "December";
+                    }
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                mMonth = "January";
+            }
+        });
+    }
 
     public void AddValuesToPIEENTRY() {
 
-        entries.add(new BarEntry(2f, 0));
+        entries.add(new BarEntry(2f,0));
         entries.add(new BarEntry(4f, 1));
         entries.add(new BarEntry(6f, 2));
         entries.add(new BarEntry(8f, 3));

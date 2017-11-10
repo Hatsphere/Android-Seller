@@ -103,27 +103,22 @@
         <activity
             android:name=".PlanChosenActivity"
             android:label="HatSphere" />
-        <activity
-            android:name=".navigation.MyAccountActivity"
-            android:label="My Account" />
 
         <activity
             android:name=".navigation.HelpActivity"
             android:label="Help" />
         <activity
-            android:name=".navigation.FAQsActivity"
-            android:label="FAQs" />
-        <activity
             android:name=".navigation.AboutUsActivity"
             android:label="About Us" />
         <activity
             android:name=".AddProductsActivity"
-            android:label="Add A Product">
+            android:label="Add A Product" />
 
-        </activity>
 
-        <service android:name=".MyFirebaseMessagingService">
-            <intent-filter>
+        <service
+            android:name=".MyFirebaseMessagingService">
+
+=            <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
@@ -132,6 +127,8 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".navigation.MyAccountEditActivity"></activity>
     </application>
 
 </manifest>
