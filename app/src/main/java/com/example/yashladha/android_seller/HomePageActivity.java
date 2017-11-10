@@ -1,10 +1,12 @@
 package com.example.yashladha.android_seller;
 
+import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,33 +16,71 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 //import android.widget.Toolbar;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
-import com.example.yashladha.android_seller.navigation.AboutUsActivity;
-import com.example.yashladha.android_seller.navigation.FAQsActivity;
-import com.example.yashladha.android_seller.navigation.HelpActivity;
-import com.example.yashladha.android_seller.navigation.MyAccountActivity;
+import com.example.yashladha.android_seller.navigation.AboutUsFragment;
+import com.example.yashladha.android_seller.navigation.HelpFragment;
+import com.example.yashladha.android_seller.fragments.DisplayFrag;
+import com.example.yashladha.android_seller.navigation.FAQsFragment;
+import com.example.yashladha.android_seller.navigation.MyAccountFragment;
+
 
 public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private int[] icons = {
+    /*private int[] icons = {
             R.drawable.display_icon,
             R.drawable.sales_analysis_icon,
             R.drawable.orders_icon
-    };
+    };*/
 
     TabLayout tabLayout;
     ViewPager viewPager;
     private String mActivityTitle;
-    FloatingActionButton fabAdd;
+    //FloatingActionButton fabAdd;
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitByBackKey();
+
+            //moveTaskToBack(false);
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    protected void exitByBackKey() {
+
+        AlertDialog alertbox = new AlertDialog.Builder(this)
+                .setMessage("Do you want to exit?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                        finish();
+                        //close();
+
+
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                })
+                .show();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +95,10 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
         tabLayout = (TabLayout) findViewById(R.id.tabs1);
         tabLayout.setupWithViewPager(viewPager);
-        fabAdd = (FloatingActionButton) findViewById(R.id.fabAddProduct);
-        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+        //fabAdd = (FloatingActionButton) findViewById(R.id.fabAddProduct);
+        /*for (int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setIcon(icons[i]);
-        }
+        }*/
 
         //Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         //toolbar.setNavigationIcon(R.drawable.ic_drawer);
@@ -76,13 +116,13 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
-        fabAdd.setOnClickListener(new View.OnClickListener() {
+        /*fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomePageActivity.this, AddProductsActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
     }
 
     private void setupDrawer() {
@@ -141,7 +181,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activixty in AndroidManifest.xml.
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -157,49 +197,47 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment fragment = null;
 
-        if (id == R.id.itHomeDecor) {
-            Intent intent = new Intent();
+        if (id == R.id.itMyAccount) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new MyAccountFragment()).commit();
 
-        } else if (id == R.id.itHomeFurniture) {
-
-        } else if (id == R.id.itHomeFurnishing) {
-
-        } else if (id == R.id.itGardenPatio) {
-
-        } else if (id == R.id.itBathLinen) {
-
-        } else if (id == R.id.itKitchen) {
-
-        } else if (id == R.id.itMyAccount) {
-            Intent i = new Intent(HomePageActivity.this, MyAccountActivity.class);
-            startActivity(i);
-        } else if (id == R.id.itFaq) {
-
-            Intent i = new Intent(HomePageActivity.this, FAQsActivity.class);
-            startActivity(i);
         } else if (id == R.id.itHelp) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new HelpFragment()).commit();
 
-            Intent i = new Intent(HomePageActivity.this, HelpActivity.class);
-            startActivity(i);
         } else if (id == R.id.itAboutUs) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new AboutUsFragment()).commit();
 
-            Intent i = new Intent(HomePageActivity.this, AboutUsActivity.class);
-            startActivity(i);
+        } else if (id == R.id.itFaq) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FAQsFragment()).commit();
         } else if (id == R.id.itLogOut) {
 
-            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.clear();
-            editor.commit();
-            Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
-            startActivity(i);
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Log Out")
+                    .setMessage("Do you really want to log out?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            logOut();
+                        }
+
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
+        }
+
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new DisplayFrag()).commit();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -212,5 +250,14 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    public void logOut() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.commit();
+        Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
+        startActivity(i);
     }
 }

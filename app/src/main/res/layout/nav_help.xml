@@ -5,6 +5,7 @@
     android:paddingLeft="10dp"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
+    android:background="@android:color/white"
     >
 
 <LinearLayout
@@ -12,6 +13,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingLeft="10dp"
+    android:background="@android:color/white"
     android:paddingRight="10dp">
 
     <TextView
@@ -33,7 +35,7 @@
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:paddingBottom="5dp"
-        android:id="@+id/tvintro"
+        android:id="@+id/tvIntro"
 
         />
     <TextView
@@ -46,7 +48,7 @@ After installing the App, you will be able to:
 •	Add any new available item
 •	Can reach the customers in a wide range."
         android:paddingBottom="5dp"
-        android:id="@+id/tvintrocontent"
+        android:id="@+id/tvIntroContent"
         />
 
     <TextView
@@ -59,15 +61,17 @@ After installing the App, you will be able to:
         android:paddingBottom="5dp"
         android:id="@+id/tvLogin"
         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="After successfully installing the App:
-•	Create an account by signing up to our app and start enjoying our services
-•	If you are already a user, simply login to the app using your login credentials and continue the services provided."
+• Create an account by signing up to our app and start enjoying our services
+• If you are already a user, simply login to the app using your login credentials and continue the services provided."
         android:paddingBottom="5dp"
-        android:id="@+id/tvlogincontent"
+        android:id="@+id/tvLoginContent"
         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,19 +80,19 @@ After installing the App, you will be able to:
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:paddingBottom="5dp"
-        android:id="@+id/tvchoice"
+        android:id="@+id/tvChoice"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="After successfully logging in to our app choose the best suited plan for yourself and enjoy the services provided with the chosen plan, Plans can be chosen:
-•	PLATINUM
-•	GOLD
-•	SILVER
+• PLATINUM
+• GOLD
+• SILVER
  Details regarding these plans can be seen while choosing among the one.
 "
         android:paddingBottom="5dp"
-        android:id="@id/tvchoice"
+        android:id="@+id/tvChoiceContent"
         />
 
     <TextView
@@ -99,25 +103,41 @@ After installing the App, you will be able to:
         android:textColor="@android:color/black"
         android:textStyle="bold"
         android:paddingBottom="5dp"
-        android:id="@+id/heading"
+        android:id="@+id/tvTrial"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="If you are not sure about your decision there is nothing to worry about, we are providing a Free Trial Mode (For Limited Period) with limited functionalities so that you can explore the app and make up your choice of plan more efficiently.
-
-HOMEPAGE
-1.	DISPLAY PRODUCTS: The Home Page screen will display your provided products and details, and it will provide you up with the option to Add/Update your product details and availability.
-
-2.	SALES ANALYSIS: Here you can check the sales, popularity and demands of your product by the customers. This page will provide the analyzed information about your monthly sales.
-
-3.	ORDERS: Here you can check the orders that have to be processed and delivered, also you decide whether to accept an order or not.
-"
+        android:text="If you are not sure about your decision there is nothing to worry about, we are providing a Free Trial Mode (For Limited Period) with limited functionalities so that you can explore the app and make up your choice of plan more efficiently."
         android:paddingBottom="5dp"
-        android:id="@+id/tvtrial"
+        android:id="@+id/tvTrialContent"
+       />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HOMEPAGE"
+        android:textSize="18dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"
+        android:id="@+id/tvHomepage"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1.DISPLAY PRODUCTS: The Home Page screen will display your provided products and details, and it will provide you up with the option to Add/Update your product details and availability.
+
+2.SALES ANALYSIS: Here you can check the sales, popularity and demands of your product by the customers. This page will provide the analyzed information about your monthly sales.
+
+3.ORDERS: Here you can check the orders that have to be processed and delivered, also you decide whether to accept an order or not.
+"
+
+        android:paddingBottom="5dp"
+        android:id="@+id/tvHomepageContent"
+        />
 </LinearLayout>
 
 </ScrollView>

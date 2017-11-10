@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    tools:context="com.example.yashladha.android_seller.navigation.MyAccountActivity">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@android:color/white"
+    tools:context="com.example.yashladha.android_seller.navigation.MyAccountFragment">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/linearLayout1"
-        android:layout_marginTop="10dp"
+        android:gravity="center"
         >
         <ImageView
             android:layout_width="60dp"
@@ -23,7 +23,7 @@
             android:id="@+id/ivMyPic"
             android:paddingTop="10dp"
             android:src="@drawable/logo"
-            android:layout_marginLeft="150dp"/>
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +33,6 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:id="@+id/tvMyName"
-            android:paddingLeft="140dp"
             android:layout_marginBottom="5dp"
             />
 
@@ -41,11 +40,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:weightSum="2"
             android:id="@+id/linearLayout2"
             >
 
             <LinearLayout
-                android:layout_width="300dp"
+                android:layout_width="0dp"
+                android:layout_weight="1.85"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
@@ -56,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:text="9000000000"
+                    android:layout_marginRight="15dp"
                     android:id="@+id/tvContact"/>
 
                 <TextView
@@ -67,13 +69,14 @@
 
 
             <ImageView
-                android:layout_width="25dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.15"
                 android:layout_height="25dp"
                 android:src="@drawable/icon_edit"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
                 android:id="@+id/ivEdit"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:clickable="true"/>
 
         </LinearLayout>
@@ -91,6 +94,7 @@
             android:id="@+id/expandableListView"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_gravity="center"
             android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="0.5dp" />
@@ -122,10 +126,18 @@
             android:clickable="true"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="0dp"
             android:id="@+id/tvLogOut"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/vLogOut"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            />
 
 
         </LinearLayout>
-</ScrollView>
 </RelativeLayout>

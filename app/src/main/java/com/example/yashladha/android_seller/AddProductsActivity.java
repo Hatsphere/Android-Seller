@@ -231,17 +231,17 @@ public class AddProductsActivity extends AppCompatActivity {
                                         if (response.get("response").toString().equals("200")) {
                                             Toast.makeText(AddProductsActivity.this, "Your Product has been added",
                                                     Toast.LENGTH_LONG).show();
-                                            int itemCnt = 0;
                                             Builders.Any.B builder =  Ion.with(context)
                                                     .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID);
                                             for (String item : dataUri) {
                                                 builder.setMultipartFile(UID, new File(item));
-                                                itemCnt++;
                                             }
+                                            builder.setBodyParameter("pName", productName);
                                             builder.asJsonObject()
                                                     .setCallback(new FutureCallback<JsonObject>() {
                                                         @Override
                                                         public void onCompleted(Exception e, JsonObject result) {
+                                                            Log.d("onCompleted: ", result.toString());
                                                         }
                                                     });
                                             Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);

@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="5dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:theme="@style/AppTheme.NoActionBar"
     android:weightSum="1">
 
     <ImageView
