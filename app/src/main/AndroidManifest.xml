@@ -115,10 +115,10 @@
             android:label="Add A Product" />
 
 
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService">
 
-=            <intent-filter>
+            =
+            <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
@@ -128,7 +128,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".navigation.MyAccountEditActivity"></activity>
+        <activity
+            android:name=".navigation.MyAccountEditActivity"
+            android:label="Edit your account"></activity>
     </application>
 
 </manifest>
