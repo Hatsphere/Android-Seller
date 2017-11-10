@@ -1,153 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yashladha.android_seller.LoginActivity"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvEmail"
-        android:text="Email or Phone"
-        android:textSize="15dp"
-        android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:padding="5dp"
-        />
+    android:orientation="vertical"
+    tools:context="com.example.yashladha.android_seller.LoginActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:orientation="horizontal">
-        <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etEmail"
-        android:padding="5dp"
-        android:layout_weight="1.1"
-        android:hint="Email or Phone Number"
-        android:textColorHint="#887f7f"
-        android:layout_marginLeft="10dp"
-        style="@style/Widget.AppCompat.EditText"
-        android:background="@drawable/button_border"/>
-        <Button
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivAdd"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:src="@drawable/add" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/btCheckEmail"
-            android:paddingLeft="3dp"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            android:paddingRight="5dp"
-            android:backgroundTint="#2867a5"
-            android:background="@drawable/button_rounded_corners_gradiant"
-            android:text="Check"/>
-    </LinearLayout>
+            android:id="@+id/tvAdd"
+            android:layout_gravity="center_horizontal"
+            android:text="Add Image" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvPassword"
-        android:text="Password"
-        android:textSize="15dp"
-        android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:padding="5dp"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_marginBottom="15dp">
-        <EditText
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:text="Email or Phone"
+            android:textColor="@android:color/black"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/etEmail"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.1"
+                android:background="@drawable/button_border"
+                android:hint="Email or Phone Number"
+                android:padding="5dp"
+                android:textColorHint="#887f7f" />
+
+            <Button
+                android:id="@+id/btCheckEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/button_rounded_corners_gradiant"
+                android:backgroundTint="#2867a5"
+                android:paddingLeft="3dp"
+                android:paddingRight="5dp"
+                android:text="Check"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:text="Password"
+            android:textColor="@android:color/black"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_border"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:maxLength="13"
+                android:padding="10dp"
+                android:textColorHint="#887f7f" />
+
+            <ImageButton
+                android:id="@+id/ibPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_eye" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/button_rounded_corners_gradiant"
+            android:backgroundTint="#0e8922"
+            android:enabled="false"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+
+            />
+
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Have an account login here"
+            android:textColor="#45be3d" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="or register by" />
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etPassword"
-            android:padding="10dp"
-            android:layout_marginLeft="10dp"
-            android:hint="Password"
-            android:maxLength="13"
-            android:inputType="textPassword"
-            android:textColorHint="#887f7f"
-            android:layout_weight="1"
-            android:background="@drawable/button_border"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:padding="10dp"
-            android:src="@drawable/ic_eye"
-            android:id="@+id/ibPassword"/>
+            android:orientation="horizontal"
+            android:weightSum="1">
 
+            <Button
+                android:id="@+id/btFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_margin="20dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button_rounded_corners_gradiant"
+                android:backgroundTint="#2867a5"
+                android:padding="20dp"
+                android:text="Facebook"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+
+            <Button
+                android:id="@+id/btGoogle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_margin="20dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/button_rounded_corners_gradiant"
+                android:backgroundTint="#a52137"
+                android:padding="20dp"
+                android:text="Google+"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+        </LinearLayout>
     </LinearLayout>
-
-
-    <Button
-        android:id ="@+id/btLogin"
-        android:layout_width="wrap_content"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:layout_margin="20dp"
-        android:textColor="#fff"
-        android:enabled="false"
-        android:text="Register"
-        android:layout_gravity="center"
-        android:backgroundTint="#0e8922"
-        android:background="@drawable/button_rounded_corners_gradiant"
-
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/tvLogin"
-        android:text="Have an account login here"
-        android:textColor="#45be3d"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:text="or register by"/>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_weight="0.5"
-            android:text="Facebook"
-            android:textColor="#fff"
-            android:layout_margin="20dp"
-            android:textAllCaps="false"
-            android:backgroundTint="#2867a5"
-            android:background="@drawable/button_rounded_corners_gradiant"
-            android:padding="20dp"
-            android:id="@+id/btFacebook"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_weight="0.5"
-            android:textAllCaps="false"
-            android:text="Google+"
-            android:textColor="#fff"
-            android:layout_margin="20dp"
-            android:backgroundTint="#a52137"
-            android:background="@drawable/button_rounded_corners_gradiant"
-            android:padding="20dp"
-            android:id="@+id/btGoogle"/>
-    </LinearLayout>
-</LinearLayout>
+</ScrollView>

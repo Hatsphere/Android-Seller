@@ -105,11 +105,8 @@
         <activity
             android:name=".PlanChosenActivity"
             android:label="HatSphere" />
-
-        <service
-            android:name=".MyFirebaseMessagingService">
-
-=            <intent-filter>
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
@@ -119,7 +116,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".navigation.MyAccountEditActivity"></activity>
+        <activity
+            android:name=".navigation.MyAccountEditActivity"
+            android:label="Edit your account"></activity>
     </application>
 
 </manifest>
