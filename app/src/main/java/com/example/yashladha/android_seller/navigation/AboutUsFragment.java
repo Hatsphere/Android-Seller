@@ -24,7 +24,7 @@ public class AboutUsFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_nav_about_us,container,false);
-        tvAbout = (TextView) rootView.findViewById(R.id.tvAbout);
+        tvAbout = (TextView) rootView.findViewById(R.id.tvAboutUs);
         ivAbout = (ImageView) rootView.findViewById(R.id.ivAbout);
         return rootView;
 

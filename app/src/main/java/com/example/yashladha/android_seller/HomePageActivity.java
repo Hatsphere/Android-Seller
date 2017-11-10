@@ -81,6 +81,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
                 .show();
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,33 +200,36 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         Fragment fragment = null;
 
         if (id == R.id.itMyAccount) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new MyAccountFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new MyAccountFragment()).commit();
 
-        }
-        else if (id == R.id.itHelp) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new HelpFragment()).commit();
+        } else if (id == R.id.itHelp) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new HelpFragment()).commit();
 
-        }
-        else if (id == R.id.itAboutUs) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new AboutUsFragment()).commit();
+        } else if (id == R.id.itAboutUs) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new AboutUsFragment()).commit();
 
-        }
-        else if (id == R.id.itFaq) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new FAQsFragment()).commit();
-        }
-        else if (id == R.id.itLogOut) {
+        } else if (id == R.id.itFaq) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FAQsFragment()).commit();
+        } else if (id == R.id.itLogOut) {
 
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Log Out")
+                    .setMessage("Do you really want to log out?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            logOut();
+                        }
 
-            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.clear();
-            editor.commit();
-            Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
-            startActivity(i);
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
         }
 
         if (fragment != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new DisplayFrag()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new DisplayFrag()).commit();
 
         }
 
@@ -246,5 +250,14 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    public void logOut() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.commit();
+        Intent i = new Intent(HomePageActivity.this, LoginActivity.class);
+        startActivity(i);
     }
 }
