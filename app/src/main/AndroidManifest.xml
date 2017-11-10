@@ -97,27 +97,15 @@
             android:name=".PlanChoicesActivity"
             android:label="Choose A Plan" />
         <activity android:name=".TrialActivity" />
-        <activity
+        <activity android:name=".AddProductsActivity"
+            android:label="Add A Product"></activity>
+
             android:name=".PlanPaymentActivity"
             android:label="Payment" />
         <activity
             android:name=".PlanChosenActivity"
             android:label="HatSphere" />
-
-        <activity
-            android:name=".navigation.HelpActivity"
-            android:label="Help" />
-        <activity
-            android:name=".navigation.AboutUsActivity"
-            android:label="About Us" />
-        <activity
-            android:name=".AddProductsActivity"
-            android:label="Add A Product" />
-
-
         <service android:name=".MyFirebaseMessagingService">
-
-            =
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

@@ -23,11 +23,12 @@ import android.view.View;
 //import android.widget.Toolbar;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
+import com.example.yashladha.android_seller.navigation.AboutUsFragment;
+import com.example.yashladha.android_seller.navigation.HelpFragment;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
-import com.example.yashladha.android_seller.navigation.AboutUsActivity;
 import com.example.yashladha.android_seller.navigation.FAQsFragment;
-import com.example.yashladha.android_seller.navigation.HelpActivity;
 import com.example.yashladha.android_seller.navigation.MyAccountFragment;
+
 
 public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -201,18 +202,19 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new MyAccountFragment()).commit();
 
         }
+        else if (id == R.id.itHelp) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new HelpFragment()).commit();
+
+        }
+        else if (id == R.id.itAboutUs) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new AboutUsFragment()).commit();
+
+        }
         else if (id == R.id.itFaq) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new FAQsFragment()).commit();
         }
-        else if (id == R.id.itHelp) {
+        else if (id == R.id.itLogOut) {
 
-            Intent i = new Intent(HomePageActivity.this, HelpActivity.class);
-            startActivity(i);
-        } else if (id == R.id.itAboutUs) {
-
-            Intent i = new Intent(HomePageActivity.this, AboutUsActivity.class);
-            startActivity(i);
-        } else if (id == R.id.itLogOut) {
 
             SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
