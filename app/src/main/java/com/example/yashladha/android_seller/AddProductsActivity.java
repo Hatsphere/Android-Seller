@@ -232,16 +232,19 @@ public class AddProductsActivity extends AppCompatActivity {
                                             Toast.makeText(AddProductsActivity.this, "Your Product has been added",
                                                     Toast.LENGTH_LONG).show();
                                             Builders.Any.B builder =  Ion.with(context)
-                                                    .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID);
+                                                    .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID + "/" + productName);
                                             for (String item : dataUri) {
                                                 builder.setMultipartFile(UID, new File(item));
                                             }
-                                            builder.setBodyParameter("pName", productName);
                                             builder.asJsonObject()
                                                     .setCallback(new FutureCallback<JsonObject>() {
                                                         @Override
                                                         public void onCompleted(Exception e, JsonObject result) {
-                                                            Log.d("onCompleted: ", result.toString());
+                                                            if (result != null) {
+                                                                Log.d("onCompleted: ", result.toString());
+                                                            } else {
+                                                                e.printStackTrace();
+                                                            }
                                                         }
                                                     });
                                             Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
