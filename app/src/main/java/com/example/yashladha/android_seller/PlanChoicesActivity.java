@@ -48,7 +48,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 JSONObject obj = new JSONObject();
                 try {
                     obj.put("name", name);
-                    obj.put("planChosen", "2");
+                    obj.put("planId", 2);
                     obj.put("address", address);
                     obj.put("contactNo", contact);
 
@@ -77,6 +77,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                 editor.putString("Plan", "2");
+                editor.commit();
                 editor.apply();
                 i.putExtra("planChosen", "Platinum");
                 startActivity(i);
@@ -90,7 +91,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
 
                 try {
                     obj.put("name", name);
-                    obj.put("planChosen", "0");
+                    obj.put("planId", 0);
                     obj.put("address", address);
                     obj.put("contactNo", contact);
 
@@ -119,6 +120,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
                 Intent i = new Intent(PlanChoicesActivity.this, PlanPaymentActivity.class);
                 SharedPreferences.Editor editor = getSharedPreferences("myprfs", MODE_PRIVATE).edit();
                 editor.putString("Plan", "0");
+                editor.commit();
                 editor.apply();
                 i.putExtra("planChosen", "Silver");
                 startActivity(i);
@@ -133,7 +135,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
 
                 try {
                     obj.put("name", name);
-                    obj.put("planChosen", "1");
+                    obj.put("planId", 1);
                     obj.put("address", address);
                     obj.put("contactNo", contact);
 

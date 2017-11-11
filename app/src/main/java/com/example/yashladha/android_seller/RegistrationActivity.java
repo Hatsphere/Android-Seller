@@ -1,6 +1,5 @@
 package com.example.yashladha.android_seller;
 
-import android.*;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -174,33 +174,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                     if (response.get("response").toString().equals("200")) {
                                         UID_i = response.getString("uid");
                                         obj.put("uid", response.get("uid"));
-                                        JsonObjectRequest dataPushRequest = new JsonObjectRequest(
-                                                Request.Method.POST,
-                                                "http://10.0.2.2:3000/user/push/seller",
-                                                obj,
-                                                new Response.Listener<JSONObject>() {
-                                                    @Override
-                                                    public void onResponse(JSONObject response) {
-                                                        try {
-                                                            if (response.get("response").toString().equals("200")) {
-                                                                Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
-                                                                SavePreference();
-                                                                btLogin.setEnabled(false);
-                                                                Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
-                                                                startIntent();
-                                                            }
-                                                        } catch (JSONException e) {
-                                                            e.printStackTrace();
-                                                        }
-                                                    }
-                                                },
-                                                new Response.ErrorListener() {
-                                                    @Override
-                                                    public void onErrorResponse(VolleyError error) {
-                                                        Log.e("onErrorResponse", error.getMessage());
-                                                    }
-                                                }
-                                        );
+                                        JsonObjectRequest dataPushRequest = sellerPushRequest(obj);
                                         rq.add(dataPushRequest);
                                     } else {
                                         Log.d("500 res", "Response catches " + tempEmail);
@@ -210,7 +184,9 @@ public class RegistrationActivity extends AppCompatActivity {
                                                 try {
                                                     Log.d("Response", res.toString());
                                                     UID_i = res.getString("uid");
-                                                    Log.d("UID", UID_i);
+                                                    obj.put("uid", UID_i);
+                                                    JsonObjectRequest dataPushRequest = sellerPushRequest(obj);
+                                                    rq.add(dataPushRequest);
                                                     SavePreference();
                                                     startIntent();
                                                 } catch (JSONException e) {
@@ -332,6 +308,37 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @NonNull
+    private JsonObjectRequest sellerPushRequest(JSONObject obj) {
+        return new JsonObjectRequest(
+                Request.Method.POST,
+                "http://10.0.2.2:3000/user/push/seller",
+                obj,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            if (response.get("response").toString().equals("200")) {
+                                Toast.makeText(RegistrationActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                                SavePreference();
+                                btLogin.setEnabled(false);
+                                Toast.makeText(RegistrationActivity.this, UID_i, Toast.LENGTH_SHORT).show();
+                                startIntent();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("onErrorResponse", error.getMessage());
+                    }
+                }
+        );
     }
 
     private void startIntent() {
