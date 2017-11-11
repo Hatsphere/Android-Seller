@@ -51,7 +51,7 @@ public class TrialActivity extends AppCompatActivity {
                     JSONObject obj = new JSONObject();
                     try {
                         obj.put("name", name);
-                        obj.put("planChosen", "-1");
+                        obj.put("planId", "-1");
                         obj.put("address", address);
                         obj.put("contactNo", contact);
 
@@ -63,7 +63,7 @@ public class TrialActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Toast.makeText(TrialActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TrialActivity.this, response.get("Code").toString(), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -77,10 +77,10 @@ public class TrialActivity extends AppCompatActivity {
                     });
 
                     rq.add(jsonObjectRequest);
+
                     Intent i = new Intent(TrialActivity.this, PlanChosenActivity.class);
                     i.putExtra("planChosen", "Trial");
                     startActivity(i);
-
                 } else {
                     Intent i = new Intent(TrialActivity.this, PlanChoicesActivity.class);
                     i.putExtra("address", address);

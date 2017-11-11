@@ -17,6 +17,7 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -202,8 +203,9 @@ public class AddProductsActivity extends AppCompatActivity {
         tvAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-
+                if (isReadPermissionGranted()) {
+                    showPictureDialog();
+                }
             }
         });
         btDone.setOnClickListener(new View.OnClickListener() {
@@ -232,16 +234,19 @@ public class AddProductsActivity extends AppCompatActivity {
                                             Toast.makeText(AddProductsActivity.this, "Your Product has been added",
                                                     Toast.LENGTH_LONG).show();
                                             Builders.Any.B builder =  Ion.with(context)
-                                                    .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID);
+                                                    .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID + "/" + productName);
                                             for (String item : dataUri) {
                                                 builder.setMultipartFile(UID, new File(item));
                                             }
-                                            builder.setBodyParameter("pName", productName);
                                             builder.asJsonObject()
                                                     .setCallback(new FutureCallback<JsonObject>() {
                                                         @Override
                                                         public void onCompleted(Exception e, JsonObject result) {
-                                                            Log.d("onCompleted: ", result.toString());
+                                                            if (result != null) {
+                                                                Log.d("onCompleted: ", result.toString());
+                                                            } else {
+                                                                e.printStackTrace();
+                                                            }
                                                         }
                                                     });
                                             Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
@@ -379,6 +384,24 @@ public class AddProductsActivity extends AppCompatActivity {
         return "";
     }
 
+    public boolean isReadPermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("Tag", "Permission is granted");
+                return true;
+            } else {
+
+                Log.v("Tag", "Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 2);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("Tag", "Permission is granted");
+            return true;
+        }
+    }
+
     public boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -401,7 +424,6 @@ public class AddProductsActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.v("Tag", "Permission: " + permissions[0] + "was " + grantResults[0]);
-            //resume tasks needing this permission
         }
     }
 
