@@ -57,6 +57,9 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         return super.onKeyDown(keyCode, event);
     }
 
+    /**
+     * We customized the function that this activity will show when we touch the back key
+     */
     protected void exitByBackKey() {
 
         AlertDialog alertbox = new AlertDialog.Builder(this)
@@ -125,6 +128,9 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         });*/
     }
 
+    /**
+     * This function helps us to setup the navigation drawer as per our adapter
+     */
     private void setupDrawer() {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
@@ -192,6 +198,12 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This method helps us to choose items from the navigation itsms eelected
+     *
+     * @param item
+     * @return
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -255,6 +267,9 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    /**
+     * This method deletes the shared prefs of the user when he tries to checkout
+     */
     public void logOut() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
