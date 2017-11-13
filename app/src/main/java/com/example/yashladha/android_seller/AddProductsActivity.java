@@ -104,6 +104,7 @@ public class AddProductsActivity extends AppCompatActivity {
         tbOnSale = findViewById(R.id.tbOnSale);
         rq = Volley.newRequestQueue(AddProductsActivity.this);
 
+
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         UID = myPrefs.getString("UID", "");
         plan = myPrefs.getString("Plan", "");
@@ -432,5 +433,12 @@ public class AddProductsActivity extends AppCompatActivity {
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(AddProductsActivity.this,HomePageActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

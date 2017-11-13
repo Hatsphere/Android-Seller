@@ -44,7 +44,6 @@ dependencies {
     compile 'com.code-troopers.betterpickers:library:2.5.3'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-
 }
 repositories {
     maven {
