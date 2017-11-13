@@ -14,13 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity_2 extends AppCompatActivity {
-    TextView tvName, tvPassword, tvRegister, tvForgotPassword, tvNumChar, tvCharLeft;
-    Button btProcees;
-    EditText etAddress, etContact;
-    EditText etName;
-    CheckBox cbTrial;
-    String address = "", contact = "", name = "";
-    Boolean trial = false;
+    private TextView tvName, tvPassword, tvRegister, tvForgotPassword, tvNumChar, tvCharLeft;
+    private Button btProcees;
+    private EditText etAddress, etContact;
+    private EditText etName;
+    private CheckBox cbTrial;
+    private String address = "", contact = "", name = "";
+    private Boolean trial = false;
+    private String profileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class RegisterActivity_2 extends AppCompatActivity {
         etAddress = (EditText) findViewById(R.id.etAddress);
         etContact = (EditText) findViewById(R.id.etContact);
         cbTrial = (CheckBox) findViewById(R.id.cbTrial);
+        Intent i = getIntent();
+        profileImage = i.getStringExtra("profileImage");
         trial = false;
         etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -68,11 +71,13 @@ public class RegisterActivity_2 extends AppCompatActivity {
                     i.putExtra("address", address);
                     i.putExtra("contact", contact);
                     i.putExtra("name", name);
+                    i.putExtra("profileImage", profileImage);
                     startActivity(i);
                 } else if (trial && !address.equals("") && !contact.equals("") && !name.equals("")) {
                     Intent i = new Intent(RegisterActivity_2.this, TrialActivity.class);
                     i.putExtra("address", address);
                     i.putExtra("contact", contact);
+                    i.putExtra("profileImage", profileImage);
                     i.putExtra("name", name);
                     startActivity(i);
                 } else {

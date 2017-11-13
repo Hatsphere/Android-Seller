@@ -1,9 +1,10 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,29 +18,39 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+
 public class TrialActivity extends AppCompatActivity {
 
-    CheckBox cbYes;
-    RadioButton rb;
+    private CheckBox cbYes;
+    private RadioButton rb;
     private RequestQueue rq;
-    Button btSubmit;
-    String uid;
-    Boolean choise = false;
+    private Button btSubmit;
+    private String uid;
+    private Boolean choise = false;
+    private Context mContext;
+    private String profileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trial2);
+        mContext = getBaseContext();
         cbYes = (CheckBox) findViewById(R.id.cbYes);
         btSubmit = (Button) findViewById(R.id.btProceed);
         rq = Volley.newRequestQueue(TrialActivity.this);
         final String address = getIntent().getStringExtra("address");
         final String contact = getIntent().getStringExtra("contact");
         final String name = getIntent().getStringExtra("name");
+        profileImage = getIntent().getStringExtra("profileImage");
         SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         uid = myPrefs.getString("UID", "");
 
@@ -64,6 +75,7 @@ public class TrialActivity extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
                             try {
                                 Toast.makeText(TrialActivity.this, response.get("Code").toString(), Toast.LENGTH_SHORT).show();
+                                uploadProfile();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -103,5 +115,18 @@ public class TrialActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void uploadProfile() {
+        Ion.with(mContext)
+                .load(BaseUrlConfig.getBaseURL() + "user/seller/profile/" + uid)
+                .setMultipartFile("UID", new File(profileImage))
+                .asJsonObject()
+                .setCallback(new FutureCallback<JsonObject>() {
+                    @Override
+                    public void onCompleted(Exception e, JsonObject result) {
+                        Log.d("onCompleted: ", result.toString());
+                    }
+                });
     }
 }

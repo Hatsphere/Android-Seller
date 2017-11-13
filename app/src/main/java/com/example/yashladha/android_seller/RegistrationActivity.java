@@ -35,6 +35,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.yashladha.android_seller.classes.FileUriHelper;
 import com.example.yashladha.android_seller.helper.EmailHelper;
 import com.example.yashladha.android_seller.helper.HelperDef;
 
@@ -51,25 +52,27 @@ import java.util.Locale;
 
 public class RegistrationActivity extends AppCompatActivity {
     public static final String TITLE = "Register";
-    TextView tvName, tvPassword, tvLogin;
-    EditText etPassword, etEmail;
-    boolean ans2 = false;
-    Button btLogin, btFacebook, btGoogle, btCheckEmail;
-    ImageButton ibPassword;
-    boolean password2 = false;
-    String name = "";
-    ImageView ivProfile;
-    TextView tvAddPic;
-    String UID_i = "";
-    String password = "";
+    private TextView tvName, tvPassword, tvLogin;
+    private EditText etPassword, etEmail;
+    private boolean ans2 = false;
+    private Button btLogin, btFacebook, btGoogle, btCheckEmail;
+    private ImageButton ibPassword;
+    private boolean password2 = false;
+    private String name = "";
+    private ImageView ivProfile;
+    private TextView tvAddPic;
+    private String UID_i = "";
+    private String password = "";
     private int GALLERY = 1, CAMERA = 2;
-    static SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
-    static Date now = new Date();
+    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
+    private static Date now = new Date();
     private static final String IMAGE_DIRECTORY = "/hatsphere/Seller" + formatter.format(now);
+    private static String profileFileUri = "";
+    private static Context mContext;
 
 
     private RequestQueue rq;
-    String email = "";
+    private String email = "";
     private Button btRegister;
 
     public RegistrationActivity() {
@@ -89,28 +92,31 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        ivProfile = (ImageView) findViewById(R.id.ivAdd);
-        tvAddPic = (TextView) findViewById(R.id.tvAdd);
-        tvName = (TextView) findViewById(R.id.tvName);
-        tvPassword = (TextView) findViewById(R.id.tvPassword);
-        tvLogin = (TextView) findViewById(R.id.tvLogin);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        btLogin = (Button) findViewById(R.id.btLogin);
-        btFacebook = (Button) findViewById(R.id.btFacebook);
-        btCheckEmail = (Button) findViewById(R.id.btCheckEmail);
+        mContext = getBaseContext();
+        ivProfile = findViewById(R.id.ivAdd);
+        tvAddPic = findViewById(R.id.tvAdd);
+        tvName = findViewById(R.id.tvName);
+        tvPassword = findViewById(R.id.tvPassword);
+        tvLogin = findViewById(R.id.tvLogin);
+        etPassword = findViewById(R.id.etPassword);
+        etEmail = findViewById(R.id.etEmail);
+        btLogin = findViewById(R.id.btLogin);
+        btFacebook = findViewById(R.id.btFacebook);
+        btCheckEmail = findViewById(R.id.btCheckEmail);
         rq = Volley.newRequestQueue(RegistrationActivity.this);
-        btGoogle = (Button) findViewById(R.id.btGoogle);
-        ibPassword = (ImageButton) findViewById(R.id.ibPassword);
+        btGoogle = findViewById(R.id.btGoogle);
+        ibPassword = findViewById(R.id.ibPassword);
         btRegister = btLogin;
         ans2 = false;
 
         ivProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPictureDialog();
-                tvAddPic.setText("");
-                ivProfile.setClickable(false);
+                if (isReadPermissionGranted()) {
+                    showPictureDialog();
+                    tvAddPic.setText("");
+                    ivProfile.setClickable(false);
+                }
             }
         });
         btCheckEmail.setOnClickListener(new View.OnClickListener() {
@@ -187,8 +193,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                                     obj.put("uid", UID_i);
                                                     JsonObjectRequest dataPushRequest = sellerPushRequest(obj);
                                                     rq.add(dataPushRequest);
-                                                    SavePreference();
-                                                    startIntent();
                                                 } catch (JSONException e) {
                                                     e.printStackTrace();
                                                 }
@@ -310,6 +314,24 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
+    public boolean isReadPermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("Tag", "Permission is granted");
+                return true;
+            } else {
+
+                Log.v("Tag", "Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 2);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("Tag", "Permission is granted");
+            return true;
+        }
+    }
+
     @NonNull
     private JsonObjectRequest sellerPushRequest(JSONObject obj) {
         return new JsonObjectRequest(
@@ -343,6 +365,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void startIntent() {
         Intent i = new Intent(RegistrationActivity.this, RegisterActivity_2.class);
+        i.putExtra("profileImage", profileFileUri);
         startActivity(i);
     }
 
@@ -408,8 +431,9 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void choosePhotoFromGallary() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent galleryIntent = new Intent();
+        galleryIntent.setType("image/*");
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
 
         startActivityForResult(galleryIntent, GALLERY);
     }
@@ -423,12 +447,13 @@ public class RegistrationActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_CANCELED) {
+        if (resultCode == RESULT_CANCELED) {
             return;
         }
         if (requestCode == GALLERY) {
             if (data != null) {
                 Uri contentURI = data.getData();
+                profileFileUri = FileUriHelper.Companion.getFileUri(contentURI, mContext);
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     String path = saveImage(bitmap);
