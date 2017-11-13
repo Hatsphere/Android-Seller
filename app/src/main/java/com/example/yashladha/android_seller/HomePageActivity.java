@@ -208,16 +208,16 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         Fragment fragment = null;
 
         if (id == R.id.itMyAccount) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new MyAccountFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new MyAccountFragment(),"My Account").commit();
 
         } else if (id == R.id.itHelp) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new HelpFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new HelpFragment(),"Help").commit();
 
         } else if (id == R.id.itAboutUs) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new AboutUsFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new AboutUsFragment(),"About Us").commit();
 
         } else if (id == R.id.itFaq) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FAQsFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FAQsFragment(),"FAQs").commit();
         } else if (id == R.id.itAddProduct) {
             Intent i = new Intent(HomePageActivity.this, AddProductsActivity.class);
             startActivity(i);
