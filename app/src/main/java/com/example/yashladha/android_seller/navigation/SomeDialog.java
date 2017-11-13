@@ -40,7 +40,7 @@ public class SomeDialog extends DialogFragment {
                         // do something
                         MyAccountFragment m = new MyAccountFragment();
                         //m.logOut();
-                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("myprfs", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.clear();
                         editor.commit();

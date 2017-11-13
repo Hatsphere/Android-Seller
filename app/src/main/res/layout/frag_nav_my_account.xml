@@ -32,6 +32,11 @@
             android:textSize="20dp"
             android:id="@+id/tvMyName"
             android:layout_marginBottom="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/tvPlan"/>
 
         <LinearLayout
             android:layout_width="match_parent"

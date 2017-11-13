@@ -54,6 +54,10 @@ public class PlanChoicesActivity extends AppCompatActivity {
         Log.d(getClass().getSimpleName(), uid);
 
         Toast.makeText(PlanChoicesActivity.this, uid, Toast.LENGTH_LONG).show();
+
+        /**
+         * The details of user are sent to the server including the type of plan he/she has taken
+         */
         btPlatinuum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
