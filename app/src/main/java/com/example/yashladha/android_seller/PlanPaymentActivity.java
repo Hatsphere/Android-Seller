@@ -31,13 +31,13 @@ public class PlanPaymentActivity extends AppCompatActivity {
         vTotal = (View) findViewById(R.id.vTotal);
         vOption = (View) findViewById(R.id.vOption);
         tvCalendar = (TextView) findViewById(R.id.tvCalendar);
-
-
         btDebit = (Button) findViewById(R.id.btDebit);
         btCredit = (Button) findViewById(R.id.btCredit);
         btNet = (Button) findViewById(R.id.btNet);
         btPickDate = (Button) findViewById(R.id.btPickDate);
-
+        /**
+         * We have not currently implemented the payment gateway and thus we have put it under black sbox
+         */
         btDebit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +67,9 @@ public class PlanPaymentActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * A datepicker is used to pick the dates from the calender
+         */
         btPickDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -142,6 +142,13 @@ public class PlanChoicesActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Here we are using Json to send the details of the seller to the server
+     * The request is sent to the server and the activity reacts as per the output from the server
+     *
+     * @param obj
+     * @return
+     */
     @NonNull
     private JsonObjectRequest sellerPushRequest(JSONObject obj) {
         return new JsonObjectRequest(
@@ -164,6 +171,9 @@ public class PlanChoicesActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * We upload the profile here
+     */
     private void uploadProfile() {
         Ion.with(mContext)
                 .load(BaseUrlConfig.getBaseURL() + "user/seller/profile/" + uid)
