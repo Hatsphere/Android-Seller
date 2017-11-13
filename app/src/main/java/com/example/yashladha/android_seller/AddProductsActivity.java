@@ -8,16 +8,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -107,6 +104,9 @@ public class AddProductsActivity extends AppCompatActivity {
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         UID = myPrefs.getString("UID", "");
         plan = myPrefs.getString("Plan", "");
+        /**
+         * taking the entry from the edit text to string product name
+         */
         etProductName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -123,7 +123,9 @@ public class AddProductsActivity extends AppCompatActivity {
                 productName = etProductName.getText().toString();
             }
         });
-
+/**
+ * taking the entry from the edit text to string product description
+ */
         etProDes.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -140,6 +142,9 @@ public class AddProductsActivity extends AppCompatActivity {
                 proDes = etProDes.getText().toString();
             }
         });
+        /**
+         * taking the entry from the edit text to string original price
+         */
         etOriginalPrice.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -156,6 +161,9 @@ public class AddProductsActivity extends AppCompatActivity {
                 originalPrice = etOriginalPrice.getText().toString();
             }
         });
+        /**
+         * taking the entry from the edit text to string discount
+         */
         etDiscount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -172,6 +180,9 @@ public class AddProductsActivity extends AppCompatActivity {
                 discount = etDiscount.getText().toString();
             }
         });
+        /**
+         * taking the entry from the edit text to string category
+         */
         etCategory.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -188,18 +199,27 @@ public class AddProductsActivity extends AppCompatActivity {
                 category = etCategory.getText().toString();
             }
         });
+        /**
+         * If the product is on sale we make this text box as Yes
+         */
         tbOnSale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sale = Objects.equals(tbOnSale.getText().toString(), "Yes");
             }
         });
+        /**
+         * adding the image of the product by clicking on this + image
+         */
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                showPictureDialog();
             }
         });
+        /**
+         * adding the image of the product by clicking on text view
+         */
         tvAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -208,6 +228,10 @@ public class AddProductsActivity extends AppCompatActivity {
                 }
             }
         });
+        /**
+         * By clicking this button the seller can send the details of his product to the seller.
+         * Images of the product are also sent to the server
+         */
         btDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -233,7 +257,7 @@ public class AddProductsActivity extends AppCompatActivity {
                                         if (response.get("response").toString().equals("200")) {
                                             Toast.makeText(AddProductsActivity.this, "Your Product has been added",
                                                     Toast.LENGTH_LONG).show();
-                                            Builders.Any.B builder =  Ion.with(context)
+                                            Builders.Any.B builder = Ion.with(context)
                                                     .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID + "/" + productName);
                                             for (String item : dataUri) {
                                                 builder.setMultipartFile(UID, new File(item));
@@ -273,6 +297,9 @@ public class AddProductsActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This function shows a dialog box containing two option, viz. Selecting a photo from the gallery or clicking a picture from the camera
+     */
     private void showPictureDialog() {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle("Select Action");
@@ -296,6 +323,9 @@ public class AddProductsActivity extends AppCompatActivity {
         pictureDialog.show();
     }
 
+    /**
+     * This function helps us to choose our photo from the gallery and uses general intent to do that
+     */
     public void choosePhotoFromGallery() {
         Intent galleryIntent = new Intent();
         galleryIntent.setType("image/*");
@@ -304,11 +334,22 @@ public class AddProductsActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(galleryIntent, "Select product images"), GALLERY);
     }
 
+    /**
+     * This function helps us to click our photo from the camera and uses general intent to do that
+     */
     private void takePhotoFromCamera() {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA);
     }
 
+    /**
+     * THis function takes from the result of the above activities and produces a output on the screen.
+     * This gives us a photograph as uri and thus we can send it to the server
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -356,11 +397,24 @@ public class AddProductsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * gives the file uri from the item uri.
+     * It is necessary for us to get the file uri to be able to send the file to the server
+     *
+     * @param itemUri
+     * @return
+     */
     private String getFileUri(Uri itemUri) {
         String fileUri = FileUriHelper.Companion.getFileUri(itemUri, context);
         return fileUri;
     }
 
+    /**
+     * It helps us to save the image taken from the camera on the SD card can we can use it in future times too
+     *
+     * @param myBitmap
+     * @return
+     */
     public String saveImage(Bitmap myBitmap) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
@@ -384,6 +438,12 @@ public class AddProductsActivity extends AppCompatActivity {
         return "";
     }
 
+    /**
+     * This function is required to get the permissions from the user read from the
+     * external source
+     *
+     * @return
+     */
     public boolean isReadPermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -402,6 +462,12 @@ public class AddProductsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This function is required to get the permissions from the user write on the
+     * external source
+     *
+     * @return
+     */
     public boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -427,10 +493,5 @@ public class AddProductsActivity extends AppCompatActivity {
         }
     }
 
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        return Uri.parse(path);
-    }
+
 }

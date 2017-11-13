@@ -1,24 +1,14 @@
 package com.example.yashladha.android_seller.navigation;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yashladha.android_seller.HomePageActivity;
-import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.classes.MyAccountCustomExpandableListAdapter;
 import com.example.yashladha.android_seller.classes.MyAccountExpandableListDataPump;

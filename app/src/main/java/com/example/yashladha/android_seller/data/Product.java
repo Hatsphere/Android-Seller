@@ -19,8 +19,7 @@ public class Product {
 
     public Product(String mProductName, String mProductRating, String mProductNewPrice,
                    String mProductOriginalPrice, String mProductDiscount, String mExchange,
-                   String mYesNo, int mProductImageResourceId, int mProductRemoveImageResourceId)
-    {
+                   String mYesNo, int mProductImageResourceId, int mProductRemoveImageResourceId) {
 
         this.mProductName = mProductName;
         this.mProductRating = mProductRating;
@@ -37,7 +36,9 @@ public class Product {
         return mProductName;
     }
 
-    public String getmProductRating() {return mProductRating;}
+    public String getmProductRating() {
+        return mProductRating;
+    }
 
     public String getmProductNewPrice() {
         return mProductNewPrice;
@@ -71,15 +72,13 @@ public class Product {
         return NO_IMAGE_PROVIDED;
     }
 
-    public boolean hasImage2()
-    {
-        boolean result = mProductRemoveImageResourceId!=NO_IMAGE_PROVIDED;
+    public boolean hasImage2() {
+        boolean result = mProductRemoveImageResourceId != NO_IMAGE_PROVIDED;
         return result;
     }
 
-    public boolean hasImage1()
-    {
-        boolean result = mProductImageResourceId!=NO_IMAGE_PROVIDED;
+    public boolean hasImage1() {
+        boolean result = mProductImageResourceId != NO_IMAGE_PROVIDED;
         return result;
     }
 }

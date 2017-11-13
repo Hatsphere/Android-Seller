@@ -2,91 +2,86 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-    android:padding="20dp">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/faq"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/ivFaq"/>
+    android:background="@android:color/white">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="How can I become a seller at HatSphere"
-        android:id="@+id/tvQues4"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="20dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="You  just to simply register on our app and provide the required details to start selling on our platform."
-        android:id="@+id/tvAns4"
-        android:layout_marginLeft="10dp"
-        android:textSize="18dp"
-        android:layout_marginBottom="20dp"
-        />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/faq"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/ivFaq" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="I am unable to upload images "
-        android:id="@+id/tvQues1"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How can I become a seller at HatSphere"
+            android:id="@+id/tvQues4"
+            android:textStyle="bold"
+            android:textSize="18dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Please try and keep the image size upto 300 kb for optimal performance. This will ensure good quality images without putting too much of a load of the system and ensuring a great buyer experience."
-        android:id="@+id/tvAns1"
-        android:textSize="18dp"
-        android:layout_marginBottom="20dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="I have just got an order. What do I need to do?"
-        android:id="@+id/tvQues2"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You  just to simply register on our app and provide the required details to start selling on our platform."
+            android:id="@+id/tvAns4"
+            android:layout_marginLeft="10dp"
+            android:textSize="18dp"
+            android:layout_marginBottom="20dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="You will need to prepare the product and pack the product in a way the that it doesn't breaks. If the product is breakable, please mark the package as “Fragile”. "
-        android:id="@+id/tvAns2"
-        android:textSize="18dp"
-        android:layout_marginBottom="20dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="How should I pack the product?"
-        android:id="@+id/tvQues3"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I am unable to upload images "
+            android:id="@+id/tvQues1"
+            android:textStyle="bold"
+            android:textSize="18dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Please ensure the product is packed well with adequate cushioning so that it doesn’t break in transit. We recommend that you use a hard box and sufficient cushioning inside such that it doesn’t move around inside the box. Also, if the product is breakable, please mark the package as “Fragile”."
-        android:id="@+id/tvAns3"
-        android:textSize="18dp"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please try and keep the image size upto 300 kb for optimal performance. This will ensure good quality images without putting too much of a load of the system and ensuring a great buyer experience."
+            android:id="@+id/tvAns1"
+            android:textSize="18dp"
+            android:layout_marginBottom="20dp" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I have just got an order. What do I need to do?"
+            android:id="@+id/tvQues2"
+            android:textStyle="bold"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You will need to prepare the product and pack the product in a way the that it doesn't breaks. If the product is breakable, please mark the package as “Fragile”. "
+            android:id="@+id/tvAns2"
+            android:textSize="18dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How should I pack the product?"
+            android:id="@+id/tvQues3"
+            android:textStyle="bold"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please ensure the product is packed well with adequate cushioning so that it doesn’t break in transit. We recommend that you use a hard box and sufficient cushioning inside such that it doesn’t move around inside the box. Also, if the product is breakable, please mark the package as “Fragile”."
+            android:id="@+id/tvAns3"
+            android:textSize="18dp" />
+
+    </LinearLayout>
 </ScrollView>

@@ -61,9 +61,8 @@ public class Order {
         return mProductImageResourceId;
     }
 
-    public boolean hasImage1()
-    {
-        boolean result = mProductImageResourceId!=NO_IMAGE_PROVIDED;
+    public boolean hasImage1() {
+        boolean result = mProductImageResourceId != NO_IMAGE_PROVIDED;
         return result;
     }
 }

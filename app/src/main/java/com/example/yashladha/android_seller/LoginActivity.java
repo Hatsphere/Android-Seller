@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     String password = "";
 
     public LoginActivity() {
-                // Required empty public constructor
+        // Required empty public constructor
     }
 
     public static LoginActivity newInstance() {

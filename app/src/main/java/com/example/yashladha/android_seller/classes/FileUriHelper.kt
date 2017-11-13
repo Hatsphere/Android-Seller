@@ -16,7 +16,7 @@ class FileUriHelper {
             val id = wholeId.split(":")[1]
             val filePathColumn = Array(1, { MediaStore.Images.Media.DATA })
             val sel = MediaStore.Images.Media._ID + "=?"
-            val cursor = context.contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, filePathColumn, sel, Array(1, {id}), null)
+            val cursor = context.contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, filePathColumn, sel, Array(1, { id }), null)
             val columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             if (cursor.moveToFirst()) {
                 val filePath = cursor.getString(columnIndex)

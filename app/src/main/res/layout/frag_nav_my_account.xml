@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,15 +14,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/linearLayout1"
-        android:gravity="center"
-        >
+        android:gravity="center">
+
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/ivMyPic"
             android:paddingTop="10dp"
-            android:src="@drawable/logo"
-            />
+            android:src="@drawable/logo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,16 +31,14 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:id="@+id/tvMyName"
-            android:layout_marginBottom="5dp"
-            />
+            android:layout_marginBottom="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:id="@+id/linearLayout2"
-            >
+            android:id="@+id/linearLayout2">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -51,20 +47,20 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:paddingLeft="70dp"
-                android:id="@+id/linearLayout3"
-                >
+                android:id="@+id/linearLayout3">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:text="9000000000"
                     android:layout_marginRight="15dp"
-                    android:id="@+id/tvContact"/>
+                    android:id="@+id/tvContact" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:text="201551098@iiitvadodara.ac.in"
-                    android:id="@+id/tvEmail"/>
+                    android:id="@+id/tvEmail" />
             </LinearLayout>
 
 
@@ -77,7 +73,7 @@
                 android:scaleType="fitXY"
                 android:id="@+id/ivEdit"
                 android:layout_marginLeft="10dp"
-                android:clickable="true"/>
+                android:clickable="true" />
 
         </LinearLayout>
 
@@ -87,8 +83,7 @@
             android:layout_height="1dp"
             android:id="@+id/vOption"
             android:layout_marginTop="8dp"
-            android:background="@android:color/darker_gray"
-            />
+            android:background="@android:color/darker_gray" />
 
         <ExpandableListView
             android:id="@+id/expandableListView"
@@ -107,7 +102,7 @@
             android:textSize="20dp"
             android:clickable="true"
             android:layout_marginTop="15dp"
-            android:id="@+id/tvDeactivate"/>
+            android:id="@+id/tvDeactivate" />
 
 
         <View
@@ -115,8 +110,7 @@
             android:layout_height="1dp"
             android:id="@+id/vDeactivate"
             android:layout_marginTop="8dp"
-            android:background="@android:color/darker_gray"
-            />
+            android:background="@android:color/darker_gray" />
 
 
         <TextView
@@ -128,16 +122,15 @@
             android:textSize="20dp"
             android:layout_marginTop="5dp"
             android:paddingBottom="0dp"
-            android:id="@+id/tvLogOut"/>
+            android:id="@+id/tvLogOut" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:id="@+id/vLogOut"
             android:layout_marginTop="8dp"
-            android:background="@android:color/darker_gray"
-            />
+            android:background="@android:color/darker_gray" />
 
 
-        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

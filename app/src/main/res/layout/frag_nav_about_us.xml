@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:background="@android:color/white"
-    >
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,8 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:id="@+id/ivAbout"
-            android:src="@drawable/aboutus"
-            />
+            android:src="@drawable/aboutus" />
 
         <TextView
             android:layout_width="match_parent"
@@ -34,8 +31,7 @@
 
     We will try to tackle with this problem of middleman and give them a platform to engage with a greater audience and generate better revenue.
 
-"
-            />
+" />
     </LinearLayout>
 
 </ScrollView>

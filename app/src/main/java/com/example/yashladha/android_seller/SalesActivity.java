@@ -1,21 +1,14 @@
 package com.example.yashladha.android_seller;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
 import com.example.yashladha.android_seller.fragments.SalesFrag;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarEntry;
@@ -26,8 +19,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class SalesActivity extends AppCompatActivity {
 
@@ -81,35 +72,36 @@ public class SalesActivity extends AppCompatActivity {
         mMonthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String selection = (String)adapterView.getItemAtPosition(i);
-                if(!TextUtils.isEmpty(selection)){
+                String selection = (String) adapterView.getItemAtPosition(i);
+                if (!TextUtils.isEmpty(selection)) {
                     if (selection.equals(getString(R.string.mon_jan))) {
                         mMonth = "January";
-                    }else if (selection.equals(getString(R.string.mon_feb))) {
+                    } else if (selection.equals(getString(R.string.mon_feb))) {
                         mMonth = "February";
-                    }else if (selection.equals(getString(R.string.mon_mar))) {
+                    } else if (selection.equals(getString(R.string.mon_mar))) {
                         mMonth = "March";
-                    }else if (selection.equals(getString(R.string.mon_apr))) {
+                    } else if (selection.equals(getString(R.string.mon_apr))) {
                         mMonth = "April";
-                    }else if (selection.equals(getString(R.string.mon_may))) {
+                    } else if (selection.equals(getString(R.string.mon_may))) {
                         mMonth = "May";
-                    }else if (selection.equals(getString(R.string.mon_jun))) {
+                    } else if (selection.equals(getString(R.string.mon_jun))) {
                         mMonth = "June";
-                    }else if (selection.equals(getString(R.string.mon_jul))) {
+                    } else if (selection.equals(getString(R.string.mon_jul))) {
                         mMonth = "July";
-                    }else if (selection.equals(getString(R.string.mon_aug))) {
+                    } else if (selection.equals(getString(R.string.mon_aug))) {
                         mMonth = "August";
-                    }else if (selection.equals(getString(R.string.mon_sep))) {
+                    } else if (selection.equals(getString(R.string.mon_sep))) {
                         mMonth = "September";
-                    }else if (selection.equals(getString(R.string.mon_oct))) {
+                    } else if (selection.equals(getString(R.string.mon_oct))) {
                         mMonth = "October";
-                    }else if (selection.equals(getString(R.string.mon_nov))) {
+                    } else if (selection.equals(getString(R.string.mon_nov))) {
                         mMonth = "November";
-                    }else if (selection.equals(getString(R.string.mon_dec))) {
+                    } else if (selection.equals(getString(R.string.mon_dec))) {
                         mMonth = "December";
                     }
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 mMonth = "January";
@@ -119,7 +111,7 @@ public class SalesActivity extends AppCompatActivity {
 
     public void AddValuesToPIEENTRY() {
 
-        entries.add(new BarEntry(2f,0));
+        entries.add(new BarEntry(2f, 0));
         entries.add(new BarEntry(4f, 1));
         entries.add(new BarEntry(6f, 2));
         entries.add(new BarEntry(8f, 3));

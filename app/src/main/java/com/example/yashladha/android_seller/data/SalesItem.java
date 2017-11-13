@@ -59,9 +59,8 @@ public class SalesItem {
         return NO_IMAGE_PROVIDED;
     }
 
-    public boolean hasImage1()
-    {
-        boolean result = mProductImageResourceId!=NO_IMAGE_PROVIDED;
+    public boolean hasImage1() {
+        boolean result = mProductImageResourceId != NO_IMAGE_PROVIDED;
         return result;
     }
 }

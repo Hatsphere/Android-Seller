@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -20,14 +19,15 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-//import android.widget.Toolbar;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
-import com.example.yashladha.android_seller.navigation.AboutUsFragment;
-import com.example.yashladha.android_seller.navigation.HelpFragment;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
+import com.example.yashladha.android_seller.navigation.AboutUsFragment;
 import com.example.yashladha.android_seller.navigation.FAQsFragment;
+import com.example.yashladha.android_seller.navigation.HelpFragment;
 import com.example.yashladha.android_seller.navigation.MyAccountFragment;
+
+//import android.widget.Toolbar;
 
 
 public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

@@ -7,8 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.yashladha.android_seller.PlanChoicesActivity"
-    >
+    tools:context="com.example.yashladha.android_seller.PlanChoicesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,16 +15,15 @@
         android:orientation="horizontal"
         android:id="@+id/linearLayout1"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        >
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/platinum"
             android:scaleType="fitXY"
-            android:id="@+id/platinum"
-            />
+            android:id="@+id/platinum" />
+
         <LinearLayout
             android:layout_width="270dp"
             android:layout_height="match_parent"
@@ -34,6 +32,7 @@
             android:id="@+id/linearLayout2"
             android:paddingRight="10dp"
             android:layout_marginTop="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,16 +42,15 @@
                 android:textSize="15dp"
                 android:id="@+id/tvPlatinum"
                 android:textColor="@android:color/holo_green_dark"
-                android:layout_marginBottom="10dp"
-                />
+                android:layout_marginBottom="10dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvMaxPtImages"
                 android:text="Maximum number of images : 5"
                 android:layout_marginBottom="5dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,8 +58,7 @@
                 android:text="40-50 words for description "
                 android:id="@+id/tvPtDescription"
                 android:layout_marginBottom="5dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,8 +66,7 @@
                 android:text="Home Page Priority : HIGHEST"
                 android:id="@+id/tvPtPriority"
                 android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btPlatinum"
@@ -82,7 +78,6 @@
                 android:background="@android:color/holo_blue_dark"
                 android:textSize="12dp" />
         </LinearLayout>
-
 
 
     </LinearLayout>
@@ -99,8 +94,8 @@
             android:layout_height="match_parent"
             android:src="@drawable/gold"
             android:scaleType="fitXY"
-            android:id="@+id/gold"
-            />
+            android:id="@+id/gold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -109,6 +104,7 @@
             android:id="@+id/linearLayout4"
             android:paddingRight="10dp"
             android:layout_marginTop="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -118,16 +114,15 @@
                 android:textSize="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:textColor="@android:color/holo_green_dark"
-                android:layout_marginBottom="5dp"
-                />
+                android:layout_marginBottom="5dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Maximum number of images : 3"
                 android:id="@+id/tvMaxGdImages"
                 android:layout_marginBottom="5dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -135,8 +130,7 @@
                 android:text="20-30 words for description "
                 android:id="@+id/tvGdDescription"
                 android:layout_marginBottom="5dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -144,8 +138,7 @@
                 android:text="Home Page Priority : AVERAGE"
                 android:id="@+id/tvGdPriority"
                 android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <Button
                 android:layout_width="80dp"
@@ -155,8 +148,7 @@
                 android:id="@+id/btGold"
                 android:layout_gravity="left"
                 android:textSize="12dp"
-                android:background="@android:color/holo_blue_light"
-                />
+                android:background="@android:color/holo_blue_light" />
         </LinearLayout>
 
 
@@ -174,8 +166,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/silver"
             android:scaleType="fitXY"
-            android:id="@+id/silver"
-            />
+            android:id="@+id/silver" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -184,6 +176,7 @@
             android:orientation="vertical"
             android:paddingRight="10dp"
             android:layout_marginTop="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -193,16 +186,15 @@
                 android:textSize="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:textColor="@android:color/holo_green_dark"
-                android:layout_marginBottom="3dp"
-                />
+                android:layout_marginBottom="3dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Maximum number of images : 3"
                 android:id="@+id/tvMaxSvImages"
                 android:layout_marginBottom="5dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -210,8 +202,7 @@
                 android:text="10-15 words for description "
                 android:id="@+id/tvSvDescription"
                 android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -219,8 +210,7 @@
                 android:text="Home Page Priority : LOWEST"
                 android:id="@+id/tvSvPriority"
                 android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <Button
                 android:layout_width="80dp"
@@ -230,8 +220,7 @@
                 android:id="@+id/btSilver"
                 android:layout_gravity="left"
                 android:textSize="12dp"
-                android:background="@android:color/holo_blue_light"
-                />
+                android:background="@android:color/holo_blue_light" />
 
         </LinearLayout>
 

@@ -16,6 +16,7 @@
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,14 +35,14 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-           <Spinner
+            <Spinner
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1.0"
                 android:spinnerMode="dropdown"
                 android:entries="@array/array_month_options"
                 android:prompt="@string/mon_jan"
-                android:id="@+id/spinner_month"/>
+                android:id="@+id/spinner_month" />
 
         </LinearLayout>
 
@@ -94,8 +95,7 @@
         <ListView
             android:id="@+id/lvSalesList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

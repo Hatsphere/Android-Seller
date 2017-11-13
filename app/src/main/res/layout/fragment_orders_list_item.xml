@@ -6,24 +6,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.yashladha.android_seller.fragments.OrdersFrag">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayout1"
-            android:weightSum="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout1"
+        android:weightSum="1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/download"
-                android:id="@+id/ivProduct"
-                android:scaleType="fitXY"
-                />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/download"
+            android:id="@+id/ivProduct"
+            android:scaleType="fitXY" />
+
         <LinearLayout
             android:layout_width="140dp"
             android:layout_height="match_parent"
@@ -34,6 +34,7 @@
             android:orientation="vertical"
             android:paddingRight="10dp"
             android:layout_weight="0.98">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,7 +43,7 @@
                 android:textSize="15dp"
                 android:id="@+id/tvProductName"
                 android:textColor="@android:color/holo_green_dark"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -52,8 +53,7 @@
                 android:layout_marginRight="5dp"
                 android:textStyle="bold"
                 android:textSize="15dp"
-                android:id="@+id/tvPrice"
-                />
+                android:id="@+id/tvPrice" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,8 +61,7 @@
                 android:text="Purchase/Exchange/Refund"
                 android:layout_marginBottom="5dp"
                 android:textSize="15dp"
-                android:id="@+id/tvTypeOfRequest"
-                />
+                android:id="@+id/tvTypeOfRequest" />
 
         </LinearLayout>
 
@@ -88,7 +87,8 @@
                     android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="@android:color/black"
-                    android:id="@+id/tvNumOfRequests"/>
+                    android:id="@+id/tvNumOfRequests" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -98,7 +98,7 @@
                     android:id="@+id/tvNum"
                     android:paddingLeft="15dp"
                     android:paddingBottom="5dp"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/black" />
 
             </LinearLayout>
 
@@ -120,6 +120,7 @@
                     android:background="@color/back"
 
                     />
+
                 <Button
                     android:layout_width="50dp"
                     android:layout_height="30dp"
@@ -129,14 +130,13 @@
                     android:layout_gravity="right"
                     android:textSize="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@color/back3"/>
+                    android:background="@color/back3" />
 
             </LinearLayout>
 
-           </LinearLayout>
-
         </LinearLayout>
 
+    </LinearLayout>
 
 
 </FrameLayout>
