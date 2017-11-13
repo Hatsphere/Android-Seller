@@ -1,7 +1,10 @@
 package com.example.yashladha.android_seller.data;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
@@ -16,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yashladha.android_seller.R;
+import com.example.yashladha.android_seller.fragments.DisplayFrag;
 
 import java.util.ArrayList;
 
@@ -42,7 +46,8 @@ public class OrderAdapter extends ArrayAdapter<Order>{
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.fragment_orders_list_item,parent,false);
         }
-        Order currentOrder = getItem(position);
+        final int pos = position;
+        final Order currentOrder = getItem(position);
 
         TextView mProductName = (TextView)listItemView.findViewById(R.id.tvProductName);
         mProductName.setText(currentOrder.getmProductName());
@@ -59,44 +64,55 @@ public class OrderAdapter extends ArrayAdapter<Order>{
         final Button mAccept = (Button) listItemView.findViewById(R.id.btAccept);
         mAccept.setText(currentOrder.getmAccept());
 
-        final TransitionDrawable td1 = new TransitionDrawable(new Drawable[]{
-                new ColorDrawable(getContext().getResources().getColor(R.color.back)),
-                new ColorDrawable(getContext().getResources().getColor(R.color.back8))});
-        mAccept.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getActionMasked() == MotionEvent.ACTION_DOWN) {
-                    //b.setBackgroundColor();
-                }
-                if(event.getActionMasked() == MotionEvent.ACTION_UP) {
-                    mAccept.setBackgroundDrawable(td1);
-                    td1.startTransition(1000);
-                }
-                return false;
-            }
-        });
-
         final Button mReject = (Button) listItemView.findViewById(R.id.btReject);
         mReject.setText(currentOrder.getmReject());
 
-        final TransitionDrawable td2 = new TransitionDrawable(new Drawable[]{
-                new ColorDrawable(getContext().getResources().getColor(R.color.back3)),
-                new ColorDrawable(getContext().getResources().getColor(R.color.back8))});
-        mReject.setOnTouchListener(new View.OnTouchListener() {
-
+        mAccept.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getActionMasked() == MotionEvent.ACTION_DOWN) {
-                    //b.setBackgroundColor();
-                }
-                if(event.getActionMasked() == MotionEvent.ACTION_UP) {
-                    mReject.setBackgroundDrawable(td2);
-                    td2.startTransition(1000);
-                }
-                return false;
+            public void onClick(View view) {
+
+                AlertDialog.Builder adb=new AlertDialog.Builder(getContext());
+                adb.setTitle("Accept");
+                adb.setMessage("Are you sure you want to accept the request for "+ currentOrder.getmTypeOfRequest()
+                        + " of " + currentOrder.getmProductName()+"?");
+                final int positionToRemove = pos;
+                adb.setNegativeButton("Cancel", null);
+                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        mAccept.setBackgroundColor(Color.GRAY);
+                        mReject.setEnabled(false);
+                        mAccept.setEnabled(false);
+
+                    }});
+                adb.show();
+
             }
         });
+
+        mReject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder adb=new AlertDialog.Builder(getContext());
+                adb.setTitle("Reject");
+                adb.setMessage("Are you sure you want to reject the request for "+ currentOrder.getmTypeOfRequest()
+                        + " of " + currentOrder.getmProductName()+"?");
+                final int positionToRemove = pos;
+                adb.setNegativeButton("Cancel", null);
+                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        mReject.setBackgroundColor(Color.GRAY);
+                        mReject.setEnabled(false);
+                        mAccept.setEnabled(false);
+
+                    }});
+                adb.show();
+
+            }
+        });
+
 
         TextView mNum = (TextView)listItemView.findViewById(R.id.tvNum);
         mNum.setText(currentOrder.getmNum());
