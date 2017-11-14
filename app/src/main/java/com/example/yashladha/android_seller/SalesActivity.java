@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -40,6 +41,20 @@ public class SalesActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container1, new SalesFrag()).commit();
 
         mMonthSpinner = (Spinner) findViewById(R.id.spinner_month);
+        try {
+            Field popup = Spinner.class.getDeclaredField("mPopup");
+            popup.setAccessible(true);
+
+            // Get private mPopup member variable and try cast to ListPopupWindow
+            android.widget.ListPopupWindow popupWindow = (android.widget.ListPopupWindow) popup.get(mMonthSpinner);
+
+            // Set popupWindow height to 500px
+            popupWindow.setHeight(200);
+        }
+        catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
+            // silently fail...
+        }
+
 
         tvMostBought = (TextView) findViewById(R.id.tvMostBought);
         tvMostProductName = (TextView) findViewById(R.id.tvMostProductName);
@@ -68,6 +83,8 @@ public class SalesActivity extends AppCompatActivity {
         // Specify dropdown layout style - simple list view with 1 item per line
         monthSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         mMonthSpinner.setAdapter(monthSpinnerAdapter);
+
+
         // Set the integer mSelected to the constant values
         mMonthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

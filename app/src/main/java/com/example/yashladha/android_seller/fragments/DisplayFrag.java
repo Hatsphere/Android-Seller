@@ -24,6 +24,8 @@ public class DisplayFrag extends Fragment {
         // Required empty public constructor
     }
 
+    public static ProductAdapter productAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

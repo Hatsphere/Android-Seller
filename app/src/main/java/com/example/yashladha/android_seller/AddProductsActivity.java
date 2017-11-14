@@ -101,6 +101,7 @@ public class AddProductsActivity extends AppCompatActivity {
         tbOnSale = findViewById(R.id.tbOnSale);
         rq = Volley.newRequestQueue(AddProductsActivity.this);
 
+
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         UID = myPrefs.getString("UID", "");
         plan = myPrefs.getString("Plan", "");
@@ -493,5 +494,13 @@ public class AddProductsActivity extends AppCompatActivity {
         }
     }
 
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(AddProductsActivity.this,HomePageActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
+    }
 
 }

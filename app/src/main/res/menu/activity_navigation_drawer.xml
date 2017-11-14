@@ -10,7 +10,7 @@
         <item
             android:id="@+id/itAddProduct"
             android:icon="@drawable/add"
-            android:title="Add Product" />
+            android:title="Add A Product" />
         <item
             android:id="@+id/itFaq"
             android:icon="@drawable/ic_icon_faq"

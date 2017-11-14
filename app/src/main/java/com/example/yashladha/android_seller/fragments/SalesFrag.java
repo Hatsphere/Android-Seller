@@ -58,8 +58,8 @@ public class SalesFrag extends Fragment {
         salesItems.add(new SalesItem("Chair", "0321328456", "Number of items sold",
                 "6", "Total Amount :", "₹9000", R.drawable.products_chair));
 
-        SalesItemAdapter salesItemAdapter = new SalesItemAdapter(getActivity(), salesItems, R.color.home_page_fragments);
-        ListView listView = (ListView) rootview.findViewById(R.id.lvSalesList);
+        SalesItemAdapter salesItemAdapter = new SalesItemAdapter(getActivity(),salesItems,R.color.back5);
+        ListView listView = (ListView)rootview.findViewById(R.id.lvSalesList);
         listView.setAdapter(salesItemAdapter);
         return rootview;
 

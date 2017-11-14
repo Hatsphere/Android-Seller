@@ -142,6 +142,7 @@ public class MyAccountFragment extends Fragment {
         getActivity().setTitle("My Account");
     }
 
+
     public void logOut() {
 
     }
