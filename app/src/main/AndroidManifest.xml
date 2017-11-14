@@ -24,7 +24,6 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -99,8 +98,7 @@
         <activity android:name=".TrialActivity" />
         <activity
             android:name=".AddProductsActivity"
-            android:label="Add A Product"></activity>
-
+            android:label="Add A Product" />
         android:name=".PlanPaymentActivity"
         android:label="Payment" />
         <activity
@@ -120,7 +118,8 @@
 
         <activity
             android:name=".navigation.MyAccountEditActivity"
-            android:label="Edit your account"></activity>
+            android:label="Edit your account" />
+        <activity android:name=".NavigationDrawerItems" />
     </application>
 
 </manifest>
