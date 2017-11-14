@@ -24,8 +24,6 @@
     <string name="mon_oct">October</string>
     <string name="mon_nov">November</string>
     <string name="mon_dec">December</string>
-
-
     <string name="purchase_request">Purchase</string>
     <string name="exchange_request">Exchange</string>
     <string name="refund_request">Refund</string>

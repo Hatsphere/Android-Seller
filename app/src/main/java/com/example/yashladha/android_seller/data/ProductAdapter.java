@@ -1,6 +1,8 @@
 package com.example.yashladha.android_seller.data;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
