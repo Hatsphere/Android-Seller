@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
+import com.example.yashladha.android_seller.fragments.OrdersFrag;
 
 import java.util.ArrayList;
 
@@ -80,9 +81,10 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                 adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        mAccept.setBackgroundColor(Color.GRAY);
-                        mReject.setEnabled(false);
+                        mAccept.setText("Done!!!");
+                        mAccept.setBackgroundColor(Color.GREEN);
                         mAccept.setEnabled(false);
+                        mReject.setVisibility(View.GONE);
 
                     }});
                 adb.show();
@@ -102,11 +104,13 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                 adb.setNegativeButton("Cancel", null);
                 adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
+                        OrdersFrag.orderAdapter.remove(getItem(positionToRemove));
+                        OrdersFrag.orderAdapter.notifyDataSetChanged();
+                        /*
                         mReject.setBackgroundColor(Color.GRAY);
                         mReject.setEnabled(false);
                         mAccept.setEnabled(false);
-
+                        */
                     }});
                 adb.show();
 
