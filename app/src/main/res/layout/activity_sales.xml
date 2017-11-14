@@ -31,6 +31,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="40dp"
                 android:text="Select a month"
+                android:textColor="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -55,27 +56,31 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:weightSum="1"
+            android:orientation="horizontal">
 
 
             <TextView
                 android:id="@+id/tvMostBought"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="2dp"
-                android:text="Most Bought Product:"
+                android:text="BEST SELLER :"
                 android:textColor="@android:color/black"
+                android:gravity="center"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvMostProductName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="match_parent"
-                android:layout_marginRight="40dp"
-                android:text="Name of the product"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Baskets"
                 android:textColor="@android:color/holo_green_dark"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -87,7 +92,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Analysis of the products :"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:text="Sales ANALYSIS of the products :"
             android:textSize="20dp"
             android:textStyle="bold" />
 

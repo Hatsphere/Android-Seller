@@ -53,7 +53,7 @@ public class SalesFrag extends Fragment {
 
         final ArrayList<SalesItem> salesItems = new ArrayList<SalesItem>();
 
-        salesItems.add(new SalesItem("Baskets","0321323135","Number of items sold",
+        salesItems.add(new SalesItem("Baskets","ORDER ID - 0321323135","Number of items sold",
                 "4","Total Amount :","₹1980",R.drawable.products_basket));
         salesItems.add(new SalesItem("Duck","0145769825","Number of items sold",
                 "2","Total Amount :","₹700",R.drawable.orders_duck));

@@ -109,7 +109,6 @@
                     android:layout_height="wrap_content"
                     android:text="Amount"
                     android:id="@+id/tvAmount"
-                    android:textColor="@color/back"
                     android:layout_marginBottom="3dp"
                     android:layout_marginRight="5dp"
                     android:textStyle="bold"

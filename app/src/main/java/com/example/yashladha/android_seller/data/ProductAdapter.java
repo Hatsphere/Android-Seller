@@ -4,7 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -17,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yashladha.android_seller.R;
+import com.example.yashladha.android_seller.classes.RoundImage;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
 
 import java.util.ArrayList;
@@ -29,6 +35,7 @@ import java.util.List;
 public class ProductAdapter extends ArrayAdapter<Product> {
 
     private int mColorResourceId;
+    RoundImage roundedImage;
 
     public ProductAdapter(Activity context, ArrayList<Product> products, int colorResourceId)
     {
@@ -86,6 +93,10 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         {
             mProductRemoveImageResource.setImageResource(currentProduct.getmProductRemoveImageResourceId());
             mProductRemoveImageResource.setVisibility(View.VISIBLE);
+
+            Bitmap bm = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.delete);
+            roundedImage = new RoundImage(bm);
+            mProductRemoveImageResource.setImageDrawable(roundedImage);
 
             mProductRemoveImageResource.setOnClickListener(new View.OnClickListener() {
                 @Override
