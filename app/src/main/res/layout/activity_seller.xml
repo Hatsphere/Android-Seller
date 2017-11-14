@@ -29,43 +29,45 @@
         android:layout_marginTop="130dp"
         android:layout_alignTop="@+id/imageView"
         android:layout_centerHorizontal="true" />
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation = "vertical">
-    <TextView
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text = "   Your Gateway To exhibit"
-        android:textStyle="italic"
-        android:textSize="20dp"
-        android:textColor="@color/colorPrimary"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="250dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="275dp"
-        android:text="and sell the art and in turn"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20dp"
-        android:textStyle="italic"
-        android:layout_marginLeft="75dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   Your Gateway To exhibit"
+            android:textStyle="italic"
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="275dp"
+            android:text="and sell the art and in turn"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:layout_marginLeft="75dp" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:text="earn a better living!"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20dp"
-        android:textStyle="italic"
-        android:layout_marginLeft="100dp"/>
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:text="earn a better living!"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:layout_marginLeft="100dp" />
+    </RelativeLayout>
 
 
     <Button
@@ -74,6 +76,6 @@
         android:layout_marginTop="400dp"
         android:layout_marginLeft="100dp"
         android:text="Let's  get  Started"
-        android:onClick=""/>
+        android:onClick="" />
 
 </RelativeLayout>

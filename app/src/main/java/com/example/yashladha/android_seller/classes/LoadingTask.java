@@ -21,7 +21,8 @@ public class LoadingTask extends AsyncTask<String, Integer, Integer> {
 
     /**
      * A Loading task that will load some resources that are necessary for the app to start
-     * @param progressBar - the progress bar you want to update while the task is in progress
+     *
+     * @param progressBar      - the progress bar you want to update while the task is in progress
      * @param finishedListener - the listener that will be told when this task is finished
      */
     public LoadingTask(ProgressBar progressBar, LoadingTaskFinishedListener finishedListener) {
@@ -31,8 +32,8 @@ public class LoadingTask extends AsyncTask<String, Integer, Integer> {
 
     @Override
     protected Integer doInBackground(String... params) {
-        Log.i("Tutorial", "Starting task with url: "+params[0]);
-        if(resourcesDontAlreadyExist()){
+        Log.i("Tutorial", "Starting task with url: " + params[0]);
+        if (resourcesDontAlreadyExist()) {
             downloadResources();
         }
         // Perhaps you want to return something to your post execute
@@ -45,7 +46,6 @@ public class LoadingTask extends AsyncTask<String, Integer, Integer> {
         return true; // returning true so we show the splash every time
     }
 
-
     private void downloadResources() {
         // We are just imitating some process thats takes a bit of time (loading of resources / downloading)
         int count = 3;
@@ -56,7 +56,10 @@ public class LoadingTask extends AsyncTask<String, Integer, Integer> {
             publishProgress(progress);
 
             // Do some long loading things
-            try { Thread.sleep(1000); } catch (InterruptedException ignore) {}
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ignore) {
+            }
         }
     }
 

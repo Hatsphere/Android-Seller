@@ -4,8 +4,6 @@ package com.example.yashladha.android_seller.classes;
  * Created by dell pc on 30-10-2017.
  */
 
-import java.util.HashMap;
-import java.util.List;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -17,6 +15,9 @@ import android.widget.TextView;
 
 import com.example.yashladha.android_seller.R;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class MyAccountCustomExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
@@ -24,7 +25,7 @@ public class MyAccountCustomExpandableListAdapter extends BaseExpandableListAdap
     private HashMap<String, List<String>> expandableListDetail;
 
     public MyAccountCustomExpandableListAdapter(Context context, List<String> expandableListTitle,
-                                       HashMap<String, List<String>> expandableListDetail) {
+                                                HashMap<String, List<String>> expandableListDetail) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;

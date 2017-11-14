@@ -54,6 +54,10 @@ public class PlanChoicesActivity extends AppCompatActivity {
         Log.d(getClass().getSimpleName(), uid);
 
         Toast.makeText(PlanChoicesActivity.this, uid, Toast.LENGTH_LONG).show();
+
+        /**
+         * The details of user are sent to the server including the type of plan he/she has taken
+         */
         btPlatinuum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,28 +142,38 @@ public class PlanChoicesActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Here we are using Json to send the details of the seller to the server
+     * The request is sent to the server and the activity reacts as per the output from the server
+     *
+     * @param obj
+     * @return
+     */
     @NonNull
     private JsonObjectRequest sellerPushRequest(JSONObject obj) {
         return new JsonObjectRequest(
-                            Request.Method.POST, "http://10.0.2.2:3000/user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                uploadProfile();
-                                Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("error", error.toString());
-                            Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                Request.Method.POST, "http://10.0.2.2:3000/user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    uploadProfile();
+                    Toast.makeText(PlanChoicesActivity.this, response.get("response").toString(), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error", error.toString());
+                Toast.makeText(PlanChoicesActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+    /**
+     * We upload the profile here
+     */
     private void uploadProfile() {
         Ion.with(mContext)
                 .load(BaseUrlConfig.getBaseURL() + "user/seller/profile/" + uid)

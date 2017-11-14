@@ -32,7 +32,7 @@ public class HelperDef {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                           callback.getUID(response, context);
+                            callback.getUID(response, context);
                         }
                     },
                     new Response.ErrorListener() {

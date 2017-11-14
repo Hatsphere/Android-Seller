@@ -6,16 +6,9 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.example.yashladha.android_seller.classes.LoadingTask;
-
-import static java.lang.Thread.sleep;
 
 public class SplashActivity extends Activity implements LoadingTask.LoadingTaskFinishedListener {
 
@@ -54,8 +47,7 @@ public class SplashActivity extends Activity implements LoadingTask.LoadingTaskF
         if (uid == "") {
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
-        }
-        else{
+        } else {
             Intent i = new Intent(SplashActivity.this, HomePageActivity.class);
             startActivity(i);
         }

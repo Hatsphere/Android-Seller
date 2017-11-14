@@ -6,6 +6,5 @@
         android:endColor="@color/blueEnd"
         android:centerColor="@color/blueCenter"
         android:angle="270"
-        android:gradientRadius="50"
-        />
+        android:gradientRadius="50" />
 </shape>
