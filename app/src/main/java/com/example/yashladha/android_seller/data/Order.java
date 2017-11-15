@@ -11,16 +11,16 @@ public class Order {
     private String mTypeOfRequest;
     private String mAccept;
     private String mReject;
-    private String mNumOfRequest;
+    private int mNumOfRequest;
     private String mNum;
 
     private int mProductImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    public Order(String mProductName, String mProductNewPrice, String mTypeOfRequest, String mAccept,
-                 String mReject, String mNumOfRequest, String mNum, int mProductImageResourceId) {
+    public Order(String mProductName, String mProductPrice, String mTypeOfRequest, String mAccept,
+                 String mReject, int mNumOfRequest, String mNum, int mProductImageResourceId) {
         this.mProductName = mProductName;
-        this.mProductPrice = mProductNewPrice;
+        this.mProductPrice = mProductPrice;
         this.mTypeOfRequest = mTypeOfRequest;
         this.mAccept = mAccept;
         this.mReject = mReject;
@@ -49,7 +49,7 @@ public class Order {
         return mReject;
     }
 
-    public String getmNumOfRequest() {
+    public int getmNumOfRequest() {
         return mNumOfRequest;
     }
 
@@ -61,9 +61,8 @@ public class Order {
         return mProductImageResourceId;
     }
 
-    public boolean hasImage1()
-    {
-        boolean result = mProductImageResourceId!=NO_IMAGE_PROVIDED;
+    public boolean hasImage1() {
+        boolean result = mProductImageResourceId != NO_IMAGE_PROVIDED;
         return result;
     }
 }

@@ -2,11 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.yashladha.android_seller.fragments.SalesFrag"
     android:paddingBottom="10dp"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
     android:paddingTop="10dp">
 
     <LinearLayout
@@ -14,19 +11,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:clickable="true"
+        android:weightSum="1"
         android:id="@+id/linearLayout1">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="160dp"
+            android:layout_width="0dp"
+            android:scaleType="fitXY"
+            android:layout_height="100dp"
+            android:layout_weight="0.3"
             android:src="@drawable/platinum1"
-            android:id="@+id/ivProduct"
-            />
+            android:id="@+id/ivProduct" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="0.7"
             android:paddingLeft="10dp"
-            android:paddingTop="15dp"
+            android:paddingTop="5dp"
             android:orientation="vertical"
             android:paddingRight="10dp"
             android:id="@+id/linearLayout2">
@@ -39,39 +40,36 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Product Code"
-                    android:textStyle="bold"
+                    android:text="Product Name"
+                    android:id="@+id/tvProductName"
                     android:textSize="15dp"
-                    android:id="@+id/tvProductCode"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Product Name"
-                android:id="@+id/tvProductName"
-                android:layout_marginBottom="10dp"
-                android:textSize="20dp"
-                android:textColor="@android:color/holo_green_dark"
-                android:textStyle="bold"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order ID - OD0321845679"
+                    android:textStyle="bold"
+                    android:id="@+id/tvProductCode"
+                    android:textSize="10dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="5dp"
                 android:id="@+id/linearLayout3">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Number of items sold"
+                    android:text="Number of items sold:"
                     android:id="@+id/tvNumItemsSold"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="2dp"
                     android:textStyle="bold"
-                    android:textSize="18dp"
-                    />
+                    android:textSize="13dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -81,38 +79,40 @@
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:id="@+id/tvNum"
-                    android:layout_marginRight="5dp"
-                    />
+                    android:layout_marginRight="5dp" />
 
 
             </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total Amount :"
-                android:id="@+id/tvTotalAmount"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="5dp"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amount"
-                android:id="@+id/tvAmount"
-                android:textColor="@color/back"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="5dp"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Amount :"
+                    android:id="@+id/tvTotalAmount"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amount"
+                    android:id="@+id/tvAmount"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </FrameLayout>

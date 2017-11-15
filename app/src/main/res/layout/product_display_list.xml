@@ -3,31 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.yashladha.android_seller.DisplayActivity"
-    android:paddingLeft="10dp"
     android:paddingBottom="10dp"
-    android:paddingRight="10dp">
+    tools:context="com.example.yashladha.android_seller.DisplayActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
+
+
         <SearchView
+            android:id="@+id/svProducts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/svProducts"
-            android:showDividers="middle">
-        </SearchView>
+            android:queryHint="Search for the products"
+            android:showDividers="middle"></SearchView>
 
         <ListView
+            android:id="@+id/lvDisplayList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvListView"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            />
+            android:layout_marginTop="5dp"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp" />
+
     </LinearLayout>
+
 
 </RelativeLayout>

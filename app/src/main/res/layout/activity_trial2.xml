@@ -1,64 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     tools:context="com.example.yashladha.android_seller.TrialActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="You are about to sell like you
-            never did before"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/logo"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="25dp"
-        android:id="@+id/tvYou"
-        android:textColor="@android:color/holo_red_dark"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp" />
-    <Button
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:text="Get Started"
-        android:id="@+id/btGetStarted"
-        android:layout_gravity="center"
-        android:background="@drawable/button"
-        android:backgroundTint="@android:color/holo_blue_bright"
-        tools:layout_editor_absoluteY="406dp"
-        tools:layout_editor_absoluteX="148dp" />
+        <TextView
+            android:id="@+id/tvHatTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:text="HatSphere"
+            android:textColor="@android:color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-<LinearLayout
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:id="@+id/linearLayout2"
-android:orientation="vertical"
-android:layout_below="@id/linearLayout1"
-    tools:layout_editor_absoluteY="0dp"
-    tools:layout_editor_absoluteX="8dp">
-<TextView
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:textSize="25dp"
-    android:gravity="center"
-    android:text="Our app also supports a
- TRIAL version"
-    android:paddingLeft="0dp"
-    android:id="@+id/tvTrial"
-    android:textStyle="bold"
-    tools:layout_editor_absoluteY="173dp"
-    tools:layout_editor_absoluteX="49dp" />
+        <TextView
+            android:id="@+id/tvTrialTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="-------------Trial Version-----------"
+            android:textColor="@color/back"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
-<TextView
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:text="Wanna Check It Out?
- Get In Here"
-    tools:layout_editor_absoluteY="273dp"
-    tools:layout_editor_absoluteX="128dp" />
+
+        <TextView
+            android:id="@+id/tvTerms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="3dp"
+            android:text="Terms and Conditions"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/tvMemDescriptiom"
+            android:text="We provide the sellers with a trial offer for a limited period, which is subject to a set of terms except as otherwise stated. Hatsphere will notify the members at the end of the free trial period.
+        At the end of the chosen plan, customer will have the option of make a purchase of a appropriate plan and continue enjoying their benefits."
+            android:textSize="13dp" />
+
+
+        <CheckBox
+            android:id="@+id/cbYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="Yes,I accept the terms and conditions and want to try out the trial offer" />
+
+
+        <Button
+            android:id="@+id/btProceed"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_rounded_corners_gradiant"
+            android:gravity="center"
+            android:text="Proceed" />
     </LinearLayout>
 </RelativeLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:weightSum="1"
+    android:id="@+id/payment_container">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:id="@+id/linearLayout1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Total amount to be paid :"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/tvAmountPaid" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="₹400"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="100dp"
+            android:id="@+id/tvAmt" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/vTotal"
+        android:background="@android:color/darker_gray" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/vOption"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:paddingTop="5dp"
+        android:text="Select the start date for the subscription"
+        android:textColor="@android:color/black"
+        android:id="@+id/tvSelectDate" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:id="@+id/linearLayout2">
+
+        <Button
+            android:id="@+id/btPickDate"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:onClick="showDatePickerDialog"
+            android:text="Pick a date"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:background="@color/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCalendar"
+            android:layout_marginLeft="20dp"
+            android:text="Chosen Date"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/vSelect"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Select an option to pay"
+        android:textSize="15dp"
+        android:textColor="@android:color/black"
+        android:paddingTop="5dp"
+        android:id="@+id/tvSelectPay" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/btDebit"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:text="Debit Card                                                                 > "
+        android:gravity="left"
+        android:background="@drawable/button_rounded_corners_gradiant" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/btCredit"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:text="Credit Card                                                              > "
+        android:gravity="left"
+        android:background="@drawable/button_rounded_corners_gradiant" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/btNet"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:text="Net Banking                                                             > "
+        android:gravity="left"
+        android:background="@drawable/button_rounded_corners_gradiant" />
+
+</LinearLayout>

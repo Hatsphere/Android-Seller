@@ -27,7 +27,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             return new DisplayFrag();
-        } else if(position == 1){
+        } else if (position == 1) {
             return new SalesFrag();
         } else {
             return new OrdersFrag();
@@ -41,14 +41,13 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        /*if (position == 0) {
+        if (position == 0) {
             return "Products";
-        } else if(position == 1){
-            return "Sales Analysis";
-        } else{
+        } else if (position == 1) {
+            return "Sales";
+        } else {
             return "Orders";
         }
-        */
-        return null;
+
     }
 }

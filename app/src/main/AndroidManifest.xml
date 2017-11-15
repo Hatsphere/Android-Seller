@@ -4,11 +4,23 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="HatSphere"
+        android:label="HatSphere Seller Hub"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,7 +33,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="HatSphere"
+            android:label="Log In"
             android:parentActivityName=".SplashActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -31,7 +43,7 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:label="HatSphere">
+            android:label="Register">
             android:parentActivityName=".SplashActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -41,7 +53,7 @@
         </activity>
         <activity
             android:name=".HomePageActivity"
-            android:label="HatSphere"
+            android:label="Home"
             android:parentActivityName=".LoginActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -51,7 +63,7 @@
         </activity>
         <activity
             android:name=".DisplayActivity"
-            android:label="HatSphere"
+            android:label=" Products"
             android:parentActivityName=".HomePageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -61,7 +73,7 @@
         </activity>
         <activity
             android:name=".OrdersActivity"
-            android:label="HatSphere"
+            android:label="Orders"
             android:parentActivityName=".HomePageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -71,7 +83,7 @@
         </activity>
         <activity
             android:name=".SalesActivity"
-            android:label="HatSphere"
+            android:label="Sales"
             android:parentActivityName=".HomePageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -79,17 +91,40 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePageActivity" />
         </activity>
+        <activity android:name=".RegisterActivity_2" />
+        <activity
+            android:name=".PlanChoicesActivity"
+            android:label="Choose A Plan" />
+        <activity android:name=".TrialActivity" />
+        <activity
+            android:name=".AddProductsActivity"
+            android:label="Add A Product">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.yashladha.android_seller.HomePageActivity" />
+        </activity>
+        <activity
+            android:name=".PlanPaymentActivity"
+            android:label="Payment" />
+        <activity
+            android:name=".PlanChosenActivity"
+            android:label="HatSphere" />
 
-        <activity android:name=".RegisterActivity_2" ></activity>
-
-        <activity android:name=".PlanChoicesActivity"></activity>
-
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity
-            android:name=".navigation.NavigationActivity"
-            android:label="HatSphere"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TrialActivity"></activity>
+            android:name=".navigation.MyAccountEditActivity"
+            android:label="Edit your account" />
+        <activity android:name=".navigation.ChangePassword"></activity>
     </application>
 
 </manifest>
