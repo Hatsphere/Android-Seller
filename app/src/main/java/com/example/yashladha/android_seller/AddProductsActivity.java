@@ -106,7 +106,7 @@ public class AddProductsActivity extends AppCompatActivity {
         UID = myPrefs.getString("UID", "");
         plan = myPrefs.getString("Plan", "");
         SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
-        Toast.makeText(AddProductsActivity.this, UID, Toast.LENGTH_LONG).show();
+        //Toast.makeText(AddProductsActivity.this, UID, Toast.LENGTH_LONG).show();
         System.out.println(UID);
         /**
          * taking the entry from the edit text to string product name
@@ -319,7 +319,7 @@ public class AddProductsActivity extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(AddProductsActivity.this, "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddProductsActivity.this, "You have not entered some entries", Toast.LENGTH_SHORT).show();
 
                 }
             }
