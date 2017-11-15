@@ -7,8 +7,9 @@
     tools:context="com.example.yashladha.android_seller.DisplayActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="invisible"
         android:id="@+id/imageView1"/>
 
     <LinearLayout
