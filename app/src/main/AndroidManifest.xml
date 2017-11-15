@@ -99,6 +99,7 @@
         <activity
             android:name=".AddProductsActivity"
             android:label="Add A Product" />
+        <activity
         android:name=".PlanPaymentActivity"
         android:label="Payment" />
         <activity

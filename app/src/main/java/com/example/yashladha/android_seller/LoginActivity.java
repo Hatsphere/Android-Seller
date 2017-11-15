@@ -273,7 +273,6 @@ public class LoginActivity extends AppCompatActivity {
      */
     private boolean validatePassword() {
         if (etPassword.getText().toString().trim().isEmpty()) {
-
             Toast.makeText(LoginActivity.this, "Invalid Password",
                     Toast.LENGTH_SHORT).show();
             return false;
