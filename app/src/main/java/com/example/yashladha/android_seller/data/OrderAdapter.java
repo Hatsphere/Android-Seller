@@ -79,7 +79,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
                 adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        mAccept.setText("Done!!!");
+                        mAccept.setText("ACCEPTED !!!");
                         mAccept.setBackgroundColor(Color.GREEN);
                         mAccept.setEnabled(false);
                         mReject.setVisibility(View.GONE);
