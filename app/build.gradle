@@ -55,3 +55,5 @@ repositories {
 }
 
 
+
+apply plugin: 'kotlin-android-extensions'

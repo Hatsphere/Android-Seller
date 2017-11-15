@@ -86,6 +86,10 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                         mAccept.setEnabled(false);
                         mReject.setVisibility(View.GONE);
 
+                        ViewGroup layout = (ViewGroup) mReject.getParent();
+                        if(null!=layout) //for safety only  as you are doing onClick
+                            layout.removeView(mReject);
+
                     }});
                 adb.show();
 
@@ -106,11 +110,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
                     public void onClick(DialogInterface dialog, int which) {
                         OrdersFrag.orderAdapter.remove(getItem(positionToRemove));
                         OrdersFrag.orderAdapter.notifyDataSetChanged();
-                        /*
-                        mReject.setBackgroundColor(Color.GRAY);
-                        mReject.setEnabled(false);
-                        mAccept.setEnabled(false);
-                        */
+
                     }});
                 adb.show();
 
