@@ -105,6 +105,7 @@ public class DisplayFrag extends Fragment {
                                 e.printStackTrace();
                             }
 
+                            products.add(new Product(name,rating,newPrice,orignalPrice,productDiscount,"Exchange","Yes",drawable,R.drawable.remove))
                         }
                     }
                 },
