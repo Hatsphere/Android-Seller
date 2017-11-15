@@ -98,10 +98,14 @@
         <activity android:name=".TrialActivity" />
         <activity
             android:name=".AddProductsActivity"
-            android:label="Add A Product" />
+            android:label="Add A Product">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.yashladha.android_seller.HomePageActivity" />
+        </activity>
         <activity
-        android:name=".PlanPaymentActivity"
-        android:label="Payment" />
+            android:name=".PlanPaymentActivity"
+            android:label="Payment" />
         <activity
             android:name=".PlanChosenActivity"
             android:label="HatSphere" />
@@ -120,7 +124,7 @@
         <activity
             android:name=".navigation.MyAccountEditActivity"
             android:label="Edit your account" />
-        <activity android:name=".NavigationDrawerItems" />
+        <activity android:name=".navigation.ChangePassword"></activity>
     </application>
 
 </manifest>

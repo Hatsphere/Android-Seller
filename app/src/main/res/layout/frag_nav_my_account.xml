@@ -66,6 +66,12 @@
                     android:layout_height="18dp"
                     android:text="201551098@iiitvadodara.ac.in"
                     android:id="@+id/tvEmail" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:text="Gandhinagar,Gujarat - 382012"
+                    android:id="@+id/tvResAdd" />
             </LinearLayout>
 
 
@@ -90,25 +96,32 @@
             android:layout_marginTop="8dp"
             android:background="@android:color/darker_gray" />
 
-        <ExpandableListView
-            android:id="@+id/expandableListView"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Change Password"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:clickable="true"
+            android:layout_marginTop="15dp"
+            android:id="@+id/tvChangePassword" />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="0.5dp" />
+            android:layout_height="1dp"
+            android:id="@+id/vPassword"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="23dp"
+            android:layout_height="wrap_content"
             android:text="De-activate account"
             android:textStyle="bold"
             android:textSize="20dp"
             android:clickable="true"
             android:layout_marginTop="15dp"
             android:id="@+id/tvDeactivate" />
-
 
         <View
             android:layout_width="match_parent"
@@ -117,10 +130,9 @@
             android:layout_marginTop="8dp"
             android:background="@android:color/darker_gray" />
 
-
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="23dp"
+            android:layout_height="wrap_content"
             android:text="Log Out"
             android:clickable="true"
             android:textStyle="bold"

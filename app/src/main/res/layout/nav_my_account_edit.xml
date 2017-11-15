@@ -108,6 +108,29 @@
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:text="Residential Address"
+            android:textColor="@android:color/black"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/etAddress"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_border"
+            android:hint="Edit your residential address"
+            android:padding="10dp"
+            android:textColorHint="#887f7f" />
+
         <Button
             android:id="@+id/btDone"
             android:layout_width="80dp"
