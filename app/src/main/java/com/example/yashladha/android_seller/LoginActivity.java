@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     String password = "";
 
     public LoginActivity() {
-                // Required empty public constructor
+        // Required empty public constructor
     }
 
     public static LoginActivity newInstance() {
@@ -102,7 +102,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
+/**
+ * The functionality we do when the user wants to login.
+ * In this we take the id and password of the user to check if he/she is already in the database or not
+ * Then we let him/her proceed to his/her home page
+ */
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,6 +266,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * validating if the password provided is in the right format or not
+     *
+     * @return
+     */
     private boolean validatePassword() {
         if (etPassword.getText().toString().trim().isEmpty()) {
 
@@ -274,6 +283,11 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * checking if the email field is empty or not.
+     *
+     * @return
+     */
     private boolean validateUserName() {
         if (email.isEmpty()) {
             Toast.makeText(LoginActivity.this, "Invalid User Name",
@@ -289,6 +303,13 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * This method is used to take the functionality of the email address checker form the TextUtils class.
+     * It uses the format of the given email to check if it is right or not
+     *
+     * @param email
+     * @return
+     */
     private boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }

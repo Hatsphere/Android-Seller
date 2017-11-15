@@ -1,5 +1,4 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,7 +21,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:src="@drawable/platinum1"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -48,14 +47,15 @@
                     android:textColor="@android:color/holo_green_dark"
                     android:textSize="20dp"
                     android:textStyle="bold" />
+
                 <ImageButton
                     android:id="@+id/ibProduct"
                     android:layout_width="26dp"
                     android:layout_height="26dp"
                     android:src="@drawable/delete"
-                    android:scaleType="centerCrop"
-                    android:layout_gravity="right"
-                    />
+                    android:background="@drawable/circle"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="right" />
 
             </LinearLayout>
 
@@ -67,34 +67,33 @@
                 android:text="Rating"
                 android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="2dp"
-            android:id="@+id/linearLayout3"
-            android:weightSum="100">
-
-            <TextView
-                android:id="@+id/tvNewPrice"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="New Price"
-                android:layout_marginRight="5dp"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_weight="30"
-                />
+                android:orientation="horizontal"
+                android:layout_marginBottom="2dp"
+                android:id="@+id/linearLayout3"
+                android:weightSum="100">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Original Price"
-                android:id="@+id/tvOriginalPrice"
-                android:layout_marginRight="5dp"
-                android:layout_weight="35"
-                />
-            <TextView
+                <TextView
+                    android:id="@+id/tvNewPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="New Price"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_weight="30" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Original Price"
+                    android:id="@+id/tvOriginalPrice"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="35" />
+
+                <TextView
                     android:id="@+id/tvDiscount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -108,14 +107,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Exchange possibility : "
-                android:textSize="12dp"/>
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/tvYesNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes/No"
-                android:textSize="12dp"/>
+                android:textSize="12dp" />
 
         </LinearLayout>
 

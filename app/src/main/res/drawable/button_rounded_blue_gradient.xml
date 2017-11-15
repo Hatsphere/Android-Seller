@@ -3,31 +3,18 @@
     <item>
         <shape android:shape="rectangle">
             <!--make a gradient background-->
-            <gradient
-                android:type="linear"
-                android:startColor="@color/blueStart"
-                android:endColor="@color/blueEnd"
-                android:centerColor="@color/blueCenter"
-                android:angle="0"
-                android:gradientRadius="50"
-                />
+            <gradient android:type="linear" android:startColor="@color/blueStart" android:endColor="@color/blueEnd" android:centerColor="@color/blueCenter" android:angle="0" android:gradientRadius="50" />
             <!--apply a border around button-->
             <!-- make the button corners rounded-->
-            <corners android:radius="25dp"/>
+            <corners android:radius="25dp" />
         </shape>
     </item>
 
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <corners
-                    android:radius="5dip" />
-                <gradient
-                    android:startColor="@color/redStart"
-                    android:centerColor="@color/redCenter"
-                    android:endColor="@color/redEnd"
-                    android:angle="270"
-                    />
+                <corners android:radius="5dip" />
+                <gradient android:startColor="@color/redStart" android:centerColor="@color/redCenter" android:endColor="@color/redEnd" android:angle="270" />
             </shape>
         </clip>
     </item>

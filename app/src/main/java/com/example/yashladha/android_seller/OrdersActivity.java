@@ -13,6 +13,6 @@ public class OrdersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.orders_list);
         setTitle("Orders");
-        getSupportFragmentManager().beginTransaction().replace(R.id.container1,new OrdersFrag()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container1, new OrdersFrag()).commit();
     }
 }

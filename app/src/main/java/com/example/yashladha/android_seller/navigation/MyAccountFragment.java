@@ -1,24 +1,15 @@
 package com.example.yashladha.android_seller.navigation;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yashladha.android_seller.HomePageActivity;
-import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.classes.MyAccountCustomExpandableListAdapter;
 import com.example.yashladha.android_seller.classes.MyAccountExpandableListDataPump;
@@ -48,10 +38,10 @@ public class MyAccountFragment extends Fragment {
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableListDetail;
-    TextView tvMyName, tvContact, tvEmail, tvDeactivate, tvLogOut;
+    TextView tvMyName, tvContact, tvEmail, tvDeactivate, tvLogOut, tvPlan;
     ImageView ivMyPic, ivEdit;
     HomePageActivity h1 = new HomePageActivity();
-
+    String type = "";
     @Override
     public void onAttach(Activity activity) {
         myContext = (FragmentActivity) activity;
@@ -63,11 +53,12 @@ public class MyAccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_nav_my_account, container, false);
-
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("myprfs", Context.MODE_PRIVATE);
+        type = sharedPreferences.getString("Plan", "");;
         context = rootView.getContext();
         ivMyPic = (ImageView) rootView.findViewById(R.id.ivMyPic);
         ivEdit = (ImageView) rootView.findViewById(R.id.ivEdit);
-
+        tvPlan = (TextView) rootView.findViewById(R.id.tvPlan);
         tvMyName = (TextView) rootView.findViewById(R.id.tvMyName);
         tvContact = (TextView) rootView.findViewById(R.id.tvContact);
         tvEmail = (TextView) rootView.findViewById(R.id.tvEmail);
@@ -81,7 +72,7 @@ public class MyAccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        tvPlan.setText(type);
         tvLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

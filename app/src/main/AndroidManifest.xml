@@ -96,9 +96,11 @@
             android:name=".PlanChoicesActivity"
             android:label="Choose A Plan" />
         <activity android:name=".TrialActivity" />
+
         <activity
             android:name=".AddProductsActivity"
             android:label="Add A Product" />
+        <activity
         android:name=".PlanPaymentActivity"
         android:label="Payment" />
         <activity

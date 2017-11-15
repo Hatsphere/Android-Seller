@@ -21,9 +21,8 @@ public class SalesItemAdapter extends ArrayAdapter<SalesItem> {
 
     private int mColorResourceId;
 
-    public SalesItemAdapter(Activity context, ArrayList<SalesItem> salesItems, int colorResourceId)
-    {
-        super(context,0,salesItems);
+    public SalesItemAdapter(Activity context, ArrayList<SalesItem> salesItems, int colorResourceId) {
+        super(context, 0, salesItems);
         mColorResourceId = colorResourceId;
     }
 
@@ -31,44 +30,41 @@ public class SalesItemAdapter extends ArrayAdapter<SalesItem> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View listItemView = convertView;
-        if(listItemView==null)
-        {
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
 
-                    R.layout.sales_item_details,parent,false);
+                    R.layout.sales_item_details, parent, false);
         }
         SalesItem currentSalesItem = getItem(position);
 
-        TextView mProductName = (TextView)listItemView.findViewById(R.id.tvProductName);
+        TextView mProductName = (TextView) listItemView.findViewById(R.id.tvProductName);
         mProductName.setText(currentSalesItem.getmProductName());
 
-        TextView mProductCode = (TextView)listItemView.findViewById(R.id.tvProductCode);
+        TextView mProductCode = (TextView) listItemView.findViewById(R.id.tvProductCode);
         mProductCode.setText(currentSalesItem.getmProductCode());
 
-        TextView mNumItemsSold = (TextView)listItemView.findViewById(R.id.tvNumItemsSold);
+        TextView mNumItemsSold = (TextView) listItemView.findViewById(R.id.tvNumItemsSold);
         mNumItemsSold.setText(currentSalesItem.getmNumItemsSold());
 
-        TextView mNum = (TextView)listItemView.findViewById(R.id.tvNum);
+        TextView mNum = (TextView) listItemView.findViewById(R.id.tvNum);
         mNum.setText(currentSalesItem.getmNum());
 
-        TextView mTotalAmount = (TextView)listItemView.findViewById(R.id.tvTotalAmount);
+        TextView mTotalAmount = (TextView) listItemView.findViewById(R.id.tvTotalAmount);
         mTotalAmount.setText(currentSalesItem.getmTotalAmount());
 
-        TextView mAmount = (TextView)listItemView.findViewById(R.id.tvAmount);
+        TextView mAmount = (TextView) listItemView.findViewById(R.id.tvAmount);
         mAmount.setText(currentSalesItem.getmAmount());
 
-        ImageView mProductImageResource = (ImageView)listItemView.findViewById(R.id.ivProduct);
-        if(currentSalesItem.hasImage1())
-        {
+        ImageView mProductImageResource = (ImageView) listItemView.findViewById(R.id.ivProduct);
+        if (currentSalesItem.hasImage1()) {
             mProductImageResource.setImageResource(currentSalesItem.getmProductImageResourceId());
             mProductImageResource.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             mProductImageResource.setVisibility(View.GONE);
         }
 
         View textContainer = listItemView.findViewById(R.id.linearLayout2);
-        int color = ContextCompat.getColor(getContext(),mColorResourceId);
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
         textContainer.setBackgroundColor(color);
 
         return listItemView;

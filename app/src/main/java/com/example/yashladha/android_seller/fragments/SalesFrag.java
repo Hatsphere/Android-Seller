@@ -10,16 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.yashladha.android_seller.R;
-import com.example.yashladha.android_seller.data.Product;
-import com.example.yashladha.android_seller.data.ProductAdapter;
 import com.example.yashladha.android_seller.data.SalesItem;
 import com.example.yashladha.android_seller.data.SalesItemAdapter;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
@@ -28,7 +20,7 @@ import java.util.ArrayList;
  */
 public class SalesFrag extends Fragment {
 
-    TextView tvProductCode,tvProductName,tvNumItemsSold,tvNum,tvTotalAmount,tvAmount;
+    TextView tvProductCode, tvProductName, tvNumItemsSold, tvNum, tvTotalAmount, tvAmount;
     ImageView ivProduct;
 
     public SalesFrag() {
@@ -42,14 +34,14 @@ public class SalesFrag extends Fragment {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.activity_sales, container, false);
 
-        tvProductCode = (TextView)rootview.findViewById(R.id.tvProductCode);
-        tvProductName = (TextView)rootview.findViewById(R.id.tvProductName);
-        tvNumItemsSold = (TextView)rootview.findViewById(R.id.tvNumItemsSold);
-        tvNum = (TextView)rootview.findViewById(R.id.tvNum);
-        tvTotalAmount = (TextView)rootview.findViewById(R.id.tvTotalAmount);
-        tvAmount = (TextView)rootview.findViewById(R.id.tvAmount);
+        tvProductCode = (TextView) rootview.findViewById(R.id.tvProductCode);
+        tvProductName = (TextView) rootview.findViewById(R.id.tvProductName);
+        tvNumItemsSold = (TextView) rootview.findViewById(R.id.tvNumItemsSold);
+        tvNum = (TextView) rootview.findViewById(R.id.tvNum);
+        tvTotalAmount = (TextView) rootview.findViewById(R.id.tvTotalAmount);
+        tvAmount = (TextView) rootview.findViewById(R.id.tvAmount);
 
-        ivProduct = (ImageView)rootview.findViewById(R.id.ivProduct);
+        ivProduct = (ImageView) rootview.findViewById(R.id.ivProduct);
 
         final ArrayList<SalesItem> salesItems = new ArrayList<SalesItem>();
 
