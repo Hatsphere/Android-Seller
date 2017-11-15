@@ -50,7 +50,7 @@ public class OrdersFrag extends Fragment {
                 R.string.num_request, "3", R.drawable.orders_vase));
 
 
-        OrderAdapter orderAdapter = new OrderAdapter(getActivity(), orders, R.color.back5);
+        orderAdapter = new OrderAdapter(getActivity(), orders, R.color.back5);
         ListView listView = (ListView) rootview.findViewById(R.id.lvOrderList);
         listView.setAdapter(orderAdapter);
 

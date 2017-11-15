@@ -19,6 +19,8 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toolbar;
+import android.widget.TextView;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
@@ -160,6 +162,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
@@ -171,10 +174,8 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else if (getFragmentManager().getBackStackEntryCount() > 0) {
-            getFragmentManager().popBackStack();
         } else {
-            super.onBackPressed();
+            exitByBackKey();
         }
     }
 
@@ -183,9 +184,6 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         // Inflate the menu; this adds items to the action bar if it is present.
         this.menu = menu;
         getMenuInflater().inflate(R.menu.navigation, menu);
-        /*hideOption(R.id.action_settings);
-        hideOption(R.id.more);
-        */
         return true;
     }
 
@@ -197,12 +195,14 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings || mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        /*else if (id == R.id.more) {
+        /*if (id == R.id.action_settings || mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }*/
+
+        if ( mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
