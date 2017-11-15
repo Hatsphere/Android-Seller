@@ -156,6 +156,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
@@ -177,9 +178,6 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         // Inflate the menu; this adds items to the action bar if it is present.
         this.menu = menu;
         getMenuInflater().inflate(R.menu.navigation, menu);
-        /*hideOption(R.id.action_settings);
-        hideOption(R.id.more);
-        */
         return true;
     }
 
@@ -191,12 +189,14 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings || mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        /*else if (id == R.id.more) {
+        /*if (id == R.id.action_settings || mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }*/
+
+        if ( mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

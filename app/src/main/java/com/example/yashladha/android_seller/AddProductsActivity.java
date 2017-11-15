@@ -102,8 +102,9 @@ public class AddProductsActivity extends AppCompatActivity {
         tbOnSale = findViewById(R.id.tbOnSale);
         rq = Volley.newRequestQueue(AddProductsActivity.this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         UID = myPrefs.getString("UID", "");

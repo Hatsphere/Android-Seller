@@ -72,6 +72,10 @@ public class MyAccountEditActivity extends AppCompatActivity {
             }
         });
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(false);
+
+
     }
 
     private void showPictureDialog() {

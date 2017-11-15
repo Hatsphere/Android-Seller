@@ -34,23 +34,23 @@ public class OrdersFrag extends Fragment {
 
         final ArrayList<Order> orders = new ArrayList<Order>();
 
-        orders.add(new Order("Baskets", "₹400", R.string.purchase_request, "Accept", "Reject",
+        orders.add(new Order("Baskets", "₹400", "Purchase", "Accept", "Reject",
                 R.string.num_request, "2", R.drawable.order_baskets));
-        orders.add(new Order("Handbags", "₹1300", R.string.purchase_request, "Accept", "Reject",
+        orders.add(new Order("Handbags", "₹1300", "Purchase", "Accept", "Reject",
                 R.string.num_request, "3", R.drawable.order_handbags));
-        orders.add(new Order("Sandals", "₹1500", R.string.refund_request, "Accept", "Reject",
+        orders.add(new Order("Sandals", "₹1500", "Refund", "Accept", "Reject",
                 R.string.num_request, "1", R.drawable.order_sandals));
-        orders.add(new Order("Candles", "₹220", R.string.purchase_request, "Accept", "Reject",
+        orders.add(new Order("Candles", "₹220", "Purchase", "Accept", "Reject",
                 R.string.num_request, "5", R.drawable.orders_candles));
-        orders.add(new Order("Duck", "₹350", R.string.exchange_request, "Accept", "Reject",
+        orders.add(new Order("Duck", "₹350", "Exchange", "Accept", "Reject",
                 R.string.num_request, "2", R.drawable.orders_duck));
-        orders.add(new Order("Owl", "₹300", R.string.refund_request, "Accept", "Reject",
+        orders.add(new Order("Owl", "₹300", "Refund", "Accept", "Reject",
                 R.string.num_request, "1", R.drawable.orders_owl));
-        orders.add(new Order("Vase", "₹1200", R.string.exchange_request, "Accept", "Reject",
+        orders.add(new Order("Vase", "₹1200", "Exchange", "Accept", "Reject",
                 R.string.num_request, "3", R.drawable.orders_vase));
 
 
-        OrderAdapter orderAdapter = new OrderAdapter(getActivity(), orders, R.color.back5);
+        orderAdapter = new OrderAdapter(getActivity(), orders, R.color.back5);
         ListView listView = (ListView) rootview.findViewById(R.id.lvOrderList);
         listView.setAdapter(orderAdapter);
 
