@@ -1,5 +1,7 @@
 package com.example.yashladha.android_seller.data;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by dell pc on 22-10-2017.
  */
@@ -13,13 +15,13 @@ public class Product {
     private String mProductDiscount;
     private String mExchange;
     private String mYesNo;
-    private int mProductImageResourceId = NO_IMAGE_PROVIDED;
+    private Drawable mProductImageResourceId ;
     private int mProductRemoveImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
     public Product(String mProductName, String mProductRating, String mProductNewPrice,
                    String mProductOriginalPrice, String mProductDiscount, String mExchange,
-                   String mYesNo, int mProductImageResourceId, int mProductRemoveImageResourceId) {
+                   String mYesNo, Drawable mProductImageResourceId, int mProductRemoveImageResourceId) {
 
         this.mProductName = mProductName;
         this.mProductRating = mProductRating;
@@ -60,7 +62,7 @@ public class Product {
         return mYesNo;
     }
 
-    public int getmProductImageResourceId() {
+    public Drawable getmProductImageResourceId() {
         return mProductImageResourceId;
     }
 
@@ -77,8 +79,8 @@ public class Product {
         return result;
     }
 
-    public boolean hasImage1() {
+    /*public boolean hasImage1() {
         boolean result = mProductImageResourceId != NO_IMAGE_PROVIDED;
         return result;
-    }
+    }*/
 }
