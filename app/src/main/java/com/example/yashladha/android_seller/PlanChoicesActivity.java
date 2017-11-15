@@ -50,11 +50,8 @@ public class PlanChoicesActivity extends AppCompatActivity {
         final String name = getIntent().getStringExtra("name");
         SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         uid = myPrefs.getString("UID", "");
-
         Log.d(getClass().getSimpleName(), uid);
-
         Toast.makeText(PlanChoicesActivity.this, uid, Toast.LENGTH_LONG).show();
-
         /**
          * The details of user are sent to the server including the type of plan he/she has taken
          */

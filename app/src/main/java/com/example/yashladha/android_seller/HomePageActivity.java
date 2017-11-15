@@ -24,10 +24,6 @@ import android.widget.TextView;
 
 import com.example.yashladha.android_seller.classes.SimpleFragmentPagerAdapter;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
-import com.example.yashladha.android_seller.navigation.AboutUsFragment;
-import com.example.yashladha.android_seller.navigation.FAQsFragment;
-import com.example.yashladha.android_seller.navigation.HelpFragment;
-import com.example.yashladha.android_seller.navigation.MyAccountFragment;
 
 //import android.widget.Toolbar;
 
@@ -63,25 +59,35 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
      * We customized the function that this activity will show when we touch the back key
      */
     protected void exitByBackKey() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            AlertDialog alertbox = new AlertDialog.Builder(this)
+                    .setMessage("Do you want to exit?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
-        AlertDialog alertbox = new AlertDialog.Builder(this)
-                .setMessage("Do you want to exit?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        // do something when the button is clicked
+                        public void onClick(DialogInterface arg0, int arg1) {
 
-                    // do something when the button is clicked
-                    public void onClick(DialogInterface arg0, int arg1) {
+                            finish();
+                            //close();
 
-                        finish();
-                        //close();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
 
-                    // do something when the button is clicked
-                    public void onClick(DialogInterface arg0, int arg1) {
-                    }
-                })
-                .show();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                        // do something when the button is clicked
+                        public void onClick(DialogInterface arg0, int arg1) {
+                        }
+                    })
+                    .show();
+
+
+        }
 
     }
 
@@ -214,16 +220,24 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         Fragment fragment = null;
 
         if (id == R.id.itMyAccount) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new MyAccountFragment(),"My Account").commit();
+            Intent i = new Intent(HomePageActivity.this, NavigationDrawerItems.class);
+            i.putExtra("Type", "My Account");
+            startActivity(i);
 
         } else if (id == R.id.itHelp) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new HelpFragment(),"Help").commit();
+            Intent i = new Intent(HomePageActivity.this, NavigationDrawerItems.class);
+            i.putExtra("Type", "Help");
+            startActivity(i);
 
         } else if (id == R.id.itAboutUs) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new AboutUsFragment(),"About Us").commit();
+            Intent i = new Intent(HomePageActivity.this, NavigationDrawerItems.class);
+            i.putExtra("Type", "About Us");
+            startActivity(i);
 
         } else if (id == R.id.itFaq) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new FAQsFragment(),"FAQs").commit();
+            Intent i = new Intent(HomePageActivity.this, NavigationDrawerItems.class);
+            i.putExtra("Type", "FAQs");
+            startActivity(i);
         } else if (id == R.id.itAddProduct) {
             Intent i = new Intent(HomePageActivity.this, AddProductsActivity.class);
             startActivity(i);

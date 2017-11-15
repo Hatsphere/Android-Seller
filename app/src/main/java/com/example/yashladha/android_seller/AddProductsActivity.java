@@ -109,6 +109,9 @@ public class AddProductsActivity extends AppCompatActivity {
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         UID = myPrefs.getString("UID", "");
         plan = myPrefs.getString("Plan", "");
+        SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
+        Toast.makeText(AddProductsActivity.this, UID, Toast.LENGTH_LONG).show();
+        System.out.println(UID);
         /**
          * taking the entry from the edit text to string product name
          */
@@ -126,6 +129,9 @@ public class AddProductsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 productName = etProductName.getText().toString();
+                if (productName.equals("")) {
+                    etProductName.setError("Please fill this entry");
+                }
             }
         });
 /**
@@ -145,6 +151,9 @@ public class AddProductsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 proDes = etProDes.getText().toString();
+                if (proDes.equals("")) {
+                    etProDes.setError("Please fill this entry");
+                }
             }
         });
         /**
@@ -164,6 +173,13 @@ public class AddProductsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 originalPrice = etOriginalPrice.getText().toString();
+                if (etOriginalPrice.getText().equals("")) {
+                    etOriginalPrice.setError("Please fill this entry");
+                }
+                if (!(etOriginalPrice.getText().toString()).matches("^-?\\d+$")) {
+                    etOriginalPrice.setError("Please enter an integer");
+                    etOriginalPrice.setText("");
+                }
             }
         });
         /**
@@ -183,6 +199,13 @@ public class AddProductsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 discount = etDiscount.getText().toString();
+                if (etDiscount.getText().equals("")) {
+                    etDiscount.setError("Please fill this entry");
+                }
+                if (!(etDiscount.getText().toString()).matches("^-?\\d+$")) {
+                    etDiscount.setError("Please enter an integer");
+                    etDiscount.setText("");
+                }
             }
         });
         /**
@@ -202,6 +225,7 @@ public class AddProductsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 category = etCategory.getText().toString();
+
             }
         });
         /**
@@ -296,6 +320,10 @@ public class AddProductsActivity extends AppCompatActivity {
                             });
 
                     rq.add(jsonObjectRequest);
+
+                }
+                else{
+                    Toast.makeText(AddProductsActivity.this, "", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -499,10 +527,9 @@ public class AddProductsActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(AddProductsActivity.this,HomePageActivity.class);
+        Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
         startActivity(intent);
         super.onBackPressed();
     }

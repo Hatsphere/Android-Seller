@@ -34,19 +34,19 @@ public class OrdersFrag extends Fragment {
 
         final ArrayList<Order> orders = new ArrayList<Order>();
 
-        orders.add(new Order("Baskets", "₹400", "Purchase", "Accept", "Reject",
+        orders.add(new Order("Baskets", "₹400",getString(R.string.purchase_request), "Accept", "Reject",
                 R.string.num_request, "2", R.drawable.order_baskets));
-        orders.add(new Order("Handbags", "₹1300", "Purchase", "Accept", "Reject",
+        orders.add(new Order("Handbags", "₹1300", getString(R.string.purchase_request), "Accept", "Reject",
                 R.string.num_request, "3", R.drawable.order_handbags));
-        orders.add(new Order("Sandals", "₹1500", "Refund", "Accept", "Reject",
+        orders.add(new Order("Sandals", "₹1500", getString(R.string.refund_request), "Accept", "Reject",
                 R.string.num_request, "1", R.drawable.order_sandals));
-        orders.add(new Order("Candles", "₹220", "Purchase", "Accept", "Reject",
+        orders.add(new Order("Candles", "₹220", getString(R.string.purchase_request), "Accept", "Reject",
                 R.string.num_request, "5", R.drawable.orders_candles));
-        orders.add(new Order("Duck", "₹350", "Exchange", "Accept", "Reject",
+        orders.add(new Order("Duck", "₹350", getString(R.string.exchange_request), "Accept", "Reject",
                 R.string.num_request, "2", R.drawable.orders_duck));
-        orders.add(new Order("Owl", "₹300", "Refund", "Accept", "Reject",
+        orders.add(new Order("Owl", "₹300", getString(R.string.refund_request), "Accept", "Reject",
                 R.string.num_request, "1", R.drawable.orders_owl));
-        orders.add(new Order("Vase", "₹1200", "Exchange", "Accept", "Reject",
+        orders.add(new Order("Vase", "₹1200", getString(R.string.exchange_request), "Accept", "Reject",
                 R.string.num_request, "3", R.drawable.orders_vase));
 
 
