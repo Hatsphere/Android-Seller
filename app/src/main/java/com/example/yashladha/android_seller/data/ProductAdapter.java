@@ -77,12 +77,12 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
         ImageView mProductImageResource = (ImageView) listItemView.findViewById(R.id.ivProduct);
 
-        if (currentProduct.hasImage1()) {
-            mProductImageResource.setImageResource(currentProduct.getmProductImageResourceId());
+        //if (currentProduct.hasImage1()) {
+            mProductImageResource.setImageDrawable(currentProduct.getmProductImageResourceId());
             mProductImageResource.setVisibility(View.VISIBLE);
-        } else {
-            mProductImageResource.setVisibility(View.GONE);
-        }
+        //} else {
+            //mProductImageResource.setVisibility(View.GONE);
+        //}
 
         ImageButton mProductRemoveImageResource = (ImageButton) listItemView.findViewById(R.id.ibProduct);
         if (currentProduct.hasImage2()) {
