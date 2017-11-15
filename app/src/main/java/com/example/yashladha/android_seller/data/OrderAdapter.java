@@ -1,6 +1,9 @@
 package com.example.yashladha.android_seller.data;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
@@ -76,10 +79,14 @@ public class OrderAdapter extends ArrayAdapter<Order> {
                 adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        mAccept.setText("Done!!!");
+                        mAccept.setText("ACCEPTED !!!");
                         mAccept.setBackgroundColor(Color.GREEN);
                         mAccept.setEnabled(false);
                         mReject.setVisibility(View.GONE);
+
+                        ViewGroup layout = (ViewGroup) mReject.getParent();
+                        if(null!=layout) //for safety only  as you are doing onClick
+                            layout.removeView(mReject);
 
                     }});
                 adb.show();
@@ -101,11 +108,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
                     public void onClick(DialogInterface dialog, int which) {
                         OrdersFrag.orderAdapter.remove(getItem(positionToRemove));
                         OrdersFrag.orderAdapter.notifyDataSetChanged();
-                        /*
-                        mReject.setBackgroundColor(Color.GRAY);
-                        mReject.setEnabled(false);
-                        mAccept.setEnabled(false);
-                        */
+
                     }});
                 adb.show();
 

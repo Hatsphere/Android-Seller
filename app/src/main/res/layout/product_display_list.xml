@@ -29,7 +29,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="0.5dp" />
 
     </LinearLayout>
 

@@ -21,24 +21,14 @@ import android.widget.Toast;
 
 import com.example.yashladha.android_seller.HomePageActivity;
 import com.example.yashladha.android_seller.R;
-import com.example.yashladha.android_seller.classes.MyAccountCustomExpandableListAdapter;
-import com.example.yashladha.android_seller.classes.MyAccountExpandableListDataPump;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 
 public class MyAccountFragment extends Fragment {
 
     public Context context;
     public Activity activity;
-    ExpandableListView expandableListView;
     private FragmentActivity myContext;
-    ExpandableListAdapter expandableListAdapter;
-    List<String> expandableListTitle;
-    HashMap<String, List<String>> expandableListDetail;
-    TextView tvMyName, tvContact, tvEmail, tvDeactivate, tvLogOut, tvPlan;
+    TextView tvMyName, tvContact, tvEmail, tvDeactivate, tvLogOut, tvPlan, tvResAdd, tvChangePassword;
     ImageView ivMyPic, ivEdit;
     HomePageActivity h1 = new HomePageActivity();
     String type = "";
@@ -54,7 +44,7 @@ public class MyAccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_nav_my_account, container, false);
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("myprfs", Context.MODE_PRIVATE);
-        type = sharedPreferences.getString("Plan", "");;
+        type = sharedPreferences.getString("Plan", "");
         context = rootView.getContext();
         ivMyPic = (ImageView) rootView.findViewById(R.id.ivMyPic);
         ivEdit = (ImageView) rootView.findViewById(R.id.ivEdit);
@@ -64,6 +54,8 @@ public class MyAccountFragment extends Fragment {
         tvEmail = (TextView) rootView.findViewById(R.id.tvEmail);
         tvDeactivate = (TextView) rootView.findViewById(R.id.tvDeactivate);
         tvLogOut = (TextView) rootView.findViewById(R.id.tvLogOut);
+        tvResAdd = (TextView)rootView.findViewById(R.id.tvResAdd);
+        tvChangePassword = (TextView)rootView.findViewById(R.id.tvChangePassword);
 
         ivEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,48 +82,13 @@ public class MyAccountFragment extends Fragment {
 
             }
         });
-
-        expandableListView = (ExpandableListView) rootView.findViewById(R.id.expandableListView);
-        expandableListDetail = MyAccountExpandableListDataPump.getData();
-        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new MyAccountCustomExpandableListAdapter(getActivity(), expandableListTitle, expandableListDetail);
-        expandableListView.setAdapter(expandableListAdapter);
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
+        tvChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getActivity(),
-                        expandableListTitle.get(groupPosition) + " List Expanded.",
-                        Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                Intent intent = new Intent();
             }
         });
 
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getActivity(),
-                        expandableListTitle.get(groupPosition) + " List Collapsed.",
-                        Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getActivity(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                ).show();
-                return false;
-            }
-        });
         return rootView;
     }
 

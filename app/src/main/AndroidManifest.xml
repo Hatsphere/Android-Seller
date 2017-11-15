@@ -24,7 +24,6 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -99,10 +98,14 @@
         <activity android:name=".TrialActivity" />
         <activity
             android:name=".AddProductsActivity"
-            android:label="Add A Product"></activity>
-
-        android:name=".PlanPaymentActivity"
-        android:label="Payment" />
+            android:label="Add A Product">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.yashladha.android_seller.HomePageActivity" />
+        </activity>
+        <activity
+            android:name=".PlanPaymentActivity"
+            android:label="Payment" />
         <activity
             android:name=".PlanChosenActivity"
             android:label="HatSphere" />
@@ -120,7 +123,8 @@
 
         <activity
             android:name=".navigation.MyAccountEditActivity"
-            android:label="Edit your account"></activity>
+            android:label="Edit your account" />
+        <activity android:name=".navigation.ChangePassword"></activity>
     </application>
 
 </manifest>
