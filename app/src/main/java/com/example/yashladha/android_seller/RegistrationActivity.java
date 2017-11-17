@@ -181,6 +181,11 @@ public class RegistrationActivity extends AppCompatActivity {
                                         UID_i = response.getString("uid");
                                         obj.put("uid", response.get("uid"));
                                         JsonObjectRequest dataPushRequest = sellerPushRequest(obj);
+                                        SharedPreferences sharedPreferences = getSharedPreferences("myprfs", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("email", email);
+                                        editor.commit();
+                                        editor.apply();
                                         rq.add(dataPushRequest);
                                     } else {
                                         Log.d("500 res", "Response catches " + tempEmail);

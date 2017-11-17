@@ -36,6 +36,7 @@ public class SalesFrag extends Fragment {
     private String mProductName = "";
     private String mNum = "";
     private String primaryImage = "";
+    private String mTotalAmount = "";
     private String mAmount = "";
     JSONObject reader;
     String imgURL = "";
@@ -92,7 +93,7 @@ public class SalesFrag extends Fragment {
                             }
 
 
-                            salesItems.add(new SalesItem(mProductName, mNum, mAmount, imgURL));
+                            salesItems.add(new SalesItem(mProductName, mNum, mAmount, mTotalAmount, imgURL));
                             //my_button.setBackgroundResource(R.drawable.defaultcard);
                             sales.setNotifyOnChange(true);
                             sales.notifyDataSetChanged();
