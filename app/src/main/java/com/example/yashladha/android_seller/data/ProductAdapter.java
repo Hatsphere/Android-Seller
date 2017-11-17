@@ -85,7 +85,6 @@ public class ProductAdapter extends ArrayAdapter<Product> {
             Log.d("Image", currentProduct.getPrimaryImage());
             Picasso.with(mContext)
                     .load(currentProduct.getPrimaryImage())
-                    .resize(40, 40)
                     .into(mProductImageResource, new Callback() {
                         @Override
                         public void onSuccess() {

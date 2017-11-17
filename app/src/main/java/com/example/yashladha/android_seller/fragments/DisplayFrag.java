@@ -44,11 +44,8 @@ public class DisplayFrag extends Fragment {
 
     private String name = "", rating = "", newPrice = "", orignalPrice = "", productDiscount = "", Exchange = "Exchange", ExchangeType = "", description = "", category = "";
     private Boolean availability = false, sales = false;
-    JSONObject reader;
     String imgURL = "";
-    Bitmap bmap;
     ImageView iv;
-    Drawable drawable;
     private Context mContext;
     public static ProductAdapter productAdapter;
 
@@ -128,14 +125,5 @@ public class DisplayFrag extends Fragment {
 
     }
 
-    public static Drawable drawableFromUrl(String url) throws IOException {
-        Bitmap x;
 
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        InputStream input = connection.getInputStream();
-
-        x = BitmapFactory.decodeStream(input);
-        return new BitmapDrawable(x);
-    }
 }
