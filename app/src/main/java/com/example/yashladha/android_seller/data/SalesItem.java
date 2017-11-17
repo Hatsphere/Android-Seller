@@ -19,9 +19,8 @@ public class SalesItem {
     public SalesItem(String mProductName,
                      String mNum,  String mAmount, String mProductImageResourceId) {
         this.mProductName = mProductName;
-        this.mProductCode = mProductCode;
         this.mNum = mNum;
-        this.primaryImage = primaryImage;
+        this.primaryImage = mProductImageResourceId;
         this.mAmount = mAmount;
         this.mProductImageResourceId = mProductImageResourceId;
     }
