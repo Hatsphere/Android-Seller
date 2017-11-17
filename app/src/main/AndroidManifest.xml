@@ -125,6 +125,9 @@
             android:name=".navigation.MyAccountEditActivity"
             android:label="Edit your account" />
         <activity android:name=".navigation.ChangePassword"></activity>
+        <activity
+            android:name=".NavigationDrawerItems"
+            android:label="Edit your account" />
     </application>
 
 </manifest>

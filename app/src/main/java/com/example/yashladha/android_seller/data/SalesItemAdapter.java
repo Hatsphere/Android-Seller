@@ -51,8 +51,8 @@ public class SalesItemAdapter extends ArrayAdapter<SalesItem> {
         TextView mProductName = (TextView) listItemView.findViewById(R.id.tvProductName);
         mProductName.setText(currentSalesItem.getmProductName());
 
-        TextView mProductCode = (TextView) listItemView.findViewById(R.id.tvProductCode);
-        mProductCode.setText(currentSalesItem.getmProductCode());
+        TextView mTotalAmount = (TextView) listItemView.findViewById(R.id.tvProductCode);
+        mTotalAmount.setText(currentSalesItem.getmTotalAmount());
 
 
         TextView mNum = (TextView) listItemView.findViewById(R.id.tvNum);

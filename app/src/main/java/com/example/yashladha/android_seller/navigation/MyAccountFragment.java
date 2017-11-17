@@ -85,7 +85,8 @@ public class MyAccountFragment extends Fragment {
         tvChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(getActivity(), ChangePassword.class);
+                startActivity(intent);
             }
         });
 

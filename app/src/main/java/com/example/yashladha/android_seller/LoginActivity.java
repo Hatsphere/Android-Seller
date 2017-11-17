@@ -137,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                                     SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString(UID, UID_i);
+                                    editor.putString("email", email);
                                     editor.commit();
                                     editor.apply();
                                     Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
