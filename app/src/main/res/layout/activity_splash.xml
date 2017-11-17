@@ -11,7 +11,10 @@
     android:id="@+id/relativeLayout"
     android:background="@drawable/splash_background"
     tools:context="com.example.yashladha.android_seller.SplashActivity">
-
+<ImageView
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:id="@+id/imageView1"/>
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
