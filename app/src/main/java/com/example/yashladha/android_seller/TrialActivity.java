@@ -58,7 +58,7 @@ public class TrialActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (choise == true) {
+                if (choise) {
                     JSONObject obj = new JSONObject();
                     try {
                         obj.put("name", name);

@@ -7,9 +7,8 @@ package com.example.yashladha.android_seller.data;
 public class SalesItem {
 
     private String mProductName;
-    private String mProductCode;
     private String mNum;
-    private String primaryImage ;
+    private String primaryImage;
     private String mTotalAmount;
     private String mAmount;
 
@@ -17,9 +16,10 @@ public class SalesItem {
     private static final int NO_IMAGE_PROVIDED = -1;
 
     public SalesItem(String mProductName,
-                     String mNum,  String mAmount, String mProductImageResourceId) {
+                     String mNum,  String mAmount,String mTotalAmount, String mProductImageResourceId) {
         this.mProductName = mProductName;
         this.mNum = mNum;
+        this.mTotalAmount = mTotalAmount;
         this.primaryImage = mProductImageResourceId;
         this.mAmount = mAmount;
         this.mProductImageResourceId = mProductImageResourceId;
@@ -28,10 +28,10 @@ public class SalesItem {
     public String getmProductName() {
         return mProductName;
     }
-
-    public String getmProductCode() {
-        return mProductCode;
+    public String getmTotalAmount() {
+        return mTotalAmount;
     }
+
 
         public String getmNum() {
         return mNum;

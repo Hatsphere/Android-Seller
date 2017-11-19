@@ -9,5 +9,5 @@ import org.json.JSONObject;
  */
 
 public interface EmailHelper {
-    public void getUID(JSONObject email, Context context);
+    void getUID(JSONObject email, Context context);
 }
