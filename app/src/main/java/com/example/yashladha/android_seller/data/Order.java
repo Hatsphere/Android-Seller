@@ -12,43 +12,45 @@ public class Order {
     private String mAccept;
     private int mNumOfRequest;
     private String mNum;
-
+    private String mProductDate;
+    private String mOrderID;
     private int mProductImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    public Order(String mProductName, String mProductPrice, String mTypeOfRequest, String mAccept,
-                  int mNumOfRequest, String mNum, int mProductImageResourceId) {
+
+    public Order(String mProductName, String mProductDate, String mOrderId, String mTypeOfRequest,
+                 int mNumOfRequest) {
+        this.mProductDate = mProductDate;
         this.mProductName = mProductName;
-        this.mProductPrice = mProductPrice;
         this.mTypeOfRequest = mTypeOfRequest;
-        this.mAccept = mAccept;
         this.mNumOfRequest = mNumOfRequest;
-        this.mNum = mNum;
-        this.mProductImageResourceId = mProductImageResourceId;
+        this.mOrderID = mOrderId;
+        //this.mProductImageResourceId = mProductImageResourceId;
+    }
+
+    public String getmOrderID() {
+        return mOrderID;
+    }
+
+    public void setmOrderID(String mOrderID) {
+        this.mOrderID = mOrderID;
     }
 
     public String getmProductName() {
         return mProductName;
     }
 
-    public String getmProductPrice() {
-        return mProductPrice;
+    public String getmProductDate() {
+        return mProductDate;
     }
 
     public String getmTypeOfRequest() {
         return mTypeOfRequest;
     }
 
-    public String getmAccept() {
-        return mAccept;
-    }
 
-    public int getmNumOfRequest() {
+    public int getmNum() {
         return mNumOfRequest;
-    }
-
-    public String getmNum() {
-        return mNum;
     }
 
     public int getmProductImageResourceId() {

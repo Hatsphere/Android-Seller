@@ -2,6 +2,7 @@ package com.example.yashladha.android_seller.data;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yashladha.android_seller.R;
+import com.example.yashladha.android_seller.classes.RoundImage;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
 import com.example.yashladha.android_seller.fragments.OrdersFrag;
 
@@ -30,37 +32,42 @@ import java.util.ArrayList;
 public class OrderAdapter extends ArrayAdapter<Order> {
 
     private int mColorResourceId;
-
+    private ArrayList<Product> adapOrder;
+    RoundImage roundedImage;
+    private Context mContext;
     public OrderAdapter(Activity context, ArrayList<Order> orders, int colorResourceId) {
         super(context, 0, orders);
         mColorResourceId = colorResourceId;
+        this.mContext = context;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        final int pos = position;
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.fragment_orders_list_item, parent, false);
         }
-        final int pos = position;
-        final Order currentOrder = getItem(position);
+       final Order currentOrder = getItem(position);
 
         TextView mProductName = (TextView) listItemView.findViewById(R.id.tvProductName);
         mProductName.setText(currentOrder.getmProductName());
 
-        TextView mProductPrice = (TextView) listItemView.findViewById(R.id.tvPrice);
-        mProductPrice.setText(currentOrder.getmProductPrice());
+        TextView mProductDate = (TextView) listItemView.findViewById(R.id.tvProductDate);
+        mProductDate.setText(currentOrder.getmProductDate());
+
+        TextView mID = (TextView) listItemView.findViewById(R.id.tvID);
+        mID.setText(currentOrder.getmOrderID());
 
         TextView mTypeOfRequest = (TextView) listItemView.findViewById(R.id.tvTypeOfRequest);
         mTypeOfRequest.setText(currentOrder.getmTypeOfRequest());
 
         TextView mNumOfRequest = (TextView) listItemView.findViewById(R.id.tvNumOfRequests);
-        mNumOfRequest.setText(currentOrder.getmNumOfRequest());
+        mNumOfRequest.setText("Number of Request");
 
         final Button mAccept = (Button) listItemView.findViewById(R.id.btAccept);
-        mAccept.setText(currentOrder.getmAccept());
+        mAccept.setText("Accept");
 
         //final Button mReject = (Button) listItemView.findViewById(R.id.btReject);
         //mReject.setText(currentOrder.getmReject());

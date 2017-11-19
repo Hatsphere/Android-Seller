@@ -6,59 +6,98 @@
     tools:context="com.example.yashladha.android_seller.fragments.OrdersFrag">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:orientation="horizontal"
         android:id="@+id/linearLayout1"
-        android:weightSum="1"
-        android:paddingBottom="7dp"
-        android:paddingTop="7dp"
-        android:paddingLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp">
-
-        <ImageView
-            android:id="@+id/ivProduct"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:scaleType="fitXY"
-            android:src="@drawable/download" />
+        android:orientation="horizontal"
+        android:paddingBottom="7dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="7dp"
+        android:weightSum="1">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="249dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_toRightOf="@+id/ivProduct"
             android:layout_weight="0.4"
             android:orientation="vertical"
             android:paddingLeft="10dp"
-            android:weightSum="1"
             android:paddingRight="10dp"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:weightSum="1">
 
-            <TextView
-                android:id="@+id/tvProductName"
-                android:layout_width="83dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.2"
-                android:text="Product"
-                android:textColor="@color/back"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvPrice"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:layout_marginRight="5dp"
-                android:text="₹28.00"
-                android:textColor="@android:color/holo_green_light"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Name:"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tvProductName"
+                    android:layout_width="83dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="Product"
+                    android:textColor="@color/back"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Date:"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tvProductDate"
+                    android:layout_width="83dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="Date"
+                    android:textColor="@color/back"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Order Id:"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tvID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="Order Id"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvTypeOfRequest"
@@ -106,12 +145,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="left"
+                android:layout_marginBottom="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
                 android:layout_weight="0.25"
+                android:backgroundTint="#17a9ce"
+                android:background="@drawable/button_rounded_corners_gradiant"
                 android:gravity="center"
-                android:background="@drawable/button_rounded_corners_blue"
                 android:text="Accept"
                 android:textSize="16dp" />
 
