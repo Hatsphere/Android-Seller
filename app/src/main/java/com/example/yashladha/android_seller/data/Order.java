@@ -8,22 +8,20 @@ public class Order {
 
     private String mProductName;
     private String mProductPrice;
-    private String mTypeOfRequest;
+    private String mDate;
     private String mAccept;
-    private int mNumOfRequest;
-    private String mNum;
+    private String mStatus;
 
     private int mProductImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    public Order(String mProductName, String mProductPrice, String mTypeOfRequest, String mAccept,
-                  int mNumOfRequest, String mNum, int mProductImageResourceId) {
+    public Order(String mProductName, String mProductPrice, String mDate, String mAccept,
+                   String mStatus, int mProductImageResourceId) {
         this.mProductName = mProductName;
         this.mProductPrice = mProductPrice;
-        this.mTypeOfRequest = mTypeOfRequest;
+        this.mDate = mDate;
         this.mAccept = mAccept;
-        this.mNumOfRequest = mNumOfRequest;
-        this.mNum = mNum;
+        this.mStatus = mStatus;
         this.mProductImageResourceId = mProductImageResourceId;
     }
 
@@ -35,20 +33,16 @@ public class Order {
         return mProductPrice;
     }
 
-    public String getmTypeOfRequest() {
-        return mTypeOfRequest;
+    public String getmDate() {
+        return mDate;
     }
 
     public String getmAccept() {
         return mAccept;
     }
 
-    public int getmNumOfRequest() {
-        return mNumOfRequest;
-    }
-
-    public String getmNum() {
-        return mNum;
+    public String getmStatus() {
+        return mStatus;
     }
 
     public int getmProductImageResourceId() {
