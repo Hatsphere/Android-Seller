@@ -384,7 +384,7 @@ public class AddProductsActivity extends AppCompatActivity {
                                             Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
                                             startActivity(intent);
                                         } else {
-                                            Toast.makeText(AddProductsActivity.this, response.get("Something is wrong").toString(), Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AddProductsActivity.this, ("Something is wrong"), Toast.LENGTH_SHORT).show();
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();

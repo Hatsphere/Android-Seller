@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.yashladha.android_seller.DeactivateActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:gravity="center"
+        android:text="Do you really want to deactivate your account"
+        android:textColor="#d31e1e"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YES"
+            android:padding="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="90dp"
+            android:background="@drawable/button_rounded_corners_gradiant"
+            android:backgroundTint="#ff0000"
+            android:id="@+id/btYes"
+            android:gravity="center_horizontal"
+            android:textSize="20dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NO"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:backgroundTint="#00ff5d"
+            android:id="@+id/btNo"
+            android:background="@drawable/button_rounded_corners_gradiant"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"/>
+    </LinearLayout>
+</LinearLayout>
