@@ -1,6 +1,8 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,6 +31,11 @@ public class PlanChosenActivity extends AppCompatActivity {
         btGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences("myprfs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("Registered", "Yes");
+                editor.commit();
+                editor.apply();
                 Intent i = new Intent(PlanChosenActivity.this, HomePageActivity.class);
                 startActivity(i);
             }

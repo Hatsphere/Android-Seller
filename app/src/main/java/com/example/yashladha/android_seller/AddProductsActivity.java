@@ -40,7 +40,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.classes.FileUriHelper;
-import com.example.yashladha.android_seller.data.Product;
 import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
@@ -55,7 +54,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -80,6 +78,7 @@ public class AddProductsActivity extends AppCompatActivity {
     private String plan;
     private String UID;
     private RequestQueue rq;
+    private Button btProceed;
     private Context context;
     private ArrayList<String> dataUri;
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
@@ -94,6 +93,7 @@ public class AddProductsActivity extends AppCompatActivity {
         noOfImages = 0;
         dataUri = new ArrayList<>();
         context = this.getBaseContext();
+        btProceed = (Button) findViewById(R.id.btProceed);
         spinner = (Spinner) findViewById(R.id.spCategory);
         btDone = findViewById(R.id.btDone);
         ivAdd = findViewById(R.id.ivAdd);
@@ -171,7 +171,7 @@ public class AddProductsActivity extends AppCompatActivity {
         JSONObject obj = new JSONObject();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                "http://10.0.2.2:3000/product/all/cateogry",obj,
+                "http://10.0.2.2:3000/product/all/cateogry", obj,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -196,7 +196,6 @@ public class AddProductsActivity extends AppCompatActivity {
 
         );
         rq.add(jsonObjectRequest);
-
 
 
         final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
@@ -416,6 +415,7 @@ public class AddProductsActivity extends AppCompatActivity {
                                         if (response.get("response").toString().equals("200")) {
                                             Toast.makeText(AddProductsActivity.this, "Your Product has been added",
                                                     Toast.LENGTH_LONG).show();
+
                                             Builders.Any.B builder = Ion.with(context)
                                                     .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID + "/" + productName);
                                             for (String item : dataUri) {
@@ -432,8 +432,8 @@ public class AddProductsActivity extends AppCompatActivity {
                                                             }
                                                         }
                                                     });
-                                            Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
-                                            startActivity(intent);
+                                            btProceed.setEnabled(true);
+
                                         } else {
                                             Toast.makeText(AddProductsActivity.this, ("Something is wrong"), Toast.LENGTH_SHORT).show();
                                         }
@@ -455,6 +455,13 @@ public class AddProductsActivity extends AppCompatActivity {
                     Toast.makeText(AddProductsActivity.this, "You have not entered some entries", Toast.LENGTH_SHORT).show();
 
                 }
+            }
+        });
+        btProceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -16,6 +16,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,6 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yashladha.android_seller.R;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -34,7 +38,7 @@ import java.util.Locale;
 public class MyAccountEditActivity extends AppCompatActivity {
 
     TextView tvName, tvContact, tvEmail, tvPic;
-    EditText etName, etContact, etEmail ,etResAddress;
+    EditText etName, etContact, etEmail, etResAddress;
     ImageView ivPic;
     SharedPreferences myPrefs;
     int noOfImages;
@@ -45,7 +49,7 @@ public class MyAccountEditActivity extends AppCompatActivity {
     static Date now = new Date();
     private static final String IMAGE_DIRECTORY = "/hatsphere/seller" + formatter.format(now);
     private int GALLERY = 1, CAMERA = 2;
-
+    Button btDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +59,15 @@ public class MyAccountEditActivity extends AppCompatActivity {
         tvContact = (TextView) findViewById(R.id.tvContact);
         tvEmail = (TextView) findViewById(R.id.tvEmail);
         tvPic = (TextView) findViewById(R.id.tvEditPic);
-
+        btDone = (Button) findViewById(R.id.btDone);
         etName = (EditText) findViewById(R.id.etName);
         etContact = (EditText) findViewById(R.id.etContact);
         etEmail = (EditText) findViewById(R.id.etEmail);
-        etResAddress = (EditText)findViewById(R.id.etResAddress);
+        etResAddress = (EditText) findViewById(R.id.etResAddress);
 
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         plan = myPrefs.getString("Plan", "");
+        final String uid = myPrefs.getString("UID", "");
 
         ivPic = (ImageView) findViewById(R.id.ivEditPic);
         ivPic.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +77,89 @@ public class MyAccountEditActivity extends AppCompatActivity {
                 tvPic.setText("");
             }
         });
+        btDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!etContact.getText().equals("")) {
+                    JsonObject json = new JsonObject();
+                    json.addProperty("field", "ContactNo");
+                    json.addProperty("value", etContact.getText().toString());
+                    json.addProperty("uid", uid);
+                    Ion.with(MyAccountEditActivity.this)
+                            .load("http://10.0.2.2:3000/user/update/")
+                            .setJsonObjectBody(json)
+                            .asJsonObject()
+                            .setCallback(new FutureCallback<JsonObject>() {
+                                @Override
+                                public void onCompleted(Exception e, JsonObject result) {
+                                    // do stuff with the result or error
+                                    if (result.get("response").toString().equals("500")) {
+                                        Toast.makeText(MyAccountEditActivity.this, "Something went wrong",
+                                                Toast.LENGTH_LONG).show();
 
+                                    } else if (result.get("response").toString().equals("200")) {
+                                        Toast.makeText(MyAccountEditActivity.this, "Successfully Changed",
+                                                Toast.LENGTH_LONG).show();
+
+                                    }
+                                }
+                            });
+
+                } else if (!etResAddress.getText().equals("")) {
+                    JsonObject json = new JsonObject();
+                    json.addProperty("field", "Address");
+                    json.addProperty("value", etResAddress.getText().toString());
+                    json.addProperty("uid", uid);
+
+                    Ion.with(MyAccountEditActivity.this)
+                            .load("http://10.0.2.2:3000/user/update/")
+                            .setJsonObjectBody(json)
+                            .asJsonObject()
+                            .setCallback(new FutureCallback<JsonObject>() {
+                                @Override
+                                public void onCompleted(Exception e, JsonObject result) {
+                                    // do stuff with the result or error
+                                    if (result.get("response").toString().equals("500")) {
+                                        Toast.makeText(MyAccountEditActivity.this, "Something went wrong",
+                                                Toast.LENGTH_LONG).show();
+
+                                    } else if (result.get("response").toString().equals("200")) {
+                                        Toast.makeText(MyAccountEditActivity.this, "Successfully Changed",
+                                                Toast.LENGTH_LONG).show();
+
+                                    }
+                                }
+                            });
+
+                } else if (!etName.getText().equals("")) {
+                    JsonObject json = new JsonObject();
+                    json.addProperty("field", "Name");
+                    json.addProperty("value", etName.getText().toString());
+                    json.addProperty("uid", uid);
+
+                    Ion.with(MyAccountEditActivity.this)
+                            .load("http://10.0.2.2:3000/user/update/")
+                            .setJsonObjectBody(json)
+                            .asJsonObject()
+                            .setCallback(new FutureCallback<JsonObject>() {
+                                @Override
+                                public void onCompleted(Exception e, JsonObject result) {
+                                    // do stuff with the result or error
+                                    if (result.get("response").toString().equals("500")) {
+                                        Toast.makeText(MyAccountEditActivity.this, "Something went wrong",
+                                                Toast.LENGTH_LONG).show();
+
+                                    } else if (result.get("response").toString().equals("200")) {
+                                        Toast.makeText(MyAccountEditActivity.this, "Successfully Changed",
+                                                Toast.LENGTH_LONG).show();
+
+                                    }
+                                }
+                            });
+                }
+
+            }
+        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
@@ -88,6 +175,7 @@ public class MyAccountEditActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         etContact.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
