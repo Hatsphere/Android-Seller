@@ -10,7 +10,6 @@ public class Order {
     private String mProductPrice;
     private String mTypeOfRequest;
     private String mAccept;
-    private String mReject;
     private int mNumOfRequest;
     private String mNum;
 
@@ -18,12 +17,11 @@ public class Order {
     private static final int NO_IMAGE_PROVIDED = -1;
 
     public Order(String mProductName, String mProductPrice, String mTypeOfRequest, String mAccept,
-                 String mReject, int mNumOfRequest, String mNum, int mProductImageResourceId) {
+                  int mNumOfRequest, String mNum, int mProductImageResourceId) {
         this.mProductName = mProductName;
         this.mProductPrice = mProductPrice;
         this.mTypeOfRequest = mTypeOfRequest;
         this.mAccept = mAccept;
-        this.mReject = mReject;
         this.mNumOfRequest = mNumOfRequest;
         this.mNum = mNum;
         this.mProductImageResourceId = mProductImageResourceId;
@@ -43,10 +41,6 @@ public class Order {
 
     public String getmAccept() {
         return mAccept;
-    }
-
-    public String getmReject() {
-        return mReject;
     }
 
     public int getmNumOfRequest() {

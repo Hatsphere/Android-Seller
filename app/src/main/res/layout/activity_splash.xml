@@ -27,18 +27,17 @@
         android:layout_marginBottom="30dp" />
 
     <TextView
+        android:id="@+id/tvYou"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome To The
-HatSphere Universe!!!"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="35dp"
-        android:id="@+id/tvYou"
-        android:textColor="@android:color/holo_purple"
         android:layout_below="@+id/logo"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginStart="17dp"
+        android:layout_toEndOf="@+id/imageView1"
+        android:gravity="center"
+        android:text="Welcome "
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/progressBar"
