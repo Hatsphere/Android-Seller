@@ -91,6 +91,9 @@ public class RegisterActivity_2 extends AppCompatActivity {
                 if (cbTrial.isChecked()) {
                     trial = true;
                 }
+                else{
+                    trial = false;
+                }
             }
         });
         etName.addTextChangedListener(new TextWatcher() {

@@ -170,15 +170,19 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onCompleted(Exception e, JsonObject result) {
                                     // do stuff with the result or error
-                                    if (result.get("flag").toString().equals("true")) {
+                                    if (result.get("response").toString().equals("500")) {
+                                        Toast.makeText(LoginActivity.this, "This email is not registered on Hatsphere",
+                                                Toast.LENGTH_LONG).show();
+
+                                    } else if (result.get("flag").toString().equals("true")) {
                                         UID_i = result.get("uid").toString();
                                         res = result.get("flag").toString();
                                         right = true;
                                         btProceed.setEnabled(true);
                                         Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
                                                 Toast.LENGTH_LONG).show();
-                                    } else if (result.get("flag").toString().equals("false") || result.get("response").toString().equals("500")) {
-                                        Toast.makeText(LoginActivity.this, "error authenticating user", Toast.LENGTH_SHORT).show();
+                                    } else if (result.get("flag").toString().equals("false")) {
+                                        Toast.makeText(LoginActivity.this, "The password is wrong", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -191,16 +195,16 @@ public class LoginActivity extends AppCompatActivity {
         btProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(UID, UID_i);
-                    editor.putString("email", email);
-                    editor.commit();
-                    editor.apply();
-                    Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
-                    startActivity(i);
-                    etPassword.setText("");
-                    etName.setText("");
+                SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(UID, UID_i);
+                editor.putString("email", email);
+                editor.commit();
+                editor.apply();
+                Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
+                startActivity(i);
+                etPassword.setText("");
+                etName.setText("");
 
             }
         });
