@@ -6,59 +6,58 @@ package com.example.yashladha.android_seller.data;
 
 public class Order {
 
-    private String mProductName;
-    private String mProductPrice;
-    private String mTypeOfRequest;
+    private String order_date;
+    private String pay_id;
+    private String del_date;
+    private String status;
     private String mAccept;
-    private int mNumOfRequest;
-    private String mNum;
-    private String mProductDate;
-    private String mOrderID;
-    private int mProductImageResourceId = NO_IMAGE_PROVIDED;
+    private int quantity;
+    private String productName;
+    private String sellerId;
+    private String order_id;
+    private String uid;
     private static final int NO_IMAGE_PROVIDED = -1;
 
 
-    public Order(String mProductName, String mProductDate, String mOrderId, String mTypeOfRequest,
-                 int mNumOfRequest) {
-        this.mProductDate = mProductDate;
-        this.mProductName = mProductName;
-        this.mTypeOfRequest = mTypeOfRequest;
-        this.mNumOfRequest = mNumOfRequest;
-        this.mOrderID = mOrderId;
+    public Order(String order_date, String pay_id, String productName, String status, String order_id, String uid, String del_date,
+                 int quantity, String sellerId) {
+        this.order_date = order_date;
+        this.pay_id = pay_id;
+        this.productName = productName;
+        this.status = status;
+        this.order_id = order_id;
+        this.uid = uid;
+        this.del_date = del_date;
+        this.quantity = quantity;
+        this.sellerId = sellerId;
+
         //this.mProductImageResourceId = mProductImageResourceId;
     }
 
     public String getmOrderID() {
-        return mOrderID;
+        return order_id;
     }
 
     public void setmOrderID(String mOrderID) {
-        this.mOrderID = mOrderID;
+        this.order_id = mOrderID;
     }
 
     public String getmProductName() {
-        return mProductName;
+        return productName;
     }
 
     public String getmProductDate() {
-        return mProductDate;
+        return order_date;
     }
 
     public String getmTypeOfRequest() {
-        return mTypeOfRequest;
+        return status;
     }
 
 
     public int getmNum() {
-        return mNumOfRequest;
+        return quantity;
     }
 
-    public int getmProductImageResourceId() {
-        return mProductImageResourceId;
-    }
 
-    public boolean hasImage1() {
-        boolean result = mProductImageResourceId != NO_IMAGE_PROVIDED;
-        return result;
-    }
 }

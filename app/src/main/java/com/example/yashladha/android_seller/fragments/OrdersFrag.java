@@ -35,7 +35,7 @@ import java.util.Iterator;
  * A simple {@link Fragment} subclass.
  */
 public class OrdersFrag extends Fragment {
-    private String name = "", rating = "", newPrice = "", orignalPrice = "", productDiscount = "", Exchange = "Exchange", ExchangeType = "", description = "", category = "";
+    private String order_date = "", pay_id = "", productName = "", status = "", order_id = "", Exchange = "Exchange", uid = "", del_date = "", sellerId = "";
     private Boolean availability = false, sales = false;
     String imgURL = "";
     int numOfRequest = 0;
@@ -44,6 +44,7 @@ public class OrdersFrag extends Fragment {
     ImageView iv;
     String date = "";
     private Context mContext;
+    private int quantity = 0;
 
     public OrdersFrag() {
         // Required empty public constructor
@@ -60,7 +61,6 @@ public class OrdersFrag extends Fragment {
         SharedPreferences myPrefs = getActivity().getSharedPreferences("myprfs", Context.MODE_PRIVATE);
         String UID = myPrefs.getString("UID", "");
         final ArrayList<Order> orders = new ArrayList<Order>();
-
         //plan = myPrefs.getString("Plan", "");
         final RequestQueue[] rq = {Volley.newRequestQueue(getContext())};
         final String url = BaseUrlConfig.getBaseURL() + "order/all/" + UID;
@@ -88,19 +88,22 @@ public class OrdersFrag extends Fragment {
                                 this.mOrderID = mOrderId;
                                 this.mNum = mNum;
                                 this.mProductImageResourceId = mProductImageResourceId;*/
-                                name = value.getString("productName");
-                                typeOfRequest = value.getString("status");
-                                orderId = value.getString("order_id");
-                                numOfRequest = value.getInt("quantity");
-                                date = value.getString("order_date");
-                                description = value.getString("Description");
+                                order_date = value.getString("order_date");
+                                pay_id = value.getString("pay_id");
+                                productName = value.getString("productName");
+                                status = value.getString("status");
+                                order_id = value.getString("order_id");
+                                uid = value.getString("uid");
+                                del_date = value.getString("del_date");
+                                quantity = value.getInt("quantity");
+                                sellerId = value.getString("sellerId");
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
 
 
-                            orders.add(new Order(name, date, orderId, typeOfRequest, numOfRequest));
+                            orders.add(new Order(order_date, pay_id, productName, status, order_id, uid, del_date, quantity, sellerId));
                             //my_button.setBackgroundResource(R.drawable.defaultcard);
                             orderAdapter.setNotifyOnChange(true);
                             orderAdapter.notifyDataSetChanged();
