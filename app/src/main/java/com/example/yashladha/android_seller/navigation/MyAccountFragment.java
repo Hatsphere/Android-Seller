@@ -21,8 +21,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.DeactivateActivity;
 import com.example.yashladha.android_seller.HomePageActivity;
+import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 
 import org.json.JSONException;
@@ -56,6 +58,8 @@ public class MyAccountFragment extends Fragment {
         uid = sharedPreferences.getString("UID", "");
         email = sharedPreferences.getString("email", "");
         JSONObject json = new JSONObject();
+        rq = Volley.newRequestQueue(getContext());
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
                 "http://10.0.2.2:3000/user/seller/Info/all/" + uid,
                 json,
