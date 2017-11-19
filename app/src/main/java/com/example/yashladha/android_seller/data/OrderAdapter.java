@@ -4,12 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -18,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yashladha.android_seller.R;
-import com.example.yashladha.android_seller.fragments.DisplayFrag;
-import com.example.yashladha.android_seller.fragments.OrdersFrag;
 
 import java.util.ArrayList;
 
@@ -53,11 +47,11 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         TextView mProductPrice = (TextView) listItemView.findViewById(R.id.tvPrice);
         mProductPrice.setText(currentOrder.getmProductPrice());
 
-        TextView mTypeOfRequest = (TextView) listItemView.findViewById(R.id.tvTypeOfRequest);
-        mTypeOfRequest.setText(currentOrder.getmTypeOfRequest());
+        TextView mDate = (TextView) listItemView.findViewById(R.id.tvDate);
+        mDate.setText(currentOrder.getmDate());
 
-        TextView mNumOfRequest = (TextView) listItemView.findViewById(R.id.tvNumOfRequests);
-        mNumOfRequest.setText(currentOrder.getmNumOfRequest());
+        TextView mStatus = (TextView) listItemView.findViewById(R.id.tvStatus);
+        mStatus.setText(currentOrder.getmStatus());
 
         final Button mAccept = (Button) listItemView.findViewById(R.id.btAccept);
         mAccept.setText(currentOrder.getmAccept());
@@ -72,7 +66,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
 
                 AlertDialog.Builder adb=new AlertDialog.Builder(getContext());
                 adb.setTitle("Accept");
-                adb.setMessage("Are you sure you want to accept the request for "+ currentOrder.getmTypeOfRequest()
+                adb.setMessage("Are you sure you want to accept the request for "+ currentOrder.getmDate()
                         + " of " + currentOrder.getmProductName()+"?");
                 final int positionToRemove = pos;
                 adb.setNegativeButton("Cancel", null);
@@ -95,11 +89,6 @@ public class OrderAdapter extends ArrayAdapter<Order> {
             }
         });
 
-
-
-
-        TextView mNum = (TextView)listItemView.findViewById(R.id.tvNum);
-         mNum.setText(currentOrder.getmNum());
 
         ImageView mProductImageResource = (ImageView) listItemView.findViewById(R.id.ivProduct);
         if (currentOrder.hasImage1()) {

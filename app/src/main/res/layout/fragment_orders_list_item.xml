@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="150dp"
         android:orientation="horizontal"
         android:id="@+id/linearLayout1"
         android:weightSum="1"
@@ -60,14 +60,6 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvTypeOfRequest"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="0.2"
-                android:text="Purchase/Exchange/Refund"
-                android:textSize="16dp" />
-
             <LinearLayout
                 android:id="@+id/linearLayout4"
                 android:layout_width="wrap_content"
@@ -77,25 +69,51 @@
                 android:weightSum="1">
 
                 <TextView
-                    android:id="@+id/tvNumOfRequests"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvDateOfRequest"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Date : "
+                    android:textStyle="bold"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="24-07-2017"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tvOrderStatus"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:gravity="left"
-                    android:text="Quantity:"
-                    android:textColor="@android:color/black"
+                    android:text="Status :"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvNum"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvStatus"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:gravity="center"
                     android:paddingBottom="5dp"
                     android:paddingLeft="5dp"
-                    android:text="2"
+                    android:text="Pending"
                     android:textColor="@android:color/black"
                     android:textSize="16dp" />
 
@@ -109,11 +127,11 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight="0.25"
+                android:layout_weight="0.20"
                 android:gravity="center"
                 android:background="@drawable/button_rounded_corners_blue"
                 android:text="Accept"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
 
         </LinearLayout>
 

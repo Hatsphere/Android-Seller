@@ -24,9 +24,14 @@
     <string name="mon_oct">October</string>
     <string name="mon_nov">November</string>
     <string name="mon_dec">December</string>
+
     <string name="purchase_request">Purchase</string>
     <string name="exchange_request">Exchange</string>
     <string name="refund_request">Refund</string>
+
+    <string name="order_date">24-07-2017</string>
+    <string name="order_status">Pending</string>
+
     <string name="num_request">Number of requests</string>
     <string name="alphabets">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="price_discount_contact">₹Rs.0123456789/-%</string>

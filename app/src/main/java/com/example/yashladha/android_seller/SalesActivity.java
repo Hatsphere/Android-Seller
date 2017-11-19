@@ -1,5 +1,6 @@
 package com.example.yashladha.android_seller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -196,4 +197,10 @@ public class SalesActivity extends AppCompatActivity {
         return results;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(SalesActivity.this,DisplayActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
+    }
 }
