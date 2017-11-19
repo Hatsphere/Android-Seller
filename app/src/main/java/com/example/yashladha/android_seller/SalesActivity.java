@@ -32,11 +32,11 @@ public class SalesActivity extends AppCompatActivity {
 
     private Spinner mMonthSpinner;
     String mMonth = getString(R.string.mon_jan);
-    PieChart pieChart;
+    /*PieChart pieChart;
     ArrayList<Entry> entries;
     ArrayList<String> PieEntryLabels;
     PieDataSet pieDataSet;
-    PieData pieData;
+    PieData pieData;*/
     TextView tvDate, tvMostBought, tvMostProductName, tvAnalysis;
     SimpleDateFormat formatter;
     private RecyclerView mRecyclerView;
@@ -77,7 +77,9 @@ public class SalesActivity extends AppCompatActivity {
         tvMostBought = (TextView) findViewById(R.id.tvMostBought);
         tvMostProductName = (TextView) findViewById(R.id.tvMostProductName);
         tvAnalysis = (TextView) findViewById(R.id.tvAnalysis);
-        pieChart = (PieChart) findViewById(R.id.piechart);
+
+        setupSpinner();
+        /*pieChart = (PieChart) findViewById(R.id.piechart);
 
         AddValuesToPIEENTRY();
 
@@ -88,8 +90,8 @@ public class SalesActivity extends AppCompatActivity {
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieChart.setData(pieData);
         pieChart.animateY(3000);
+        */
 
-        setupSpinner();
     }
 
     private void setupSpinner() {
@@ -144,6 +146,7 @@ public class SalesActivity extends AppCompatActivity {
         });
     }
 
+    /*
     public void AddValuesToPIEENTRY() {
 
         entries.add(new BarEntry(2f, 0));
@@ -165,6 +168,7 @@ public class SalesActivity extends AppCompatActivity {
         PieEntryLabels.add("June");
 
     }
+    */
 
     @Override
     protected void onResume() {

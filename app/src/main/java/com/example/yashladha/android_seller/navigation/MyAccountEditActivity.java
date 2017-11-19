@@ -34,7 +34,7 @@ import java.util.Locale;
 public class MyAccountEditActivity extends AppCompatActivity {
 
     TextView tvName, tvContact, tvEmail, tvPic;
-    EditText etName, etContact, etEmail;
+    EditText etName, etContact, etEmail ,etResAddress;
     ImageView ivPic;
     SharedPreferences myPrefs;
     int noOfImages;
@@ -59,6 +59,7 @@ public class MyAccountEditActivity extends AppCompatActivity {
         etName = (EditText) findViewById(R.id.etName);
         etContact = (EditText) findViewById(R.id.etContact);
         etEmail = (EditText) findViewById(R.id.etEmail);
+        etResAddress = (EditText)findViewById(R.id.etResAddress);
 
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         plan = myPrefs.getString("Plan", "");
@@ -75,6 +76,57 @@ public class MyAccountEditActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
+        etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etName.getText().toString().trim().length() < 3) {
+                        etName.setError("Minimum length should be 3 characters");
+                    } else {
+                        etName.setError(null);
+                    }
+                }
+            }
+        });
+
+        etContact.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etContact.getText().toString().trim().length() < 7) {
+                        etContact.setError("Minimum length should be 7 characters");
+                    } else {
+                        etContact.setError(null);
+                    }
+                }
+            }
+        });
+
+        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etEmail.getText().toString().trim().length() < 3) {
+                        etEmail.setError("Minimum length should be 3 characters");
+                    } else {
+                        etEmail.setError(null);
+                    }
+                }
+            }
+        });
+
+        etResAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etResAddress.getText().toString().trim().length() < 5) {
+                        etResAddress.setError("Minimum length should be 5 characters");
+                    } else {
+                        etResAddress.setError(null);
+                    }
+                }
+            }
+        });
 
     }
 
