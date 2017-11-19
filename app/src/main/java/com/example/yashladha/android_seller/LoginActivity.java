@@ -308,7 +308,7 @@ public class LoginActivity extends AppCompatActivity {
 
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Press again to exit HatSphere", Toast.LENGTH_SHORT).show();
-
+        btProceed.setEnabled(false);
         new Handler().postDelayed(new Runnable() {
 
             @Override
