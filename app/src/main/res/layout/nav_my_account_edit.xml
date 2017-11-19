@@ -20,13 +20,14 @@
 
         <ImageView
             android:id="@+id/ivEditPic"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:clickable="true"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:background="@drawable/image_background"
             android:src="@drawable/add" />
 
         <TextView
@@ -34,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Edit your pic"
+            android:text="Edit pic"
+            android:textStyle="bold"
             android:textSize="18dp" />
 
         <TextView
@@ -42,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:padding="5dp"
             android:text="Name"
             android:textColor="@android:color/black"

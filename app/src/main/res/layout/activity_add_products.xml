@@ -22,25 +22,30 @@
             <LinearLayout
                 android:id="@+id/sv1"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/ivAdd"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/add"
+                    android:background="@drawable/image_background"
                     android:clickable="true" />
+
+                <TextView
+                    android:id="@+id/tvAddPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add a photo"
+                    android:textSize="18dp" />
+
             </LinearLayout>
         </ScrollView>
 
-        <TextView
-            android:id="@+id/tvAddPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="Add a photo"
-            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tvProductName"
@@ -104,7 +109,6 @@
 
         <EditText
             android:id="@+id/etOriginalPrice"
-            style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -153,7 +157,6 @@
 
         <EditText
             android:id="@+id/etDiscount"
-            style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
