@@ -13,10 +13,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.classes.RoundImage;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -96,8 +101,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
                             Log.e("error", "error found");
                         }
                     });
-        }
-        else {
+        } else {
             Picasso.with(mContext)
                     .load(R.mipmap.ic_launcher)
                     .into(mProductImageResource);
@@ -116,6 +120,28 @@ public class ProductAdapter extends ArrayAdapter<Product> {
                     public void onClick(DialogInterface dialog, int which) {
                         DisplayFrag.productAdapter.remove(getItem(positionToRemove));
                         DisplayFrag.productAdapter.notifyDataSetChanged();
+                        JsonObject json = new JsonObject();
+                        json.addProperty("productKey", getItem(pos).getmProductName());
+                        Ion.with(getContext())
+                                .load("http://10.0.2.2:3000/product/delete/")
+                                .setJsonObjectBody(json)
+                                .asJsonObject()
+                                .setCallback(new FutureCallback<JsonObject>() {
+                                    @Override
+                                    public void onCompleted(Exception e, JsonObject result) {
+                                        // do stuff with the result or error
+                                        if (result.get("response").toString().equals("500")) {
+                                            Toast.makeText(getContext(), "Something went wrong",
+                                                    Toast.LENGTH_LONG).show();
+
+                                        } else if (result.get("response").toString().equals("200")) {
+                                            Toast.makeText(getContext(), "Product has been deleted",
+                                                    Toast.LENGTH_LONG).show();
+
+                                        }
+                                    }
+                                });
+
                     }
                 });
                 adb.show();

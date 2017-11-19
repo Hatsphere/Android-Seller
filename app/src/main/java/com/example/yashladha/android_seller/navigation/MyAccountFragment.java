@@ -13,26 +13,34 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.yashladha.android_seller.DeactivateActivity;
 import com.example.yashladha.android_seller.HomePageActivity;
 import com.example.yashladha.android_seller.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MyAccountFragment extends Fragment {
 
     public Context context;
     public Activity activity;
+    String name = "", contact = "", email = "", plan = "", address = "";
     private FragmentActivity myContext;
     TextView tvMyName, tvContact, tvEmail, tvDeactivate, tvLogOut, tvPlan, tvResAdd, tvChangePassword;
     ImageView ivMyPic, ivEdit;
     HomePageActivity h1 = new HomePageActivity();
-    String type = "";
+    String type = "", uid = "";
+    private RequestQueue rq;
+
     @Override
     public void onAttach(Activity activity) {
         myContext = (FragmentActivity) activity;
@@ -45,6 +53,42 @@ public class MyAccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.frag_nav_my_account, container, false);
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("myprfs", Context.MODE_PRIVATE);
+        uid = sharedPreferences.getString("UID", "");
+        email = sharedPreferences.getString("email", "");
+        JSONObject json = new JSONObject();
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
+                "http://10.0.2.2:3000/user/seller/Info/all/" + uid,
+                json,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            String code = response.getString("code");
+                            JSONObject data = response.getJSONObject("data");
+                            contact = data.getString("ContactNo");
+                            address = data.getString("Address");
+                            name = data.getString("Name");
+                            plan = data.getString("PlanChosen");
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+//                        Log.e(rootview.getClass().getSimpleName(), error.getMessage());
+                    }
+                }
+
+        );
+        rq.add(request);
+
+
         type = sharedPreferences.getString("Plan", "");
         context = rootView.getContext();
         ivMyPic = (ImageView) rootView.findViewById(R.id.ivMyPic);
@@ -55,8 +99,12 @@ public class MyAccountFragment extends Fragment {
         tvEmail = (TextView) rootView.findViewById(R.id.tvEmail);
         tvDeactivate = (TextView) rootView.findViewById(R.id.tvDeactivate);
         tvLogOut = (TextView) rootView.findViewById(R.id.tvLogOut);
-        tvResAdd = (TextView)rootView.findViewById(R.id.tvResAdd);
-        tvChangePassword = (TextView)rootView.findViewById(R.id.tvChangePassword);
+        tvResAdd = (TextView) rootView.findViewById(R.id.tvResAdd);
+        tvChangePassword = (TextView) rootView.findViewById(R.id.tvChangePassword);
+        tvMyName.setText(name);
+        tvPlan.setText(plan);
+        tvContact.setText(contact);
+        tvEmail.setText(email);
 
         ivEdit.setOnClickListener(new View.OnClickListener() {
             @Override
