@@ -19,6 +19,7 @@ public class Order {
     private static final int NO_IMAGE_PROVIDED = -1;
 
 
+
     public Order(String order_date, String pay_id, String productName, String status, String order_id, String uid, String del_date,
                  int quantity, String sellerId) {
         this.order_date = order_date;
@@ -36,6 +37,7 @@ public class Order {
 
     public String getmOrderID() {
         return order_id;
+
     }
 
     public void setmOrderID(String mOrderID) {
@@ -48,6 +50,7 @@ public class Order {
 
     public String getmProductDate() {
         return order_date;
+
     }
 
     public String getmTypeOfRequest() {

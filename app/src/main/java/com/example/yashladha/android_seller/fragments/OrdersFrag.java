@@ -121,6 +121,7 @@ public class OrdersFrag extends Fragment {
         rq[0].add(request);
 
 
+
         orderAdapter = new OrderAdapter(getActivity(), orders, R.color.back5);
         ListView listView = (ListView) rootview.findViewById(R.id.lvOrderList);
         listView.setAdapter(orderAdapter);

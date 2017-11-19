@@ -29,6 +29,7 @@ import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -71,8 +72,8 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         TextView mID = (TextView) listItemView.findViewById(R.id.tvID);
         mID.setText(currentOrder.getmOrderID());
 
-        TextView mTypeOfRequest = (TextView) listItemView.findViewById(R.id.tvTypeOfRequest);
-        mTypeOfRequest.setText(currentOrder.getmTypeOfRequest());
+        TextView mDate = (TextView) listItemView.findViewById(R.id.tvDate);
+        mDate.setText(currentOrder.getmDate());
 
         TextView mNumOfRequest = (TextView) listItemView.findViewById(R.id.tvNumOfRequests);
         mNumOfRequest.setText("Number of Request");
@@ -92,6 +93,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
                 adb.setTitle("Accept");
                 adb.setMessage("Are you sure you want to accept the request for " + currentOrder.getmTypeOfRequest()
                         + " of " + currentOrder.getmProductName() + "?");
+
                 final int positionToRemove = pos;
                 final String url = BaseUrlConfig.getBaseURL() + "order/accept/";
 
