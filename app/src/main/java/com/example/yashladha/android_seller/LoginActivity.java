@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,7 +173,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onCompleted(Exception e, JsonObject result) {
                                     // do stuff with the result or error
                                     if (result.get("response").toString().equals("500")) {
-                                        Toast.makeText(LoginActivity.this, "This email is not registered on Hatsphere",
+                                        Toast.makeText(LoginActivity.this, "You have entered wrong credentials ",
                                                 Toast.LENGTH_LONG).show();
 
                                     } else if (result.get("flag").toString().equals("true")) {
@@ -202,6 +203,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("email", email);
                 editor.commit();
                 editor.apply();
+                btProceed.setEnabled(false);
                 Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
                 startActivity(i);
                 etPassword.setText("");

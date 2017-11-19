@@ -12,7 +12,7 @@ import com.example.yashladha.android_seller.classes.LoadingTask;
 
 public class SplashActivity extends Activity implements LoadingTask.LoadingTaskFinishedListener {
 
-    String uid = "";
+    String uid = "", registered = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class SplashActivity extends Activity implements LoadingTask.LoadingTaskF
         new LoadingTask(progressBar, this).execute("Loading");
         SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         uid = myPrefs.getString("UID", "");
+        registered = myPrefs.getString("Registered", "");
 
        /* Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
@@ -44,7 +45,7 @@ public class SplashActivity extends Activity implements LoadingTask.LoadingTaskF
     }
 
     private void startApp() {
-        if (uid == "") {
+        if (uid == "" || registered == "") {
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
         } else {
