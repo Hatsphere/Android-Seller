@@ -24,8 +24,7 @@ import org.json.JSONObject;
 public class DeactivateActivity extends AppCompatActivity {
     Button btYes;
     Button btNo;
-    SharedPreferences sharedPreferences = getSharedPreferences("myprfs", Context.MODE_PRIVATE);
-    SharedPreferences.Editor editor = sharedPreferences.edit();
+    SharedPreferences sharedPreferences;
     private RequestQueue rq;
     String uid = "";
 
@@ -35,6 +34,8 @@ public class DeactivateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_deactivate);
         btYes = (Button) findViewById(R.id.btYes);
         btNo = (Button) findViewById(R.id.btNo);
+        sharedPreferences = getSharedPreferences("myprfs", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
 
         btYes.setOnClickListener(new View.OnClickListener() {
             @Override

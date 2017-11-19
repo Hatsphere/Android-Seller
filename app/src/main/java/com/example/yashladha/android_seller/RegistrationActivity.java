@@ -160,67 +160,72 @@ public class RegistrationActivity extends AppCompatActivity {
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String tempEmail = email;
-                boolean ans = validateUserName() && validatePassword() && ans2;
-                if (password.length() < 6) {
-                    etPassword.setError("Password length should be greater then 6 characters");
-                } else {
-                    if (ans) {
-                        final JSONObject obj = new JSONObject();
-                        try {
-                            obj.put("email", email);
-                            obj.put("password", password);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                                Request.Method.POST, "http://10.0.2.2:3000/user/signUp/", obj, new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                try {
-                                    if (response.get("response").toString().equals("200")) {
-                                        UID_i = response.getString("uid");
-                                        obj.put("uid", response.get("uid"));
-                                        JsonObjectRequest dataPushRequest = sellerPushRequest(obj);
-                                        SharedPreferences sharedPreferences = getSharedPreferences("myprfs", Context.MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString("email", email);
-                                        editor.commit();
-                                        editor.apply();
-                                        rq.add(dataPushRequest);
-                                    } else {
-                                        Log.d("500 res", "Response catches " + tempEmail);
-                                        HelperDef.getUID(tempEmail, RegistrationActivity.this, new EmailHelper() {
-                                            @Override
-                                            public void getUID(JSONObject res, Context context) {
-                                                try {
-                                                    Log.d("Response", res.toString());
-                                                    UID_i = res.getString("uid");
-                                                    obj.put("uid", UID_i);
-                                                    JsonObjectRequest dataPushRequest = sellerPushRequest(obj);
-                                                    rq.add(dataPushRequest);
-                                                } catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-                                        });
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.e("error", error.toString());
-                                Toast.makeText(RegistrationActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
 
-                        rq.add(jsonObjectRequest);
-                        etPassword.setText("");
-                        etEmail.setText("");
+                if (!email.equals("") && !password.equals("") && !profileFileUri.equals("")){
+                    final String tempEmail = email;
+                    boolean ans = validateUserName() && validatePassword() && ans2;
+                    if (password.length() < 6) {
+                        etPassword.setError("Password length should be greater then 6 characters");
+                    } else {
+                        if (ans) {
+                            final JSONObject obj = new JSONObject();
+                            try {
+                                obj.put("email", email);
+                                obj.put("password", password);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                                    Request.Method.POST, "http://10.0.2.2:3000/user/signUp/", obj, new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try {
+                                        if (response.get("response").toString().equals("200")) {
+                                            UID_i = response.getString("uid");
+                                            obj.put("uid", response.get("uid"));
+                                            JsonObjectRequest dataPushRequest = sellerPushRequest(obj);
+                                            SharedPreferences sharedPreferences = getSharedPreferences("myprfs", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("email", email);
+                                            editor.commit();
+                                            editor.apply();
+                                            rq.add(dataPushRequest);
+                                        } else {
+                                            Log.d("500 res", "Response catches " + tempEmail);
+                                            HelperDef.getUID(tempEmail, RegistrationActivity.this, new EmailHelper() {
+                                                @Override
+                                                public void getUID(JSONObject res, Context context) {
+                                                    try {
+                                                        Log.d("Response", res.toString());
+                                                        UID_i = res.getString("uid");
+                                                        obj.put("uid", UID_i);
+                                                        JsonObjectRequest dataPushRequest = sellerPushRequest(obj);
+                                                        rq.add(dataPushRequest);
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.e("error", error.toString());
+                                    Toast.makeText(RegistrationActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            rq.add(jsonObjectRequest);
+                            etPassword.setText("");
+                            etEmail.setText("");
+                        }
                     }
+                } else{
+                    Toast.makeText(RegistrationActivity.this, "You have not filled some fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -460,7 +465,6 @@ public class RegistrationActivity extends AppCompatActivity {
         Intent galleryIntent = new Intent();
         galleryIntent.setType("image/*");
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-
         startActivityForResult(galleryIntent, GALLERY);
     }
 

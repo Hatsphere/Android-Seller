@@ -288,7 +288,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
      * This method deletes the shared prefs of the user when he tries to checkout
      */
     public void logOut() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("myprfs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.commit();
