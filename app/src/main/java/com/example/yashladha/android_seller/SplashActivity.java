@@ -19,7 +19,7 @@ public class SplashActivity extends Activity implements LoadingTask.LoadingTaskF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+        progressBar.setProgressTintList(ColorStateList.valueOf(Color.BLUE));
 
         // Start your loading
         new LoadingTask(progressBar, this).execute("Loading");

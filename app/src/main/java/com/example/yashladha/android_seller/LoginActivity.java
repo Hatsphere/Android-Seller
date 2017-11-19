@@ -9,7 +9,6 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +17,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
     String email = "";
     Boolean login, right = false;
     String password = "";
+    String res = "";
+
 
     public LoginActivity() {
         // Required empty public constructor
@@ -94,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b) {
-                    if (etPassword.getText().toString().trim().length() < 8) {
-                        etPassword.setError("Minimum length should be 8 characters");
+                    if (etPassword.getText().toString().trim().length() < 6) {
+                        etPassword.setError("Minimum length should be 6 characters");
                     } else {
                         etPassword.setError(null);
                     }
@@ -113,51 +113,75 @@ public class LoginActivity extends AppCompatActivity {
                 if (validateUserName() && validatePassword()) {
 
                     JSONObject obj = new JSONObject();
-
                     try {
                         obj.put("email", email);
                         obj.put("password", password);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    /*JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                             Request.Method.POST, "http://10.0.2.2:3000/user/login/", obj, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Toast.makeText(LoginActivity.this, response.get("flag").toString(), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(LoginActivity.this, response.get("flag").toString(), Toast.LENGTH_SHORT).show();
 
                                 if (response.get("flag").toString().equals("true")) {
                                     UID_i = response.get("uid").toString();
+                                    res = response.get("flag").toString();
                                     right = true;
-
                                     Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
                                             Toast.LENGTH_LONG).show();
-                                    btProceed.setEnabled(true);
-                                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString(UID, UID_i);
-                                    editor.commit();
-                                    editor.apply();
-                                    Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
-                                            Toast.LENGTH_LONG).show();
-                                    btProceed.setClickable(true);
-                                    btProceed.setEnabled(true);
-                                } else {
+                                } else if (response.get("flag").toString().equals("false") || response.get("response").toString().equals("false")) {
                                     Toast.makeText(LoginActivity.this, response.get("error authenticating user").toString(), Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
+
+                        public void methodToHoldUntilResponseArrived() {
+                            if (res.equals(true)) {
+                                btProceed.setClickable(true);
+                                btProceed.setEnabled(true);
+
+                            }
+                            // your code that relies on the volley response
+                            // Log.i("Volley Res", volleyResult);
+                        }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Log.e("error", error.toString());
                         }
-                    });
-
+                    }
+                    );
                     rq.add(jsonObjectRequest);
+                    */
+                    JsonObject json = new JsonObject();
+                    json.addProperty("email", email);
+                    json.addProperty("password", password);
+
+                    Ion.with(LoginActivity.this)
+                            .load("http://10.0.2.2:3000/user/login/")
+                            .setJsonObjectBody(json)
+                            .asJsonObject()
+                            .setCallback(new FutureCallback<JsonObject>() {
+                                @Override
+                                public void onCompleted(Exception e, JsonObject result) {
+                                    // do stuff with the result or error
+                                    if (result.get("flag").toString().equals("true")) {
+                                        UID_i = result.get("uid").toString();
+                                        res = result.get("flag").toString();
+                                        right = true;
+                                        btProceed.setEnabled(true);
+                                        Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
+                                                Toast.LENGTH_LONG).show();
+                                    } else if (result.get("flag").toString().equals("false") || result.get("response").toString().equals("500")) {
+                                        Toast.makeText(LoginActivity.this, "error authenticating user", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
 
                 }
 
@@ -167,11 +191,17 @@ public class LoginActivity extends AppCompatActivity {
         btProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(UID, UID_i);
+                    editor.putString("email", email);
+                    editor.commit();
+                    editor.apply();
+                    Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
+                    startActivity(i);
+                    etPassword.setText("");
+                    etName.setText("");
 
-                Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
-                startActivity(i);
-                etPassword.setText("");
-                etName.setText("");
             }
         });
 
@@ -205,8 +235,6 @@ public class LoginActivity extends AppCompatActivity {
                                                   @Override
                                                   public void afterTextChanged(Editable s) {
                                                       email = etName.getText().toString().trim();
-
-
                                                   }
                                               });
         etPassword.addTextChangedListener(new
@@ -225,8 +253,6 @@ public class LoginActivity extends AppCompatActivity {
                                                       @Override
                                                       public void afterTextChanged(Editable s) {
                                                           password = etPassword.getText().toString();
-
-
                                                       }
                                                   });
 

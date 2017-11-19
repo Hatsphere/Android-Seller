@@ -58,7 +58,7 @@ public class TrialActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (choise == true) {
+                if (choise) {
                     JSONObject obj = new JSONObject();
                     try {
                         obj.put("name", name);
@@ -125,7 +125,7 @@ public class TrialActivity extends AppCompatActivity {
                 .setCallback(new FutureCallback<JsonObject>() {
                     @Override
                     public void onCompleted(Exception e, JsonObject result) {
-                        Log.d("onCompleted: ", result.toString());
+//                        Log.d("onCompleted: ", result.toString());
                     }
                 });
     }

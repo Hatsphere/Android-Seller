@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yashladha.android_seller.DeactivateActivity;
 import com.example.yashladha.android_seller.HomePageActivity;
 import com.example.yashladha.android_seller.R;
 
@@ -79,13 +80,15 @@ public class MyAccountFragment extends Fragment {
         tvDeactivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getActivity(), DeactivateActivity.class);
+                startActivity(i);
             }
         });
         tvChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(getActivity(), ChangePassword.class);
+                startActivity(intent);
             }
         });
 

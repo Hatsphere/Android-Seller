@@ -18,10 +18,9 @@
 
         <ImageView
             android:id="@+id/ivProduct"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:src="@drawable/platinum1"
-            android:scaleType="fitXY" />
+            android:src="@drawable/platinum1" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"

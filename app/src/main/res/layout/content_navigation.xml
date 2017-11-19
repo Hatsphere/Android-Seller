@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="10dp"
     tools:context="com.example.yashladha.android_seller.HomePageActivity"
     android:id="@+id/container1">
-
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs1"

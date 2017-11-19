@@ -62,8 +62,8 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         final Button mAccept = (Button) listItemView.findViewById(R.id.btAccept);
         mAccept.setText(currentOrder.getmAccept());
 
-        final Button mReject = (Button) listItemView.findViewById(R.id.btReject);
-        mReject.setText(currentOrder.getmReject());
+        //final Button mReject = (Button) listItemView.findViewById(R.id.btReject);
+        //mReject.setText(currentOrder.getmReject());
 
         mAccept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,11 +82,12 @@ public class OrderAdapter extends ArrayAdapter<Order> {
                         mAccept.setText("ACCEPTED !!!");
                         mAccept.setBackgroundColor(Color.GREEN);
                         mAccept.setEnabled(false);
-                        mReject.setVisibility(View.GONE);
+                        //mReject.setVisibility(View.GONE);
 
-                        ViewGroup layout = (ViewGroup) mReject.getParent();
+                        /*ViewGroup layout = (ViewGroup) mReject.getParent();
                         if(null!=layout) //for safety only  as you are doing onClick
                             layout.removeView(mReject);
+                        */
 
                     }});
                 adb.show();
@@ -94,26 +95,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
             }
         });
 
-        mReject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                AlertDialog.Builder adb=new AlertDialog.Builder(getContext());
-                adb.setTitle("Reject");
-                adb.setMessage("Are you sure you want to reject the request for "+ currentOrder.getmTypeOfRequest()
-                        + " of " + currentOrder.getmProductName()+"?");
-                final int positionToRemove = pos;
-                adb.setNegativeButton("Cancel", null);
-                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        OrdersFrag.orderAdapter.remove(getItem(positionToRemove));
-                        OrdersFrag.orderAdapter.notifyDataSetChanged();
-
-                    }});
-                adb.show();
-
-            }
-        });
 
 
         TextView mNum = (TextView)listItemView.findViewById(R.id.tvNum);

@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 /**
  * Created by yashladha on 7/11/17.
+ * Helper function for getting the uid of the seller
  */
 
 public class HelperDef {

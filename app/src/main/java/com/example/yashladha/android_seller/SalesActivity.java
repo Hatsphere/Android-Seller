@@ -2,13 +2,18 @@ package com.example.yashladha.android_seller;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.yashladha.android_seller.data.MyRecyclerViewAdapter;
+import com.example.yashladha.android_seller.data.RecyclerDataObjects;
 import com.example.yashladha.android_seller.fragments.SalesFrag;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarEntry;
@@ -21,6 +26,8 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import static com.github.mikephil.charting.charts.Chart.LOG_TAG;
+
 public class SalesActivity extends AppCompatActivity {
 
     private Spinner mMonthSpinner;
@@ -32,6 +39,10 @@ public class SalesActivity extends AppCompatActivity {
     PieData pieData;
     TextView tvDate, tvMostBought, tvMostProductName, tvAnalysis;
     SimpleDateFormat formatter;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,13 @@ public class SalesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sales);
         setTitle("Sales");
         getSupportFragmentManager().beginTransaction().replace(R.id.container1, new SalesFrag()).commit();
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyRecyclerViewAdapter(getDataSet());
+        mRecyclerView.setAdapter(mAdapter);
 
         mMonthSpinner = (Spinner) findViewById(R.id.spinner_month);
         try {
@@ -146,6 +164,32 @@ public class SalesActivity extends AppCompatActivity {
         PieEntryLabels.add("May");
         PieEntryLabels.add("June");
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter
+                .MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Log.i(LOG_TAG, " Clicked on Item " + position);
+            }
+        });
+    }
+
+    private ArrayList<RecyclerDataObjects> getDataSet() {
+        ArrayList results = new ArrayList<RecyclerDataObjects>();
+
+        /*for (int index = 0; index < 20; index++) {
+            RecyclerDataObjects obj = new RecyclerDataObjects("Some Primary Text " + index,
+                    "Secondary " + index);
+            results.add(index, obj);
+        }
+        */
+
+        results.add(0,new RecyclerDataObjects("BEST SELLER"+ 0,"BASKETS"+0));
+        return results;
     }
 
 }

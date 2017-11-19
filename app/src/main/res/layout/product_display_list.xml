@@ -6,6 +6,11 @@
     android:paddingBottom="10dp"
     tools:context="com.example.yashladha.android_seller.DisplayActivity">
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="invisible"
+        android:id="@+id/imageView1"/>
 
     <LinearLayout
         android:layout_width="match_parent"

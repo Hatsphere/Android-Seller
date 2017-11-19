@@ -43,7 +43,7 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:label="Register">
+            android:label="Register"
             android:parentActivityName=".SplashActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -124,7 +124,11 @@
         <activity
             android:name=".navigation.MyAccountEditActivity"
             android:label="Edit your account" />
-        <activity android:name=".navigation.ChangePassword"></activity>
+        <activity android:name=".navigation.ChangePassword" />
+        <activity
+            android:name=".NavigationDrawerItems"
+            android:label="Edit your account" />
+        <activity android:name=".DeactivateActivity"></activity>
     </application>
 
 </manifest>

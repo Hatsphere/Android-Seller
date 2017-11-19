@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,15 +17,18 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -36,6 +40,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.classes.FileUriHelper;
+import com.example.yashladha.android_seller.data.Product;
 import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
@@ -50,7 +55,10 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -58,7 +66,8 @@ public class AddProductsActivity extends AppCompatActivity {
 
     private ImageView ivAdd;
     private TextView tvAddPhoto, tvProductName, tvProDes, tvOriginalPrice, tvDiscount, tvCategory;
-    private EditText etProductName, etProDes, etOriginalPrice, etDiscount, etCategory;
+    private EditText etProductName, etProDes, etOriginalPrice, etDiscount;
+    private Spinner spinner;
     private Button btDone;
     private LinearLayout sv1;
     private File wallpaperDirectory;
@@ -85,6 +94,7 @@ public class AddProductsActivity extends AppCompatActivity {
         noOfImages = 0;
         dataUri = new ArrayList<>();
         context = this.getBaseContext();
+        spinner = (Spinner) findViewById(R.id.spCategory);
         btDone = findViewById(R.id.btDone);
         ivAdd = findViewById(R.id.ivAdd);
         tvAddPhoto = findViewById(R.id.tvAddPhoto);
@@ -97,20 +107,105 @@ public class AddProductsActivity extends AppCompatActivity {
         etProDes = findViewById(R.id.etProDes);
         etOriginalPrice = findViewById(R.id.etOriginalPrice);
         etDiscount = findViewById(R.id.etDiscount);
-        etCategory = findViewById(R.id.etCategory);
         sv1 = findViewById(R.id.sv1);
         tbOnSale = findViewById(R.id.tbOnSale);
         rq = Volley.newRequestQueue(AddProductsActivity.this);
 
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        final List<String> categoryList = new ArrayList<>();
+        categoryList.add("Select a Category");
+        JSONObject obj = new JSONObject();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                "http://10.0.2.2:3000/product/all/cateogry",obj,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Iterator<String> iterator = response.keys();
+                        while (iterator.hasNext()) {
+                            String key = iterator.next();
+                            //Log.i("TAG","key:"+key +"--Value::"+response.optString(key);
+                            try {
+                                categoryList.add(response.getString(key).toString());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+//                        Log.e(rootview.getClass().getSimpleName(), error.getMessage());
+                    }
+                }
+
+        );
+        rq.add(jsonObjectRequest);
+
+
+
+        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                this, R.layout.spinner_item, categoryList) {
+            @Override
+            public boolean isEnabled(int position) {
+                if (position == 0) {
+                    // Disable the first item from Spinner
+                    // First item will be use for hint
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if (position == 0) {
+                    // Set the hint text color gray
+                    tv.setTextColor(Color.GRAY);
+                } else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+        spinner.setAdapter(spinnerArrayAdapter);
+        spinnerArrayAdapter.setNotifyOnChange(true);
+        spinnerArrayAdapter.notifyDataSetChanged();
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItemText = (String) parent.getItemAtPosition(position);
+                // If user change the default selection
+                // First item is disable and it is used for hint
+                if (position > 0) {
+                    // Notify the selected item text
+                    Toast.makeText
+                            (getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
+                            .show();
+                    category = selectedItemText;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         UID = myPrefs.getString("UID", "");
         plan = myPrefs.getString("Plan", "");
         SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
-        Toast.makeText(AddProductsActivity.this, UID, Toast.LENGTH_LONG).show();
+        //Toast.makeText(AddProductsActivity.this, UID, Toast.LENGTH_LONG).show();
         System.out.println(UID);
         /**
          * taking the entry from the edit text to string product name
@@ -211,23 +306,7 @@ public class AddProductsActivity extends AppCompatActivity {
         /**
          * taking the entry from the edit text to string category
          */
-        etCategory.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                category = etCategory.getText().toString();
-
-            }
-        });
         /**
          * If the product is on sale we make this text box as Yes
          */
@@ -305,7 +384,7 @@ public class AddProductsActivity extends AppCompatActivity {
                                             Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
                                             startActivity(intent);
                                         } else {
-                                            Toast.makeText(AddProductsActivity.this, response.get("Something is wrong").toString(), Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AddProductsActivity.this, ("Something is wrong"), Toast.LENGTH_SHORT).show();
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -321,9 +400,8 @@ public class AddProductsActivity extends AppCompatActivity {
 
                     rq.add(jsonObjectRequest);
 
-                }
-                else{
-                    Toast.makeText(AddProductsActivity.this, "", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AddProductsActivity.this, "You have not entered some entries", Toast.LENGTH_SHORT).show();
 
                 }
             }
