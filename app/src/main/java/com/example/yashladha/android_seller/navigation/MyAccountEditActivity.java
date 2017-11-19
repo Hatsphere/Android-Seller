@@ -157,7 +157,7 @@ public class MyAccountEditActivity extends AppCompatActivity {
                                 }
                             });
                 }
-                
+
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
