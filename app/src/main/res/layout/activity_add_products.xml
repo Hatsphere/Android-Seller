@@ -86,6 +86,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
+            android:digits="@string/alphabets"
             android:hint="Write a small description of the product"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
@@ -110,6 +111,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
             android:hint="Enter your original price"
+            android:digits="@string/price_discount_contact"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 
@@ -157,6 +159,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
+            android:digits="@string/price_discount_contact"
             android:hint="Enter the discount"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
