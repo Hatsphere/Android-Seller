@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                                         UID_i = result.get("uid").toString();
                                         res = result.get("flag").toString();
                                         right = true;
-                                        //btProceed.setEnabled(true);
+                                        btProceed.setEnabled(true);
                                         Toast.makeText(LoginActivity.this, "The login credentials are correct, Please click on proceed",
                                                 Toast.LENGTH_LONG).show();
                                     } else if (result.get("flag").toString().equals("false") || result.get("response").toString().equals("500")) {
