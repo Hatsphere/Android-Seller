@@ -45,7 +45,7 @@ public class SplashActivity extends Activity implements LoadingTask.LoadingTaskF
     }
 
     private void startApp() {
-        if (uid == "" || registered == "") {
+        if (uid == "") {
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
         } else {
