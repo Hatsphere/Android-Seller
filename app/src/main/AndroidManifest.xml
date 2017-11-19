@@ -123,11 +123,18 @@
 
         <activity
             android:name=".navigation.MyAccountEditActivity"
-            android:label="Edit your account" />
+            android:label="Edit your account">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.yashladha.android_seller.HomePageActivity" />
+        </activity>
+
         <activity android:name=".navigation.ChangePassword" />
+
         <activity
             android:name=".NavigationDrawerItems"
             android:label="Edit your account" />
+
         <activity android:name=".DeactivateActivity"></activity>
     </application>
 
