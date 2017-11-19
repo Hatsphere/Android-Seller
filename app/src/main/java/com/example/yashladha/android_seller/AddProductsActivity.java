@@ -111,10 +111,61 @@ public class AddProductsActivity extends AppCompatActivity {
         tbOnSale = findViewById(R.id.tbOnSale);
         rq = Volley.newRequestQueue(AddProductsActivity.this);
 
-
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        etProductName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etProductName.getText().toString().trim().length() < 3) {
+                        etProductName.setError("Minimum length should be 3 characters");
+                    } else {
+                        etProductName.setError(null);
+                    }
+                }
+            }
+        });
+
+        etProDes.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etProDes.getText().toString().trim().length() < 10) {
+                        etProDes.setError("Minimum length should be 10 characters");
+                    } else {
+                        etProDes.setError(null);
+                    }
+                }
+            }
+        });
+
+        etOriginalPrice.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etOriginalPrice.getText().toString().trim().length() < 3) {
+                        etOriginalPrice.setError("Minimum length should be 3 characters");
+                    } else {
+                        etOriginalPrice.setError(null);
+                    }
+                }
+            }
+        });
+
+        etDiscount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etDiscount.getText().toString().trim().length() < 2) {
+                        etDiscount.setError("Minimum length should be 2 characters");
+                    } else {
+                        etDiscount.setError(null);
+                    }
+                }
+            }
+        });
+
         final List<String> categoryList = new ArrayList<>();
         categoryList.add("Select a Category");
         JSONObject obj = new JSONObject();

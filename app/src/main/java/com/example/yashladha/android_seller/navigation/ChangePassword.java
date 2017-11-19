@@ -5,11 +5,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +36,7 @@ public class ChangePassword extends AppCompatActivity {
     Boolean password = false;
     String oldPassword, newPassword, confirmPassword;
     String email, uid;
+    ImageButton ibConfirmPassword, ibNewPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class ChangePassword extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         SharedPreferences myPrefs = getSharedPreferences("myprfs", MODE_PRIVATE);
         email = myPrefs.getString("email", "");
         uid = myPrefs.getString("UID", "");
@@ -59,6 +63,36 @@ public class ChangePassword extends AppCompatActivity {
         btCheckPassword = (Button) findViewById(R.id.btCheckPassword);
         btProceed = (Button) findViewById(R.id.btProceed);
 
+        ibNewPassword = (ImageButton)findViewById(R.id.ibNewPassword);
+        ibConfirmPassword = (ImageButton)findViewById(R.id.ibConfirmPassword);
+
+        ibNewPassword.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                if (!password)
+                    etNewPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                else
+                    etNewPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                password = !password;
+
+            }
+        });
+
+        ibConfirmPassword.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v) {
+                if (!password)
+                    etConfirmPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                else
+                    etConfirmPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                password = !password;
+
+            }
+        });
+
         etOldPassword.addTextChangedListener(new
 
                                                      TextWatcher() {
@@ -75,8 +109,6 @@ public class ChangePassword extends AppCompatActivity {
                                                          @Override
                                                          public void afterTextChanged(Editable s) {
                                                              oldPassword = etOldPassword.getText().toString();
-
-
                                                          }
                                                      });
         etNewPassword.addTextChangedListener(new
