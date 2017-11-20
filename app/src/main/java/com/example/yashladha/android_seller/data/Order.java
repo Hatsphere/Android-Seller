@@ -35,6 +35,90 @@ public class Order {
         //this.mProductImageResourceId = mProductImageResourceId;
     }
 
+    public String getOrder_date() {
+        return order_date;
+    }
+
+    public void setOrder_date(String order_date) {
+        this.order_date = order_date;
+    }
+
+    public String getPay_id() {
+        return pay_id;
+    }
+
+    public void setPay_id(String pay_id) {
+        this.pay_id = pay_id;
+    }
+
+    public String getDel_date() {
+        return del_date;
+    }
+
+    public void setDel_date(String del_date) {
+        this.del_date = del_date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getmAccept() {
+        return mAccept;
+    }
+
+    public void setmAccept(String mAccept) {
+        this.mAccept = mAccept;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    public String getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public static int getNoImageProvided() {
+        return NO_IMAGE_PROVIDED;
+    }
+
     public String getmOrderID() {
         return order_id;
 

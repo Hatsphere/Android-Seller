@@ -64,6 +64,11 @@ public class OrdersFrag extends Fragment {
         //plan = myPrefs.getString("Plan", "");
         final RequestQueue[] rq = {Volley.newRequestQueue(getContext())};
         final String url = BaseUrlConfig.getBaseURL() + "order/all/" + UID;
+
+        orderAdapter = new OrderAdapter(getActivity(), orders, R.color.back5);
+        ListView listView = (ListView) rootview.findViewById(R.id.lvOrderList);
+        listView.setAdapter(orderAdapter);
+
         JSONObject data = new JSONObject();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
                 url,
@@ -105,7 +110,6 @@ public class OrdersFrag extends Fragment {
 
                             orders.add(new Order(order_date, pay_id, productName, status, order_id, uid, del_date, quantity, sellerId));
                             //my_button.setBackgroundResource(R.drawable.defaultcard);
-                            orderAdapter.setNotifyOnChange(true);
                             orderAdapter.notifyDataSetChanged();
                         }
                     }
@@ -119,12 +123,6 @@ public class OrdersFrag extends Fragment {
 
         );
         rq[0].add(request);
-
-
-
-        orderAdapter = new OrderAdapter(getActivity(), orders, R.color.back5);
-        ListView listView = (ListView) rootview.findViewById(R.id.lvOrderList);
-        listView.setAdapter(orderAdapter);
 
         return rootview;
     }
