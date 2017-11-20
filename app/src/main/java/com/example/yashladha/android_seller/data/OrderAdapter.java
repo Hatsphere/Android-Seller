@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.classes.RoundImage;
 import com.example.yashladha.android_seller.helper.BaseUrlConfig;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -101,7 +102,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
 
 
                         JSONObject data = new JSONObject();
-                        HashMap obj = new HashMap();
+                        JSONObject obj = new JSONObject();
                         try {
                             obj.put("order_date", currentOrder.getOrder_date());
                             obj.put("pay_id", currentOrder.getPay_id());
