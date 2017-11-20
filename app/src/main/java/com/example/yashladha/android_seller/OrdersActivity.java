@@ -17,10 +17,11 @@ public class OrdersActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container1, new OrdersFrag()).commit();
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         Intent intent = new Intent(OrdersActivity.this,DisplayActivity.class);
         startActivity(intent);
         super.onBackPressed();
-    }
+    }*/
+
 }

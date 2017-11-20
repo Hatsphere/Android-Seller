@@ -192,10 +192,10 @@ public class SalesActivity extends AppCompatActivity {
         return results;
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         Intent intent = new Intent(SalesActivity.this,DisplayActivity.class);
         startActivity(intent);
         super.onBackPressed();
-    }
+    }*/
 }
