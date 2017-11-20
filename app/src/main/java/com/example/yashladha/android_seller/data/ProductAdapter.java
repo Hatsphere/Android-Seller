@@ -36,13 +36,15 @@ import java.util.Objects;
 public class ProductAdapter extends ArrayAdapter<Product> {
 
     private int mColorResourceId;
+    String uid;
     private ArrayList<Product> adapProduct;
     RoundImage roundedImage;
     private Context mContext;
 
-    public ProductAdapter(Context context, ArrayList<Product> products, int colorResourceId) {
+    public ProductAdapter(Context context, ArrayList<Product> products, int colorResourceId, String UID) {
         super(context, 0, products);
         mColorResourceId = colorResourceId;
+        this.uid = UID;
         this.mContext = context;
         this.adapProduct = products;
     }
@@ -122,10 +124,11 @@ public class ProductAdapter extends ArrayAdapter<Product> {
                         DisplayFrag.productAdapter.remove(getItem(positionToRemove));
                         DisplayFrag.productAdapter.notifyDataSetChanged();
                         JsonObject json = new JsonObject();
-                        json.addProperty("productKey", getItem(pos).getmProductName());
+                        json.addProperty("productKey", currentProduct.getmProductName());
                         Ion.with(getContext())
                                 .load(BaseUrlConfig.getBaseURL() + "product/delete/")
-                                .setJsonObjectBody(json)
+                                .setBodyParameter("productKey", currentProduct.getmProductName())
+                                .setBodyParameter("uid", uid)
                                 .asJsonObject()
                                 .setCallback(new FutureCallback<JsonObject>() {
                                     @Override

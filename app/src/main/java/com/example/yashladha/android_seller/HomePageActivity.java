@@ -252,6 +252,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             logOut();
+                            finish();
                         }
 
                     })

@@ -62,7 +62,7 @@ public class DisplayFrag extends Fragment {
         //plan = myPrefs.getString("Plan", "");
         final RequestQueue[] rq = {Volley.newRequestQueue(getContext())};
         JSONObject data = new JSONObject();
-        productAdapter = new ProductAdapter(getActivity(), products, R.color.back5);
+        productAdapter = new ProductAdapter(getActivity(), products, R.color.back5, UID);
         final String url = BaseUrlConfig.getBaseURL() + "product/all/" + UID;
         //data.put("email", email);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,

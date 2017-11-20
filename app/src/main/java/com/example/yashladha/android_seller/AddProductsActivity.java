@@ -448,6 +448,7 @@ public class AddProductsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AddProductsActivity.this, HomePageActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
