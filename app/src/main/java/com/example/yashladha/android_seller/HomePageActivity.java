@@ -44,7 +44,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
-    /*public boolean onKeyDown(int keyCode, KeyEvent event) {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             exitByBackKey();
 
@@ -53,12 +53,12 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }*/
+    }
 
     /**
      * We customized the function that this activity will show when we touch the back key
      */
-    /*
+
     protected void exitByBackKey() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -90,7 +90,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
 
         }
 
-    }*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,7 +176,7 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-         //   exitByBackKey();
+            exitByBackKey();
         }
     }
 

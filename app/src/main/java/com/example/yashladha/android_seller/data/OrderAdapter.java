@@ -68,13 +68,13 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         TextView mProductName = (TextView) listItemView.findViewById(R.id.tvProductName);
         mProductName.setText(currentOrder.getmProductName());
 
-        TextView mProductDate = (TextView) listItemView.findViewById(R.id.tvProductDate);
-        mProductDate.setText(currentOrder.getmProductDate());
+        //TextView mProductDate = (TextView) listItemView.findViewById(R.id.tvProductDate);
+        //mProductDate.setText(currentOrder.getmProductDate());
 
         TextView mID = (TextView) listItemView.findViewById(R.id.tvID);
         mID.setText(currentOrder.getmOrderID());
 
-        TextView mDate = (TextView) listItemView.findViewById(R.id.tvDate);
+        TextView mDate = (TextView) listItemView.findViewById(R.id.tvProductDate);
         mDate.setText(currentOrder.getOrder_date());
 
         final Button mAccept = (Button) listItemView.findViewById(R.id.btAccept);
@@ -164,7 +164,6 @@ public class OrderAdapter extends ArrayAdapter<Order> {
             }
         });
 
-
         TextView mNum = (TextView) listItemView.findViewById(R.id.tvNumOfRequests);
         if (currentOrder != null)
             mNum.setText(String.valueOf(currentOrder.getmNum()));
@@ -178,6 +177,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         return listItemView;
         //return super.getView(position, convertView, parent);
     }
+
     public static String getCurrentTimeStamp(){
         try {
 

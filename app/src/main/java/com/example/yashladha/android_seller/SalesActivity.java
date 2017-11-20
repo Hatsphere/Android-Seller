@@ -52,12 +52,7 @@ public class SalesActivity extends AppCompatActivity {
         setTitle("Sales");
         getSupportFragmentManager().beginTransaction().replace(R.id.container1, new SalesFrag()).commit();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyRecyclerViewAdapter(getDataSet());
-        mRecyclerView.setAdapter(mAdapter);
 
         mMonthSpinner = (Spinner) findViewById(R.id.spinner_month);
         try {

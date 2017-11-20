@@ -131,10 +131,10 @@ public class Order {
         return productName;
     }
 
-    public String getmProductDate() {
+    /*public String getmProductDate() {
         return order_date;
 
-    }
+    }*/
 
     public String getmTypeOfRequest() {
         return status;
