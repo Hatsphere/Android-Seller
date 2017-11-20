@@ -66,6 +66,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
+            android:inputType="textPersonName"
             android:digits="@string/alphabets"
             android:hint="Enter the Product Name"
             android:maxLength="100"
@@ -91,6 +92,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
+            android:inputType="textLongMessage"
             android:digits="@string/alphabets"
             android:hint="Write a small description of the product"
             android:padding="10dp"
@@ -162,6 +164,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
             android:digits="@string/price_discount_contact"
+            android:inputType="number"
             android:hint="Enter the discount"
             android:padding="10dp"
             android:textColorHint="#887f7f" />

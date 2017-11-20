@@ -23,6 +23,7 @@
         android:id="@+id/etName"
         android:padding="10dp"
         android:hint="Username or Email"
+        android:inputType="textEmailAddress"
         android:textColorHint="#887f7f"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
