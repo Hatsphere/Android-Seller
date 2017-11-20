@@ -342,63 +342,44 @@ public class AddProductsActivity extends AppCompatActivity {
         btDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                JSONObject obj = new JSONObject();
+                JsonObject obj = new JsonObject();
                 if (!productName.equals("") && !originalPrice.equals("") && !discount.equals("") && !proDes.equals("") && !category.equals("")) {
-                    try {
-                        obj.put("pName", productName);
-                        obj.put("pPrice", Integer.toString(Integer.parseInt(originalPrice) - Integer.parseInt(discount)));
-                        obj.put("pDescription", proDes);
-                        obj.put("pClass", category);
-                        obj.put("pSale", sale);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                            Request.Method.POST,
-                            "http://10.0.2.2:3000/product/send/" + UID,
-                            obj,
-                            new Response.Listener<JSONObject>() {
+                    obj.addProperty("pName", productName);
+                    obj.addProperty("pPrice", Integer.toString(Integer.parseInt(originalPrice) - Integer.parseInt(discount)));
+                    obj.addProperty("pDescription", proDes);
+                    obj.addProperty("pClass", category);
+                    obj.addProperty("pSale", sale);
+
+                    Ion.with(AddProductsActivity.this)
+                            .load("http://10.0.2.2:3000/product/send/" + UID)
+                            .setJsonObjectBody(obj)
+                            .asJsonObject()
+                            .setCallback(new FutureCallback<JsonObject>() {
                                 @Override
-                                public void onResponse(JSONObject response) {
-                                    try {
-                                        if (response.get("response").toString().equals("200")) {
-                                            Toast.makeText(AddProductsActivity.this, "Your Product has been added",
-                                                    Toast.LENGTH_LONG).show();
+                                public void onCompleted(Exception e, JsonObject result) {
+                                    // do stuff with the result or error
+                                    Toast.makeText(AddProductsActivity.this, "Your Product has been added",
+                                            Toast.LENGTH_LONG).show();
 
-                                            Builders.Any.B builder = Ion.with(context)
-                                                    .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID + "/" + productName);
-                                            for (String item : dataUri) {
-                                                builder.setMultipartFile(UID, new File(item));
-                                            }
-                                            builder.asJsonObject()
-                                                    .setCallback(new FutureCallback<JsonObject>() {
-                                                        @Override
-                                                        public void onCompleted(Exception e, JsonObject result) {
-                                                            if (result != null) {
-                                                                Log.d("onCompleted: ", result.toString());
-                                                            } else {
-                                                                e.printStackTrace();
-                                                            }
-                                                        }
-                                                    });
-                                            btProceed.setEnabled(true);
-
-                                        } else {
-                                            Toast.makeText(AddProductsActivity.this, ("Something is wrong"), Toast.LENGTH_SHORT).show();
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
+                                    Builders.Any.B builder = Ion.with(context)
+                                            .load(BaseUrlConfig.getBaseURL() + "product/send/image/" + UID + "/" + productName);
+                                    for (String item : dataUri) {
+                                        builder.setMultipartFile(UID, new File(item));
                                     }
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Log.e("error", error.toString());
+                                    builder.asJsonObject()
+                                            .setCallback(new FutureCallback<JsonObject>() {
+                                                @Override
+                                                public void onCompleted(Exception e, JsonObject result) {
+                                                    if (result != null) {
+                                                        Log.d("onCompleted: ", result.toString());
+                                                    } else {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            });
+                                    btProceed.setEnabled(true);
                                 }
                             });
-
-                    rq.add(jsonObjectRequest);
 
                 } else {
                     Toast.makeText(AddProductsActivity.this, "You have not entered some entries", Toast.LENGTH_SHORT).show();

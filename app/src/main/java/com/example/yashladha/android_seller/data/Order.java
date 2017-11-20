@@ -6,51 +6,61 @@ package com.example.yashladha.android_seller.data;
 
 public class Order {
 
-    private String mProductName;
-    private String mProductPrice;
-    private String mDate;
+    private String order_date;
+    private String pay_id;
+    private String del_date;
+    private String status;
     private String mAccept;
-    private String mStatus;
-
-    private int mProductImageResourceId = NO_IMAGE_PROVIDED;
+    private int quantity;
+    private String productName;
+    private String sellerId;
+    private String order_id;
+    private String uid;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    public Order(String mProductName, String mProductPrice, String mDate, String mAccept,
-                   String mStatus, int mProductImageResourceId) {
-        this.mProductName = mProductName;
-        this.mProductPrice = mProductPrice;
-        this.mDate = mDate;
-        this.mAccept = mAccept;
-        this.mStatus = mStatus;
-        this.mProductImageResourceId = mProductImageResourceId;
+
+
+    public Order(String order_date, String pay_id, String productName, String status, String order_id, String uid, String del_date,
+                 int quantity, String sellerId) {
+        this.order_date = order_date;
+        this.pay_id = pay_id;
+        this.productName = productName;
+        this.status = status;
+        this.order_id = order_id;
+        this.uid = uid;
+        this.del_date = del_date;
+        this.quantity = quantity;
+        this.sellerId = sellerId;
+
+        //this.mProductImageResourceId = mProductImageResourceId;
+    }
+
+    public String getmOrderID() {
+        return order_id;
+
+    }
+
+    public void setmOrderID(String mOrderID) {
+        this.order_id = mOrderID;
     }
 
     public String getmProductName() {
-        return mProductName;
+        return productName;
     }
 
-    public String getmProductPrice() {
-        return mProductPrice;
+    public String getmProductDate() {
+        return order_date;
+
     }
 
-    public String getmDate() {
-        return mDate;
+    public String getmTypeOfRequest() {
+        return status;
     }
 
-    public String getmAccept() {
-        return mAccept;
+
+    public int getmNum() {
+        return quantity;
     }
 
-    public String getmStatus() {
-        return mStatus;
-    }
 
-    public int getmProductImageResourceId() {
-        return mProductImageResourceId;
-    }
-
-    public boolean hasImage1() {
-        boolean result = mProductImageResourceId != NO_IMAGE_PROVIDED;
-        return result;
-    }
 }
