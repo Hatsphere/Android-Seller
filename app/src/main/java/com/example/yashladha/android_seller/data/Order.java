@@ -37,7 +37,6 @@ public class Order {
 
     public String getmOrderID() {
         return order_id;
-
     }
 
     public void setmOrderID(String mOrderID) {
