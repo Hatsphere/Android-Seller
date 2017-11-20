@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -165,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                     json.addProperty("password", password);
 
                     Ion.with(LoginActivity.this)
-                            .load("http://10.0.2.2:3000/user/login/")
+                            .load(BaseUrlConfig.getBaseURL() + "user/login")
                             .setJsonObjectBody(json)
                             .asJsonObject()
                             .setCallback(new FutureCallback<JsonObject>() {

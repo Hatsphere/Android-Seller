@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.LoginActivity;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 
 import org.json.JSONObject;
 
@@ -59,7 +60,7 @@ public class DeactivateDialog extends DialogFragment {
                         JSONObject obj = new JSONObject();
                         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                                 Request.Method.GET,
-                                "http://10.0.2.2:3000/user/deleteUser/" + uid + "/", obj,
+                                BaseUrlConfig.getBaseURL() + "user/deleteUser/" + uid + "/", obj,
                                 new Response.Listener<JSONObject>() {
                                     @Override
                                     public void onResponse(JSONObject response) {

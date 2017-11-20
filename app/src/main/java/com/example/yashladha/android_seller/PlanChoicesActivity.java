@@ -149,7 +149,7 @@ public class PlanChoicesActivity extends AppCompatActivity {
     @NonNull
     private JsonObjectRequest sellerPushRequest(JSONObject obj) {
         return new JsonObjectRequest(
-                Request.Method.POST, "http://10.0.2.2:3000/user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
+                Request.Method.POST, BaseUrlConfig.getBaseURL() + "user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {

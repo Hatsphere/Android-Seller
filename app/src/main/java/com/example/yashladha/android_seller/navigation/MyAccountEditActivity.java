@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yashladha.android_seller.R;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -86,7 +87,7 @@ public class MyAccountEditActivity extends AppCompatActivity {
                     json.addProperty("value", etContact.getText().toString());
                     json.addProperty("uid", uid);
                     Ion.with(MyAccountEditActivity.this)
-                            .load("http://10.0.2.2:3000/user/update/")
+                            .load(BaseUrlConfig.getBaseURL() + "user/update/")
                             .setJsonObjectBody(json)
                             .asJsonObject()
                             .setCallback(new FutureCallback<JsonObject>() {
@@ -112,7 +113,7 @@ public class MyAccountEditActivity extends AppCompatActivity {
                     json.addProperty("uid", uid);
 
                     Ion.with(MyAccountEditActivity.this)
-                            .load("http://10.0.2.2:3000/user/update/")
+                            .load(BaseUrlConfig.getBaseURL() + "user/update/")
                             .setJsonObjectBody(json)
                             .asJsonObject()
                             .setCallback(new FutureCallback<JsonObject>() {
@@ -138,7 +139,7 @@ public class MyAccountEditActivity extends AppCompatActivity {
                     json.addProperty("uid", uid);
 
                     Ion.with(MyAccountEditActivity.this)
-                            .load("http://10.0.2.2:3000/user/update/")
+                            .load(BaseUrlConfig.getBaseURL() + "user/update/")
                             .setJsonObjectBody(json)
                             .asJsonObject()
                             .setCallback(new FutureCallback<JsonObject>() {

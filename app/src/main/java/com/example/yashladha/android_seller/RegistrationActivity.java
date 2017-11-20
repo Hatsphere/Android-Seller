@@ -37,6 +37,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.classes.FileUriHelper;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 import com.example.yashladha.android_seller.helper.EmailHelper;
 import com.example.yashladha.android_seller.helper.HelperDef;
 
@@ -130,7 +131,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 JsonObjectRequest jsonObjectRequest2 = new JsonObjectRequest(
-                        Request.Method.POST, "http://10.0.2.2:3000/user/check/email/", obj2, new Response.Listener<JSONObject>() {
+                        Request.Method.POST, BaseUrlConfig.getBaseURL() + "user/check/email/", obj2, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
@@ -176,7 +177,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                                    Request.Method.POST, "http://10.0.2.2:3000/user/signUp/", obj, new Response.Listener<JSONObject>() {
+                                    Request.Method.POST, BaseUrlConfig.getBaseURL() + "user/signUp/", obj, new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     try {
@@ -374,7 +375,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private JsonObjectRequest sellerPushRequest(JSONObject obj) {
         return new JsonObjectRequest(
                 Request.Method.POST,
-                "http://10.0.2.2:3000/user/push/seller",
+                BaseUrlConfig.getBaseURL() + "user/push/seller",
                 obj,
                 new Response.Listener<JSONObject>() {
                     @Override

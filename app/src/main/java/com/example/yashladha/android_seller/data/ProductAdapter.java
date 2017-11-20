@@ -19,6 +19,7 @@ import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.classes.RoundImage;
 import com.example.yashladha.android_seller.fragments.DisplayFrag;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -123,7 +124,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
                         JsonObject json = new JsonObject();
                         json.addProperty("productKey", getItem(pos).getmProductName());
                         Ion.with(getContext())
-                                .load("http://10.0.2.2:3000/product/delete/")
+                                .load(BaseUrlConfig.getBaseURL() + "product/delete/")
                                 .setJsonObjectBody(json)
                                 .asJsonObject()
                                 .setCallback(new FutureCallback<JsonObject>() {

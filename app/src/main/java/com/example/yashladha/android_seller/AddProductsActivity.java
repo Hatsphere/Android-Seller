@@ -120,7 +120,7 @@ public class AddProductsActivity extends AppCompatActivity {
         JSONObject obj = new JSONObject();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                "http://10.0.2.2:3000/product/all/cateogry", obj,
+                BaseUrlConfig.getBaseURL() + "product/all/cateogry", obj,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -407,7 +407,7 @@ public class AddProductsActivity extends AppCompatActivity {
                     obj.addProperty("pSale", sale);
 
                     Ion.with(AddProductsActivity.this)
-                            .load("http://10.0.2.2:3000/product/send/" + UID)
+                            .load(BaseUrlConfig.getBaseURL() + "product/send/" + UID)
                             .setJsonObjectBody(obj)
                             .asJsonObject()
                             .setCallback(new FutureCallback<JsonObject>() {

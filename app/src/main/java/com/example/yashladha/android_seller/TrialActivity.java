@@ -70,7 +70,7 @@ public class TrialActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                            Request.Method.POST, "http://10.0.2.2:3000/user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
+                            Request.Method.POST, BaseUrlConfig.getBaseURL() + "user/profile/" + uid, obj, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {

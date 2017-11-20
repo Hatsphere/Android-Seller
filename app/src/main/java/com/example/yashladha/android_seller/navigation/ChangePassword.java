@@ -23,6 +23,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.HomePageActivity;
 import com.example.yashladha.android_seller.R;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -174,7 +175,7 @@ public class ChangePassword extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                        Request.Method.POST, "http://10.0.2.2:3000/user/login/", obj, new Response.Listener<JSONObject>() {
+                        Request.Method.POST, BaseUrlConfig.getBaseURL() + "user/login/", obj, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
@@ -216,7 +217,7 @@ public class ChangePassword extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                            Request.Method.POST, "http://10.0.2.2:3000/user/change/password/", obj, new Response.Listener<JSONObject>() {
+                            Request.Method.POST, BaseUrlConfig.getBaseURL() + "user/change/password/", obj, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {

@@ -26,6 +26,7 @@ import com.example.yashladha.android_seller.DeactivateActivity;
 import com.example.yashladha.android_seller.HomePageActivity;
 import com.example.yashladha.android_seller.LoginActivity;
 import com.example.yashladha.android_seller.R;
+import com.example.yashladha.android_seller.helper.BaseUrlConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,7 +62,7 @@ public class MyAccountFragment extends Fragment {
         rq = Volley.newRequestQueue(getContext());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
-                "http://10.0.2.2:3000/user/seller/Info/all/" + uid,
+                BaseUrlConfig.getBaseURL() + "user/seller/Info/all/" + uid,
                 json,
                 new Response.Listener<JSONObject>() {
                     @Override
