@@ -99,6 +99,24 @@
                     android:textColor="@android:color/holo_green_light"
                     android:textSize="18dp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:text="Requests"
+                    android:layout_marginStart="5dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    tools:text="Requests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:textStyle="normal"
+                    tools:text="15"
+                    android:textSize="18dp"
+                    android:id="@+id/tvNumOfRequests"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
             <LinearLayout

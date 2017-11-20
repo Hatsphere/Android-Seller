@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.yashladha.android_seller.R;
 import com.example.yashladha.android_seller.classes.RoundImage;
 import com.example.yashladha.android_seller.helper.BaseUrlConfig;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +35,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by dell pc on 22-10-2017.
@@ -73,10 +75,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         mID.setText(currentOrder.getmOrderID());
 
         TextView mDate = (TextView) listItemView.findViewById(R.id.tvDate);
-        mDate.setText(currentOrder.getmDate());
-
-        TextView mNumOfRequest = (TextView) listItemView.findViewById(R.id.tvNumOfRequests);
-        mNumOfRequest.setText("Number of Request");
+        mDate.setText(currentOrder.getOrder_date());
 
         final Button mAccept = (Button) listItemView.findViewById(R.id.btAccept);
         mAccept.setText("Accept");
@@ -95,7 +94,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
                         + " of " + currentOrder.getmProductName() + "?");
 
                 final int positionToRemove = pos;
-                final String url = BaseUrlConfig.getBaseURL() + "order/accept/";
+                final String url = BaseUrlConfig.getBaseURL() + "order/accept";
 
                 adb.setNegativeButton("Cancel", null);
                 adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
@@ -103,8 +102,18 @@ public class OrderAdapter extends ArrayAdapter<Order> {
 
 
                         JSONObject data = new JSONObject();
+                        JSONObject obj = new JSONObject();
                         try {
-                            data.put("order", currentOrder);
+                            obj.put("order_date", currentOrder.getOrder_date());
+                            obj.put("pay_id", currentOrder.getPay_id());
+                            obj.put("productName",  currentOrder.getProductName());
+                            obj.put("status", currentOrder.getStatus());
+                            obj.put("order_id", currentOrder.getOrder_id());
+                            obj.put("uid", currentOrder.getUid());
+                            obj.put("del_date", currentOrder.getDel_date());
+                            obj.put("quantity", currentOrder.getQuantity());
+                            obj.put("sellerId", currentOrder.getSellerId());
+                            data.put("order", obj);
                             data.put("timeStamp", getCurrentTimeStamp());
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -156,8 +165,9 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         });
 
 
-        TextView mNum = (TextView) listItemView.findViewById(R.id.tvNum);
-        mNum.setText(currentOrder.getmNum());
+        TextView mNum = (TextView) listItemView.findViewById(R.id.tvNumOfRequests);
+        if (currentOrder != null)
+            mNum.setText(String.valueOf(currentOrder.getmNum()));
 
         ImageView mProductImageResource = (ImageView) listItemView.findViewById(R.id.ivProduct);
 
