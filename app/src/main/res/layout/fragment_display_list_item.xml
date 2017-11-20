@@ -5,13 +5,13 @@
     android:paddingBottom="10dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
-    android:paddingTop="10dp"
+    android:paddingTop="5dp"
     tools:context="com.example.yashladha.android_seller.fragments.DisplayFrag">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="126dp"
+        android:layout_height="140dp"
         android:clickable="true"
         android:weightSum="1"
         android:orientation="horizontal">

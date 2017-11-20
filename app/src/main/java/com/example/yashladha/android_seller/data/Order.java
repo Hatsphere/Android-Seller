@@ -121,7 +121,6 @@ public class Order {
 
     public String getmOrderID() {
         return order_id;
-
     }
 
     public void setmOrderID(String mOrderID) {
@@ -132,10 +131,10 @@ public class Order {
         return productName;
     }
 
-    public String getmProductDate() {
+    /*public String getmProductDate() {
         return order_date;
 
-    }
+    }*/
 
     public String getmTypeOfRequest() {
         return status;

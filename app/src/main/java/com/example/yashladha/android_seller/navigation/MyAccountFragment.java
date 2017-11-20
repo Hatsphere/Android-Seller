@@ -117,7 +117,9 @@ public class MyAccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         tvPlan.setText(type);
+
         tvLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

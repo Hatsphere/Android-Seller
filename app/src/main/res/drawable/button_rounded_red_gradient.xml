@@ -3,7 +3,12 @@
     <item>
         <shape android:shape="rectangle">
             <!--make a gradient background-->
-            <gradient android:type="linear" android:startColor="@color/redStart" android:endColor="@color/redEnd" android:centerColor="@color/redCenter" android:angle="0" android:gradientRadius="100" />
+            <gradient android:type="linear"
+                android:startColor="@color/redEnd"
+                android:endColor="@color/redEnd"
+                android:centerColor="@color/redEnd"
+                android:angle="0"
+                android:gradientRadius="100" />
             <!--apply a border around button-->
             <!-- make the button corners rounded-->
             <corners android:radius="25dp" />

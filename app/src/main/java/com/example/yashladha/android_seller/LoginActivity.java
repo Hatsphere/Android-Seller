@@ -292,9 +292,14 @@ public class LoginActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
-                startActivity(i);
-
+                //Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
+                //startActivity(i);
+                Intent launchNextActivity;
+                launchNextActivity = new Intent(LoginActivity.this, RegistrationActivity.class);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(launchNextActivity);
             }
         });
     }

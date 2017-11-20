@@ -209,6 +209,20 @@ public class AddProductsActivity extends AppCompatActivity {
         /**
          * taking the entry from the edit text to string product name
          */
+
+        etProductName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etProductName.getText().toString().trim().length() < 5) {
+                        etProductName.setError("Minimum length should be 5 characters");
+                    } else {
+                        etProductName.setError(null);
+                    }
+                }
+            }
+        });
+
         etProductName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -231,6 +245,20 @@ public class AddProductsActivity extends AppCompatActivity {
 /**
  * taking the entry from the edit text to string product description
  */
+
+        etProDes.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etProDes.getText().toString().trim().length() < 15) {
+                        etProDes.setError("Minimum length should be 15 characters");
+                    } else {
+                        etProDes.setError(null);
+                    }
+                }
+            }
+        });
+
         etProDes.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -253,6 +281,20 @@ public class AddProductsActivity extends AppCompatActivity {
         /**
          * taking the entry from the edit text to string original price
          */
+
+        etOriginalPrice.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etOriginalPrice.getText().toString().trim().length() < 2) {
+                        etOriginalPrice.setError("Minimum length should be 2 characters");
+                    } else {
+                        etOriginalPrice.setError(null);
+                    }
+                }
+            }
+        });
+
         etOriginalPrice.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -279,6 +321,20 @@ public class AddProductsActivity extends AppCompatActivity {
         /**
          * taking the entry from the edit text to string discount
          */
+
+        etDiscount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    if (etDiscount.getText().toString().trim().length() < 1) {
+                        etDiscount.setError("Minimum length should be 1 character");
+                    } else {
+                        etDiscount.setError(null);
+                    }
+                }
+            }
+        });
+
         etDiscount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

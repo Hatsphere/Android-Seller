@@ -320,6 +320,13 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(RegistrationActivity.this, LoginActivity.class);
                 startActivity(i);
+
+                /*Intent launchNextActivity;
+                launchNextActivity = new Intent(RegistrationActivity.this, LoginActivity.class);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(launchNextActivity);*/
             }
         });
 

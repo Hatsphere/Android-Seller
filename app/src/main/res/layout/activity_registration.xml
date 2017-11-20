@@ -19,7 +19,9 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:clickable="true"
-            android:src="@drawable/add" />
+            android:src="@drawable/add"
+            android:background="@drawable/image_background"
+            />
 
         <TextView
             android:layout_width="wrap_content"
