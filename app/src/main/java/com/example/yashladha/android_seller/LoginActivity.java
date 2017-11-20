@@ -301,6 +301,7 @@ public class LoginActivity extends AppCompatActivity {
                 launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(launchNextActivity);
+                finish();
             }
         });
     }

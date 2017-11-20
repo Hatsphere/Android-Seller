@@ -460,8 +460,9 @@ public class AddProductsActivity extends AppCompatActivity {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle("Select Action");
         String[] pictureDialogItems = {
-                "Select photo from gallery",
-                "Capture photo from camera"};
+                "Select photo from gallery"
+        //        "Capture photo from camera"
+        };
         pictureDialog.setItems(pictureDialogItems,
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -470,9 +471,9 @@ public class AddProductsActivity extends AppCompatActivity {
                             case 0:
                                 choosePhotoFromGallery();
                                 break;
-                            case 1:
+                            /*case 1:
                                 takePhotoFromCamera();
-                                break;
+                                break;*/
                         }
                     }
                 });
@@ -543,14 +544,14 @@ public class AddProductsActivity extends AppCompatActivity {
                 }
             }
 
-        } else if (requestCode == CAMERA) {
+        } /*else if (requestCode == CAMERA) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             image = true;
             saveImage(thumbnail);
             ImageView image = new ImageView(AddProductsActivity.this);
             image.setImageBitmap(thumbnail);
             sv1.addView(image);
-        }
+        }*/
     }
 
     /**

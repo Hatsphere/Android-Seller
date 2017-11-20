@@ -23,6 +23,7 @@
         android:id="@+id/etName"
         android:padding="10dp"
         android:hint="Username or Email"
+        android:inputType="textEmailAddress"
         android:textColorHint="#887f7f"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -87,7 +88,7 @@
         android:layout_margin="10dp"
         android:textColor="#fff"
         android:text="Proceed"
-        android:enabled="true"
+        android:enabled="false"
         android:layout_gravity="center"
         android:background="@drawable/button_rounded_corners_gradiant"
         android:padding="15dp" />

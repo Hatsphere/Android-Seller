@@ -32,6 +32,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
             android:hint="Enter your Name"
+            android:inputType="textPersonName"
             android:digits="@string/alphabets"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
@@ -75,6 +76,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/button_border"
             android:hint="Enter your address"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColorHint="#887f7f" />
 
@@ -100,6 +102,7 @@
             android:background="@drawable/button_border"
             android:hint="Enter your phone number"
             android:padding="10dp"
+            android:inputType="phone"
             android:digits="0123456789"
             android:maxLength="13"
             android:textColorHint="#887f7f" />

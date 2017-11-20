@@ -76,6 +76,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private RequestQueue rq;
     private String email = "";
     private Button btRegister;
+    private boolean image =false;
 
     public RegistrationActivity() {
         // Required empty public constructor
@@ -117,6 +118,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (isReadPermissionGranted()) {
                     showPictureDialog();
                     tvAddPic.setText("");
+                    if(image)
                     ivProfile.setClickable(false);
                 }
             }
@@ -321,7 +323,7 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(RegistrationActivity.this, LoginActivity.class);
                 startActivity(i);
-
+                finish();
                 /*Intent launchNextActivity;
                 launchNextActivity = new Intent(RegistrationActivity.this, LoginActivity.class);
                 launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -450,8 +452,9 @@ public class RegistrationActivity extends AppCompatActivity {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle("Select Action");
         String[] pictureDialogItems = {
-                "Select photo from gallery",
-                "Capture photo from camera"};
+                "Select photo from gallery"
+        //        "Capture photo from camera"
+        };
         pictureDialog.setItems(pictureDialogItems,
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -460,9 +463,9 @@ public class RegistrationActivity extends AppCompatActivity {
                             case 0:
                                 choosePhotoFromGallary();
                                 break;
-                            case 1:
+                            /*case 1:
                                 takePhotoFromCamera();
-                                break;
+                                break;*/
                         }
                     }
                 });
@@ -473,6 +476,7 @@ public class RegistrationActivity extends AppCompatActivity {
         Intent galleryIntent = new Intent();
         galleryIntent.setType("image/*");
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        image = true;
         startActivityForResult(galleryIntent, GALLERY);
     }
 
@@ -503,11 +507,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
             }
 
-        } else if (requestCode == CAMERA) {
+        } /*else if (requestCode == CAMERA) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             saveImage(thumbnail);
             ivProfile.setImageBitmap(thumbnail);
-        }
+        }*/
     }
 
     public String saveImage(Bitmap myBitmap) {
